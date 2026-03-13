@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodari-Tarot 🃏 | 사장님 비즈니스 타로</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&family=Cinzel:wght@600&display=swap');
+        :root {
+            --primary: #c084fc;
+            --bg: #0c0e12;
+            --card-gold: #fbbf24;
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Spline Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: radial-gradient(circle at center, #1b1429 0%, #0c0e12 100%);
+            overflow-x: hidden;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 2rem;
+        }
+        h1 { font-family: 'Cinzel', serif; color: var(--primary); font-size: 2.2rem; margin-bottom: 0.5rem; letter-spacing: 2px; }
+        .deck-area {
+            position: relative;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem 0;
+        }
+        .tarot-card {
+            width: 200px;
+            height: 320px;
+            perspective: 1000px;
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 12px;
+        }
+        .tarot-card.flipped .card-inner { transform: rotateY(180deg); }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 2px solid rgba(192, 132, 252, 0.3);
+            box-sizing: border-box;
+        }
+        .card-back {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            background-image: radial-gradient(circle at center, rgba(192,132,252,0.2) 0%, transparent 70%);
+        }
+        .card-back::after {
+            content: 'K';
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            color: rgba(192, 132, 252, 0.1);
+        }
+        .card-front {
+            background: #111827;
+            transform: rotateY(180deg);
+            padding: 1.5rem;
+            border-color: var(--card-gold);
+        }
+        .card-front i { font-size: 3rem; color: var(--card-gold); margin-bottom: 1.5rem; }
+        .card-name { font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--card-gold); margin-bottom: 1rem; }
+        .card-desc { font-size: 0.85rem; line-height: 1.6; opacity: 0.8; }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px rgba(192, 132, 252, 0.4); }
+        
+        .reading {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            text-align: left;
+            display: none;
+            animation: slideUp 0.6s ease-out;
+        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .back-link { margin-top: 3rem; opacity: 0.4; text-decoration: none; color: white; font-size: 0.8rem; display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="opacity: 0.6; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 0.5rem;">BUSINESS ORACLE</div>
+        <h1>Kodari Tarot</h1>
+        <p style="opacity: 0.5; font-size: 0.9rem;">카드는 사업의 흐름을 알고 있습니다.<br>오늘의 비즈니스 가이드를 선언하십시오.</p>
+
+        <div class="deck-area">
+            <div class="tarot-card" id="tarotCard" onclick="drawCard()">
+                <div class="card-inner">
+                    <div class="card-back"></div>
+                    <div class="card-front">
+                        <i id="cardIcon"></i>
+                        <div class="card-name" id="cardName"></div>
+                        <div class="card-desc" id="cardDesc"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn" id="resetBtn" onclick="resetDeck()" style="display: none;">다시 선언하기</button>
+        
+        <div class="reading" id="readingContainer">
+            <h4 style="color: var(--primary); margin: 0 0 0.5rem 0;">🔮 비즈니스 오라클의 조언</h4>
+            <p id="adviceText" style="font-size: 0.9rem; line-height: 1.6;"></p>
+        </div>
+
+        <a href="../../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> 유니버스 포털로 돌아가기</a>
+    </div>
+
+    <script>
+        const businessCards = [
+            { 
+                name: "THE FOUNDER", 
+                icon: "fa-solid fa-seedling", 
+                desc: "새로운 시작, 무한한 가능성. 스타트업의 설렘.",
+                advice: "대표님, 오늘은 계산기보다 가슴이 뛰는 일을 따르십시오. 작은 아이디어가 거대한 비즈니스의 씨앗이 될 것입니다. 리스크를 두려워 마세요." 
+            },
+            { 
+                name: "THE CEO", 
+                icon: "fa-solid fa-crown", 
+                desc: "안정성, 권위, 리더십. 탄탄한 구조.",
+                advice: "체계와 규칙이 필요한 시점입니다. 감정에 휘둘리기보다 데이터와 시스템으로 팀을 이끄십시오. 사장님의 결단력이 곧 법입니다." 
+            },
+            { 
+                name: "THE PIVOT", 
+                icon: "fa-solid fa-arrows-spin", 
+                desc: "변화의 파도, 기회 포착. 시장의 흐름.",
+                advice: "고집을 버려야 살 길이 보입니다. 시장의 목소리에 귀를 기울이고 빠르게 궤도를 수정하십시오. 위기는 곧 위대한 기회입니다." 
+            },
+            { 
+                name: "THE DISRUPTOR", 
+                icon: "fa-solid fa-bolt-lightning", 
+                desc: "기존 질서의 파괴, 혁신적 돌파구.",
+                advice: "평범한 방식으로는 1등을 할 수 없습니다. 판을 흔드십시오. 오늘은 당연하게 여겼던 모든 프로세스에 의문을 던지는 날입니다." 
+            },
+            { 
+                name: "THE UNICORN", 
+                icon: "fa-solid fa-horse-head", 
+                desc: "비전의 실현, 막대한 성장, 희망.",
+                advice: "상상했던 미래가 곧 현실로 다가옵니다. 큰 투자가 들어오거나 유의미한 트래픽 폭발이 일어날 징조입니다. 스케일업을 준비하세요." 
+            },
+            { 
+                name: "THE ARCHITECT", 
+                icon: "fa-solid fa-compass-drafting", 
+                desc: "정교한 설계, 실행력, 디테일.",
+                advice: "화려한 겉모습보다 내실을 다질 때입니다. 핵심 로직과 UI/UX의 디테일을 점검하십시오. 완벽한 설계가 큰 결실을 맺습니다." 
+            }
+        ];
+
+        let canDraw = true;
+
+        function drawCard() {
+            if(!canDraw) return;
+            canDraw = false;
+
+            const card = document.getElementById('tarotCard');
+            const reading = document.getElementById('readingContainer');
+            const resetBtn = document.getElementById('resetBtn');
+            const data = businessCards[Math.floor(Math.random() * businessCards.length)];
+
+            // Inject data
+            document.getElementById('cardIcon').className = data.icon;
+            document.getElementById('cardName').innerText = data.name;
+            document.getElementById('cardDesc').innerText = data.desc;
+            document.getElementById('adviceText').innerText = data.advice;
+
+            card.classList.add('flipped');
+
+            setTimeout(() => {
+                reading.style.display = 'block';
+                resetBtn.style.display = 'inline-block';
+            }, 800);
+        }
+
+        function resetDeck() {
+            const card = document.getElementById('tarotCard');
+            const reading = document.getElementById('readingContainer');
+            const resetBtn = document.getElementById('resetBtn');
+
+            card.classList.remove('flipped');
+            reading.style.display = 'none';
+            resetBtn.style.display = 'none';
+            
+            setTimeout(() => {
+                canDraw = true;
+            }, 600);
+        }
+    </script>
+</body>
+</html>
