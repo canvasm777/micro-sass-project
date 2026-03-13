@@ -1,0 +1,97 @@
+/* [사장님 기강 감사] 멈추지 않는 창조적 코딩 v1.1 */
+/* "코딩창이 멈추는 것은 팀장이 죽을 때다!" - Agent Omega */
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&display=swap');
+
+:root {
+    --primary: #25f48c;
+    --bg: #0f1215;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text: #ffffff;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Spline Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: radial-gradient(at 0% 0%, rgba(37, 244, 140, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 0%, rgba(88, 166, 255, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(255, 0, 80, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+}
+
+#app {
+    width: 100%;
+    max-width: 480px;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border-radius: 24px; /* Premium 24px inner roundness */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: slideInUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+p {
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+.upload-area {
+    border: 2px dashed var(--glass-border);
+    padding: 5rem 2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+}
+
+.upload-area:hover {
+    border-color: var(--primary);
+    background: rgba(37, 244, 140, 0.08);
+    transform: perspective(1000px) rotateX(5deg) scale(1.03);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.upload-area i {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.caption-results {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+    text-align: left;
+    display: none;
+}
+
+.hidden { display: none; }

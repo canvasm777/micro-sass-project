@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodari Universe ✨ | All-in-One AI Suite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&display=swap');
+        :root {
+            --primary: #25f48c;
+            --bg: #0f1215;
+            --card: rgba(255, 255, 255, 0.03);
+            --text: #ffffff;
+        }
+        body {
+            background: radial-gradient(at 0% 0%, rgba(37, 244, 140, 0.12) 0px, transparent 50%),
+                        radial-gradient(at 50% 0%, rgba(88, 166, 255, 0.08) 0px, transparent 50%),
+                        radial-gradient(at 100% 0%, rgba(255, 0, 80, 0.05) 0px, transparent 50%);
+            background-color: var(--bg);
+            background-attachment: fixed;
+            color: var(--text);
+            font-family: 'Spline Sans', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        nav {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+        .auth-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .auth-btn:hover { background: var(--primary); color: #000; }
+        
+        header { text-align: center; padding: 4rem 1rem; }
+        header h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        header p { font-size: 1.2rem; opacity: 0.6; max-width: 600px; margin: 0 auto; }
+
+        .adsense-placeholder {
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            background: rgba(255,255,255,0.02);
+            border: 1px dashed rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.2);
+            border-radius: 12px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1100px;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: left;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: white;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem; display: block; }
+        .card h2 { margin: 0 0 1rem 0; font-size: 1.5rem; }
+        .card p { opacity: 0.6; line-height: 1.6; font-size: 0.95rem; }
+
+        footer { padding: 4rem; opacity: 0.4; font-size: 0.8rem; }
+
+        #loginModal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .login-box {
+            background: #161b22; padding: 3rem; border-radius: 24px; width: 100%; max-width: 400px;
+            text-align: center; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .login-box input {
+            width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: 12px;
+            background: #0d1117; border: 1px solid #30363d; color: white; box-sizing: border-box;
+        }
+        .login-box button {
+            width: 100%; padding: 1rem; border-radius: 12px; border: none;
+            background: var(--primary); color: #000; font-weight: bold; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">KODARI UNIVERSE</div>
+        <button class="auth-btn" id="loginBtn" onclick="toggleLogin()">LOGIN</button>
+    </nav>
+
+    <header>
+        <h1>AI Micro-SaaS Suite</h1>
+        <p>대한민국 No.1 코다리 사단이 선사하는 차세대 AI 도구 모음집. 애드센스 탑재 완료 프리미엄 버전.</p>
+    </header>
+
+    <div class="adsense-placeholder">
+        AD UNIT: PORTAL_TOP_BANNER
+    </div>
+
+    <div class="grid">
+        <a href="sns-spark/index.html" class="card">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <h2>SNS-Spark</h2>
+            <p>제품 사진을 넣으면 감성 캡션이 쏟아집니다. 인스타그램 마케팅의 정점.</p>
+        </a>
+        <a href="interview-ace/index.html" class="card">
+            <i class="fa-solid fa-bullseye"></i>
+            <h2>InterviewAce</h2>
+            <p>구인 공고 맞춤형 면접 준비 비서. 글로벌 다국어 지원 및 리포트 내보내기.</p>
+        </a>
+        <a href="quick-invoice/index.html" class="card">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <h2>QuickInvoice</h2>
+            <p>영수증 AI 스캐닝 및 지출 비중 대시보드. 완벽한 개인 자산 관리 솔루션.</p>
+        </a>
+    </div>
+
+    <div class="adsense-placeholder">
+        AD UNIT: PORTAL_FOOTER_NATIVE
+    </div>
+
+    <footer>
+        <div style="margin-bottom: 1rem;">
+            <a href="tutorial.html" style="color: white; text-decoration: none; margin: 0 1rem; opacity: 0.6;">Tutorial</a>
+            <a href="privacy.html" style="color: white; text-decoration: none; margin: 0 1rem; opacity: 0.6;">Privacy Policy</a>
+        </div>
+        © 2026 Kodari Enterprise - Global Launch Version
+    </footer>
+
+    <div id="loginModal">
+        <div class="login-box">
+            <h2 style="margin-bottom: 2rem;">Welcome Boss</h2>
+            <input type="email" placeholder="Email Address">
+            <input type="password" placeholder="Password">
+            <button onclick="performLogin()">SIGN IN</button>
+            <p style="font-size: 0.8rem; margin-top: 1.5rem; opacity: 0.5; cursor: pointer;" onclick="toggleLogin()">Cancel</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleLogin() {
+            const modal = document.getElementById('loginModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function performLogin() {
+            localStorage.setItem('kodari_auth', 'true');
+            alert('대표님, 환영합니다! 로그인이 완료되었습니다.');
+            location.reload();
+        }
+
+        if(localStorage.getItem('kodari_auth') === 'true') {
+            document.getElementById('loginBtn').innerText = 'LOGOUT';
+            document.getElementById('loginBtn').onclick = () => {
+                localStorage.removeItem('kodari_auth');
+                alert('로그아웃 되었습니다.');
+                location.reload();
+            };
+        }
+    </script>
+</body>
+</html>

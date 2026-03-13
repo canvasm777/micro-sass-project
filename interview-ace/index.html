@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterviewAce 🎯 | AI 면접 질문 추출기</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../auth.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>InterviewAce 🎯</h1>
+            <p>구인 공고 URL만 넣으세요. 맞춤형 질문은 AI가 뽑아냅니다.</p>
+            <div id="adsense-top" style="margin: 1rem 0; font-size: 0.6rem; opacity: 0.2;">[AdSense Auto-Ads Slot]</div>
+            <div id="statusBanner" style="background: rgba(37, 244, 140, 0.1); color: var(--primary); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem; margin-top: 1rem; border: 1px solid rgba(37, 244, 140, 0.2); display: none;">
+                🛰️ [시스템 모니터링] 사장님 지휘 하에 엔진 가동 중...
+            </div>
+        </header>
+        <main>
+            <div class="input-group">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <label for="jobUrl" style="font-size: 0.9rem; opacity: 0.8;">구인 공고 링크</label>
+                    <select id="langSelect" style="background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--primary); font-size: 0.7rem; border-radius: 8px; padding: 2px 8px; cursor: pointer;">
+                        <option value="ko">KOREAN</option>
+                        <option value="en">ENGLISH</option>
+                    </select>
+                </div>
+                <input type="text" id="jobUrl" placeholder="https://example.com/job-post...">
+                <button id="generateBtn">질문 생성 AI 가동 🚀</button>
+            </div>
+            <div id="questions" class="hidden">
+                <!-- AI Generated Cards -->
+            </div>
+            <div id="aceHistory" class="hidden" style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem;">
+                <h4 style="font-size: 0.8rem; opacity: 0.4; margin-bottom: 1rem;">과거 분석 리포트</h4>
+                <div id="historyList"></div>
+            </div>
+        </main>
+        <footer>
+            <div class="app-switcher" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 3rem;">
+                <a href="../sns-spark/index.html" style="opacity: 0.4; font-size: 0.8rem; cursor: pointer; color: white; text-decoration: none;">Spark</a>
+                <a href="../interview-ace/index.html" class="active" style="color: var(--primary); font-weight: bold; font-size: 0.8rem; text-decoration: none;">Ace</a>
+                <a href="../quick-invoice/index.html" style="opacity: 0.4; font-size: 0.8rem; cursor: pointer; color: white; text-decoration: none;">Invoice</a>
+            </div>
+            <p style="text-align: center; opacity: 0.5; font-size: 0.8rem;">© 2026 Kodari Squad - Ultra Performance Mode</p>
+        </footer>
+    </div>
+    <script src="main.js"></script>
+    <script src="engine.js"></script>
+</body>
+</html>
