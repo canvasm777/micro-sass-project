@@ -42,8 +42,11 @@
             </div>
             
             <div id="imagePreview" class="hidden" style="margin-bottom: 2rem;">
-                <img id="previewImg" src="" style="width: 100%; border-radius: 12px; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1);">
-                <button onclick="resetUpload()" style="background: rgba(255,0,0,0.1); color: #ff4d4d; border: 1px solid rgba(255,0,0,0.2); padding: 8px 16px; border-radius: 8px; cursor: pointer;">다시 찍기</button>
+                <div class="preview-container">
+                    <img id="previewImg" src="">
+                    <div id="textOverlay">여기에 캡션이 입혀집니다...</div>
+                </div>
+                <button onclick="resetUpload()" style="background: rgba(255,0,0,0.1); color: #ff4d4d; border: 1px solid rgba(255,0,0,0.2); padding: 8px 16px; border-radius: 8px; cursor: pointer; width: 100%;">다른 사진으로 변경</button>
             </div>
             
             <div id="sparkHistory" class="hidden" style="margin-top: 2rem; text-align: left;">

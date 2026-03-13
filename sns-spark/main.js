@@ -82,6 +82,9 @@ function resetUpload() {
     imagePreview.classList.add('hidden');
     uploadArea.classList.remove('hidden');
     captionResults.style.display = 'none';
+    const overlay = document.getElementById('textOverlay');
+    overlay.classList.remove('show');
+    overlay.innerText = "";
     fileInput.value = '';
 }
 
@@ -113,6 +116,11 @@ function showResults(sentiment, selectedTone) {
 
     const variations = captions[selectedTone];
     const finalCaption = variations[Math.floor(Math.random() * variations.length)];
+
+    // [인스타 최적화] 사진 위에 글씨 입히기 프리뷰 가동
+    const overlay = document.getElementById('textOverlay');
+    overlay.innerText = finalCaption;
+    overlay.classList.add('show');
 
     captionResults.innerHTML = `
         <div class="result-card" style="text-align: left; animation: slideInUp 0.6s ease-out;">
