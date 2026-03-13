@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodari Guide 📖 | 1분 만에 비즈니스 마스터</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&display=swap');
+        :root {
+            --primary: #25f48c;
+            --bg: #0b1117;
+            --card: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Spline Sans', sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 280px;
+            background: rgba(0,0,0,0.3);
+            border-right: 1px solid var(--border);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .main-content {
+            flex: 1;
+            padding: 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .guide-nav-item {
+            padding: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.6;
+        }
+        .guide-nav-item:hover, .guide-nav-item.active {
+            background: var(--card);
+            opacity: 1;
+            color: var(--primary);
+        }
+        .badge {
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--primary);
+            color: #000;
+            font-weight: bold;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .step-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .step-num {
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .back-link { color: white; opacity: 0.4; text-decoration: none; font-size: 0.8rem; margin-bottom: 2rem; display: block; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> 유니버스 메인</a>
+        <h3 style="margin-bottom: 2rem;">Guide Center 📖</h3>
+        <div class="guide-nav-item active">
+            <i class="fa-solid fa-rocket"></i> 퀵 스타트
+        </div>
+        <div class="guide-nav-item">
+            <i class="fa-solid fa-camera"></i> SNS-Spark 사용법
+        </div>
+        <div class="guide-nav-item">
+            <i class="fa-solid fa-bullseye"></i> InterviewAce 활용
+        </div>
+        <div class="guide-nav-item">
+            <i class="fa-solid fa-receipt"></i> QuickInvoice 팁
+        </div>
+        <div class="guide-nav-item">
+            <i class="fa-solid fa-crown"></i> 프리미엄 혜택 <span class="badge">VIP</span>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header>
+            <h1>Kodari Universe 🚀<br>Business OS 시작하기</h1>
+            <p style="opacity: 0.6; line-height: 1.6;">단 3단계만으로 사장님의 비즈니스를 AI 자동화로 전환하십시오. 1인 기업가에게 필요한 모든 무기가 이곳에 있습니다.</p>
+        </header>
+
+        <section style="margin-top: 4rem;">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h3>마케팅의 시작: SNS-Spark</h3>
+                <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.6;">
+                    이미지를 업로드하고 AI가 생성한 캡션을 1:1 정방형 캔버스에 즉시 입히세요. 광고주가 만족하고 팔로워가 열광하는 비주얼 결과물을 단 10초 만에 얻을 수 있습니다.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h3>현명한 채용: InterviewAce</h3>
+                <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.6;">
+                    구인공고 링크나 내용을 직접 붙여넣으세요. AI가 핵심 질문 3종 세트와 합격 전략을 브리핑해 드립니다. 사장님이 주무시는 동안에도 최고의 인재를 감별하기 위한 리포트가 준비됩니다.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h3>철저한 재무: QuickInvoice</h3>
+                <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.6;">
+                    영수증 사진만 찍으세요. AI가 지출 패턴을 분석하여 '대표님, 다음 달엔 이런 비즈니스 기회가 있습니다'라고 조언합니다. 이 지출 데이터는 다시 채용 예산으로 연동되어 건강한 현금 흐름을 만듭니다.
+                </p>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="../index.html" style="background: var(--primary); color: #000; padding: 1.2rem 3rem; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 0 30px rgba(37, 244, 140, 0.3);">지금 바로 시작하기 🚀</a>
+        </div>
+    </main>
+</body>
+</html>
