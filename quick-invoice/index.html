@@ -25,11 +25,28 @@
             <div id="adsense-top" style="margin: 1rem 0; font-size: 0.6rem; opacity: 0.2;">[AdSense Auto-Ads Slot]</div>
         </header>
         <main>
-            <div class="upload-area" id="dropzone" style="position: relative; overflow: hidden;">
+            <div class="upload-area" id="dropzone" style="position: relative; overflow: hidden; margin-bottom: 2rem;">
                 <div id="scannerLine" class="hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--primary); box-shadow: 0 0 15px var(--primary); z-index: 10; animation: scanMove 2s infinite linear;"></div>
                 <i class="fa-solid fa-receipt" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem; display: block;"></i>
-                <p>영수증 이미지를 여기에 드롭하거나 클릭하세요.</p>
+                <p>영수증을 스캔하여 지출 내역을 데이터화하세요.</p>
                 <input type="file" id="fileInput" hidden>
+            </div>
+
+            <!-- [글로벌 오너 지시] 기간별 분석 필터 장착 -->
+            <div id="filterArea" class="hidden" style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 2rem;">
+                <h4 style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.6;">데이터 정밀 분석 (기간 설정)</h4>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <input type="date" id="startDate" style="flex: 1; padding: 0.5rem; background: var(--card); border: 1px solid var(--border); color: white; border-radius: 8px; font-size: 0.8rem;">
+                    <span style="opacity: 0.4;">~</span>
+                    <input type="date" id="endDate" style="flex: 1; padding: 0.5rem; background: var(--card); border: 1px solid var(--border); color: white; border-radius: 8px; font-size: 0.8rem;">
+                    <button onclick="generateReport()" style="padding: 0.5rem 1rem; background: var(--primary); color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 0.8rem;">분석</button>
+                </div>
+            </div>
+
+            <div id="reportView" class="hidden animate-slide-up" style="background: linear-gradient(135deg, rgba(37,244,140,0.1), rgba(88,166,255,0.1)); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--primary); margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: var(--primary); font-size: 1.1rem;">📊 기간별 지출 리포트</h3>
+                <div id="reportContent" style="font-size: 0.9rem;"></div>
+                <button onclick="closeReport()" style="width: 100%; margin-top: 1rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.5rem; border-radius: 8px; font-size: 0.7rem; cursor: pointer;">닫기</button>
             </div>
             
             <div id="result" class="hidden">
