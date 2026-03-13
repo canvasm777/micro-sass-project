@@ -4,6 +4,10 @@ const generateBtn = document.getElementById('generateBtn');
 const questionsContainer = document.getElementById('questions');
 const statusBanner = document.getElementById('statusBanner');
 const langSelect = document.getElementById('langSelect');
+const modeSelect = document.getElementById('modeSelect');
+const jobUrlInput = document.getElementById('jobUrl');
+const trendTicker = document.getElementById('trendTicker');
+const testLinksContainer = document.getElementById('testLinks');
 
 // 사장님 지시: 데이터 영속성 확보
 let aceHistory = JSON.parse(localStorage.getItem('ace_history')) || [];
@@ -13,8 +17,46 @@ function initApp() {
         aceHistory.forEach(item => renderHistoryItem(item));
         document.getElementById('aceHistory').classList.remove('hidden');
     }
+    startTicker();
+    renderTestBench();
 }
 initApp();
+
+const trends = [
+    "🔥 현재 IT 대기업: 'LLM 최적화 엔지니어' 채용 열기!",
+    "🏛️ 공공기관: NCS 기반 '직무수행능력' 평가 비중 강화 중",
+    "🌍 Global Tech: 'Remote-First' 문화 적응력 검증 필수화",
+    "🚀 스타벅스: '비즈니스 민첩성(Agility)' 중점 채용 중",
+    "💡 채용 트렌드: 'AI 협업 능력'이 연봉 20% 결정"
+];
+
+function startTicker() {
+    let i = 0;
+    trendTicker.innerText = trends[0];
+    setInterval(() => {
+        i = (i + 1) % trends.length;
+        trendTicker.style.opacity = '0';
+        setTimeout(() => {
+            trendTicker.innerText = trends[i];
+            trendTicker.style.opacity = '0.8';
+        }, 500);
+    }, 4000);
+}
+
+function renderTestBench() {
+    const samples = [
+        { name: "사람인 (국내 대기업 예시)", url: "https://www.saramin.co.kr/zf_user/jobs/public/view?rec_idx=12345" },
+        { name: "잡코리아 (중견기업 예시)", url: "https://www.jobkorea.co.kr/Recruit/GI_Read/99999" },
+        { name: "Wanted (스타트업/신산업)", url: "https://www.wanted.co.kr/wd/88888" },
+        { name: "LinkedIn (글로벌 테크)", url: "https://www.linkedin.com/jobs/view/77777" }
+    ];
+    testLinksContainer.innerHTML = samples.map(s => `
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; padding: 4px 8px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+            <span>${s.name}</span>
+            <button onclick="document.getElementById('jobUrl').value='${s.url}'" style="background:transparent; border:none; color:var(--primary); cursor:pointer; font-size: 0.7rem; font-weight: bold;">[입력]</button>
+        </div>
+    `).join('');
+}
 
 generateBtn.onclick = async () => {
     statusBanner.style.display = 'block';
@@ -31,26 +73,44 @@ generateBtn.onclick = async () => {
     console.log("Sanitized URL for analysis:", cleanUrl);
 
     setTimeout(() => {
-        const score = calculateMatchScore("Job Description: React, Node.js, AI Expert", "Resume: Senior React Developer with Gemini experience");
+        const mode = modeSelect.value;
+        const score = calculateMatchScore("Job Description: React, Node.js, AI Expert, NCS, Ethics, Scale", "Resume: Senior React Developer with Gemini experience, NCS expert, Scalable systems", mode);
         
         generateBtn.innerText = isEnglish ? 'Done!' : '질문 생성 완료!';
-        statusBanner.innerHTML = isEnglish ? `🛰️ [Analysis Complete] Match: <strong style="color:var(--primary);">${score}%</strong>` : `🛰️ [분석 완료] 적합도: <strong style="color:var(--primary);">${score}%</strong> (시장 가치 반영됨)`;
+        statusBanner.innerHTML = isEnglish ? `🛰️ [Analysis Complete] Match: <strong style="color:var(--primary);">${score}%</strong>` : `🛰️ [분석 완료] 적합도: <strong style="color:var(--primary);">${score}%</strong>`;
         questionsContainer.classList.remove('hidden');
         
-        const mockQuestions = isEnglish ? [
-            `1. [Match Score ${score}%] How do you embody a 'Growth mindset' in this role?`,
-            "2. Can you describe your experience with high-performance JS architectures?",
-            "3. How would you handle a high-pressure coding deadline under Agent Omega's lead?"
-        ] : [
-            `1. [적합도 ${score}%] 해당 직무에서 가장 중요하게 생각하는 'Habit Green' 마인드셋은 무엇인가요?`,
-            "2. 복잡한 문제를 해결할 때 자신만의 '12px 곡률' 같은 부드러운 소통 방식이 있나요?",
-            "3. 에이전트 오메가처럼 빠른 성과를 냈던 경험을 설명해 주세요."
-        ];
+        const mockQuestions = {
+            general: isEnglish ? [
+                `1. [Match ${score}%] How do you handle rapid changes in a startup environment?`,
+                "2. Experience with React & Node.js scalable architecture?",
+                "3. How would you solve a critical bug within a 24-hour sprint?"
+            ] : [
+                `1. [적합도 ${score}%] 스타트업의 빠른 속도에 적응하기 위한 자신만의 노하우는?`,
+                "2. React/Node.js 기반 대규모 트래픽 처리 경험이 있나요?",
+                "3. 24시간 스프린트 내에 치명적인 버그를 해결했던 사례를 알려주세요."
+            ],
+            public: [
+                `1. [원칙 준수] 공공기관 종사자로서 가장 최우선시해야 할 직업윤리는 무엇인가요?`,
+                `2. [직무 역량] NCS 기반 해당 직무에서 본인이 가진 전문성 수치는 ${score}점입니다. 이를 증명할 사례는?`,
+                `3. [갈등 관리] 조직 내 규정과 개인의 의견이 상충할 때 어떻게 대처하시겠습니까?`
+            ],
+            global: [
+                `1. [Global Mindset] How do you collaborate effectively in a cross-border, multi-cultural remote team?`,
+                `2. [Technical Depth] Explain how you would architect a ${score}% available globally distributed system.`,
+                `3. [Communication] Describe a time you simplified a complex technical concept for non-technical stakeholders.`
+            ]
+        };
+
+        const finalQuestions = mockQuestions[mode] || mockQuestions.general;
 
         questionsContainer.innerHTML = `
-            ${mockQuestions.map(q => `<div class="question-card"><p>${q}</p></div>`).join('')}
+            <div style="margin-bottom: 1rem; font-size: 0.75rem; opacity: 0.5;">
+                분석 모드: <span style="color:var(--primary); text-transform:uppercase;">${mode}</span>
+            </div>
+            ${finalQuestions.map(q => `<div class="question-card"><p>${q}</p></div>`).join('')}
             <button onclick="exportQuestions()" style="width:100%; margin-top:2rem; background:rgba(37,244,140,0.1); border:1px solid var(--primary); color:var(--primary); padding:12px; border-radius:12px; cursor:pointer;">
-                <i class="fa-solid fa-file-export"></i> 리포트 내보내기 (Export)
+                <i class="fa-solid fa-file-export"></i> 분석 리포트 PDF 저장
             </button>
         `;
 

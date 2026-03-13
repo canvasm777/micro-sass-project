@@ -1,19 +1,24 @@
-// [사장님 정신 무장] 결과로 증명하는 JDM Engine v1.2
+// [사장님 정신 무장] 결과로 증명하는 JDM Engine v1.5 (Global & Public Support)
 // "엉덩이가 아니라 정신을 집중하라!" - Agent Beta & Omega
 
-function calculateMatchScore(jobText, resumeText) {
-    console.log("Analyzing Job Context...");
-    const jobKeywords = extractKeywords(jobText);
-    const resumeKeywords = extractKeywords(resumeText);
+function calculateMatchScore(jobText, resumeText, mode = 'general') {
+    console.log(`Analyzing Job Context in [${mode.toUpperCase()}] mode...`);
+    const jobKeywords = extractKeywords(jobText, mode);
     
-    // 사장님 지시: 단순 매칭을 넘어 가충치 연산 도입
+    // 사장님 지시: 모드별 가충치 연산 세밀화
     let weightedMatches = 0;
     jobKeywords.forEach(kw => {
         if (resumeText.toLowerCase().includes(kw.toLowerCase())) {
-            // Core tech stack gets 2.0x weight
-            const weight = ['React', 'Node.js', 'Python', 'Gemini'].includes(kw) ? 2.0 : 1.0;
+            let weight = 1.0;
+            if (mode === 'public') {
+                weight = ['윤리', '공공', '원칙', 'NCS'].includes(kw) ? 2.5 : 1.5;
+            } else if (mode === 'global') {
+                weight = ['Scale', 'System', 'Cultural'].includes(kw) ? 2.0 : 1.2;
+            } else {
+                weight = ['React', 'Node.js', 'AI', 'Gemini'].includes(kw) ? 2.0 : 1.0;
+            }
             weightedMatches += weight;
-            console.log(`Matching keyword: ${kw} (Weight: ${weight})`);
+            console.log(`Matching keyword [${mode}]: ${kw} (Weight: ${weight})`);
         }
     });
 
@@ -38,16 +43,23 @@ function analyzeExperienceDepth(text) {
     return Math.min(depth, 100);
 }
 
-function extractKeywords(text) {
+function extractKeywords(text, mode = 'general') {
     const techStack = {
         frontend: ['React', 'Vue', 'Tailwind', 'Next.js', 'TypeScript', 'CSS'],
         backend: ['Node.js', 'Express', 'Python', 'Django', 'Go', 'SQL'],
         ai: ['Gemini', 'OpenAI', 'LangChain', 'TensorFlow', 'LLM'],
         process: ['Agile', 'Scrum', 'CI/CD', 'Docker', 'Git']
     };
+
+    const publicStack = ['공공기관', 'NCS', '윤리', '원칙', '협합', '성실', '청렴', '조직적합'];
+    const globalStack = ['Scale', 'Architecture', 'System Design', 'Cultural Fit', 'Remote', 'English', 'Communication'];
+    
+    let base = Object.values(techStack).flat();
+    if (mode === 'public') base = [...base, ...publicStack];
+    if (mode === 'global') base = [...base, ...globalStack];
     
     const found = [];
-    Object.values(techStack).flat().forEach(term => {
+    base.forEach(term => {
         if (text.toLowerCase().includes(term.toLowerCase())) found.push(term);
     });
     return found;

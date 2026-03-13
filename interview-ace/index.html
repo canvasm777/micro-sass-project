@@ -13,22 +13,42 @@
         <header>
             <h1>InterviewAce 🎯</h1>
             <p>구인 공고 URL만 넣으세요. 맞춤형 질문은 AI가 뽑아냅니다.</p>
-            <div id="adsense-top" style="margin: 1rem 0; font-size: 0.6rem; opacity: 0.2;">[AdSense Auto-Ads Slot]</div>
-            <div id="statusBanner" style="background: rgba(37, 244, 140, 0.1); color: var(--primary); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem; margin-top: 1rem; border: 1px solid rgba(37, 244, 140, 0.2); display: none;">
-                🛰️ [시스템 모니터링] 사장님 지휘 하에 엔진 가동 중...
+            <div id="marketIntelligence" style="margin: 1.5rem 0; background: rgba(88, 166, 255, 0.05); border: 1px solid rgba(88, 166, 255, 0.2); border-radius: 12px; padding: 0.8rem;">
+                <h4 style="font-size: 0.7rem; color: #58a6ff; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Market Intelligence 🛰️</h4>
+                <div id="trendTicker" style="font-size: 0.8rem; height: 1.2rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; opacity: 0.8;">
+                    [시스템 가동 중] 실시간 채용 트렌드를 분석 중입니다...
+                </div>
             </div>
+            <div id="adsense-top" style="margin: 1rem 0; font-size: 0.6rem; opacity: 0.2;">[AdSense Auto-Ads Slot]</div>
         </header>
         <main>
             <div class="input-group">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                     <label for="jobUrl" style="font-size: 0.9rem; opacity: 0.8;">구인 공고 링크</label>
-                    <select id="langSelect" style="background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--primary); font-size: 0.7rem; border-radius: 8px; padding: 2px 8px; cursor: pointer;">
-                        <option value="ko">KOREAN</option>
-                        <option value="en">ENGLISH</option>
-                    </select>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <select id="modeSelect" style="background: var(--card); border: 1px solid var(--border); color: #fff; font-size: 0.7rem; border-radius: 8px; padding: 2px 8px; cursor: pointer;">
+                            <option value="general">일반/스타트업</option>
+                            <option value="public">공공기관/NCS</option>
+                            <option value="global">Global Tech</option>
+                        </select>
+                        <select id="langSelect" style="background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--primary); font-size: 0.7rem; border-radius: 8px; padding: 2px 8px; cursor: pointer;">
+                            <option value="ko">KOREAN</option>
+                            <option value="en">ENGLISH</option>
+                        </select>
+                    </div>
                 </div>
                 <input type="text" id="jobUrl" placeholder="https://example.com/job-post...">
                 <button id="generateBtn">질문 생성 AI 가동 🚀</button>
+                <div id="statusBanner" style="background: rgba(37, 244, 140, 0.1); color: var(--primary); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem; margin-top: 1rem; border: 1px solid rgba(37, 244, 140, 0.2); display: none;">
+                    🛰️ [분석 리포트 생성 준비 중]
+                </div>
+            </div>
+
+            <div id="testBench" style="margin-top: 2rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 12px; border: 1px dashed var(--border);">
+                <h4 style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.6;"><i class="fa-solid fa-flask-vial"></i> 사장님 전용 테스트 벤치</h4>
+                <div id="testLinks" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <!-- Sample Links will be injected -->
+                </div>
             </div>
             <div id="questions" class="hidden">
                 <!-- AI Generated Cards -->
