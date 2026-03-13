@@ -86,28 +86,63 @@ function resetUpload() {
 }
 
 function showResults(sentiment, selectedTone) {
-    document.getElementById('loadingContainer').classList.add('hidden');
+    loadingContainer.classList.add('hidden');
     captionResults.style.display = 'block';
     
+    // [코부장의 비기] MZ 감성 넘치는 힙한 멘트 라이브러리 (사장님 지시: 구리지 않게!)
+    const slang = ["극락", "찢었다", "갓기", "폼 미쳤다", "오운완", "데일리에 정점", "말해뭐해"];
+    const getRandomSlang = () => slang[Math.floor(Math.random() * slang.length)];
+
     const captions = {
-        Professional: `"${sentiment}한 가치를 전달하는 프리미엄 서비스입니다. #비즈니스 #성공"`,
-        Witty: `"이 ${sentiment}함, 실화냐? 영자도 울고 갈 퀄리티! #대박 #꿀잼"`,
-        Emotional: `"어느덧 스며든 ${sentiment}한 공기. 오늘의 습관이 내일의 당신을 만듭니다. #감성 #수고했어오늘도"`
+        Professional: [
+            `"${sentiment}한 가치를 증명하는 선명한 결과물. 비즈니스의 새로운 스탠다드를 제시합니다."`,
+            `"완벽주의가 만든 ${sentiment}한 디테일. 당신의 성장을 서포트하는 최상의 선택."`,
+            `"프로페셔널의 완성은 작은 ${sentiment}함에서 시작됩니다. #성공 #비즈니스인사이트"`
+        ],
+        Witty: [
+            `"이 ${sentiment}함, ${getRandomSlang()}! 영자(AI)도 탐나는 비주얼 실화냐? 😎 #내돈내산 #폼미쳤다"`,
+            `"사장님이 ${sentiment}하게 뽑으라고 해서 진짜 영혼 갈아 넣었습니다. 🚀 #갓기 #갓벽"`,
+            `"다른 건 몰라도 이 ${sentiment}함은 못 참지! 내 피드의 주인공은 나야 나! #찢었다 #힙해"`
+        ],
+        Emotional: [
+            `"어느덧 스며든 ${sentiment}한 공기. 오늘의 수고가 헛되지 않도록 기록하는 한 장. ✨"`,
+            `"당신의 결 사이를 채우는 ${sentiment}한 무드. 마음 한구석에 간직하고 싶은 순간입니다."`,
+            `"노을처럼 은은하게 번지는 이 ${sentiment}함. 오늘 하루도 고생한 당신에게 건네는 위로. #감성 #수고했어"`
+        ]
     };
 
-    const finalCaption = captions[selectedTone];
+    const variations = captions[selectedTone];
+    const finalCaption = variations[Math.floor(Math.random() * variations.length)];
+
     captionResults.innerHTML = `
         <div class="result-card" style="text-align: left; animation: slideInUp 0.6s ease-out;">
-            <p id="captionText" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">${finalCaption}</p>
+            <p id="captionText" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem; color: #fff;">${finalCaption}</p>
             <div style="display: flex; gap: 0.5rem;">
-                <button onclick="copyCaption()" style="flex: 2; padding: 12px; border-radius: 12px; border: 1px solid var(--primary); background: rgba(37,244,140,0.1); color: var(--primary); font-weight: bold; cursor: pointer;">복사하기</button>
-                <button onclick="alert('Instagram으로 연결합니다... (Mock)')" style="flex: 1; padding: 12px; border-radius: 12px; border: none; background: #e1306c; color: white; cursor: pointer;"><i class="fa-brands fa-instagram"></i></button>
-                <button onclick="location.reload()" style="padding: 12px; border-radius: 12px; border: none; background: rgba(255,255,255,0.05); color: white; cursor: pointer;"><i class="fa-solid fa-rotate-right"></i></button>
+                <button onclick="copyCaption()" style="flex: 2; padding: 12px; border-radius: 12px; border: 1px solid var(--primary); background: rgba(37,244,140,0.1); color: var(--primary); font-weight: bold; cursor: pointer;">클립보드 복사</button>
+                <button onclick="shareToInstagram()" style="flex: 1; padding: 12px; border-radius: 12px; border: none; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; cursor: pointer;"><i class="fa-brands fa-instagram"></i></button>
+                <button onclick="resetUpload()" style="padding: 12px; border-radius: 12px; border: none; background: rgba(255,255,255,0.05); color: white; cursor: pointer;"><i class="fa-solid fa-rotate-right"></i></button>
             </div>
         </div>
     `;
     
     addToHistory(finalCaption);
+}
+
+function shareToInstagram() {
+    const text = document.getElementById('captionText').innerText;
+    if (navigator.share) {
+        navigator.share({
+            title: 'SNS-Spark AI Caption',
+            text: text,
+            url: window.location.href
+        }).then(() => console.log('Shared successfully'))
+        .catch((error) => console.log('Error sharing', error));
+    } else {
+        // Fallback: Deep link to Instagram
+        window.open('https://www.instagram.com/', '_blank');
+        alert('캡션이 복사되었습니다! 인스타그램에서 사진과 함께 붙여넣으세요! 📸');
+        copyCaption();
+    }
 }
 
 function addToHistory(caption) {

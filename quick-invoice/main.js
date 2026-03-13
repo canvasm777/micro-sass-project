@@ -6,20 +6,42 @@ const dropzone = document.getElementById('dropzone');
 const resultArea = document.getElementById('result');
 const display = document.getElementById('data-display');
 const currencySelect = document.getElementById('currencySelect');
+const historyList = document.getElementById('historyList');
+const historyContainer = document.getElementById('invoiceHistory');
 
 // 사장님 실적 관리: 데이터 휘발 방지를 위한 localStorage 연동
 let currentCurrency = localStorage.getItem('invoice_currency') || 'KRW';
 let totalSpending = parseFloat(localStorage.getItem('invoice_total_' + currentCurrency)) || 0;
 let bizSpending = parseFloat(localStorage.getItem('invoice_biz_' + currentCurrency)) || 0;
 let personalSpending = parseFloat(localStorage.getItem('invoice_personal_' + currentCurrency)) || 0;
+let invoiceHistory = JSON.parse(localStorage.getItem('invoice_history_' + currentCurrency)) || [];
 
 function initApp() {
     currencySelect.value = currentCurrency;
-    if (totalSpending > 0) {
-        updateChart();
-    }
+    updateChart();
+    renderHistory();
 }
 initApp();
+
+function renderHistory() {
+    historyList.innerHTML = '';
+    if (invoiceHistory.length > 0) {
+        historyContainer.classList.remove('hidden');
+        invoiceHistory.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'history-item';
+            card.style.cssText = 'padding: 1rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;';
+            card.innerHTML = `
+                <div>
+                    <div style="font-weight: bold; margin-bottom: 4px;">${item.merchant}</div>
+                    <div style="opacity: 0.5; font-size: 0.75rem;">${item.date} • ${item.category}</div>
+                </div>
+                <div style="color: var(--primary); font-weight: bold;">${formatCurrency(item.total)}</div>
+            `;
+            historyList.appendChild(card);
+        });
+    }
+}
 
 currencySelect.onchange = (e) => {
     currentCurrency = e.target.value;
@@ -83,31 +105,53 @@ async function handleUpload(file) {
             localStorage.setItem('invoice_biz_' + currentCurrency, bizSpending);
         } else {
             personalSpending += currentTotal;
-            localStorage.setItem('invoice_personal_' + currentCurrency, personalSpending);
-        }
-        localStorage.setItem('invoice_total_' + currentCurrency, totalSpending);
+        localStorage.setItem('invoice_personal_' + currentCurrency, personalSpending);
+    }
+    localStorage.setItem('invoice_total_' + currentCurrency, totalSpending);
+    
+    // 히스토리에 추가
+    invoiceHistory.unshift(mockData);
+    if (invoiceHistory.length > 10) invoiceHistory.pop();
+    localStorage.setItem('invoice_history_' + currentCurrency, JSON.stringify(invoiceHistory));
 
-        updateChart();
+    updateChart();
+    renderHistory();
 
-        display.innerHTML = `
-            <div class="summary-chip" style="background: rgba(37, 244, 140, 0.05); border: 1px solid var(--border); padding: 0.8rem; border-radius: 12px; margin-bottom: 1.5rem; font-size: 0.9rem;">
-                누적 지출액: <strong style="color: var(--primary);">${formatCurrency(totalSpending)}</strong>
+    display.innerHTML = `
+        <div class="summary-chip" style="background: rgba(37, 244, 140, 0.05); border: 1px solid var(--border); padding: 0.8rem; border-radius: 12px; margin-bottom: 1.5rem; font-size: 0.9rem; text-align: center;">
+            이번 스캔 포함 누적액: <strong style="color: var(--primary);">${formatCurrency(totalSpending)}</strong>
+        </div>
+        <div class="data-card animate-slide-up">
+            <div class="card-header">
+                <span class="category-badge">${mockData.category}</span>
+                <span class="date-text">${mockData.date}</span>
             </div>
-            <div class="data-card animate-slide-up">
-                <div class="card-header">
-                    <span class="category-badge">${mockData.category}</span>
-                    <span class="date-text">${mockData.date}</span>
-                </div>
-                <div class="card-body">
-                    <h2 class="amount-text">${formatCurrency(mockData.total)}</h2>
-                    <p class="merchant-name"><i class="fa-solid fa-store"></i> ${mockData.merchant}</p>
-                </div>
-                <div class="card-footer">
-                    <button class="approve-btn" onclick="alert('승인 완료!')">지출 승인</button>
-                </div>
+            <div class="card-body" style="text-align: center; padding: 1rem 0;">
+                <h2 style="font-size: 2.5rem; color: var(--primary); margin: 0.5rem 0;">${formatCurrency(mockData.total)}</h2>
+                <p class="merchant-name"><i class="fa-solid fa-store"></i> ${mockData.merchant}</p>
             </div>
-        `;
+            <div class="card-footer">
+                <button class="approve-btn" style="width: 100%;" onclick="alert('승인 완료!')">지출 승인 및 저장</button>
+            </div>
+        </div>
+    `;
     }, 2000);
+}
+
+function resetUpload() {
+    dropzone.classList.remove('hidden');
+    resultArea.classList.add('hidden');
+    fileInput.value = '';
+}
+
+function clearHistory() {
+    if (confirm('정말로 모든 지출 내역을 초기화하시겠습니까? 사장님의 기록이 모두 사라집니다!')) {
+        localStorage.removeItem('invoice_total_' + currentCurrency);
+        localStorage.removeItem('invoice_biz_' + currentCurrency);
+        localStorage.removeItem('invoice_personal_' + currentCurrency);
+        localStorage.removeItem('invoice_history_' + currentCurrency);
+        location.reload();
+    }
 }
 
 // [실전 생산성] 영수증 파일 유효성 검사 로직

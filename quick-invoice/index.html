@@ -44,9 +44,22 @@
                         <div id="personal-bar" style="width: 0%; background: var(--secondary); transition: width 0.5s ease;"></div>
                     </div>
                 </div>
-                <div id="data-display">
+                
+                <div id="data-display" style="margin-bottom: 2rem;">
                     <!-- Result cards will be injected -->
                 </div>
+
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <button onclick="resetUpload()" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: white; padding: 0.8rem 2rem; border-radius: 50px; cursor: pointer; font-size: 0.9rem;">다른 영수증 추가 스캔</button>
+                    <p style="font-size: 0.7rem; opacity: 0.4; margin-top: 1rem; cursor: pointer;" onclick="clearHistory()">데이터 초기화 (전체 지출 리셋)</p>
+                </div>
+            </div>
+
+            <div id="invoiceHistory" class="hidden" style="margin-top: 2rem;">
+                <h4 style="font-size: 0.9rem; margin-bottom: 1.5rem; opacity: 0.6; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-clock-rotate-left"></i> 최근 스캔 내역
+                </h4>
+                <div id="historyList" style="display: flex; flex-direction: column; gap: 1rem;"></div>
             </div>
         </main>
         <footer>
