@@ -17,7 +17,7 @@
 ## 🟡 [PHASE 3] 10대 비즈니스 모듈 대확장 (IN-PROGRESS)
 - [x] **AI VA Agency**: 전문직용 행정 자동화 에이전트 런칭 완료
 - [x] **Lead Sniper**: B2B 콜드 메일 및 리드 추출 자동화 도구 개발 완료
-- [ ] **Global Dubber**: 유튜브 영상 글로벌 다국어 더빙/립싱크 서비스 통합
+- [x] **Global Dubber**: 유튜브 영상 글로벌 다국어 더빙/립싱크 서비스 통합 완료
 - [ ] **Knowledge Bot**: 기업 내부 문서 기반 RAG 챗봇 구축 서비스
 - [ ] **Mobile App**: iOS/Android 통합 유니버스 앱 패키징 및 스토어 런칭
 

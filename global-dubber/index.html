@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Dubber 🌍 | AI 비디오 글로벌 더빙</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/scripts/ads-engine.js"></script>
+    <script src="../auth.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Global Dubber 🌍</h1>
+            <p>언어의 장벽을 넘어, 사장님의 콘텐츠를 전 세계로 쏘아 올리세요.</p>
+        </header>
+
+        <main>
+            <div class="video-preview-box">
+                <div class="preview-overlay">
+                    <i class="fa-solid fa-clapperboard"></i>
+                    <p>비디오 파일을 드래그하여 업로드하세요</p>
+                </div>
+            </div>
+
+            <div class="dubbing-controls">
+                <div class="lang-selector">
+                    <label>타겟 언어 선택</label>
+                    <div class="flag-grid">
+                        <div class="flag-btn active" data-lang="en">🇺🇸 English</div>
+                        <div class="flag-btn" data-lang="ja">🇯🇵 Japanese</div>
+                        <div class="flag-btn" data-lang="zh">🇨🇳 Chinese</div>
+                        <div class="flag-btn" data-lang="es">🇪🇸 Spanish</div>
+                    </div>
+                </div>
+
+                <div class="voice-option">
+                    <label>목소리 톤(Tone)</label>
+                    <select id="voiceTone">
+                        <option value="professional">Professional / 신뢰형</option>
+                        <option value="energetic">Energetic / 열광형</option>
+                        <option value="calm">Calm / 차분형</option>
+                    </select>
+                </div>
+
+                <button id="dubNowBtn">글로벌 더빙 시작 🎙️</button>
+            </div>
+
+            <div id="processVisual" class="hidden">
+                <div class="wave-container">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <p id="processStatusText">데이터 음성 추출 중...</p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="app-switcher">
+                <a href="../sns-spark/index.html">Spark</a>
+                <a href="../interview-ace/index.html">Ace</a>
+                <a href="../va-agency/index.html">VA</a>
+                <a href="../lead-sniper/index.html">Sniper</a>
+                <a href="../global-dubber/index.html" class="active">Dubber</a>
+            </div>
+            <p>© 2026 Kodari Autonomous Empire - Global Voice Sync</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
