@@ -6,8 +6,15 @@ const statusBanner = document.getElementById('statusBanner');
 const langSelect = document.getElementById('langSelect');
 const modeSelect = document.getElementById('modeSelect');
 const jobUrlInput = document.getElementById('jobUrl');
+const jobTextInput = document.getElementById('jobText');
 const trendTicker = document.getElementById('trendTicker');
 const testLinksContainer = document.getElementById('testLinks');
+const toggleInputBtn = document.getElementById('toggleInputBtn');
+const sampleBtn = document.getElementById('sampleBtn');
+const urlInputArea = document.getElementById('urlInputArea');
+const textInputArea = document.getElementById('textInputArea');
+
+let inputMode = 'url'; // 'url' or 'text'
 
 // 사장님 지시: 데이터 영속성 확보
 let aceHistory = JSON.parse(localStorage.getItem('ace_history')) || [];
@@ -58,25 +65,42 @@ function renderTestBench() {
     `).join('');
 }
 
+toggleInputBtn.onclick = () => {
+    inputMode = inputMode === 'url' ? 'text' : 'url';
+    urlInputArea.classList.toggle('hidden');
+    textInputArea.classList.toggle('hidden');
+    toggleInputBtn.innerText = inputMode === 'url' ? '[URL ↔ 텍스트 전환]' : '[텍스트 ↔ URL 전환]';
+};
+
+sampleBtn.onclick = () => {
+    if (inputMode === 'url') {
+        jobUrlInput.value = "https://www.wanted.co.kr/wd/123456";
+    } else {
+        jobTextInput.value = "[구인공고 예시]\n- 직무: 시니어 React 개발자\n- 필수: TypeScript, Node.js, AI 연동 경험\n- 우대: NCS 기반 시스템 구축 경험자";
+    }
+};
+
 generateBtn.onclick = async () => {
+    const inputContent = inputMode === 'url' ? jobUrlInput.value : jobTextInput.value;
+    if (!inputContent) return alert(inputMode === 'url' ? '구인 공고 URL을 입력해 주세요!' : '공고 내용을 입력해 주세요!');
+
     statusBanner.style.display = 'block';
     statusBanner.innerText = '🛰️ [실시간 연산] 사장님을 위해 데이터를 추출 중...';
-    const url = jobUrlInput.value;
-    if (!url) return alert('구인 공고 URL을 입력해 주세요!');
-
+    
     const isEnglish = langSelect.value === 'en';
-    generateBtn.innerText = isEnglish ? '🎯 Extracting Questions...' : '🎯 면접 질문 추출 중...';
+    generateBtn.innerText = isEnglish ? '🎯 Extracting Questions...' : '🎯 질문 추출 중...';
     generateBtn.disabled = true;
 
     // 사장님 지시: 의미 없는 연산 제거, 실전 데이터 정제 가동
-    const cleanUrl = sanitizeText(url);
-    console.log("Sanitized URL for analysis:", cleanUrl);
+    const cleanData = sanitizeText(inputContent);
+    console.log("Sanitized Input for analysis:", cleanData);
 
     setTimeout(() => {
         const mode = modeSelect.value;
-        const score = calculateMatchScore("Job Description: React, Node.js, AI Expert, NCS, Ethics, Scale", "Resume: Senior React Developer with Gemini experience, NCS expert, Scalable systems", mode);
+        const score = calculateMatchScore(cleanData, "Resume: Senior React Developer with Gemini experience, NCS expert, Scalable systems", mode);
         
         generateBtn.innerText = isEnglish ? 'Done!' : '질문 생성 완료!';
+        generateBtn.disabled = false;
         statusBanner.innerHTML = isEnglish ? `🛰️ [Analysis Complete] Match: <strong style="color:var(--primary);">${score}%</strong>` : `🛰️ [분석 완료] 적합도: <strong style="color:var(--primary);">${score}%</strong>`;
         questionsContainer.classList.remove('hidden');
         
@@ -114,12 +138,12 @@ generateBtn.onclick = async () => {
             </button>
         `;
 
-        saveToHistory(url, score);
+        saveToHistory(inputMode === 'url' ? inputContent : 'Direct Paste Content', score);
     }, 2500);
 };
 
-function saveToHistory(url, score) {
-    const entry = { url, score, date: new Date().toLocaleDateString() };
+function saveToHistory(identifier, score) {
+    const entry = { url: identifier, score, date: new Date().toLocaleDateString() };
     aceHistory.unshift(entry);
     if (aceHistory.length > 5) aceHistory.pop();
     localStorage.setItem('ace_history', JSON.stringify(aceHistory));
