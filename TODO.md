@@ -10,7 +10,7 @@
 
 ## 🟡 [PHASE 2] 생태계 통합 및 수익화 (IN-PROGRESS)
 - [x] **Unified Data**: 앱 간 데이터 연동 (예: Invoice 지출 데이터를 Ace 채용 예산으로 연결)
-- [ ] **Premium Subscription**: 3개 앱 통합 프리미엄 구독 멤버십 페이지 구축
+- [x] **Premium Subscription**: 3개 앱 통합 프리미엄 구독 멤버십 페이지 구축
 - [ ] **AdSense Optimization**: 전 페이지 광고 슬롯 최적 배치 및 `ads.txt` 연동 확인
 - [ ] **Tutorial Guide**: 신규 사용자를 위한 '1분 만에 비즈니스 세팅하기' 가이드 문서화
 

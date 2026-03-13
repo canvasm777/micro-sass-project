@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodari Premium 💎 | 비즈니스 제국의 완성</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&family=Bebas+Neue&display=swap');
+        :root {
+            --primary: #25f48c;
+            --gold: #ffd700;
+            --bg: #0b0e11;
+            --card: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Spline Sans', sans-serif;
+            margin: 0;
+            background: radial-gradient(circle at center, #1b1f24 0%, #0b0e11 100%);
+            overflow-x: hidden;
+        }
+        .header {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 5rem;
+            margin: 0;
+            background: linear-gradient(135deg, #fff 0%, #25f48c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 5px;
+        }
+        .header p { opacity: 0.6; font-size: 1.2rem; }
+
+        .pricing-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 5rem;
+            padding: 0 2rem;
+        }
+        .price-card {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        .price-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.05); border-color: var(--primary); }
+        .price-card.featured { border-color: var(--gold); box-shadow: 0 0 50px rgba(255, 215, 0, 0.1); }
+        .price-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: #000;
+            padding: 4px 15px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .plan-name { font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .price { font-size: 3rem; font-weight: bold; margin: 1.5rem 0; }
+        .price span { font-size: 1rem; opacity: 0.5; }
+        
+        .features { list-style: none; padding: 0; margin: 2rem 0; text-align: left; }
+        .features li { margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.8; display: flex; align-items: center; gap: 10px; }
+        .features li i { color: var(--primary); }
+
+        .btn-subscribe {
+            width: 100%;
+            padding: 1.2rem;
+            border-radius: 16px;
+            border: none;
+            background: var(--primary);
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+        .btn-subscribe:hover { filter: brightness(1.2); box-shadow: 0 0 30px rgba(37, 244, 140, 0.3); }
+        .btn-subscribe.gold { background: var(--gold); }
+
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            max-width: 900px;
+            margin: 5rem auto;
+            text-align: center;
+        }
+        .badge-grid i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; display: block; }
+        
+        .back-link { position: absolute; top: 2rem; left: 2rem; color: white; opacity: 0.5; text-decoration: none; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> 유니버스 포털</a>
+
+    <header class="header">
+        <h1>KODARI PREMIUM</h1>
+        <p>1% 리더를 위한 무한한 AI 시너지. 이제 비즈니스를 초격차로 이끄십시오.</p>
+    </header>
+
+    <main class="pricing-section">
+        <!-- STARTER -->
+        <div class="price-card">
+            <div class="plan-name">Starter</div>
+            <p style="opacity: 0.5; font-size: 0.8rem;">개인 프리랜서 및 초기 창업가</p>
+            <div class="price">FREE <span>/ month</span></div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> 모든 모듈 기초 기능 사용</li>
+                <li><i class="fa-solid fa-check"></i> 일일 질문 5회 제한</li>
+                <li><i class="fa-solid fa-check"></i> 커뮤니티 접근 가능</li>
+                <li style="opacity:0.3;"><i class="fa-solid fa-xmark" style="color:#ff6b6b"></i> 데이터 통합 분석 제외</li>
+            </ul>
+            <button class="btn-subscribe" onclick="alert('이미 Starter 요금제를 이용 중입니다!')">현재 요금제</button>
+        </div>
+
+        <!-- PRO (Featured) -->
+        <div class="price-card featured">
+            <div class="plan-name">Pro Business</div>
+            <p style="opacity: 0.5; font-size: 0.8rem;">성장하는 1인 기업 및 소상공인</p>
+            <div class="price">$19 <span>/ month</span></div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> <b>전 모듈 무제한 사용</b></li>
+                <li><i class="fa-solid fa-check"></i> 전용 데이터 통합 브릿지</li>
+                <li><i class="fa-solid fa-check"></i> 광고 제거 (Ad-Free)</li>
+                <li><i class="fa-solid fa-check"></i> 신규 10대 모듈 우선 런칭</li>
+            </ul>
+            <button class="btn-subscribe gold" onclick="alert('구독 결제 시스템 준비 중입니다!')">구독 시작하기 💎</button>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="price-card">
+            <div class="plan-name">Universe</div>
+            <p style="opacity: 0.5; font-size: 0.8rem;">규모 있는 조직 및 에이전시</p>
+            <div class="price">$99 <span>/ month</span></div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> 사장님 전 전용 팀 빌딩</li>
+                <li><i class="fa-solid fa-check"></i> API 커스텀 연동 지원</li>
+                <li><i class="fa-solid fa-check"></i> 1:1 비즈니스 매칭 서비스</li>
+                <li><i class="fa-solid fa-check"></i> 화이트 라벨 모듈 대여</li>
+            </ul>
+            <button class="btn-subscribe" onclick="alert('상담 신청을 완료했습니다!')">엔터프라이즈 문의</button>
+        </div>
+    </main>
+
+    <section class="badge-grid" style="padding-bottom: 5rem;">
+        <div>
+            <i class="fa-solid fa-bolt"></i>
+            <strong>초당 10만 연산</strong>
+            <p style="font-size: 0.75rem; opacity: 0.5;">지연 없는 AI 질문 추출</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-lock"></i>
+            <strong>군사용 보안</strong>
+            <p style="font-size: 0.75rem; opacity: 0.5;">철저한 데이터 암호화</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-earth-asia"></i>
+            <strong>글로벌 더빙</strong>
+            <p style="font-size: 0.75rem; opacity: 0.5;">전 세계 50개국 진출</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+            <strong>자동 수익화</strong>
+            <p style="font-size: 0.75rem; opacity: 0.5;">광고 및 결제 연동 자동화</p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 2rem; border-top: 1px solid var(--border); opacity: 0.4; font-size: 0.8rem;">
+        © 2026 Kodari Universe Premium Ecosystem
+    </footer>
+</body>
+</html>
