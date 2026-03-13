@@ -35,9 +35,15 @@
                 </select>
             </div>
             <div class="upload-area" id="uploadArea">
-                <i class="fa-solid fa-cloud-arrow-up"></i>
-                <p>제품 사진을 여기에 드래그하거나 클릭하세요.</p>
-                <span style="font-size: 0.8rem; opacity: 0.6;">(Habit Green 스타일 자동 적용)</span>
+                <i class="fa-solid fa-camera"></i>
+                <p>제품 사진을 업로드하거나 촬영하세요.</p>
+                <span style="font-size: 0.8rem; opacity: 0.6;">(Tap to select/capture)</span>
+                <input type="file" id="fileInput" accept="image/*" class="hidden">
+            </div>
+            
+            <div id="imagePreview" class="hidden" style="margin-bottom: 2rem;">
+                <img id="previewImg" src="" style="width: 100%; border-radius: 12px; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1);">
+                <button onclick="resetUpload()" style="background: rgba(255,0,0,0.1); color: #ff4d4d; border: 1px solid rgba(255,0,0,0.2); padding: 8px 16px; border-radius: 8px; cursor: pointer;">다시 찍기</button>
             </div>
             
             <div id="sparkHistory" class="hidden" style="margin-top: 2rem; text-align: left;">

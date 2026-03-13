@@ -25,35 +25,65 @@ function analyzeImageContext(fileName) {
     return 'Premium';
 }
 
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const loadingContainer = document.getElementById('loadingContainer');
+const progressBar = document.getElementById('progressBar');
+const imagePreview = document.getElementById('imagePreview');
+const previewImg = document.getElementById('previewImg');
+
 uploadArea.onclick = () => {
     if (userCredits <= 0) {
         alert('크레딧이 부족합니다! 사장님께 충전을 요청하세요! 🪙');
         return;
     }
-    
-    const sentiment = analyzeImageContext("product_photo.jpg");
+    fileInput.click();
+};
+
+fileInput.onchange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            previewImg.src = event.target.result;
+            uploadArea.classList.add('hidden');
+            imagePreview.classList.remove('hidden');
+            
+            // 파일 선택 후 자동 분석 시작
+            startAnalysis(file.name);
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+function startAnalysis(fileName) {
+    const sentiment = analyzeImageContext(fileName);
     const selectedTone = toneSelect.value;
     
     // 크레딧 차감 및 저장
     userCredits--;
     creditCountDisplay.innerText = userCredits;
     localStorage.setItem('spark_credits', userCredits);
-    uploadArea.classList.add('hidden');
-    document.getElementById('loadingContainer').classList.remove('hidden');
-    const bar = document.getElementById('progressBar');
     
-    // 프로그레스 바 시뮬레이션
+    loadingContainer.classList.remove('hidden');
     let width = 0;
     const interval = setInterval(() => {
         if (width >= 100) {
             clearInterval(interval);
             showResults(sentiment, selectedTone);
         } else {
-            width += Math.random() * 15;
-            bar.style.width = width + '%';
+            width += Math.random() * 20;
+            progressBar.style.width = width + '%';
         }
-    }, 200);
-};
+    }, 150);
+}
+
+function resetUpload() {
+    imagePreview.classList.add('hidden');
+    uploadArea.classList.remove('hidden');
+    captionResults.style.display = 'none';
+    fileInput.value = '';
+}
 
 function showResults(sentiment, selectedTone) {
     document.getElementById('loadingContainer').classList.add('hidden');

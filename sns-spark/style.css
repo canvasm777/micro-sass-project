@@ -4,10 +4,10 @@
 
 :root {
     --primary: #25f48c;
-    --bg: #0f1215;
+    --bg: #0d1117; /* Darker, more solid background */
     --card-bg: rgba(255, 255, 255, 0.05);
     --text: #ffffff;
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.15);
 }
 
 body {
@@ -28,15 +28,15 @@ body {
 #app {
     width: 100%;
     max-width: 480px;
-    padding: 3rem;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border-radius: 24px; /* Premium 24px inner roundness */
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    background: #161b22; /* Solid background for visibility */
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
     text-align: center;
-    animation: slideInUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes slideInUp {
