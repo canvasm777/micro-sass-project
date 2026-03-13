@@ -5,15 +5,34 @@ const fileInput = document.getElementById('fileInput');
 const dropzone = document.getElementById('dropzone');
 const resultArea = document.getElementById('result');
 const display = document.getElementById('data-display');
+const currencySelect = document.getElementById('currencySelect');
 
 // 사장님 실적 관리: 데이터 휘발 방지를 위한 localStorage 연동
-let totalSpending = parseFloat(localStorage.getItem('invoice_total')) || 0;
-let bizSpending = parseFloat(localStorage.getItem('invoice_biz')) || 0;
-let personalSpending = parseFloat(localStorage.getItem('invoice_personal')) || 0;
+let currentCurrency = localStorage.getItem('invoice_currency') || 'KRW';
+let totalSpending = parseFloat(localStorage.getItem('invoice_total_' + currentCurrency)) || 0;
+let bizSpending = parseFloat(localStorage.getItem('invoice_biz_' + currentCurrency)) || 0;
+let personalSpending = parseFloat(localStorage.getItem('invoice_personal_' + currentCurrency)) || 0;
 
-if (totalSpending > 0) {
-    setTimeout(updateChart, 100); // 초기 차트 로드
+function initApp() {
+    currencySelect.value = currentCurrency;
+    if (totalSpending > 0) {
+        updateChart();
+    }
 }
+initApp();
+
+currencySelect.onchange = (e) => {
+    currentCurrency = e.target.value;
+    localStorage.setItem('invoice_currency', currentCurrency);
+    
+    // 해당 통화의 데이터로 리로드
+    totalSpending = parseFloat(localStorage.getItem('invoice_total_' + currentCurrency)) || 0;
+    bizSpending = parseFloat(localStorage.getItem('invoice_biz_' + currentCurrency)) || 0;
+    personalSpending = parseFloat(localStorage.getItem('invoice_personal_' + currentCurrency)) || 0;
+    
+    updateChart();
+    display.innerHTML = '<p style="text-align:center; opacity:0.5;">통화가 변경되었습니다. 새로운 영수증을 스캔하세요.</p>';
+};
 
 // 사장님 지시: 드롭존 클릭 즉시 반응하도록 최적화
 dropzone.onclick = () => fileInput.click();
@@ -44,24 +63,29 @@ async function handleUpload(file) {
         dropzone.style.opacity = '1';
         dropzone.classList.add('hidden');
 
+        // 통화별 적정 금액 생성 로직 강화
+        let amount = Math.random() * 50 + 10;
+        if (currentCurrency === 'KRW') amount = Math.floor(amount * 1000);
+        if (currentCurrency === 'JPY') amount = Math.floor(amount * 100);
+
         const mockData = {
-            total: (Math.random() * 100 + 10).toFixed(2),
-            merchant: ["Starbucks", "Amazon", "Apple", "Olive Young"][Math.floor(Math.random()*4)],
+            total: amount,
+            merchant: ["스타벅스 강남점", "쿠팡 결제", "애플 스토어", "올리브영", "파리바게뜨"][Math.floor(Math.random()*5)],
             date: new Date().toISOString().split('T')[0],
-            category: "업무추진비 (수익 창출용)"
+            category: Math.random() > 0.5 ? "업무 추진비 (수익 창출)" : "개인 생활비 (복지)"
         };
 
         const currentTotal = parseFloat(mockData.total);
         totalSpending += currentTotal;
         
-        if (Math.random() > 0.4) {
+        if (mockData.category.includes('업무')) {
             bizSpending += currentTotal;
-            localStorage.setItem('invoice_biz', bizSpending);
+            localStorage.setItem('invoice_biz_' + currentCurrency, bizSpending);
         } else {
             personalSpending += currentTotal;
-            localStorage.setItem('invoice_personal', personalSpending);
+            localStorage.setItem('invoice_personal_' + currentCurrency, personalSpending);
         }
-        localStorage.setItem('invoice_total', totalSpending);
+        localStorage.setItem('invoice_total_' + currentCurrency, totalSpending);
 
         updateChart();
 
@@ -93,9 +117,19 @@ function validateFile(file) {
     return validTypes.includes(file.type);
 }
 
-// 통화 형식 정규화 (수익화 연결용)
+// 통화 형식 정규화 (글로벌 런칭 버전)
 function formatCurrency(amount) {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+    const locales = {
+        'KRW': 'ko-KR',
+        'USD': 'en-US',
+        'JPY': 'ja-JP',
+        'EUR': 'de-DE'
+    };
+    return new Intl.NumberFormat(locales[currentCurrency] || 'en-US', { 
+        style: 'currency', 
+        currency: currentCurrency,
+        maximumFractionDigits: (currentCurrency === 'KRW' || currentCurrency === 'JPY') ? 0 : 2
+    }).format(amount);
 }
 
 function updateChart() {

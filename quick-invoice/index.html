@@ -11,6 +11,15 @@
 <body>
     <div id="app">
         <header>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <div class="active-badge" style="background: rgba(37, 244, 140, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: bold; border: 1px solid rgba(37, 244, 140, 0.2);">Global Version 🌍</div>
+                <select id="currencySelect" style="background: var(--card); color: white; border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 50px; font-size: 0.7rem; outline: none; cursor: pointer;">
+                    <option value="KRW">₩ (KRW)</option>
+                    <option value="USD">$ (USD)</option>
+                    <option value="JPY">¥ (JPY)</option>
+                    <option value="EUR">€ (EUR)</option>
+                </select>
+            </div>
             <h1>QuickInvoice 🧾</h1>
             <p>영수증을 올리면 AI가 알아서 지출 내역을 정리합니다.</p>
             <div id="adsense-top" style="margin: 1rem 0; font-size: 0.6rem; opacity: 0.2;">[AdSense Auto-Ads Slot]</div>
@@ -27,8 +36,8 @@
                 <h3 style="margin-bottom: 1rem;">분석 결과 및 지출 요약</h3>
                 <div id="stats-chart" style="margin-bottom: 2rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
                     <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 0.5rem; opacity: 0.6;">
-                        <span>지출 카테고리 비중</span>
-                        <span id="chart-total">$0.00</span>
+                        <span id="chartLabel">누적 지출 비중 (업무 vs 개인)</span>
+                        <span id="chart-total">0원</span>
                     </div>
                     <div class="chart-bar-container" style="width: 100%; height: 12px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; display: flex;">
                         <div id="biz-bar" style="width: 0%; background: var(--primary); transition: width 0.5s ease;"></div>
