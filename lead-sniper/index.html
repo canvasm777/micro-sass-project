@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Sniper 🎯 | B2B 리드 추출 & 스코어링</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/scripts/ads-engine.js"></script>
+    <script src="../auth.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Lead Sniper 🎯</h1>
+            <p>잠재 고객을 조준하고, 비즈니스 기회를 포착하십시오.</p>
+            <div id="radarContainer">
+                <div class="radar">
+                    <div class="sweep"></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="search-box">
+                <input type="text" id="targetNiche" placeholder="타겟 업종 입력 (예: 강남구 카페, IT 스타트업...)">
+                <button id="scanBtn">스캔 기동 📡</button>
+            </div>
+
+            <div id="statusReport" class="hidden">
+                <p><i class="fa-solid fa-satellite-dish"></i> 실시간 데이터 위성 접속 중...</p>
+            </div>
+
+            <section id="resultsArea" class="hidden">
+                <div class="section-header">
+                    <h3>Scouted Leads 📊</h3>
+                    <span id="leadCount">0Found</span>
+                </div>
+                <div id="leadList">
+                    <!-- Leads will be injected here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="app-switcher">
+                <a href="../sns-spark/index.html">Spark</a>
+                <a href="../interview-ace/index.html">Ace</a>
+                <a href="../va-agency/index.html">VA</a>
+                <a href="../lead-sniper/index.html" class="active">Sniper</a>
+            </div>
+            <p>© 2026 Kodari Autonomous Empire - Search & Destroy Mode</p>
+        </footer>
+    </div>
+
+    <!-- Email Modal (Simulated) -->
+    <div id="emailModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Cold Email Sniper 📧</h3>
+            <textarea id="emailTemplate" readonly></textarea>
+            <div class="modal-actions">
+                <button onclick="closeModal()">닫기</button>
+                <button class="primary" onclick="alert('이메일 발송 궤도에 진입했습니다!')">발송 승인</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
