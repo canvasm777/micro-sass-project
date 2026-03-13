@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodari-Fortune 🔮 | 사장님 오늘의 운세</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&display=swap');
+        :root {
+            --primary: #a855f7;
+            --bg: #0f1215;
+            --card: rgba(255, 255, 255, 0.03);
+            --border: rgba(168, 85, 247, 0.2);
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Spline Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: radial-gradient(circle at top right, #2a1a45 0%, #0f1215 100%);
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 3rem;
+            text-align: center;
+        }
+        .crystal-ball {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 30% 30%, #d8b4fe, #a855f7 70%, #6b21a8);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            box-shadow: 0 0 50px rgba(168, 85, 247, 0.5), inset -10px -10px 30px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: all 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .crystal-ball:hover { transform: scale(1.05); filter: brightness(1.2); }
+        .crystal-ball.shaking { animation: shake 0.5s infinite; }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+        }
+        .fortune-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .category { font-weight: bold; color: var(--primary); margin-bottom: 0.5rem; display: block; }
+        .back-link { margin-top: 2rem; opacity: 0.4; text-decoration: none; color: white; font-size: 0.8rem; display: block; text-align: center; }
+        #tapHint { font-size: 0.8rem; opacity: 0.5; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="margin-bottom: 0.5rem;">Kodari-Fortune</h1>
+        <p style="opacity: 0.6; margin-bottom: 2rem; font-size: 0.9rem;">신비로운 코다리 구슬이 사장님의 하루를 예견합니다.</p>
+        
+        <p id="tapHint">구슬을 터치하여 운세를 확인하세요</p>
+        <div class="crystal-ball" id="ball" onclick="revealFortune()">🔮</div>
+
+        <div class="fortune-card" id="fortuneCard">
+            <span class="category" id="fortuneCat">오늘의 총운</span>
+            <p id="fortuneText" style="line-height: 1.6; font-size: 0.95rem;"></p>
+        </div>
+        
+        <a href="../../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> 유니버스 포털로 돌아가기</a>
+    </div>
+
+    <script>
+        const fortunes = [
+            { cat: "💼 사업운: 대박 징조", text: "오늘은 새로운 계약이나 제안이 들어올 확률이 90%입니다. 자신감 있게 고개를 끄덕이세요!" },
+            { cat: "🤝 인간관계: 화합", text: "팀원이나 파트너와의 오해가 풀리는 날입니다. 가벼운 커피 한 잔이 큰 성과로 이어집니다." },
+            { cat: "💸 재물운: 뜻밖의 횡재", text: "잊고 있던 입금이나 세금 환급 소식이 들려올 수 있습니다. 오늘 로또 한 장 어떠신가요?" },
+            { cat: "🧘‍♂️ 멘탈: 집중력 폭발", text: "복잡하던 머릿속이 맑아집니다. 미뤄왔던 기획서를 쓰기에 최적의 날입니다." },
+            { cat: "🚀 성장: 새로운 발견", text: "유튜브나 책에서 사업의 본질을 꿰뚫는 영감을 얻게 됩니다. 메모를 잊지 마세요." }
+        ];
+
+        function revealFortune() {
+            const ball = document.getElementById('ball');
+            const card = document.getElementById('fortuneCard');
+            const hint = document.getElementById('tapHint');
+            const cat = document.getElementById('fortuneCat');
+            const txt = document.getElementById('fortuneText');
+
+            ball.classList.add('shaking');
+            hint.style.display = 'none';
+            card.style.display = 'none';
+
+            setTimeout(() => {
+                ball.classList.remove('shaking');
+                const random = fortunes[Math.floor(Math.random() * fortunes.length)];
+                cat.innerText = random.cat;
+                txt.innerText = random.text;
+                card.style.display = 'block';
+                ball.innerText = "✨";
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

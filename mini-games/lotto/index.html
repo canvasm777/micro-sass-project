@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto-Spark 🎰 | AI 로또 번호 추출기</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&display=swap');
+        :root {
+            --primary: #ffd700;
+            --bg: #0b0e11;
+            --card: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 215, 0, 0.2);
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Spline Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: radial-gradient(circle at center, #1a1f25 0%, #0b0e11 100%);
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        h1 { color: var(--primary); font-size: 2.5rem; margin-bottom: 0.5rem; }
+        p { opacity: 0.6; margin-bottom: 2rem; }
+        .number-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            min-height: 50px;
+        }
+        .ball {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffd700, #b8860b);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+        }
+        @keyframes popIn {
+            from { transform: scale(0) rotate(-180deg); opacity: 0; }
+            to { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        #generateBtn {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        #generateBtn:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
+        .luck-msg {
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--primary);
+            font-size: 0.9rem;
+            min-height: 1.5rem;
+        }
+        .back-link { margin-top: 2rem; opacity: 0.4; text-decoration: none; color: white; font-size: 0.8rem; display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <i class="fa-solid fa-clover" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+        <h1>Lotto-Spark</h1>
+        <p>AI가 분석한 오늘의 당첨 기운. 황금 번호를 추출합니다.</p>
+        
+        <div class="number-box" id="numberBox">
+            <!-- Balls injected here -->
+        </div>
+
+        <button id="generateBtn" onclick="generateNumbers()">행운의 번호 추출 🍀</button>
+        <div class="luck-msg" id="luckMsg"></div>
+        
+        <a href="../../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> 유니버스 포털로 돌아가기</a>
+    </div>
+
+    <script>
+        function generateNumbers() {
+            const container = document.getElementById('numberBox');
+            const msg = document.getElementById('luckMsg');
+            const btn = document.getElementById('generateBtn');
+            
+            container.innerHTML = '';
+            msg.innerText = '';
+            btn.disabled = true;
+            btn.innerText = '번호 연산 중...';
+
+            const messages = [
+                "대표님, 오늘 금전운이 요동치고 있습니다!",
+                "우주의 기운이 이 6개 번호에 응집되었습니다.",
+                "대박의 냄새가 납니다. 이번 주 주인공은 사장님?",
+                "AI 통계 분석 기반, 최적의 당첨 조합입니다.",
+                "꿈에 돼지가 나왔나요? 아니라면 이 번호가 돼지입니다."
+            ];
+
+            let numbers = [];
+            while(numbers.length < 6) {
+                let r = Math.floor(Math.random() * 45) + 1;
+                if(numbers.indexOf(r) === -1) numbers.push(r);
+            }
+            numbers.sort((a,b) => a-b);
+
+            numbers.forEach((num, index) => {
+                setTimeout(() => {
+                    const ball = document.createElement('div');
+                    ball.className = 'ball';
+                    ball.innerText = num;
+                    container.appendChild(ball);
+                    
+                    if(index === 5) {
+                        btn.disabled = false;
+                        btn.innerText = '행운 재추출 🍀';
+                        msg.innerText = messages[Math.floor(Math.random() * messages.length)];
+                    }
+                }, index * 300);
+            });
+        }
+    </script>
+</body>
+</html>
