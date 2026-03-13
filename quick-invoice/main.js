@@ -164,22 +164,54 @@ function generateReport() {
 
     const filtered = invoiceHistory.filter(item => item.date >= start && item.date <= end);
     const periodTotal = filtered.reduce((acc, curr) => acc + curr.total, 0);
-    const allItems = [...new Set(filtered.flatMap(item => item.items))];
+    
+    // [사장님 지시] 중복 물품 빈도 및 구매 횟수 계산
+    const itemFrequency = {};
+    filtered.forEach(invoice => {
+        invoice.items.forEach(item => {
+            itemFrequency[item] = (itemFrequency[item] || 0) + 1;
+        });
+    });
+
+    // AI 다음 달 구매 계획 (예측 엔진)
+    let nextMonthStrategy = "";
+    const topItem = Object.entries(itemFrequency).sort((a,b) => b[1] - a[1])[0];
+    if (topItem) {
+        nextMonthStrategy = `대표님, 이번 기간에 <strong>'${topItem[0]}'</strong>만 총 ${topItem[1]}번 구매하셨군요! 다음 달에는 이 항목에 대한 대량 구매나 정기 구독을 통해 비용을 절감해보시는 건 어떨까요?`;
+    } else {
+        nextMonthStrategy = "데이터를 더 쌓으시면 사장님만의 다음 달 맞춤 지출 전략을 제시해 드립니다! 🫡";
+    }
 
     const reportView = document.getElementById('reportView');
     const reportContent = document.getElementById('reportContent');
     
     reportView.classList.remove('hidden');
     reportContent.innerHTML = `
-        <div style="margin-bottom: 1rem;">
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
             <div style="opacity: 0.6; font-size: 0.8rem;">설정 기간: ${start} ~ ${end}</div>
-            <div style="font-size: 1.5rem; font-weight: bold; margin-top: 5px;">총 지출: ${formatCurrency(periodTotal)}</div>
+            <div style="font-size: 1.5rem; font-weight: bold; margin-top: 5px; color: var(--primary);">총 지출: ${formatCurrency(periodTotal)}</div>
         </div>
-        <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 12px;">
-            <div style="font-weight: bold; margin-bottom: 0.5rem; font-size: 0.8rem;">📦 구매 물품 목록 (${filtered.length}건)</div>
-            <div style="font-size: 0.75rem; opacity: 0.8; line-height: 1.5;">
-                ${allItems.length > 0 ? allItems.join(', ') : '내역 없음'}
+        
+        <div style="margin-bottom: 1.5rem;">
+            <div style="font-weight: bold; margin-bottom: 0.8rem; font-size: 0.85rem; display: flex; align-items: center; gap: 5px;">
+                <i class="fa-solid fa-layer-group"></i> 품목별 지출 빈도
             </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                ${Object.entries(itemFrequency).map(([name, count]) => `
+                    <div style="background: rgba(255,255,255,0.05); padding: 5px 10px; border-radius: 8px; font-size: 0.75rem; border: 1px solid var(--border);">
+                        ${name} <strong style="color: var(--primary); margin-left: 4px;">${count}회</strong>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <div style="background: rgba(37,244,140,0.05); padding: 1rem; border-radius: 12px; border: 1px solid var(--primary);">
+            <div style="font-weight: bold; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--primary);">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> AI 인텔리전스: 다음 달 제언
+            </div>
+            <p style="font-size: 0.8rem; line-height: 1.5; opacity: 0.9;">
+                ${nextMonthStrategy}
+            </p>
         </div>
     `;
 }
