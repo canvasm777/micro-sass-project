@@ -9,7 +9,7 @@
 - [x] **Playground Zone**: 로또(Lotto), 운세(Fortune), 비즈니스 타로(Tarot) 3종 세트 개장
 
 ## 🟡 [PHASE 2] 생태계 통합 및 수익화 (IN-PROGRESS)
-- [ ] **Unified Data**: 앱 간 데이터 연동 (예: Invoice 지출 데이터를 Ace 채용 예산으로 연결)
+- [x] **Unified Data**: 앱 간 데이터 연동 (예: Invoice 지출 데이터를 Ace 채용 예산으로 연결)
 - [ ] **Premium Subscription**: 3개 앱 통합 프리미엄 구독 멤버십 페이지 구축
 - [ ] **AdSense Optimization**: 전 페이지 광고 슬롯 최적 배치 및 `ads.txt` 연동 확인
 - [ ] **Tutorial Guide**: 신규 사용자를 위한 '1분 만에 비즈니스 세팅하기' 가이드 문서화
@@ -54,3 +54,6 @@
 - **Portal Core**: 
     - [x] 'AI 비즈니스 OS' 컨셉으로 메인 포털 UI/UX 전면 리브랜딩
     - [x] 10대 비즈니스 모듈 로드맵(Expanding Universe) 시각화 완료
+- **Ecosystem Integration**:
+    - [x] **Shared Vault**: 앱 간 데이터 동기화를 위한 공용 저장소 아키텍처 구축
+    - [x] **Cross-App Sync**: Invoice 지출 데이터 기반 Ace 채용 예산 산출 로직 구현

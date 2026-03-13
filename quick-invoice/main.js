@@ -119,6 +119,12 @@ async function handleUpload(file) {
         }
         localStorage.setItem('invoice_total_' + currentCurrency, totalSpending);
         
+        // [사장님 지시] 데이터 연동: 코다리 쉐어드 볼트에 비즈니스 지출 데이터 전송
+        const sharedVault = JSON.parse(localStorage.getItem('KODARI_SHARED_VAULT')) || {};
+        sharedVault.bizSpending = sharedVault.bizSpending || {};
+        sharedVault.bizSpending[currentCurrency] = bizSpending;
+        localStorage.setItem('KODARI_SHARED_VAULT', JSON.stringify(sharedVault));
+        
         // 히스토리에 추가
         invoiceHistory.unshift(mockData);
         if (invoiceHistory.length > 50) invoiceHistory.pop(); 

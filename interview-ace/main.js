@@ -26,8 +26,30 @@ function initApp() {
     }
     startTicker();
     renderTestBench();
+    syncFinanceData(); // [사장님 지시] 재무 데이터 연동
 }
 initApp();
+
+// [사장님 지시] 데이터 연동: Invoice 앱의 지출 데이터를 가져와 채용 예산 산출
+function syncFinanceData() {
+    const vault = JSON.parse(localStorage.getItem('KODARI_SHARED_VAULT')) || {};
+    const financeWidget = document.getElementById('financeSynergy');
+    const budgetValue = document.getElementById('recruitmentBudget');
+
+    if (vault.bizSpending) {
+        // 비즈니스 지출의 약 15%를 채용/R&D 예산으로 자동 책정한다는 코다리의 논리
+        const krwSpending = vault.bizSpending['KRW'] || 0;
+        const usdSpending = vault.bizSpending['USD'] || 0;
+        
+        if (krwSpending > 0 || usdSpending > 0) {
+            financeWidget.classList.remove('hidden');
+            const totalInKRW = krwSpending + (usdSpending * 1300); // 간이 환율 적용
+            const recruitmentBudget = Math.floor(totalInKRW * 0.15);
+            
+            budgetValue.innerText = recruitmentBudget.toLocaleString() + '원 (추정)';
+        }
+    }
+}
 
 const trends = [
     "🔥 현재 IT 대기업: 'LLM 최적화 엔지니어' 채용 열기!",
