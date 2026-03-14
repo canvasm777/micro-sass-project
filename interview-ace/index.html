@@ -3,95 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InterviewAce 🎯 | AI 면접 질문 추출기</title>
+    <title>InterviewAce | Imperial Talent Acquisition 🎯</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
     <script src="../assets/scripts/ads-engine.js"></script>
     <script src="../auth.js"></script>
 </head>
 <body>
     <div id="app">
         <header>
-            <h1>InterviewAce 🎯</h1>
-            <p>구인 공고 URL만 넣으세요. 맞춤형 질문은 AI가 뽑아냅니다.</p>
-            <div id="marketIntelligence" style="margin: 1.5rem 0; background: rgba(88, 166, 255, 0.05); border: 1px solid rgba(88, 166, 255, 0.2); border-radius: 12px; padding: 0.8rem;">
-                <h4 style="font-size: 0.7rem; color: #58a6ff; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Market Intelligence 🛰️</h4>
-                <div id="trendTicker" style="font-size: 0.8rem; height: 1.2rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; opacity: 0.8;">
-                    [시스템 가동 중] 실시간 채용 트렌드를 분석 중입니다...
+            <h1>INTERVIEW ACE</h1>
+            <p>구인 공고를 해부하여 제국의 인재를 선별하는 정밀 타격 질문 추출기</p>
+            
+            <div id="marketIntelligence">
+                <h4 style="font-size: 0.65rem; color: var(--primary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">Market Intelligence 🛰️</h4>
+                <div id="trendTicker">
+                    [ANALYZING] High demand for Rust Engineers in AI Infrastructure (Global Trend)...
                 </div>
             </div>
 
-            <!-- [사장님 지시] 데이터 연동 UI: 재무 시너지 위젯 -->
-            <div id="financeSynergy" class="hidden" style="margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(37, 244, 140, 0.05)); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 12px; padding: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <h4 style="font-size: 0.65rem; color: #ffd700; margin-bottom: 2px; text-transform: uppercase;">Finance Synergy 💸</h4>
-                    <p style="font-size: 0.8rem; margin: 0; opacity: 0.9;">현재 가용 채용 지원 예산: <strong id="recruitmentBudget" style="color: #ffd700;">미집계</strong></p>
+            <div id="financeSynergy">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h4 style="font-size: 0.6rem; color: var(--primary); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 1px;">Finance Synergy 💸</h4>
+                        <p style="font-size: 0.85rem; margin: 0; opacity: 0.9;">채용 지원 예산: <strong style="color: var(--primary);">$124,500.00</strong></p>
+                    </div>
+                    <div style="font-size: 0.6rem; opacity: 0.3;">[CORE-SYNC ACTIVE]</div>
                 </div>
-                <div style="font-size: 0.6rem; opacity: 0.5; text-align: right;">[Invoice 앱 연동됨]</div>
             </div>
-            <div id="adsense-top" style="margin: 1rem 0; font-size: 0.6rem; opacity: 0.2;">[AdSense Auto-Ads Slot]</div>
         </header>
+
         <main>
             <div class="input-group">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                    <label style="font-size: 0.9rem; opacity: 0.8;">분석 데이터 입력</label>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <label style="font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px;">INPUT SOURCE</label>
                     <div style="display: flex; gap: 0.5rem;">
-                        <button id="toggleInputBtn" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff; font-size: 0.6rem; border-radius: 8px; padding: 2px 8px; cursor: pointer;">[URL ↔ 텍스트 전환]</button>
-                        <select id="modeSelect" style="background: var(--card); border: 1px solid var(--border); color: #fff; font-size: 0.7rem; border-radius: 8px; padding: 2px 8px; cursor: pointer;">
-                            <option value="general">일반/스타트업</option>
-                            <option value="public">공공기관/NCS</option>
-                            <option value="global">Global Tech</option>
-                        </select>
-                        <select id="langSelect" style="background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--primary); font-size: 0.7rem; border-radius: 8px; padding: 2px 8px; cursor: pointer;">
-                            <option value="ko">KO</option>
-                            <option value="en">EN</option>
-                        </select>
+                        <button onclick="toggleInput()" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: white; font-size: 0.6rem; border-radius: 6px; padding: 4px 10px; cursor: pointer;">SWITCH MODE</button>
                     </div>
                 </div>
                 
                 <div id="urlInputArea">
-                    <input type="text" id="jobUrl" placeholder="구인 공고 링크를 입력하세요 (예: 사람인, 링크드인...)">
+                    <input type="text" id="jobUrl" placeholder="구인 공고 URL (LinkedIn, Indeed, Saramin...)">
                 </div>
                 <div id="textInputArea" class="hidden">
-                    <textarea id="jobText" placeholder="공고 내용을 직접 붙여넣으세요. (API 비용 0원! 가장 빠릅니다)" style="width: 100%; height: 100px; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 12px; color: white; padding: 10px; font-size: 0.8rem; resize: none; outline: none;"></textarea>
+                    <textarea id="jobText" placeholder="공고 텍스트를 직접 입력하세요..." style="width: 100%; height: 120px; background: rgba(0,0,0,0.4); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 12px; color: white; padding: 1rem; font-family: inherit; resize: none; outline: none;"></textarea>
                 </div>
 
-                <div style="display: flex; gap: 10px; margin-top: 10px;">
-                    <button id="generateBtn" style="flex: 3;">질문 생성 AI 가동 🚀</button>
-                    <button id="sampleBtn" style="flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: white; border-radius: 12px; font-size: 0.7rem; cursor: pointer;">예시 데이터</button>
-                </div>
-                
-                <div id="statusBanner" style="background: rgba(37, 244, 140, 0.1); color: var(--primary); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem; margin-top: 1rem; border: 1px solid rgba(37, 244, 140, 0.2); display: none;">
-                    🛰️ [분석 리포트 생성 준비 중]
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button id="generateBtn" style="flex: 2;" onclick="generateQuestions()">INITIATE AI ANALYSIS 🚀</button>
+                    <select id="modeSelect" style="flex: 1;">
+                        <option value="general">Standard</option>
+                        <option value="public">Government/NCS</option>
+                        <option value="global">FAANG / Global</option>
+                    </select>
                 </div>
             </div>
 
-            <div id="testBench" style="margin-top: 2rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 12px; border: 1px dashed var(--border);">
-                <h4 style="font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.6;"><i class="fa-solid fa-flask-vial"></i> 사장님 전용 테스트 벤치</h4>
-                <div id="testLinks" style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <!-- Sample Links will be injected -->
-                </div>
-            </div>
-            <div id="questions" class="hidden">
-                <!-- AI Generated Cards -->
-            </div>
-            <div id="aceHistory" class="hidden" style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem;">
-                <h4 style="font-size: 0.8rem; opacity: 0.4; margin-bottom: 1rem;">과거 분석 리포트</h4>
-                <div id="historyList"></div>
+            <div id="questions" class="hidden" style="margin-top: 3rem;">
+                <h3 style="font-size: 0.8rem; opacity: 0.3; letter-spacing: 5px; margin-bottom: 1.5rem;">GENERATED QUESTIONS</h3>
+                <div id="qList"></div>
             </div>
         </main>
+
         <footer>
-            <div class="app-switcher" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 3rem;">
-                <a href="../sns-spark/index.html" style="opacity: 0.4; font-size: 0.8rem; cursor: pointer; color: white; text-decoration: none;">Spark</a>
-                <a href="../interview-ace/index.html" style="opacity: 0.4; font-size: 0.8rem; cursor: pointer; color: white; text-decoration: none;">Ace</a>
-                <a href="../quick-invoice/index.html" style="opacity: 0.4; font-size: 0.8rem; cursor: pointer; color: white; text-decoration: none;">Invoice</a>
-                <a href="../va-agency/index.html" class="active" style="color: var(--primary); font-weight: bold; font-size: 0.8rem; text-decoration: none;">VA</a>
-                <a href="../lead-sniper/index.html" style="opacity: 0.4; font-size: 0.8rem; cursor: pointer; color: white; text-decoration: none;">Sniper</a>
+            <div class="app-switcher">
+                <a href="../content-repurpose/index.html">Repurpose</a>
+                <a href="../sovereign-admin/index.html">Admin</a>
+                <a href="../index.html">Portal</a>
+                <a href="../interview-ace/index.html" class="active">Ace</a>
+                <a href="../va-agency/index.html">VA Agency</a>
             </div>
-            <p style="text-align: center; opacity: 0.5; font-size: 0.8rem;">© 2026 Kodari Squad - Ultra Performance Mode</p>
+            <p>© 2026 KODARI TALENT ACQUISITION PROTOCOL</p>
         </footer>
     </div>
-    <script src="main.js"></script>
-    <script src="engine.js"></script>
+
+    <script>
+        function toggleInput() {
+            const url = document.getElementById('urlInputArea');
+            const text = document.getElementById('textInputArea');
+            url.classList.toggle('hidden');
+            text.classList.toggle('hidden');
+        }
+
+        function generateQuestions() {
+            const btn = document.getElementById('generateBtn');
+            const qDiv = document.getElementById('questions');
+            const qList = document.getElementById('qList');
+            
+            btn.innerText = "ANALYZING NODES...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                qDiv.classList.remove('hidden');
+                qList.innerHTML = `
+                    <div class="question-card">
+                        <div style="font-size: 0.6rem; color: var(--primary); margin-bottom: 0.5rem;">[CULTURAL FIT]</div>
+                        <p style="margin: 0;">"본인이 생각하는 '제국적precision'의 정의와, 과거 프로젝트에서 어떻게 이를 실현했는지 구체적인 사례를 들어 설명해주십시오."</p>
+                    </div>
+                    <div class="question-card">
+                        <div style="font-size: 0.6rem; color: var(--primary); margin-bottom: 0.5rem;">[TECHNICAL ACUMEN]</div>
+                        <p style="margin: 0;">"분산 시스템에서의 싱귤래리티 발생 시, 데이터 정합성을 유지하기 위한 본인만의 '퀀텀 브릿지' 전략이 있습니까?"</p>
+                    </div>
+                `;
+                btn.innerText = "ANALYSIS COMPLETE";
+                btn.style.background = "#10b981";
+            }, 2000);
+        }
+
+        // Fake trend ticker
+        const trends = [
+            "High demand for Rust Engineers in AI Infrastructure...",
+            "Surge in Python-based automation for Finance...",
+            "Security compliance becoming top priority in Web3...",
+            "Remote-first culture shifting to Hybrid in Global Tech..."
+        ];
+        let trendIdx = 0;
+        setInterval(() => {
+            document.getElementById('trendTicker').innerText = `[ANALYZING] ${trends[trendIdx]} (Global Trend)...`;
+            trendIdx = (trendIdx + 1) % trends.length;
+        }, 5000);
+    </script>
 </body>
 </html>

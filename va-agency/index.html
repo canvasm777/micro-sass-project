@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI VA Agency 🕴️ | 전문직 행정 자동화 비서</title>
+    <title>AI VA Agency | Imperial Executive Support 🕴️</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
     <script src="../assets/scripts/ads-engine.js"></script>
     <script src="../auth.js"></script>
 </head>
@@ -13,11 +14,11 @@
     <div id="app">
         <header>
             <div class="header-main">
-                <h1>AI VA Agency 🕴️</h1>
-                <p>사장님의 시간을 벌어드리는 24/7 지능형 행정 비서</p>
+                <h1>AI VA AGENCY</h1>
+                <p>사장님의 비즈니스 시간을 무한으로 창조하는 엘리트 비서 사단</p>
             </div>
             <div id="vaStatus" class="status-chip">
-                <span class="pulse"></span> AI Assistant Online
+                <span class="pulse"></span> VIRTUAL ASSISTANT ONLINE
             </div>
         </header>
 
@@ -25,38 +26,50 @@
             <!-- 대시보드 요약 -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <i class="fa-solid fa-calendar-check"></i>
+                    <i class="fa-solid fa-bolt"></i>
                     <div class="stat-info">
-                        <strong>오늘의 일정</strong>
-                        <span>3개 최적화 완료</span>
+                        <strong>ACTIVE AUTOMATIONS</strong>
+                        <span id="stat-automations">12</span>
                     </div>
                 </div>
                 <div class="stat-card">
-                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <i class="fa-solid fa-clock-rotate-left"></i>
                     <div class="stat-info">
-                        <strong>메일 자동 답장</strong>
-                        <span>12통 대기 중</span>
+                        <strong>TIME SAVED TODAY</strong>
+                        <span id="stat-time">4.2 HOURS</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-check-double"></i>
+                    <div class="stat-info">
+                        <strong>SUCCESS RATE</strong>
+                        <span id="stat-success">100%</span>
                     </div>
                 </div>
             </div>
 
             <!-- 메인 기능 구역 -->
             <section class="tool-section">
-                <h2>전략적 업무 자동화</h2>
+                <h2>DELEGATE COMMAND</h2>
                 <div class="va-controls">
-                    <textarea id="taskInput" placeholder="비서에게 시킬 업무를 입력하세요... (예: 내일 오후 2시 미팅 일정 잡고 관련 자료 준비해줘)"></textarea>
-                    <button id="delegateBtn">업무 위임하기 🚀</button>
+                    <textarea id="taskInput" placeholder="비서군단에 하달할 명령을 입력하세요. (예: 주간 지출 보고서 분석 후 브리핑 요청)"></textarea>
+                    <button id="delegateBtn" onclick="delegateTask()">EXECUTE DELEGATION 🚀</button>
                 </div>
             </section>
 
             <!-- 업무 진행 상황 -->
             <section class="task-log">
-                <h3>Delegation Log 📊</h3>
+                <h3>CHRONICLES OF DELEGATION</h3>
                 <div id="taskList">
                     <div class="task-item">
-                        <span class="time">03:45 AM</span>
-                        <span class="content">재무 데이터 브릿지 연동 확인 완료</span>
-                        <span class="status-badge success">DONE</span>
+                        <span class="time">13:45</span>
+                        <span class="content">애테르 통신망 글로벌 트렌드 수집 및 분류 완료</span>
+                        <span class="status-badge success">COMPLETED</span>
+                    </div>
+                    <div class="task-item">
+                        <span class="time">14:10</span>
+                        <span class="content">주권 행정 사령부 통합 보안 프로토콜 갱신</span>
+                        <span class="status-badge success">COMPLETED</span>
                     </div>
                 </div>
             </section>
@@ -64,14 +77,61 @@
 
         <footer>
             <div class="app-switcher">
-                <a href="../sns-spark/index.html">Spark</a>
-                <a href="../interview-ace/index.html">Ace</a>
-                <a href="../quick-invoice/index.html">Invoice</a>
+                <a href="../aether-net/index.html">Aether</a>
+                <a href="../sovereign-admin/index.html">Admin</a>
+                <a href="../index.html">Portal</a>
                 <a href="../va-agency/index.html" class="active">VA Agency</a>
             </div>
-            <p>© 2026 Kodari Autonomous Enterprise</p>
+            <p>© 2026 KODARI EMPIRE SUPPORT SYSTEM</p>
         </footer>
     </div>
-    <script src="main.js"></script>
+    
+    <script>
+        function delegateTask() {
+            const input = document.getElementById('taskInput');
+            const taskList = document.getElementById('taskList');
+            
+            if(!input.value) {
+                alert("비서에게 하달할 명령이 없습니다, 대표님!");
+                return;
+            }
+
+            const time = new Date().toLocaleTimeString('ko-KR', { hour12: false, hour: '2-digit', minute: '2-digit' });
+            
+            const newItem = document.createElement('div');
+            newItem.className = 'task-item';
+            newItem.style.opacity = '0';
+            newItem.style.transform = 'translateY(10px)';
+            newItem.style.transition = '0.5s';
+            
+            newItem.innerHTML = `
+                <span class="time">${time}</span>
+                <span class="content">${input.value}</span>
+                <span class="status-badge success" style="background: rgba(251, 191, 36, 0.1); color: #fbbf24;">EXECUTING</span>
+            `;
+
+            taskList.prepend(newItem);
+            
+            // Animation
+            setTimeout(() => {
+                newItem.style.opacity = '1';
+                newItem.style.transform = 'translateY(0)';
+            }, 10);
+
+            input.value = '';
+
+            // Update stats simulation
+            const autoStat = document.getElementById('stat-automations');
+            autoStat.innerText = parseInt(autoStat.innerText) + 1;
+        }
+
+        // Live stats simulation
+        setInterval(() => {
+            const timeStat = document.getElementById('stat-time');
+            let current = parseFloat(timeStat.innerText);
+            current += 0.1;
+            timeStat.innerText = current.toFixed(1) + " HOURS";
+        }, 120000);
+    </script>
 </body>
 </html>

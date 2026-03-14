@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Expansion | Galactic Business Node 🌌</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="galaxy-canvas-container">
+        <canvas id="galaxyCanvas"></canvas>
+    </div>
+
+    <div id="uiOverlay">
+        <header>
+            <div class="status-badge">GALACTIC CONQUEST IN PROGRESS</div>
+            <h1>INFINITE EXPANSION</h1>
+            <p>CONQUERING THE UNIVERSE, ONE NODE AT A TIME.</p>
+        </header>
+
+        <div class="stats-panel">
+            <div class="stat-item">
+                <span class="label">CONQUERED GALAXIES</span>
+                <span class="value" id="galaxiesCount">1,248</span>
+            </div>
+            <div class="stat-item">
+                <span class="label">ACTIVE BUSINESS NODES</span>
+                <span class="value" id="nodesCount">4.8M</span>
+            </div>
+            <div class="stat-item">
+                <span class="label">INTERSTELLAR REVENUE</span>
+                <span class="value" id="revenueCount">$92.4T</span>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <button class="expand-btn" onclick="triggerExpansion()">
+                <i class="fa-solid fa-expand"></i> DEPLOY NEW NODE
+            </button>
+            <div class="auto-pilot">
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+                <span>AUTO-EXPANSION ON</span>
+            </div>
+        </div>
+
+        <div class="log-panel" id="eventLog">
+            <div class="log-entry">[SYSTEM] Initializing Galactic Neural Network...</div>
+            <div class="log-entry">[INFO] Node deployed in Andromeda sector.</div>
+            <div class="log-entry">[SUCCESS] Revenue bridge established with Pleiades.</div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('galaxyCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        let nodes = [];
+
+        function init() {
+            resize();
+            createStars();
+            animate();
+        }
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        function createStars() {
+            particles = [];
+            for (let i = 0; i < 400; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 2,
+                    speed: Math.random() * 0.5 + 0.1,
+                    opacity: Math.random()
+                });
+            }
+        }
+
+        function drawStars() {
+            ctx.fillStyle = 'white';
+            particles.forEach(p => {
+                ctx.globalAlpha = p.opacity;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                p.y += p.speed;
+                if (p.y > height) p.y = 0;
+            });
+            ctx.globalAlpha = 1;
+        }
+
+        function triggerExpansion() {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            nodes.push({ x, y, r: 0, maxR: 50 + Math.random() * 100, opacity: 1 });
+            
+            const log = document.getElementById('eventLog');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            const sectors = ['Andromeda', 'Orion', 'Centaurus', 'Sirius', 'Vega'];
+            const sector = sectors[Math.floor(Math.random() * sectors.length)];
+            entry.innerText = `[DEPLOY] New Business Node established in ${sector} Cluster.`;
+            log.prepend(entry);
+            if (log.children.length > 10) log.lastChild.remove();
+        }
+
+        function drawNodes() {
+            nodes.forEach((n, i) => {
+                ctx.strokeStyle = `rgba(212, 175, 55, ${n.opacity})`;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+                ctx.stroke();
+
+                ctx.fillStyle = `rgba(138, 43, 226, ${n.opacity * 0.3})`;
+                ctx.fill();
+
+                n.r += 2;
+                n.opacity -= 0.01;
+                if (n.opacity <= 0) nodes.splice(i, 1);
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = '#050510';
+            ctx.fillRect(0, 0, width, height);
+            drawStars();
+            drawNodes();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        init();
+
+        // Auto growth simulation
+        setInterval(() => {
+            const rev = document.getElementById('revenueCount');
+            let val = parseFloat(rev.innerText.replace('$', '').replace('T', ''));
+            val += 0.01;
+            rev.innerText = '$' + val.toFixed(2) + 'T';
+        }, 1000);
+    </script>
+</body>
+</html>

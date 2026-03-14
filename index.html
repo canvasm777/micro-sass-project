@@ -68,6 +68,7 @@
             font-size: 0.8rem;
             color: rgba(255,255,255,0.2);
             border-radius: 12px;
+            box-sizing: border-box;
         }
 
         .grid {
@@ -152,8 +153,8 @@
         }
 
         /* Majestic Typography Refinement */
-        h1 { font-family: 'Outfit', sans-serif; font-weight: 200; letter-spacing: 15px !important; }
-        .card { transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important; overflow: hidden; }
+        h1 { font-family: 'Outfit', sans-serif; font-weight: 200; letter-spacing: 15px; }
+        .card { transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important; overflow: hidden; position: relative; }
         .card:hover { transform: scale(1.05) translateY(-10px) !important; border-color: rgba(251, 191, 36, 0.5) !important; box-shadow: 0 20px 50px rgba(0,0,0,0.8) !important; }
         .card::before {
             content: ''; position: absolute; top: -100%; left: -100%; width: 200%; height: 200%;
@@ -161,6 +162,188 @@
             transition: 0.5s;
         }
         .card:hover::before { top: -50%; left: -50%; }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            /* HUD - 가로 스크롤 방지, 줄바꿈 */
+            #imperial-hud {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px 16px;
+                padding: 8px 16px;
+                width: 92%;
+                top: 8px;
+                font-size: 0.6rem;
+            }
+            .hud-item { font-size: 0.6rem; }
+
+            /* NAV */
+            nav {
+                padding: 1.2rem;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 70px;
+            }
+            .logo { font-size: 1.1rem !important; letter-spacing: 2px !important; }
+            .auth-btn { font-size: 0.7rem; padding: 0.5rem 1rem; }
+
+            /* HERO - 헤더 */
+            header {
+                padding: 2rem 1rem !important;
+                margin-bottom: 2rem !important;
+                padding-top: 1rem !important;
+            }
+            h1 {
+                letter-spacing: 3px !important;
+            }
+            header h1,
+            h1[style*="font-size: 4.5rem"] {
+                font-size: 1.8rem !important;
+                letter-spacing: 3px !important;
+            }
+            header p { font-size: 0.85rem !important; }
+
+            /* VALUATION BAR */
+            #global-valuation-bar {
+                font-size: 0.65rem !important;
+                padding: 8px 12px !important;
+                max-width: 95% !important;
+                word-break: break-word;
+            }
+
+            /* BADGES */
+            .badge,
+            span[class="badge"] {
+                font-size: 0.55rem !important;
+                padding: 0.3rem 0.8rem !important;
+            }
+
+            /* AD PLACEHOLDER */
+            .adsense-placeholder {
+                height: 60px;
+                max-width: 100%;
+                margin: 1rem;
+            }
+
+            /* 3-COLUMN GRIDS → 1 COLUMN */
+            .grid {
+                grid-template-columns: 1fr !important;
+                padding: 1rem !important;
+                gap: 1rem !important;
+            }
+            .mobile-grid-3 {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* "Why Kodari" 3열 → 1열 */
+            #synergy > div > div {
+                grid-template-columns: 1fr !important;
+            }
+            #synergy {
+                padding: 1rem !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            #synergy h3 { font-size: 1.2rem !important; }
+
+            /* PLAYGROUND 3열 → 1열 */
+            #playground {
+                padding: 0 1rem !important;
+            }
+            #playground > div > div:last-child {
+                grid-template-columns: 1fr !important;
+            }
+            #playground > div > div:first-child {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+
+            /* CARDS */
+            .card {
+                padding: 1.8rem !important;
+                border-radius: 16px !important;
+            }
+            .card h2 { font-size: 1.2rem !important; }
+            .card p { font-size: 0.85rem !important; }
+            .card i { font-size: 2rem !important; margin-bottom: 1rem !important; }
+            .card:hover {
+                transform: translateY(-3px) !important;
+            }
+
+            /* IMPERIAL NEURAL CORE - flex → column */
+            .grid[style*="grid-template-columns: 1fr"] .card[style*="display: flex"] {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 1rem !important;
+            }
+
+            /* SECTION HEADERS */
+            h3[style*="font-size: 1.2rem"],
+            h3[style*="font-size: 1.5rem"] {
+                font-size: 1rem !important;
+                letter-spacing: 2px !important;
+            }
+
+            /* ROADMAP */
+            #roadmap {
+                padding: 2rem 1rem !important;
+            }
+            #roadmap h3 {
+                font-size: 1.1rem !important;
+                letter-spacing: 2px !important;
+            }
+
+            /* FOOTER */
+            footer {
+                padding: 2rem 1rem !important;
+            }
+            footer a { display: block !important; margin: 0.5rem 0 !important; }
+
+            /* LOGIN MODAL */
+            .login-box {
+                width: 90% !important;
+                padding: 2rem !important;
+            }
+            .login-box h2 { font-size: 1rem !important; letter-spacing: 3px !important; }
+
+            /* STEP CARDS in later phases */
+            div[style*="grid-template-columns: repeat(auto-fit, minmax(200px"] {
+                grid-template-columns: 1fr !important;
+            }
+            div[style*="grid-template-columns: repeat(auto-fit, minmax(250px"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* GENERAL OVERFLOW */
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+            }
+            section, div, nav, header, footer, a {
+                max-width: 100vw;
+                box-sizing: border-box;
+            }
+        }
+
+        /* TABLET */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            #imperial-hud {
+                flex-wrap: wrap;
+                gap: 10px 20px;
+                padding: 8px 20px;
+            }
+            header h1,
+            h1[style*="font-size: 4.5rem"] {
+                font-size: 3rem !important;
+                letter-spacing: 8px !important;
+            }
+            .grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            #synergy > div > div {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -201,7 +384,7 @@
 
     <section id="synergy" style="max-width: 1000px; padding: 2rem; text-align: center; margin-bottom: 2rem;">
         <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--primary);">Why Kodari Universe? 🌌</h3>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+        <div class="mobile-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
             <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 16px;">
                 <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-link"></i> 단일 생태계</h4>
                 <p style="font-size: 0.8rem; opacity: 0.6;">앱 간 이동이 자유롭고 데이터가 유기적으로 연동되는 비즈니스 최적화 환경.</p>
@@ -224,7 +407,7 @@
                 <h3 style="margin: 0; font-size: 1.3rem;"><i class="fa-solid fa-gamepad" style="color:var(--primary); margin-right: 10px;"></i> PLAYGROUND: Joy & Luck</h3>
                 <span style="font-size: 0.7rem; opacity: 0.5;">지칠 때 잠시 쉬어가는 공간</span>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div class="mobile-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
                 <a href="mini-games/lotto/index.html" style="text-decoration: none; color: white; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,215,0,0.1); transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
                     <div style="font-size: 2rem;">🎰</div>
                     <div>
@@ -277,7 +460,27 @@
         <h3 style="font-size: 1.2rem; margin-bottom: 1rem; opacity: 0.8;">Active Business Modules</h3>
     </div>
     <div class="grid" style="padding-top: 1rem;">
+        <a href="aether-net/index.html" class="card" style="border: 1px solid #fbbf24; background: rgba(251, 191, 36, 0.05);">
+            <div style="font-size: 0.7rem; color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-satellite-dish"></i> ON-AIR: INTELLIGENCE</div>
+            <i class="fa-solid fa-tower-broadcast" style="color: #fbbf24;"></i>
+            <h2 style="color: #fbbf24;">Aether-Net</h2>
+            <p>전 세계 니치 시장 및 실시간 트렌드를 포착하는 '에테르 통신망'. 시장이 움직이기 전에 먼저 기회를 선점하십시오.</p>
+        </a>
+        <a href="sovereign-admin/index.html" class="card" style="border: 1px solid #8b5cf6; background: rgba(139, 92, 246, 0.05);">
+            <div style="font-size: 0.7rem; color: #8b5cf6; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-crown"></i> ON-AIR: COMMAND</div>
+            <i class="fa-solid fa-building-columns" style="color: #8b5cf6;"></i>
+            <h2 style="color: #8b5cf6;">Sovereign Admin</h2>
+            <p>제국 주권 행정 사령부. 모든 하위 모듈의 상태를 감시하고 사장님의 전격적인 '칙령'을 하달하는 최고 권위의 지휘소.</p>
+        </a>
+        <a href="content-repurpose/index.html" class="card" style="border: 1px solid #d946ef; background: rgba(217, 70, 239, 0.05);">
+            <div style="font-size: 0.7rem; color: #d946ef; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-clapperboard"></i> ON-AIR: CONTENT</div>
+            <i class="fa-solid fa-film" style="color: #d946ef;"></i>
+            <h2 style="color: #d946ef;">Content Repurpose</h2>
+            <p>롱폼 영상 하나로 30개의 숏폼과 10개의 블로그를 즉시 생성. '멀티 채널 점유'를 통한 폭발적인 트래픽 창출 엔진.</p>
+        </a>
+
         <a href="sns-spark/index.html" class="card">
+
             <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: MARKETING</div>
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <h2>SNS-Spark</h2>
@@ -318,6 +521,7 @@
             <i class="fa-solid fa-brain"></i>
             <h2>Knowledge Bot</h2>
             <p>기업 내부 문서 학습(RAG). 사내 기획서와 메뉴얼을 학습한 24/7 지능형 전문가 챗봇.</p>
+        </a>
         <a href="revenue-hub/index.html" class="card">
             <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: WEALTH</div>
             <i class="fa-solid fa-piggy-bank"></i>

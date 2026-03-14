@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Filter | Opportunity Distillation Engine 🔬</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="filterCanvas"></canvas>
+
+    <div id="filterUI">
+        <header>
+            <div class="filter-badge"><i class="fa-solid fa-filter"></i> FILTERING 4.7 TRILLION OPPORTUNITIES</div>
+            <h1>THE GREAT FILTER</h1>
+            <p>DISTILLING CHAOS INTO GOLD — 0.01% PRECISION</p>
+        </header>
+
+        <div class="funnel-visual">
+            <div class="funnel-stage">
+                <div class="stage-label">RAW SIGNALS</div>
+                <div class="stage-bar"><div class="fill-bar" style="width: 100%;"></div></div>
+                <div class="count">4,700,000,000,000</div>
+            </div>
+            <div class="funnel-arrow"><i class="fa-solid fa-angles-down"></i></div>
+            <div class="funnel-stage">
+                <div class="stage-label">PATTERN MATCH</div>
+                <div class="stage-bar"><div class="fill-bar mid" style="width: 35%;"></div></div>
+                <div class="count">1,645,000,000</div>
+            </div>
+            <div class="funnel-arrow"><i class="fa-solid fa-angles-down"></i></div>
+            <div class="funnel-stage">
+                <div class="stage-label">PROFIT POTENTIAL</div>
+                <div class="stage-bar"><div class="fill-bar narrow" style="width: 8%;"></div></div>
+                <div class="count">376,000</div>
+            </div>
+            <div class="funnel-arrow"><i class="fa-solid fa-angles-down"></i></div>
+            <div class="funnel-stage final">
+                <div class="stage-label">IMPERIAL GRADE</div>
+                <div class="stage-bar"><div class="fill-bar gold" style="width: 2%;"></div></div>
+                <div class="count gold-text" id="finalCount">470</div>
+            </div>
+        </div>
+
+        <div class="result-panel">
+            <div class="result-header">
+                <i class="fa-solid fa-gem"></i>
+                <span>TOP FILTERED OPPORTUNITIES</span>
+            </div>
+            <div class="result-list" id="resultList">
+                <div class="result-item">
+                    <span class="rank">#1</span>
+                    <span class="opp">AI Healthcare SaaS — Southeast Asia</span>
+                    <span class="roi">ROI: 4,200%</span>
+                </div>
+                <div class="result-item">
+                    <span class="rank">#2</span>
+                    <span class="opp">Quantum Cloud Infrastructure — EU</span>
+                    <span class="roi">ROI: 3,800%</span>
+                </div>
+                <div class="result-item">
+                    <span class="rank">#3</span>
+                    <span class="opp">Neural EdTech Platform — Latin America</span>
+                    <span class="roi">ROI: 2,900%</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="filter-btn" onclick="runFilter()">
+            <i class="fa-solid fa-vial"></i> EXECUTE GREAT FILTER
+        </button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('filterCanvas');
+        const ctx = canvas.getContext('2d');
+        let w, h;
+        let particles = [];
+
+        function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
+
+        function init() {
+            resize();
+            for (let i = 0; i < 200; i++) {
+                particles.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    size: Math.random() * 3,
+                    speed: 0.5 + Math.random() * 2,
+                    filtered: Math.random() > 0.01
+                });
+            }
+            animate();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, w, h);
+            ctx.fillStyle = '#020208';
+            ctx.fillRect(0, 0, w, h);
+
+            particles.forEach(p => {
+                ctx.fillStyle = p.filtered ? 'rgba(255,255,255,0.15)' : 'rgba(212,175,55,0.9)';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.filtered ? p.size * 0.5 : p.size * 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                p.y += p.speed;
+                if (p.y > h) { p.y = 0; p.x = Math.random() * w; }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        function runFilter() {
+            const counter = document.getElementById('finalCount');
+            let val = parseInt(counter.innerText);
+            const sectors = [
+                'Autonomous Logistics — Middle East',
+                'BioAI Pharma — Japan',
+                'Tokenized Real Estate — Singapore',
+                'Green Energy Grid — Nordics',
+                'Space Tourism Platform — US'
+            ];
+            const rois = ['5,100%', '3,400%', '4,700%', '2,600%', '6,200%'];
+            const idx = Math.floor(Math.random() * sectors.length);
+
+            val += 1;
+            counter.innerText = val;
+
+            const list = document.getElementById('resultList');
+            const item = document.createElement('div');
+            item.className = 'result-item new';
+            item.innerHTML = `
+                <span class="rank">#${val}</span>
+                <span class="opp">${sectors[idx]}</span>
+                <span class="roi">ROI: ${rois[idx]}</span>
+            `;
+            list.prepend(item);
+            if (list.children.length > 6) list.lastChild.remove();
+        }
+
+        window.addEventListener('resize', resize);
+        init();
+    </script>
+</body>
+</html>

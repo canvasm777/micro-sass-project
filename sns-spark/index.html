@@ -3,55 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNS-Spark ✨ | AI Instagram Caption Maker</title>
+    <title>SNS-Spark | Imperial Marketing Influence ✨</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
     <script src="../assets/scripts/ads-engine.js"></script>
     <script src="../auth.js"></script>
 </head>
 <body>
     <div id="app">
         <header>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
-                <div class="trending-badge" style="background: rgba(37, 244, 140, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: bold; border: 1px solid rgba(37, 244, 140, 0.2);">🔥 Trending in Seoul</div>
-                <div class="credit-badge" style="background: rgba(255,255,255,0.05); color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem;">🪙 <span id="creditCount">5</span> Credits</div>
+            <div class="header-meta">
+                <div class="trending-badge">🔥 VIRAL IN SEOUL</div>
+                <div class="credit-badge">🪙 <span id="creditCount">5</span> IMPERIAL CREDITS</div>
             </div>
-            <h1>SNS-Spark ✨</h1>
-            <p>제품 사진을 넣으면 영자의 감성 캡션이 쏟아집니다.</p>
-            <div id="adsense-top" style="margin: 1rem 0; font-size: 0.6rem; opacity: 0.2;">[AdSense Auto-Ads Slot]</div>
+            <h1>SNS SPARK</h1>
+            <p>제품의 영혼을 읽어 바이럴 캡션을 연성하는 제국 마케팅 연금술</p>
         </header>
+
         <main>
             <div id="loadingContainer" class="hidden" style="margin-bottom: 2rem;">
-                <div class="progress-bar-bg" style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
-                    <div id="progressBar" style="width: 0%; height: 100%; background: var(--primary); transition: width 0.3s ease;"></div>
+                <div class="progress-bar-bg">
+                    <div id="progressBar" style="width: 0%;"></div>
                 </div>
-                <p style="font-size: 0.7rem; margin-top: 8px; opacity: 0.6; text-align: left;">AI 스쿼드가 픽셀 단위로 감성 분석 중...</p>
+                <p style="font-size: 0.65rem; margin-top: 10px; opacity: 0.4; letter-spacing: 2px;">NEURAL SQUAD ANALYZING PIXELS...</p>
             </div>
-            <div class="control-panel" style="margin-bottom: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
-                <select id="toneSelect" style="background: var(--card-bg); color: white; border: 1px solid var(--glass-border); padding: 0.5rem; border-radius: 12px; outline: none;">
-                    <option value="Professional">전문적인</option>
-                    <option value="Witty">위트있는</option>
-                    <option value="Emotional">감성적인</option>
+
+            <div class="control-panel" style="margin-bottom: 2.5rem;">
+                <select id="toneSelect">
+                    <option value="Professional">Imperial Professional</option>
+                    <option value="Witty">Viral Witty</option>
+                    <option value="Emotional">Deep Emotional</option>
                 </select>
             </div>
-            <div class="upload-area" id="uploadArea">
-                <i class="fa-solid fa-camera"></i>
-                <p>제품 사진을 업로드하거나 촬영하세요.</p>
-                <span style="font-size: 0.8rem; opacity: 0.6;">(Tap to select/capture)</span>
+
+            <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h2 style="font-weight: 200; letter-spacing: 5px; margin-bottom: 0.5rem;">TRANSFORM IMAGE</h2>
+                <p style="opacity: 0.4; font-size: 0.8rem;">Drop product shot here to infuse marketing magic</p>
                 <input type="file" id="fileInput" accept="image/*" class="hidden">
             </div>
             
-            <div id="imagePreview" class="hidden" style="margin-bottom: 2rem;">
+            <div id="imagePreview" class="hidden" style="margin-top: 2rem;">
                 <div class="preview-container">
                     <img id="previewImg" src="">
-                    <div id="textOverlay">여기에 캡션이 입혀집니다...</div>
+                    <div id="textOverlay">The Alchemists are weaving your caption...</div>
                 </div>
-                <button onclick="resetUpload()" style="background: rgba(255,0,0,0.1); color: #ff4d4d; border: 1px solid rgba(255,0,0,0.2); padding: 8px 16px; border-radius: 8px; cursor: pointer; width: 100%;">다른 사진으로 변경</button>
+                <button onclick="resetUpload()" style="background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--border); padding: 12px; border-radius: 12px; cursor: pointer; width: 100%; font-size: 0.8rem; letter-spacing: 2px;">RE-PROCESS NEW IMAGE</button>
             </div>
             
-            <div id="sparkHistory" class="hidden" style="margin-top: 2rem; text-align: left;">
-                <h4 style="font-size: 0.8rem; opacity: 0.4; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; margin-bottom: 1rem;">최근 생성 내역</h4>
+            <div id="sparkHistory" class="hidden" style="margin-top: 4rem; text-align: left;">
+                <h4>MARKETING CHRONICLES</h4>
                 <div id="historyList"></div>
             </div>
             
@@ -59,15 +61,64 @@
                 <!-- Results will be injected here -->
             </div>
         </main>
+
         <footer>
-            <div class="app-switcher" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                <a href="../sns-spark/index.html" class="active" style="color: var(--primary); font-weight: bold; font-size: 0.8rem; text-decoration: none;">Spark</a>
-                <a href="../interview-ace/index.html" style="opacity: 0.4; font-size: 0.8rem; cursor: pointer; color: white; text-decoration: none;">Ace</a>
-                <a href="../quick-invoice/index.html" style="opacity: 0.4; font-size: 0.8rem; cursor: pointer; color: white; text-decoration: none;">Invoice</a>
+            <div class="app-switcher">
+                <a href="../content-repurpose/index.html">Repurpose</a>
+                <a href="../sovereign-admin/index.html">Admin</a>
+                <a href="../index.html">Portal</a>
+                <a href="../interview-ace/index.html">Ace</a>
+                <a href="../sns-spark/index.html" class="active">Spark</a>
             </div>
-            <p>© 2026 Kodari Squad - Ultra Performance Mode</p>
+            <p>© 2026 KODARI VIRAL INFLUENCE ENGINE</p>
         </footer>
     </div>
-    <script src="main.js"></script>
+    
+    <script>
+        // Simple mock logic for demonstration
+        const fileInput = document.getElementById('fileInput');
+        const uploadArea = document.getElementById('uploadArea');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+        const textOverlay = document.getElementById('textOverlay');
+        const loading = document.getElementById('loadingContainer');
+        const progressBar = document.getElementById('progressBar');
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    previewImg.src = event.target.result;
+                    uploadArea.classList.add('hidden');
+                    imagePreview.classList.remove('hidden');
+                    startProcessing();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function startProcessing() {
+            loading.classList.remove('hidden');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    loading.classList.add('hidden');
+                    textOverlay.innerText = "이 제품의 본질은 '압도적인 세련미'입니다. 제국 사령부에서 특별 승인된 이 캡션으로 당신의 피드를 지배하십시오. #KodariStyle #ImperialMarketing";
+                    textOverlay.classList.add('show');
+                }
+            }, 100);
+        }
+
+        function resetUpload() {
+            uploadArea.classList.remove('hidden');
+            imagePreview.classList.add('hidden');
+            textOverlay.classList.remove('show');
+            progressBar.style.width = '0%';
+        }
+    </script>
 </body>
 </html>

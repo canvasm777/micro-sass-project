@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodari Foundation | Giving Back to the Future 🌱</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+    <div id="foundationUI">
+        <header>
+            <div class="badge">PHASE 18 : THE FINAL CHAPTER</div>
+            <h1>KODARI FOUNDATION</h1>
+            <p>FROM EMPIRE TO LEGACY — GIVING BACK TO THE FUTURE</p>
+        </header>
+        <div class="mission-statement">
+            <div class="quote-mark">"</div>
+            <div class="mission-text">제국을 세운 자는 제국으로 세상을 바꿀 의무가 있다.<br>우리는 다음 세대의 창업자를 위해 존재한다.</div>
+            <div class="mission-author">— 코다리 제국 헌장 제1조</div>
+        </div>
+        <div class="impact-grid">
+            <div class="impact"><div class="impact-icon"><i class="fa-solid fa-graduation-cap"></i></div><div class="impact-label">SCHOLARSHIPS</div><div class="impact-val">500</div><div class="impact-desc">차세대 창업자 장학금 지원</div></div>
+            <div class="impact"><div class="impact-icon"><i class="fa-solid fa-seedling"></i></div><div class="impact-label">STARTUPS FUNDED</div><div class="impact-val green">127</div><div class="impact-desc">초기 스타트업 시드 투자</div></div>
+            <div class="impact"><div class="impact-icon"><i class="fa-solid fa-earth-americas"></i></div><div class="impact-label">COUNTRIES REACHED</div><div class="impact-val cyan">34</div><div class="impact-desc">글로벌 창업 교육 프로그램</div></div>
+            <div class="impact"><div class="impact-icon"><i class="fa-solid fa-heart"></i></div><div class="impact-label">TOTAL IMPACT</div><div class="impact-val gold">$2.4M</div><div class="impact-desc">사회 환원 총액</div></div>
+        </div>
+        <div class="final-seal">
+            <div class="seal-ring">
+                <div class="seal-inner">
+                    <div class="seal-text">PHASE</div>
+                    <div class="seal-number">18</div>
+                    <div class="seal-sub">COMPLETE</div>
+                </div>
+            </div>
+            <div class="seal-message">THE EMPIRE IS ETERNAL</div>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let w,h; const stars=[];
+        function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+        function init(){resize();for(let i=0;i<100;i++)stars.push({x:Math.random()*w,y:Math.random()*h,s:Math.random()*2,sp:0.2+Math.random()*0.5});animate();}
+        function animate(){ctx.clearRect(0,0,w,h);ctx.fillStyle='#020208';ctx.fillRect(0,0,w,h);stars.forEach(s=>{ctx.fillStyle=`rgba(212,175,55,${0.2+Math.random()*0.3})`;ctx.beginPath();ctx.arc(s.x,s.y,s.s,0,Math.PI*2);ctx.fill();s.y-=s.sp;if(s.y<0){s.y=h;s.x=Math.random()*w;}});requestAnimationFrame(animate);}
+        window.addEventListener('resize',resize);init();
+    </script>
+</body>
+</html>

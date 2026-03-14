@@ -1,0 +1,229 @@
+:root {
+    --primary: #8a2be2;
+    --accent: #d4af37;
+    --terminal: #00ff41;
+    --bg: #02020a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.neural-network-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#commandInterface {
+    position: relative;
+    z-index: 10;
+    padding: 3rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    margin-bottom: 3rem;
+}
+
+.pulse-indicator {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; box-shadow: 0 0 5px var(--accent); }
+    50% { opacity: 1; box-shadow: 0 0 20px var(--accent); }
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 15px;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fff, var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    font-size: 0.8rem;
+    opacity: 0.4;
+    letter-spacing: 5px;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.module-node {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 1rem;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.module-node:hover {
+    background: rgba(138, 43, 226, 0.1);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.module-node i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.module-node .label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.module-node .status {
+    font-size: 0.5rem;
+    color: var(--terminal);
+    font-weight: 700;
+}
+
+.terminal-container {
+    background: #000;
+    border-radius: 10px;
+    border: 1px solid #333;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-height: 250px;
+}
+
+.terminal-header {
+    background: #1a1a1a;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+.terminal-header .title {
+    margin-left: 1rem;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    opacity: 0.5;
+}
+
+.terminal-body {
+    padding: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    color: var(--terminal);
+    overflow-y: auto;
+}
+
+.line { margin-bottom: 0.5rem; }
+.line.highlight { color: var(--accent); font-weight: 700; }
+
+.global-action {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.strike-btn {
+    background: linear-gradient(45deg, var(--accent), #ff8c00);
+    color: black;
+    border: none;
+    padding: 1.5rem 5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s;
+    letter-spacing: 3px;
+}
+
+.strike-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+}
+
+#strikeOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#strikeOverlay.active { display: flex; }
+
+.strike-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 10px;
+    margin-bottom: 2rem;
+    color: var(--accent);
+}
+
+.strike-bar {
+    width: 300px;
+    height: 4px;
+    background: #222;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: var(--accent);
+    animation: fill-bar 2s forwards;
+}
+
+@keyframes fill-bar {
+    to { width: 100%; }
+}
