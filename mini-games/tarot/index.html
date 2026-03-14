@@ -1,175 +1,27 @@
-<!DOCTYPE html>
+Ôªø<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodari-Tarot | Business Oracle Registry ?Éè</title>
+    <title>Imperial Tarot | Business Destiny</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../mobile-fix.css">
     <style>
-        :root {
-            --bg: #0a0a0b; 
-            --gold: #d4af37;
-            --gold-dim: rgba(212, 175, 55, 0.2);
-            --text: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.5);
-            --card: rgba(255, 255, 255, 0.02);
-            --border: rgba(212, 175, 55, 0.15);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--bg); color: var(--text); 
-            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
-            background: radial-gradient(circle at 50% -20%, #1a1a1c 0%, #0a0a0b 70%);
-            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-
-        .container { width: 95%; max-width: 600px; text-align: center; padding: 3rem 0; }
-
-        .tag { font-size: 0.65rem; letter-spacing: 5px; color: var(--gold); margin-bottom: 1.5rem; display: block; opacity: 0.8; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -1px; }
-        .subtitle { color: var(--text-dim); font-size: 0.9rem; font-weight: 200; letter-spacing: 2px; margin-bottom: 3rem; }
-
-        /* Tarot Display Area */
-        .tarot-stage {
-            height: 380px; display: flex; justify-content: center; align-items: center; margin-bottom: 3rem;
-        }
-        .tarot-card {
-            width: 220px; height: 350px; perspective: 1200px; cursor: pointer;
-        }
-        .card-inner {
-            position: relative; width: 100%; height: 100%; text-align: center;
-            transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1); transform-style: preserve-3d;
-        }
-        .tarot-card.flipped .card-inner { transform: rotateY(180deg); }
-
-        .card-face {
-            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-            border-radius: 0px; border: 1px solid var(--border);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .card-back {
-            background: #000; border-color: var(--gold);
-            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(212, 175, 55, 0.05) 10px, rgba(212, 175, 55, 0.05) 20px);
-        }
-        .card-back::after {
-            content: 'K'; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold-dim);
-        }
-        .card-front {
-            background: #0a0a0b; transform: rotateY(180deg); padding: 2rem;
-            border-color: var(--gold);
-        }
-        .card-front i { font-size: 3rem; color: var(--gold); margin-bottom: 2rem; }
-        .card-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; }
-        .card-lore { font-size: 0.75rem; color: var(--text-dim); line-height: 1.6; }
-
-        /* Ad Area */
-        .ad-row {
-            background: var(--card); border: 1px solid var(--border);
-            padding: 1.5rem; margin-bottom: 2rem; font-size: 0.6rem; color: var(--text-dim);
-            letter-spacing: 2px; text-transform: uppercase;
-        }
-
-        .action-btn {
-            width: 100%; background: var(--gold); color: black; border: none;
-            padding: 1.3rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 3px;
-            cursor: pointer; transition: 0.4s;
-        }
-        .action-btn:hover { background: #f3e5ab; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,175,55,0.2); }
-
-        .reading-panel {
-            background: var(--card); border: 1px solid var(--border); padding: 2.5rem;
-            text-align: left; margin-top: 3rem; display: none; animation: slideUp 0.8s ease-out;
-        }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .reading-panel h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 1rem; border-left: 3px solid var(--gold); padding-left: 15px; }
-
-        .back-link { 
-            margin-top: 4rem; color: var(--text-dim); text-decoration: none; 
-            font-size: 0.7rem; letter-spacing: 3px; border-bottom: 1px solid transparent; transition: 0.3s;
-        }
-        .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
-
-        .timestamp { font-size: 0.6rem; color: var(--text-dim); margin-top: 2rem; letter-spacing: 2px; }
+        :root { --bg: #0a0a0b; --gold: #d4af37; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: "Montserrat"; text-align: center; padding: 100px 0; }
+        .tarot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 800px; margin: 4rem auto; }
+        .tarot-card { aspect-ratio: 2/3; border: 1px solid var(--gold); border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: \"Playfair Display\"; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <span class="tag">WEALTH FOUNDATION ¬∑ PHASE 21</span>
-        <h1>Kodari Tarot</h1>
-        <p class="subtitle">ÎπÑÏ¶à?àÏä§???àÍ∞úÎ•?Í±∑Ïñ¥?¥Í≥† ?úÍµ≠??ÎØ∏ÎûòÎ•??†Ïñ∏?òÏã≠?úÏò§.</p>
-
-        <div class="ad-row">
-             <i class="fa-solid fa-rectangle-ad" style="margin-right: 8px;"></i>
-             Imperial Sponsor: ?¨Ïû•?òÏùÑ ?ÑÌïú ÎßûÏ∂§ ?¥ÏÑ∏ ?àÏñ∏?òÍ∏∞ ?îÆ
-        </div>
-
-        <div class="tarot-stage">
-            <div class="tarot-card" id="tarotCard" onclick="flipCard()">
-                <div class="card-inner">
-                    <div class="card-face card-back"></div>
-                    <div class="card-face card-front">
-                        <i id="cIcon"></i>
-                        <h2 class="card-title" id="cTitle"></h2>
-                        <p class="card-lore" id="cLore"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="reading-panel" id="readingPanel">
-            <h4>THE ORACLE'S DECREE</h4>
-            <p id="cAdvice" style="font-size: 0.9rem; line-height: 1.8; font-weight: 200;"></p>
-            <button class="action-btn" style="margin-top: 2rem; background: transparent; color: var(--gold); border: 1px solid var(--gold);" onclick="location.reload()">NEW DECLARATION</button>
-        </div>
-
-        <div class="ad-row" style="margin-top: 1rem;">
-             [ Í¥ëÍ≥† ] ?∏Ïä§?Ä ?°ÏÉÅ??AI Î∞??ùÏÑ±Í∏?Í∞Ä?ôÌïòÍ∏???        </div>
-
-        <div class="timestamp" id="timestamp">KST SYNC: LOADING...</div>
-
-        <a href="../../index.html" class="back-link">RETURN TO OVERLORD PORTAL</a>
+    <h1 style="font-family:\"Playfair Display\";">Imperial Tarot</h1>
+    <div class="tarot-grid">
+        <div class="tarot-card" onclick="alert(\"The Sovereign: Î™ÖÌôïÌïú Î¶¨ÎçîÏã≠Ïù¥ ÌïÑÏöîÌïú ÏãúÍ∏∞ÏûÖÎãàÎã§.\")">CARD 1</div>
+        <div class="tarot-card" onclick="alert(\"The Alchemist: ÏïÑÏù¥ÎîîÏñ¥Î•º ÌòÑÏã§Î°ú Î∞îÍøÄ Ï∞ΩÏ°∞Ïùò ÏãúÍ∞ÑÏûÖÎãàÎã§.\")">CARD 2</div>
+        <div class="tarot-card" onclick="alert(\"The Guard: ÌòÑÏû¨Ïùò ÏàòÏùµ Íµ¨Ï°∞Î•º Í≥µÍ≥†Ìûà Ìï¥Ïïº Ìï©ÎãàÎã§.\")">CARD 3</div>
     </div>
-
-    <script>
-        function updateTime() {
-            const now = new Date();
-            const kst = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (9 * 3600000));
-            document.getElementById('timestamp').innerText = "KST SYNC: " + kst.toLocaleString('ko-KR');
-        }
-        updateTime(); setInterval(updateTime, 1000);
-
-        const arkana = [
-            { title: "THE FOUNDER", icon: "fa-solid fa-seedling", lore: "Î¨¥Ïóê???†Î? Ï∞ΩÏ°∞?òÎäî ?úÏ¥à??Î∂àÍΩÉ.", advice: "?¨Ïû•?? ?§Îäò?Ä Í≥ÑÏÇ∞Í∏∞Î≥¥??ÏßÅÍ????∞Î? ?åÏûÖ?àÎã§. ?ëÏ? ?®Ïïó???úÍµ≠??Í±∞Î™©?ºÎ°ú ?êÎùº???ÑÏ°∞Í∞Ä Î≥¥ÏûÖ?àÎã§. Í≥ºÍ∞ê??Í≥µÏÑ∏Î•??ºÏπò??ãú??" },
-            { title: "THE SOVEREIGN", icon: "fa-solid fa-crown", lore: "?àÏ†ï??ÏßàÏÑú?Ä ?ïÎèÑ?ÅÏù∏ ÏßÄÎ∞∞Î†•.", advice: "Ï≤¥Í≥ÑÍ∞Ä ?πÎ¶¨Î•?Î≥¥Ïû•?©Îãà?? Í∞êÏ†ï???òÎëòÎ¶¨Í∏∞Î≥¥Îã§ ?úÍµ≠??Îß§Îâ¥?ºÍ≥º ?∞Ïù¥?∞Î°ú ?úÏû•???ïÎèÑ?òÏã≠?úÏò§. ?¨Ïû•?òÏùò Í≤∞Îã®??Í≥??úÏû•??Î≤ïÏûÖ?àÎã§." },
-            { title: "THE DISRUPTOR", icon: "fa-solid fa-bolt-lightning", lore: "Í∏∞Ï°¥???ÅÏãù??Íπ®Î??òÎäî ?ÅÏã†??Î≤àÍ∞ú.", advice: "?âÎ≤î?®Ï? ?ÖÏûÖ?àÎã§. ?êÏùÑ ?îÎìú??ãú?? ?ºÏù¥Î≤åÎì§???ùÍ∞ÅÏßÄ Î™ªÌïú Î≥ÄÏπôÏ†Å???ÑÏà†???úÍµ≠??ÎßâÎ????¥Ïùµ??Í∞Ä?∏Îã§Ï§?Í≤ÉÏûÖ?àÎã§." },
-            { title: "THE UNICORN", icon: "fa-solid fa-horse-head", lore: "?ÅÏÉÅ???ÑÏã§???òÎäî Í∏∞Ï†Å???±Ï∑®.", advice: "ÎπÑÏ†Ñ???§ÌòÑ?òÎäî ÎßàÎ≤ï Í∞ôÏ? ?úÍ∞Ñ???§Í??µÎãà?? ??Í∑úÎ™®???êÎ≥∏ ?êÎ¶Ñ?¥ÎÇò ?†ÏùòÎØ∏Ìïú ?∏Îûò?ΩÏùò ?Ä??∞ú??Ï§ÄÎπÑÌïò??ãú?? ÎπÑÏÉÅ???úÍ∞Ñ?ÖÎãà??" },
-            { title: "THE ARCHITECT", icon: "fa-solid fa-compass-drafting", lore: "1px???§Ï∞®???àÏö©Ïπ??äÎäî ?ïÎ? ?§Í≥Ñ.", advice: "?îÎ†§??Í≤âÏπò?àÎ≥¥???¥Ïã§???ïÎ??®Ïù¥ ?ÑÏöî???†ÏûÖ?àÎã§. ?úÏä§?úÏùò ?µÏã¨ Î°úÏßÅÍ≥?UX ?îÌÖå?ºÏùÑ ?êÍ??òÏã≠?úÏò§. ?ÑÎ≤Ω???§Í≥ÑÍ∞Ä ?úÍ≥µÎ∂àÎùΩ???±Î≤Ω??ÎßåÎì≠?àÎã§." }
-        ];
-
-        function flipCard() {
-            const card = document.getElementById('tarotCard');
-            const panel = document.getElementById('readingPanel');
-            if(card.classList.contains('flipped')) return;
-
-            const p = arkana[Math.floor(Math.random() * arkana.length)];
-            document.getElementById('cIcon').className = p.icon;
-            document.getElementById('cTitle').innerText = p.title;
-            document.getElementById('cLore').innerText = p.lore;
-            document.getElementById('cAdvice').innerText = p.advice;
-
-            card.classList.add('flipped');
-            setTimeout(() => {
-                panel.style.display = 'block';
-                console.log("%c[TAROT] ?úÍµ≠??ÎØ∏ÎûòÍ∞Ä ?§Í≥Ñ?òÏóà?µÎãà??", "color: #d4af37;");
-            }, 1000);
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-             console.log("%c[SYSTEM] Tarot-Oracle ?îÏßÑ ?ÄÍ∏?Ï§?", "color: #d4af37; font-weight: bold;");
-        });
-    </script>
-<script src="../../scripts/imperial-seo.js"></script><script src="../../scripts/imperial-fx.js"></script></body>
+    <a href="../../index.html" style="color:var(--gold); text-decoration:none;">RETURN</a>
+    <script src="../../scripts/imperial-seo.js"></script>
+    <script src="../../scripts/imperial-fx.String"></script>
+</body>
 </html>

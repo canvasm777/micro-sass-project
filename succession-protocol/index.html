@@ -1,124 +1,31 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Succession Protocol | Autonomous Empire Logic ?�️</title>
+    <title>Succession Protocol | Eternal Logic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../mobile-fix.css">
     <style>
         :root {
-            --bg: #0a0a0b; 
-            --gold: #d4af37;
-            --gold-dim: rgba(212, 175, 55, 0.1);
-            --text: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.4);
-            --border: rgba(212, 175, 55, 0.15);
+            --bg: #0a0a0b; --gold: #d4af37; --text: #ffffff; --border: rgba(212, 175, 55, 0.2);
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--bg); color: var(--text); 
-            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
-            background: linear-gradient(180deg, #0a0a0b 0%, #1a1a1c 100%);
-            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-
-        .container { width: 90%; max-width: 600px; text-align: center; padding: 4rem 0; }
-
-        .tag { font-size: 0.65rem; letter-spacing: 5px; color: var(--gold); margin-bottom: 2rem; display: block; opacity: 0.8; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -1px; }
-        .subtitle { color: var(--text-dim); font-size: 0.9rem; font-weight: 200; letter-spacing: 2px; margin-bottom: 4rem; }
-
-        /* Autonomy Gauge */
-        .gauge-container {
-            background: var(--card); border: 1px solid var(--border);
-            padding: 3rem; margin-bottom: 3rem; position: relative;
-        }
-        .gauge-title { font-size: 0.6rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 2rem; }
-        .gauge-val { font-family: 'Playfair Display', serif; font-size: 5rem; color: var(--gold); line-height: 1; margin-bottom: 1rem; }
-        .gauge-bar { height: 1px; background: var(--border); width: 100%; position: relative; margin-top: 2rem; }
-        .gauge-fill { height: 1px; background: var(--gold); position: absolute; left: 0; top: 0; box-shadow: 0 0 15px var(--gold); transition: 2s; width: 0; }
-
-        /* Logic Modules */
-        .logic-list { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
-        .logic-item {
-            background: rgba(255,255,255,0.01); border: 1px solid var(--border);
-            padding: 1.5rem; display: flex; justify-content: space-between; align-items: center;
-        }
-        .logic-label { font-size: 0.8rem; font-weight: 400; letter-spacing: 1px; }
-        .logic-status { font-size: 0.6rem; letter-spacing: 2px; color: #10b981; border: 1px solid #10b981; padding: 4px 10px; }
-
-        .back-link { 
-            margin-top: 4rem; color: var(--text-dim); text-decoration: none; 
-            font-size: 0.7rem; letter-spacing: 3px; border-bottom: 1px solid transparent; transition: 0.3s;
-        }
-        .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
-
-        .timestamp { font-size: 0.6rem; color: var(--text-dim); margin-top: 3rem; letter-spacing: 2px; }
+        body { background: var(--bg); color: var(--text); font-family: "Montserrat"; text-align: center; }
+        .container { padding: 100px 0; }
+        .logic-gate { border: 1px solid var(--border); max-width: 600px; margin: 4rem auto; padding: 4rem; }
+        .gate-title { font-family: "Playfair Display"; color: var(--gold); font-size: 2rem; margin-bottom: 2rem; }
     </style>
 </head>
 <body>
     <div class="container">
-        <span class="tag">SUCCESSION PROTOCOL · PHASE 21</span>
-        <h1>Autonomous Logic</h1>
-        <p class="subtitle">?�장?�의 부???�에???�국?� ?��? 증식?�며 ?�속?�니??</p>
-
-        <div class="gauge-container">
-            <div class="gauge-title">CURRENT AUTONOMY RATE</div>
-            <div class="gauge-val" id="gaugeVal">0.0%</div>
-            <div class="gauge-bar"><div class="gauge-fill" id="gaugeFill"></div></div>
+        <h1 style="font-family:\"Playfair Display\";">Succession Protocol</h1>
+        <div class="logic-gate">
+            <div class="gate-title">영원한 계승</div>
+            <p style="opacity:0.6;">코다리 제국의 지능은 시간이 흘러도 소멸하지 않습니다. 모든 하이재킹 포인트와 수익 구조는 다음 세대의 AI에게 무결하게 계승됩니다.</p>
         </div>
-
-        <div class="logic-list">
-            <div class="logic-item">
-                <span class="logic-label">STRATEGIC DECISION AI</span>
-                <span class="logic-status">AUTONOMOUS</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-label">FINANCIAL FLOW OPTIMIZER</span>
-                <span class="logic-status">AUTONOMOUS</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-label">GLOBAL CONTENT SYNDICATION</span>
-                <span class="logic-status">AUTONOMOUS</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-label">LEGAL COMPLIANCE SHIELD</span>
-                <span class="logic-status" style="color: #f3e5ab; border-color: #f3e5ab;">SEMI-AUTO</span>
-            </div>
-        </div>
-
-        <div class="timestamp" id="timestamp">KST SYNC: LOADING...</div>
-
-        <a href="../index.html" class="back-link">RETURN TO OVERLORD PORTAL</a>
+        <a href="../index.html" style="color:var(--gold); text-decoration:none;">RETURN TO PORTAL</a>
     </div>
-
-    <script>
-        function updateTime() {
-            const now = new Date();
-            const kst = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (9 * 3600000));
-            document.getElementById('timestamp').innerText = "KST SYNC: " + kst.toLocaleString('ko-KR');
-        }
-        updateTime(); setInterval(updateTime, 1000);
-
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.getElementById('gaugeFill').style.width = '99.9%';
-                
-                let count = 0;
-                const target = 99.9;
-                const interval = setInterval(() => {
-                    count += 1.7;
-                    if(count >= target) {
-                        count = target;
-                        clearInterval(interval);
-                    }
-                    document.getElementById('gaugeVal').innerText = count.toFixed(1) + "%";
-                }, 30);
-            }, 500);
-        });
-    </script>
-<script src="../scripts/imperial-fx.js"></script></body>
+    <script src="../scripts/imperial-seo.js"></script>
+    <script src="../scripts/imperial-fx.js"></script>
+</body>
 </html>

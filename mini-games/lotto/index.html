@@ -1,175 +1,38 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto-Spark | Imperial Fortune Forge ?°</title>
+    <title>Lotto-Spark | Fortune Algorithm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../mobile-fix.css">
     <style>
-        :root {
-            --bg: #0a0a0b; 
-            --gold: #d4af37;
-            --gold-dim: rgba(212, 175, 55, 0.2);
-            --text: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.5);
-            --card: rgba(255, 255, 255, 0.02);
-            --border: rgba(212, 175, 55, 0.15);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--bg); color: var(--text); 
-            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
-            background: radial-gradient(circle at 50% 120%, #1a1a1c 0%, #0a0a0b 70%);
-            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-
-        .container { width: 90%; max-width: 500px; text-align: center; padding: 3rem 0; }
-
-        .tag { font-size: 0.65rem; letter-spacing: 5px; color: var(--gold); margin-bottom: 1.5rem; display: block; opacity: 0.8; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -1px; }
-        .subtitle { color: var(--text-dim); font-size: 0.9rem; font-weight: 200; letter-spacing: 2px; margin-bottom: 3rem; }
-
-        /* Ball Container */
-        .number-box {
-            display: flex; justify-content: center; gap: 12px; margin-bottom: 3rem; min-height: 55px;
-            flex-wrap: wrap;
-        }
-        .ball {
-            width: 50px; height: 50px; background: transparent; border: 1px solid var(--gold);
-            color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 1.1rem; box-shadow: 0 0 15px var(--gold-dim);
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0;
-        }
-        @keyframes popIn {
-            from { transform: scale(0) translateY(20px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
-
-        /* Ad Box / Placeholder */
-        .ad-placeholder {
-            background: var(--card); border: 1px solid var(--border);
-            padding: 1.5rem; margin-bottom: 2rem; border-radius: 0;
-            font-size: 0.65rem; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase;
-        }
-
-        .action-btn {
-            width: 100%; background: var(--gold); color: black; border: none;
-            padding: 1.3rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 3px;
-            cursor: pointer; transition: 0.3s; margin-bottom: 1.5rem;
-        }
-        .action-btn:hover { background: #f3e5ab; transform: translateY(-2px); }
-
-        .status-msg { height: 1.5rem; font-size: 0.75rem; color: var(--gold); letter-spacing: 1px; margin-top: 1rem; opacity: 0.8; }
-        .timestamp { font-size: 0.6rem; color: var(--text-dim); margin-top: 2rem; letter-spacing: 2px; }
-
-        .back-link { 
-            margin-top: 3rem; color: var(--text-dim); text-decoration: none; 
-            font-size: 0.7rem; letter-spacing: 3px; border-bottom: 1px solid transparent; transition: 0.3s;
-        }
-        .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
-
-        /* Retention Card */
-        .retention-card {
-            background: var(--gold-dim); padding: 1rem; font-size: 0.7rem; 
-            letter-spacing: 1px; color: var(--gold); border: 1px solid var(--gold);
-            margin-top: 2rem;
-        }
+        :root { --bg: #0a0a0b; --gold: #d4af37; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: "Montserrat"; text-align: center; padding: 100px 0; }
+        .ball-container { display: flex; justify-content: center; gap: 1rem; margin: 4rem 0; }
+        .ball { width: 50px; height: 50px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-weight: 700; }
+        .action-btn { background: var(--gold); border: none; padding: 1rem 3rem; font-weight: 700; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <span class="tag">WEALTH FOUNDATION Â· PHASE 21</span>
-        <h1>Lotto-Spark</h1>
-        <p class="subtitle">AIê°€ ?°ì„±???°ì£¼???«ìë¡??œêµ­??ë¶€ë¥??•ì¥?˜ì‹­?œì˜¤.</p>
-
-        <!-- Top Ad Space -->
-        <div class="ad-placeholder">
-            <i class="fa-solid fa-rectangle-ad" style="margin-right: 10px;"></i>
-            Imperial Sponsor: ?‰ìš´???’ì—¬ì£¼ëŠ” ì§€?µê????œê³  ë³´ëŸ¬ê°€ê¸?        </div>
-
-        <div class="status-msg" id="statusMsg">ì¤€ë¹„ë˜?ˆìŠµ?ˆë‹¤, ?¬ì¥?? ?«¡</div>
-
-        <div class="number-box" id="numberBox">
-            <!-- Balls injected here -->
-        </div>
-
-        <button class="action-btn" id="forgeBtn" onclick="forgeNumbers()">FORGE NUMBERS</button>
-
-        <!-- Bottom Ad Space -->
-        <div class="ad-placeholder" style="margin-top: 1rem;">
-            [ ê´‘ê³  ] ?¬ì¥?˜ì˜ ?´ì„¸ë¥???…”ë¦¬í•˜ê²?ë°”ê¿”ì¤?ë¹„ì¦ˆ?ˆìŠ¤ ?€ë¡??”®
-        </div>
-
-        <div class="retention-card" id="retentionCard">
-            <i class="fa-solid fa-crown"></i> ?¤ëŠ˜???œêµ­ ë²ˆí˜¸ ?°ì„±ê¶? 3???¨ìŒ
-        </div>
-
-        <div class="timestamp" id="timestamp">KST SYNC: LOADING...</div>
-
-        <a href="../../index.html" class="back-link">RETURN TO OVERLORD PORTAL</a>
+    <h1 style="font-family:\"Playfair Display\";">Lotto-Spark</h1>
+    <p style="opacity:0.6;">ì œêµ­ì˜ ì•Œê³ ë¦¬ì¦˜ì´ ì˜ˆì¸¡í•œ ë‹¹ì‹ ì˜ í–‰ìš´.</p>
+    <div class="ball-container" id="ballContainer">
+        <div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div>
     </div>
-
+    <button class="action-btn" onclick="generateNumbers()">í–‰ìš´ ì—°ì„±</button>
+    <a href="../../index.html" style="display:block; margin-top:4rem; color:var(--gold); text-decoration:none;">RETURN</a>
     <script>
-        function updateTime() {
-            const now = new Date();
-            const kst = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (9 * 3600000));
-            document.getElementById('timestamp').innerText = "KST SYNC: " + kst.toLocaleString('ko-KR');
-        }
-        updateTime();
-        setInterval(updateTime, 1000);
-
-        function forgeNumbers() {
-            const container = document.getElementById('numberBox');
-            const msg = document.getElementById('statusMsg');
-            const btn = document.getElementById('forgeBtn');
-            
-            container.innerHTML = '';
-            msg.innerText = 'ì½”ë??¥ì´ ?œê³ ?ì„œ ?¹ì²¨??ê¸°ìš´??ì¶”ì¶œ ì¤?..';
-            btn.disabled = true;
-            btn.style.opacity = '0.5';
-
-            let numbers = [];
-            while(numbers.length < 6) {
-                let r = Math.floor(Math.random() * 45) + 1;
-                if(numbers.indexOf(r) === -1) numbers.push(r);
+        function generateNumbers() {
+            const container = document.getElementById(\"ballContainer\");
+            container.innerHTML = \"\";
+            for(let i=0; i<6; i++) {
+                const num = Math.floor(Math.random() * 45) + 1;
+                container.innerHTML += `<div class=\"ball\">${num}</div>`;
             }
-            numbers.sort((a,b) => a-b);
-
-            numbers.forEach((num, index) => {
-                setTimeout(() => {
-                    const ball = document.createElement('div');
-                    ball.className = 'ball';
-                    ball.innerText = num;
-                    container.appendChild(ball);
-                    
-                    if(index === 5) {
-                        btn.disabled = false;
-                        btn.style.opacity = '1';
-                        msg.innerText = '?œêµ­??ì§€?µì´ ?´ê¸´ 6ê°œì˜ ?«ìê°€ ?„ì„±?˜ì—ˆ?µë‹ˆ?? ?«¡';
-                        
-                        // Retention logic (mock)
-                        const count = parseInt(localStorage.getItem('lottoDaily') || 3);
-                        if(count > 0) {
-                            localStorage.setItem('lottoDaily', count - 1);
-                            document.getElementById('retentionCard').innerHTML = `<i class="fa-solid fa-crown"></i> ?¤ëŠ˜???œêµ­ ë²ˆí˜¸ ?°ì„±ê¶? ${count - 1}???¨ìŒ`;
-                        } else {
-                            document.getElementById('retentionCard').innerText = "?¤ëŠ˜???°ì„±ê¶Œì´ ?Œì§„?˜ì—ˆ?µë‹ˆ?? ?´ì¼ ?¤ì‹œ ?‰ì°¨?˜ì‹­?œì˜¤.";
-                            btn.innerText = "OUT OF ENERGY";
-                            btn.disabled = true;
-                        }
-                    }
-                }, index * 400);
-            });
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            console.log("%c[SYSTEM] Lotto-Spark ?”ì§„ ?™ê¸°???„ë£Œ.", "color: #d4af37; font-weight: bold;");
-            const visit = localStorage.getItem('lottoVisit') || 0;
-            localStorage.setItem('lottoVisit', parseInt(visit) + 1);
-        });
     </script>
-<script src="../../scripts/imperial-seo.js"></script><script src="../../scripts/imperial-fx.js"></script></body>
+    <script src="../../scripts/imperial-seo.js"></script>
+    <script src="../../scripts/imperial-fx.js"></script>
+</body>
 </html>

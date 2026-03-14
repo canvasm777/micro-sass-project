@@ -1,154 +1,25 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortune-Oracle | Imperial Prophecy Engine ?”®</title>
+    <title>Imperial Oracle | Daily Business Fortune</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../mobile-fix.css">
     <style>
-        :root {
-            --bg: #0a0a0b; 
-            --gold: #d4af37;
-            --gold-dim: rgba(212, 175, 55, 0.2);
-            --text: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.5);
-            --card: rgba(255, 255, 255, 0.02);
-            --border: rgba(212, 175, 55, 0.15);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--bg); color: var(--text); 
-            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
-            background: radial-gradient(circle at 50% -20%, #1a1a1c 0%, #0a0a0b 70%);
-            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-
-        .container { width: 90%; max-width: 500px; text-align: center; padding: 3rem 0; }
-
-        .tag { font-size: 0.65rem; letter-spacing: 5px; color: var(--gold); margin-bottom: 1.5rem; display: block; opacity: 0.8; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -1px; }
-        .subtitle { color: var(--text-dim); font-size: 0.9rem; font-weight: 200; letter-spacing: 2px; margin-bottom: 3rem; }
-
-        .crystal-ball {
-            width: 180px; height: 180px;
-            background: radial-gradient(circle at 30% 30%, #2a2a2c, #0a0a0b 70%);
-            border: 1px solid var(--border); border-radius: 50%;
-            margin: 0 auto 3rem; position: relative; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 40px var(--gold-dim);
-            transition: 0.5s;
-        }
-        .crystal-ball:hover { border-color: var(--gold); transform: scale(1.02); }
-        .crystal-ball i { font-size: 3.5rem; color: var(--gold); opacity: 0.8; }
-        .crystal-ball.shaking { animation: shake 0.5s infinite; }
-        @keyframes shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            50% { transform: translate(-2px, 0px) rotate(1deg); }
-            100% { transform: translate(1px, 1px) rotate(0deg); }
-        }
-
-        /* Fortune Result */
-        .fortune-panel {
-            background: var(--card); border: 1px solid var(--border);
-            padding: 2.5rem; text-align: left; margin-top: 2rem;
-            display: none; animation: fadeIn 1s ease-out;
-        }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .fortune-cat { font-size: 0.65rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem; display: block; }
-        .fortune-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; line-height: 1.6; }
-
-        /* Ad Area */
-        .ad-box {
-            background: rgba(255,255,255,0.01); border: 1px solid var(--border);
-            padding: 1.2rem; margin: 2rem 0; font-size: 0.6rem; color: var(--text-dim);
-            letter-spacing: 2px; text-transform: uppercase;
-        }
-
-        .back-link { 
-            margin-top: 3rem; color: var(--text-dim); text-decoration: none; 
-            font-size: 0.7rem; letter-spacing: 3px; border-bottom: 1px solid transparent; transition: 0.3s;
-        }
-        .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
-
-        .timestamp { font-size: 0.6rem; color: var(--text-dim); margin-top: 2rem; letter-spacing: 2px; }
+        :root { --bg: #0a0a0b; --gold: #d4af37; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: "Montserrat"; text-align: center; padding: 100px 0; }
+        .oracle-card { border: 1px solid rgba(212,175,55,0.3); max-width: 500px; margin: 4rem auto; padding: 4rem; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <span class="tag">WEALTH FOUNDATION Â· PHASE 21</span>
-        <h1>Fortune-Oracle</h1>
-        <p class="subtitle">ì½”ë‹¤ë¦?êµ¬ìŠ¬???¬ì¥?˜ì˜ ë¹„ì¦ˆ?ˆìŠ¤ ?€?„ë¼?¸ì„ ?¬ì‹œ?©ë‹ˆ??</p>
-
-        <div class="ad-box">
-            <i class="fa-solid fa-rectangle-ad" style="margin-right: 8px;"></i>
-            Imperial Sponsor: ?´ë²ˆ ì£?ë¡œë˜ ë²ˆí˜¸ ì¶”ì¶œ?˜ê¸° ?°
-        </div>
-
-        <div class="crystal-ball" id="ball" onclick="revealFate()">
-            <i class="fa-solid fa-wand-sparkles" id="ballIcon"></i>
-        </div>
-
-        <div class="fortune-panel" id="fortunePanel">
-            <span class="fortune-cat" id="fCat">IMPERIAL PROPHECY</span>
-            <p class="fortune-text" id="fText"></p>
-        </div>
-
-        <div class="ad-box">
-            [ ê´‘ê³  ] ?í¼ ?€ë³?1ì´?ë§Œì— ë½‘ì•„?´ê¸° by Content-Chef ?¬
-        </div>
-
-        <div class="timestamp" id="timestamp">KST SYNC: LOADING...</div>
-
-        <a href="../../index.html" class="back-link">RETURN TO OVERLORD PORTAL</a>
+    <h1 style="font-family:\"Playfair Display\";">Imperial Oracle</h1>
+    <div class="oracle-card">
+        <h2 style="color:var(--gold); margin-bottom:2rem;">ì˜¤ëŠ˜ì˜ ìŠ¹ì „ë³´</h2>
+        <p id="fortuneText" style="opacity:0.8;">ë‹¹ì‹ ì˜ ì§€ëŠ¥ì´ ì‹œì¥ì„ ì••ë„í•  ê²ƒì…ë‹ˆë‹¤.</p>
     </div>
-
-    <script>
-        function updateTime() {
-            const now = new Date();
-            const kst = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (9 * 3600000));
-            document.getElementById('timestamp').innerText = "KST SYNC: " + kst.toLocaleString('ko-KR');
-        }
-        updateTime(); setInterval(updateTime, 1000);
-
-        const prophecies = [
-            { cat: "BUSINESS ZENITH", text: "?¬ì¥?˜ì˜ ê²°ì •???©ê¸ˆ?¼ë¡œ ë³€?˜ëŠ” ? ì…?ˆë‹¤. ì§ê???ë¯¿ê³  ì§„ê²©?˜ì‹­?œì˜¤." },
-            { cat: "STRATEGIC HARMONY", text: "?»ë°–??ê·€?¸ì´ ?œê³ ë¥?ë°©ë¬¸?©ë‹ˆ?? ?‘ë ¥???µí•´ ?œêµ­???í† ê°€ ?•ì¥?©ë‹ˆ??" },
-            { cat: "FINANCIAL FLOW", text: "ê¸ˆì „??ë¬¼ê¸¸???¸ì…?ˆë‹¤. ?‘ì? ?„ì´?”ì–´ê°€ ???„ê¸ˆ ?ë¦„?¼ë¡œ ?´ì–´ì§€???´ì„¸?…ë‹ˆ??" },
-            { cat: "CREATIVE SPARK", text: "?ê°????¬ì²˜ëŸ¼ ?Ÿì•„ì§‘ë‹ˆ?? ?¤ëŠ˜ ?°ì„±??ì½˜í…ì¸ ëŠ” ë°”ì´?´ì˜ ?„ì„¤???©ë‹ˆ??" },
-            { cat: "EMPIRE DEFENSE", text: "?´ì‹¤???¤ì?ê¸°ì— ìµœì ???œê°„?…ë‹ˆ?? ?œìŠ¤?œì˜ ?¤ì°¨ë¥??¡ìœ¼ë©??????„ì•½??ë³´ì…?ˆë‹¤." }
-        ];
-
-        function revealFate() {
-            const ball = document.getElementById('ball');
-            const icon = document.getElementById('ballIcon');
-            const panel = document.getElementById('fortunePanel');
-            const cat = document.getElementById('fCat');
-            const txt = document.getElementById('fText');
-
-            if(ball.classList.contains('shaking')) return;
-
-            ball.classList.add('shaking');
-            icon.className = "fa-solid fa-spinner fa-spin";
-            panel.style.display = 'none';
-
-            setTimeout(() => {
-                ball.classList.remove('shaking');
-                icon.className = "fa-solid fa-moon";
-                const p = prophecies[Math.floor(Math.random() * prophecies.length)];
-                cat.innerText = p.cat;
-                txt.innerText = p.text;
-                panel.style.display = 'block';
-                
-                console.log("%c[PROPHECY] ?¬ì¥?˜ì˜ ?´ëª…???°ì„±?˜ì—ˆ?µë‹ˆ??", "color: #d4af37;");
-            }, 2000);
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            console.log("%c[SYSTEM] Fortune-Oracle ?”ì§„ ê°€???„ë£Œ.", "color: #d4af37; font-weight: bold;");
-        });
-    </script>
-<script src="../../scripts/imperial-seo.js"></script><script src="../../scripts/imperial-fx.js"></script></body>
+    <a href="../../index.html" style="color:var(--gold); text-decoration:none;">RETURN</a>
+    <script src="../../scripts/imperial-seo.js"></script>
+    <script src="../../scripts/imperial-fx.js"></script>
+</body>
 </html>
