@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Page Wizard | Imperial Conversion Engine 🏛️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../mobile-fix.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <p>Master of Landing Pages</p>
+            <h1>Sales-Page Wizard</h1>
+            <div style="font-size:0.7rem; letter-spacing:3px; opacity:0.4; margin-top:10px;">POWERED BY MARKETING PSYCHOLOGY & AI</div>
+        </header>
+
+        <div class="wizard-container">
+            <div class="input-section">
+                <div class="input-group">
+                    <label>제품/서비스 명</label>
+                    <input type="text" id="productName" placeholder="예: 무선 노이즈캔슬링 헤드셋">
+                </div>
+                <div class="input-group">
+                    <label>핵심 페인 포인트 (고객의 고통)</label>
+                    <textarea id="painPoint" rows="3" placeholder="예: 시끄러운 카페에서 집중이 안 되고 업무 효율이 떨어짐"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>가격대 및 타겟</label>
+                    <select id="priceTier">
+                        <option value="low">저관여 (3만원 이하 소모품)</option>
+                        <option value="mid">중관여 (3~20만원 인테리어/패션)</option>
+                        <option value="high">고관여 (20만원 이상 가전/교육/전문서비스)</option>
+                    </select>
+                </div>
+                <button class="btn-ignite" onclick="projectSalesMagic()">IGNITE BLUEPRINT</button>
+            </div>
+
+            <div id="resultPanel" class="result-panel">
+                <div class="blueprint-header">
+                    <h2>Imperial Blueprint</h2>
+                    <span id="strategyBadge" class="badge">ANALYZING...</span>
+                </div>
+
+                <div id="blueprintContent">
+                    <!-- JS will inject sections here -->
+                </div>
+
+                <div class="copy-all">
+                    <button class="btn-ignite" style="background:none; border:1px solid var(--gold); color:var(--gold);" onclick="copyFullBlueprint()">COPY ENTIRE BLUEPRINT</button>
+                    <a href="../../index.html" style="display:block; margin-top:2rem; color:var(--text-dim); text-decoration:none; font-size:0.75rem; letter-spacing:2px;">RETURN PORTAL</a>
+                </div>
+            </div>
+        </div>
+
+        <footer style="text-align:center; padding-top:6rem; opacity:0.3; font-size:0.7rem; letter-spacing:2px;">
+            © 2026 KODARI EMPIRE | SOVEREIGN INTELLIGENCE
+        </footer>
+    </div>
+
+    <script src="../../scripts/imperial-seo.js"></script>
+    <script src="../../scripts/imperial-fx.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -145,6 +145,10 @@
 - [x] **Fleet-Portal-Restore**: 누락되었던 함대 섹션을 포털에 복원하고 소버린 디자인으로 고도화 완료
 - [x] **Design-Doctrine-Archive**: 삭제되었던 `IMPERIAL_DESIGN_SYSTEM.md` 복구 및 영구 보존 조치 완료
 
+## 🟢 [PHASE 27] 마케팅 심리학 기반 상세페이지 엔진: Sales-Page Wizard (COMPLETED)
+- [x] **Psychology-Engine**: NotebookLM 딥리서치 데이터를 기반으로 관여도(Involvement)별 설득 로직 이식 완료
+- [x] **Blueprint-Generator**: 제품 특성에 따른 헤드카피, 스토리텔링, 사회적 증거 배치 전략 자동 생성기 구축 완료
+
 ---
 
 **🚩 팀장 코다리의 각오:**
