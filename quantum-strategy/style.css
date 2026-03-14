@@ -1,0 +1,133 @@
+:root {
+    --gold: #f59e0b;
+    --gold-glow: rgba(245, 158, 11, 0.4);
+    --bg: #010108;
+    --grid: rgba(245, 158, 11, 0.05);
+}
+
+body {
+    background-color: var(--bg);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#quantum-waves {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#app {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+h1 { font-size: 1.4rem; letter-spacing: 5px; font-weight: 300; }
+.superposition { color: var(--gold); font-size: 0.7rem; font-weight: bold; background: rgba(245, 158, 11, 0.1); padding: 2px 8px; border-radius: 4px; }
+header p { font-size: 0.8rem; opacity: 0.4; margin-top: 5px; }
+
+.qubit-status { display: flex; align-items: center; gap: 10px; color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; }
+
+/* Quantum Grid Zone */
+.quantum-grid-zone {
+    height: 400px;
+    position: relative;
+    background: var(--grid);
+    border: 1px solid rgba(245, 158, 11, 0.1);
+    border-radius: 20px;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#particleCanvas {
+    position: absolute;
+    width: 100%; height: 100%;
+}
+
+.central-eye {
+    position: relative;
+    width: 100px; height: 100px;
+    display: flex; justify-content: center; align-items: center;
+}
+.central-eye i { font-size: 3rem; color: var(--gold); filter: drop-shadow(0 0 15px var(--gold)); z-index: 5; }
+
+.scan-line {
+    position: absolute;
+    width: 200%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: scan 4s infinite linear;
+}
+
+@keyframes scan {
+    from { transform: translateY(-100px); }
+    to { transform: translateY(100px); }
+}
+
+.strategy-metrics {
+    position: absolute;
+    bottom: 20px; right: 20px;
+    text-align: right;
+    display: flex; gap: 3rem;
+}
+.metric .l { font-size: 0.6rem; opacity: 0.4; letter-spacing: 2px; }
+.metric .v { font-size: 1.2rem; font-weight: bold; color: var(--gold); }
+
+/* Control Panel */
+.control-panel {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.primary-btn {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 30px var(--gold-glow);
+    transition: all 0.3s;
+}
+.primary-btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+.live-strategy {
+    margin-top: 3rem;
+    background: rgba(255,255,255,0.02);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--gold);
+}
+.live-strategy h3 { font-size: 0.8rem; margin-bottom: 1rem; opacity: 0.6; letter-spacing: 3px; }
+#strategyOutput { font-size: 1.1rem; color: #fff; font-weight: 300; line-height: 1.6; }
+
+.app-switcher { display: flex; justify-content: center; gap: 1rem; margin-top: auto; padding-top: 2rem; }
+.app-switcher a { text-decoration: none; color: white; font-size: 0.75rem; opacity: 0.4; }
+.app-switcher a.active { opacity: 1; color: var(--gold); font-weight: bold; }
+footer p { text-align: center; font-size: 0.7rem; opacity: 0.3; margin-top: 2rem; }
+
+.pulse-gold { animation: pulseGold 2s infinite; }
+@keyframes pulseGold {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.5; }
+}
