@@ -22,10 +22,11 @@ img, video, canvas, svg {
 }
 
 /* KST Precision Word Break */
-body, p, h1, h2, h3, div {
-    word-break: keep-all;     /* 단어 단위로 줄바꿈 (조사 포함 자연스러운 끊김) */
-    overflow-wrap: anywhere;  /* 필요한 경우 어디서든 끊기도록 보완 */
-    line-break: strict;       /* 엄격한 줄바꿈 규칙 적용 */
+body, p, h1, h2, h3, h4, li, div, span, a {
+    word-break: keep-all !important;
+    overflow-wrap: normal !important; /* Do NOT break mid-word */
+    line-break: strict;
+    hyphens: none;
 }
 
 /* ===== MOBILE (768px 이하) ===== */
