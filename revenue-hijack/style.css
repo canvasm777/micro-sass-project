@@ -1,0 +1,141 @@
+:root {
+    --red: #ef4444;
+    --red-glow: rgba(239, 68, 68, 0.4);
+    --green: #22c55e;
+    --bg: #050101;
+    --iron: #1f2937;
+}
+
+body {
+    background-color: var(--bg);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#scanline {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.05));
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+#app {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+h1 { font-size: 1.5rem; letter-spacing: 4px; color: var(--red); }
+.warning-tag { background: var(--red); color: white; font-size: 0.6rem; padding: 2px 8px; border-radius: 2px; margin-left: 10px; vertical-align: top; }
+header p { font-size: 0.8rem; opacity: 0.5; margin-top: 5px; }
+
+.pulse-red { animation: pulseRed 1s infinite; color: var(--red); }
+@keyframes pulseRed {
+    0% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.5; transform: scale(1); }
+}
+
+/* Bridge Zone */
+.bridge-zone {
+    height: 350px;
+    position: relative;
+    border: 1px solid rgba(239, 68, 68, 0.1);
+    background: rgba(239, 68, 68, 0.02);
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.ext-source {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.6;
+}
+.ext-source i { font-size: 2.5rem; margin-bottom: 10px; }
+.ext-source span { font-size: 0.6rem; letter-spacing: 2px; }
+
+#source-google { top: 20%; left: 10%; }
+#source-meta { bottom: 20%; left: 10%; }
+#source-apple { top: 50%; left: 10%; transform: translateY(-50%); }
+
+.interceptor-core {
+    position: relative;
+    width: 150px; height: 150px;
+    display: flex; justify-content: center; align-items: center;
+}
+.interceptor-core i { font-size: 3rem; color: var(--red); z-index: 2; text-shadow: 0 0 20px var(--red); }
+
+.ring {
+    position: absolute;
+    border: 2px solid var(--red);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: ringBlast 3s infinite linear;
+}
+.r1 { width: 100%; height: 100%; }
+.r2 { width: 140%; height: 140%; animation-delay: 1.5s; }
+
+@keyframes ringBlast {
+    0% { transform: scale(0.5); opacity: 0.8; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+.target-msg {
+    position: absolute;
+    bottom: -40px;
+    font-size: 0.6rem;
+    color: var(--green);
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.empire-vault {
+    position: absolute;
+    right: 10%;
+    display: flex; flex-direction: column; align-items: center;
+    color: var(--green);
+}
+.empire-vault i { font-size: 4rem; margin-bottom: 15px; filter: drop-shadow(0 0 20px var(--green)); }
+.empire-vault span { font-size: 0.7rem; font-weight: bold; }
+
+/* Ingestion Packet */
+.packet {
+    position: absolute;
+    width: 12px; height: 12px;
+    background: var(--red);
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: 0 0 10px var(--red);
+}
+
+/* Ledger */
+.hijack-ledger { background: var(--iron); border-radius: 12px; padding: 2rem; }
+.stats-bar { display: flex; gap: 3rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 2rem; }
+.stat-item .l { font-size: 0.6rem; display: block; opacity: 0.5; margin-bottom: 5px; }
+.stat-item .v { font-size: 1.8rem; font-weight: bold; color: var(--green); }
+
+.hijack-ledger h3 { font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--red); text-transform: uppercase; }
+#logBody { height: 150px; overflow-y: hidden; font-size: 0.75rem; }
+.log-row { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px; }
+.target-name { color: var(--red); font-weight: bold; margin-right: 15px; }
+
+.app-switcher { display: flex; justify-content: center; gap: 1rem; margin-top: 3rem; }
+.app-switcher a { text-decoration: none; color: white; font-size: 0.75rem; opacity: 0.4; }
+.app-switcher a.active { opacity: 1; color: var(--red); font-weight: bold; }
+footer p { text-align: center; font-size: 0.7rem; opacity: 0.3; margin-top: 2rem; }
