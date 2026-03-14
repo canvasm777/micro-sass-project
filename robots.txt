@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
-Sitemap: https://your-kodari-universe-domain.com/sitemap.xml
+Disallow: /tmp/
+Disallow: /admin/
+Disallow: /sovereign-admin/
+
+Sitemap: https://kodari-universe.pages.dev/sitemap.xml

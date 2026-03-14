@@ -3,122 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNS-Spark | Imperial Marketing Influence ‚ú®</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SNS-Spark | Imperial Caption Alchemist ??/title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
-    <script src="../assets/scripts/ads-engine.js"></script>
-    <script src="../auth.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../mobile-fix.css">
+    <style>
+        :root {
+            --bg: #0a0a0b; 
+            --gold: #d4af37;
+            --gold-dim: rgba(212, 175, 55, 0.15);
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.5);
+            --card: rgba(255, 255, 255, 0.02);
+            --border: rgba(212, 175, 55, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); color: var(--text); 
+            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
+            background: radial-gradient(circle at 100% 100%, #1a1a1c 0%, #0a0a0b 70%);
+            min-height: 100vh;
+        }
+
+        .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 4rem 0; }
+
+        header { text-align: center; margin-bottom: 5rem; }
+        .tag { font-size: 0.65rem; letter-spacing: 5px; color: var(--gold); margin-bottom: 1.5rem; display: block; opacity: 0.8; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -1px; }
+
+        .workspace {
+            background: var(--card); border: 1px solid var(--border); padding: 3rem; 
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        label { font-size: 0.65rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem; display: block; text-transform: uppercase; }
+        textarea, select {
+            width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
+            color: white; padding: 1.5rem; font-family: 'Montserrat'; font-size: 0.9rem;
+            margin-bottom: 2rem; border-radius: 0; resize: none;
+        }
+
+        .action-btn {
+            width: 100%; background: var(--gold); color: black; border: none;
+            padding: 1.3rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 4px;
+            cursor: pointer; transition: 0.4s; margin-bottom: 1rem;
+        }
+        .action-btn:hover { background: #f3e5ab; transform: translateY(-3px); box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2); }
+
+        .result-panel { margin-top: 4rem; display: none; border-top: 1px solid var(--border); padding-top: 4rem; }
+        .caption-card {
+            background: rgba(255,255,255,0.01); border: 1px solid var(--border);
+            padding: 2rem; margin-bottom: 2rem; position: relative;
+        }
+        .caption-card:hover { border-color: var(--gold); }
+        .caption-text { font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem; white-space: pre-wrap; }
+        
+        .copy-btn {
+            background: transparent; border: 1px solid var(--gold); color: var(--gold);
+            padding: 0.6rem 1.2rem; font-size: 0.65rem; letter-spacing: 2px;
+            cursor: pointer; transition: 0.3s;
+        }
+        .copy-btn:hover { background: var(--gold); color: black; }
+
+        .back-link { 
+            display: block; margin-top: 5rem; text-align: center; color: var(--text-dim); text-decoration: none; 
+            font-size: 0.7rem; letter-spacing: 3px; border-bottom: 1px solid transparent; transition: 0.3s;
+        }
+        .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body>
-    <div id="app">
+    <div class="container">
         <header>
-            <div class="header-meta">
-                <div class="trending-badge">üî• VIRAL IN SEOUL</div>
-                <div class="credit-badge">ü™ô <span id="creditCount">5</span> IMPERIAL CREDITS</div>
-            </div>
-            <h1>SNS SPARK</h1>
-            <p>Ï†úÌíàÏùò ÏòÅÌòºÏùÑ ÏùΩÏñ¥ Î∞îÏù¥Îü¥ Ï∫°ÏÖòÏùÑ Ïó∞ÏÑ±ÌïòÎäî Ï†úÍµ≠ ÎßàÏºÄÌåÖ Ïó∞Í∏àÏà†</p>
+            <span class="tag">CAPTION ARCHITECTURE ¬∑ PHASE 22</span>
+            <h1>SNS-Spark</h1>
+            <p style="color: var(--text-dim); font-size: 0.9rem; font-weight: 200; letter-spacing: 2px; margin-top: 1rem;">ÏµúÍ≥†??ÏßÄ?±Îßå??Í∞ÄÏß????àÎäî ?åÍ¥¥??Ï∫°ÏÖò??ÎØ∏Ìïô.</p>
         </header>
 
-        <main>
-            <div id="loadingContainer" class="hidden" style="margin-bottom: 2rem;">
-                <div class="progress-bar-bg">
-                    <div id="progressBar" style="width: 0%;"></div>
-                </div>
-                <p style="font-size: 0.65rem; margin-top: 10px; opacity: 0.4; letter-spacing: 2px;">NEURAL SQUAD ANALYZING PIXELS...</p>
-            </div>
-
-            <div class="control-panel" style="margin-bottom: 2.5rem;">
-                <select id="toneSelect">
-                    <option value="Professional">Imperial Professional</option>
-                    <option value="Witty">Viral Witty</option>
-                    <option value="Emotional">Deep Emotional</option>
-                </select>
-            </div>
-
-            <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <h2 style="font-weight: 200; letter-spacing: 5px; margin-bottom: 0.5rem;">TRANSFORM IMAGE</h2>
-                <p style="opacity: 0.4; font-size: 0.8rem;">Drop product shot here to infuse marketing magic</p>
-                <input type="file" id="fileInput" accept="image/*" class="hidden">
-            </div>
+        <div class="workspace">
+            <label>ÎπÑÏ¶à?àÏä§ ?ÑÏù¥?îÏñ¥ (Core Message)</label>
+            <textarea id="ideaInput" placeholder="?? '??ÖîÎ¶?AI ÎπÑÏ¶à?àÏä§ ?Ä?úÎ≥¥?úÏùò Í∞ÄÏπ?" rows="4"></textarea>
             
-            <div id="imagePreview" class="hidden" style="margin-top: 2rem;">
-                <div class="preview-container">
-                    <img id="previewImg" src="">
-                    <div id="textOverlay">The Alchemists are weaving your caption...</div>
-                </div>
-                <button onclick="resetUpload()" style="background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--border); padding: 12px; border-radius: 12px; cursor: pointer; width: 100%; font-size: 0.8rem; letter-spacing: 2px;">RE-PROCESS NEW IMAGE</button>
-            </div>
-            
-            <div id="sparkHistory" class="hidden" style="margin-top: 4rem; text-align: left;">
-                <h4>MARKETING CHRONICLES</h4>
-                <div id="historyList"></div>
-            </div>
-            
-            <div class="caption-results" id="resultsArea">
-                <!-- Results will be injected here -->
-            </div>
-        </main>
+            <label>?òÎ•¥?åÎÇò (Persona Tone)</label>
+            <select id="toneSelect">
+                <option value="luxury">Quiet Luxury (Sophisticated)</option>
+                <option value="aggressive">Aggressive Growth (Direct)</option>
+                <option value="intellectual">Intellectual Rebel (Thought-provoking)</option>
+            </select>
 
-        <footer>
-            <div class="app-switcher">
-                <a href="../content-repurpose/index.html">Repurpose</a>
-                <a href="../sovereign-admin/index.html">Admin</a>
-                <a href="../index.html">Portal</a>
-                <a href="../interview-ace/index.html">Ace</a>
-                <a href="../sns-spark/index.html" class="active">Spark</a>
-            </div>
-            <p>¬© 2026 KODARI VIRAL INFLUENCE ENGINE</p>
-        </footer>
+            <button class="action-btn" onclick="igniteSpark()">IGNITE CAPTIONS</button>
+        </div>
+
+        <div id="resultPanel" class="result-panel">
+            <label>Imperial Captions (Hijack Ready)</label>
+            <div id="captionList"></div>
+        </div>
+
+        <a href="../index.html" class="back-link">RETURN TO OVERLORD PORTAL</a>
     </div>
-    
+
+    <script src="../scripts/imperial-seo.js"></script>
     <script>
-        // Simple mock logic for demonstration
-        const fileInput = document.getElementById('fileInput');
-        const uploadArea = document.getElementById('uploadArea');
-        const imagePreview = document.getElementById('imagePreview');
-        const previewImg = document.getElementById('previewImg');
-        const textOverlay = document.getElementById('textOverlay');
-        const loading = document.getElementById('loadingContainer');
-        const progressBar = document.getElementById('progressBar');
+        const CAPTION_TEMPLATES = {
+            luxury: [
+                "ÏßÑÏ†ï??Í∞ÄÏπòÎäî ???åÎ¶¨Î•??¥Ï? ?äÏäµ?àÎã§. Ïπ®Î¨µ ?çÏóê??Ï¶ùÎ™Ö??ÎøêÏûÖ?àÎã§. \n\n{idea}\n\nÍ≤∞Íµ≠ ?†ÌÉù?Ä ?πÏã†??Î™´ÏûÖ?àÎã§.\n?èõÔ∏?#ImperialMinimal #BusinessAesthetic",
+                "ÏßÄÎ¶ÑÍ∏∏?Ä ?ÜÏäµ?àÎã§. ?§ÏßÅ ?ïÍµê???§Í≥ÑÎßåÏù¥ Ï°¥Ïû¨?©Îãà?? \n\n{idea}\n\n?∞Î¶¨Í∞Ä ÎßåÎìú??Í≤ÉÏ? ?®Ïàú???ÑÍµ¨Í∞Ä ?ÑÎãà?? ?πÏã†???úÍµ≠?ÖÎãà??\n??#SovereignMindset #QuietLuxury"
+            ],
+            aggressive: [
+                "?®Îì§??'?¥ÎñªÍ≤?Î•?Î¨ºÏùÑ ?? ?∞Î¶¨??'?∏Ï†ú'Î•??ùÍ∞Å?©Îãà?? \n\n{idea}\n\nÏßÄÍ∏????úÍ∞Ñ?êÎèÑ ?πÏã†??Í≤ΩÏüÅ?êÎäî ?±Ïû•?òÍ≥† ?àÏäµ?àÎã§.\n?? #HyperGrowth #MarketDominance",
+                "?âÎ≤î?®Ï? Ï£ÑÏïÖ?ÖÎãà?? ?ïÎèÑ?ÅÏù∏ Í≤∞Í≥ºÎßåÏù¥ ?ïÎãµ?ÖÎãà?? \n\n{idea}\n\n?êÏùÑ Î∞îÍæ∏Í≥??∂Îã§Î©? Í∑úÏπô???àÎ°ú ?∞Ïã≠?úÏò§.\n?îÔ∏è #AggressiveGrowth #NoExcuses"
+            ],
+            intellectual: [
+                "?πÏã†??ÎØøÍ≥† ?àÎäî ÎπÑÏ¶à?àÏä§???ÅÏãù?Ä ?ÑÍµ¨??Í≤ÉÏûÖ?àÍπå? \n\n{idea}\n\nÎ™®ÎëêÍ∞Ä Í∞Ä??Î∞©Ìñ•???Ä?∏Ïùå??Íπ®Îã´???úÍ∞Ñ, ?úÍµ≠???¥Î¶Ω?àÎã§.\n?ß† #CriticalThinking #EmpireBuilding",
+                "?∞Ïù¥?∞Îäî Í±∞ÏßìÎßêÏùÑ ?òÏ? ?äÏ?Îß? ?¥ÏÑù?òÎäî ?êÎäî Í±∞Ïßì??ÎßêÌï©?àÎã§. \n\n{idea}\n\nÏßÑÏã§??Íø∞Îö´???àÏùÑ Í∞ÄÏßÄ??ãú??\n?èõÔ∏?#DeepAnalysis #AlgorithmArt"
+            ]
+        };
 
-        fileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    previewImg.src = event.target.result;
-                    uploadArea.classList.add('hidden');
-                    imagePreview.classList.remove('hidden');
-                    startProcessing();
-                };
-                reader.readAsDataURL(file);
+        function igniteSpark() {
+            const idea = document.getElementById('ideaInput').value;
+            if(!idea) {
+                alert("?¨Ïû•?? ?∞ÏÑ±??Î©îÏãúÏßÄÎ•??ÖÎ†•?¥Ï£º??ãú?? ?´°");
+                return;
             }
-        });
 
-        function startProcessing() {
-            loading.classList.remove('hidden');
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += 5;
-                progressBar.style.width = progress + '%';
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    loading.classList.add('hidden');
-                    textOverlay.innerText = "Ïù¥ Ï†úÌíàÏùò Î≥∏ÏßàÏùÄ 'ÏïïÎèÑÏ†ÅÏù∏ ÏÑ∏Î†®ÎØ∏'ÏûÖÎãàÎã§. Ï†úÍµ≠ ÏÇ¨Î†πÎ∂ÄÏóêÏÑú ÌäπÎ≥Ñ ÏäπÏù∏Îêú Ïù¥ Ï∫°ÏÖòÏúºÎ°ú ÎãπÏã†Ïùò ÌîºÎìúÎ•º ÏßÄÎ∞∞ÌïòÏã≠ÏãúÏò§. #KodariStyle #ImperialMarketing";
-                    textOverlay.classList.add('show');
-                }
-            }, 100);
+            const tone = document.getElementById('toneSelect').value;
+            const templates = CAPTION_TEMPLATES[tone];
+            const list = document.getElementById('captionList');
+            const panel = document.getElementById('resultPanel');
+
+            list.innerHTML = '';
+            panel.style.display = 'block';
+
+            templates.forEach((t, i) => {
+                const finalCaption = t.replace('{idea}', idea) + "\n\n(Generated via Kodari OS)";
+                const card = document.createElement('div');
+                card.className = 'caption-card';
+                card.style.animationDelay = `${i * 0.2}s`;
+                card.innerHTML = `
+                    <div class="caption-text">${finalCaption}</div>
+                    <button class="copy-btn" onclick="copyCaption(this)">COPY & HIJACK TRAFFIC</button>
+                `;
+                list.appendChild(card);
+            });
+
+            window.scrollTo({ top: panel.offsetTop - 100, behavior: 'smooth' });
         }
 
-        function resetUpload() {
-            uploadArea.classList.remove('hidden');
-            imagePreview.classList.add('hidden');
-            textOverlay.classList.remove('show');
-            progressBar.style.width = '0%';
+        function copyCaption(btn) {
+            const text = btn.previousElementSibling.innerText;
+            const viralUrl = "https://kodari-universe.pages.dev";
+            const payload = text + `\n\n?ëâ Discover the source: ${viralUrl}`;
+            
+            navigator.clipboard.writeText(payload).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = "HIJACKED! (COPIED)";
+                btn.style.borderColor = "#10b981";
+                btn.style.color = "#10b981";
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.borderColor = "var(--gold)";
+                    btn.style.color = "var(--gold)";
+                }, 2000);
+            });
         }
     </script>
-</body>
+<script src="../scripts/imperial-fx.js"></script></body>
 </html>

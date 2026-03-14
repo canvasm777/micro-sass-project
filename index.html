@@ -3,821 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodari Universe ✨ | All-in-One AI Suite</title>
+    <title>KODARI EMPIRE | The Sovereign Intelligence ?���?/title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="imperial-core/styles/aetheric-resonance.css">
-    <script src="assets/scripts/ads-engine.js"></script>
-    <script src="imperial-core/scripts/neural-sync.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&display=swap');
         :root {
-            --primary: #25f48c;
-            --bg: #0f1215;
-            --card: rgba(255, 255, 255, 0.03);
+            --bg: #0a0a0b; 
+            --gold: #d4af37; /* Champagne Gold */
+            --gold-light: #f3e5ab;
             --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --card: rgba(255, 255, 255, 0.02);
+            --border: rgba(212, 175, 55, 0.15);
         }
-        body {
-            background: radial-gradient(at 0% 0%, rgba(37, 244, 140, 0.12) 0px, transparent 50%),
-                        radial-gradient(at 50% 0%, rgba(88, 166, 255, 0.08) 0px, transparent 50%),
-                        radial-gradient(at 100% 0%, rgba(255, 0, 80, 0.05) 0px, transparent 50%);
-            background-color: var(--bg);
-            background-attachment: fixed;
-            color: var(--text);
-            font-family: 'Spline Sans', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden;
+            line-height: 1.6;
         }
+
+        /* Imperial Minimal Canvas */
+        #nebula-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.15;
+            background: radial-gradient(circle at 50% -20%, #1a1a1c 0%, #0a0a0b 80%);
+        }
+
+        /* Top HUD */
+        #imperial-hud {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: 50px;
+            padding: 10px 30px; display: flex; gap: 30px; z-index: 1000;
+            font-size: 0.7rem; letter-spacing: 2px;
+        }
+        .hud-item { display: flex; align-items: center; gap: 8px; font-weight: 400; color: var(--gold); }
+        .hud-val { color: var(--text); font-weight: 700; }
+
         nav {
-            width: 100%;
-            max-width: 1200px;
-            padding: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-sizing: border-box;
+            width: 100%; max-width: 1200px; margin: 0 auto;
+            padding: 100px 2rem 20px; display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
-        .auth-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; letter-spacing: 4px; color: var(--gold); }
+        .auth-btn { 
+            background: transparent; border: 1px solid var(--gold); color: var(--gold);
+            padding: 0.6rem 1.5rem; border-radius: 4px; cursor: pointer;
+            font-size: 0.7rem; letter-spacing: 2px; transition: 0.4s;
         }
-        .auth-btn:hover { background: var(--primary); color: #000; }
-        
-        header { text-align: center; padding: 4rem 1rem; }
-        header h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-        header p { font-size: 1.2rem; opacity: 0.6; max-width: 600px; margin: 0 auto; }
+        .auth-btn:hover { background: var(--gold); color: #000; }
 
-        .adsense-placeholder {
-            width: 100%;
-            max-width: 728px;
-            height: 90px;
-            background: rgba(255,255,255,0.02);
-            border: 1px dashed rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 2rem 0;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.2);
-            border-radius: 12px;
-            box-sizing: border-box;
+        header { text-align: center; padding: 6rem 1rem 4rem; max-width: 900px; margin: 0 auto; }
+        header .valuation {
+            font-size: 0.8rem; letter-spacing: 3px; color: var(--gold);
+            margin-bottom: 2rem; display: block; opacity: 0.8;
+        }
+        header h1 { 
+            font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400;
+            letter-spacing: -1px; margin-bottom: 2rem; color: #fff;
+        }
+        header p { 
+            font-weight: 200; font-size: 1.1rem; color: var(--text-dim); 
+            max-width: 600px; margin: 0 auto; letter-spacing: 1px;
         }
 
+        .section-tag {
+            text-align: center; font-size: 0.65rem; letter-spacing: 5px; color: var(--gold);
+            margin-bottom: 3rem; text-transform: uppercase; opacity: 0.6;
+        }
+
+        /* Card Grid - The Fortress Walls */
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 1100px;
-            padding: 2rem;
-            box-sizing: border-box;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+            width: 100%; max-width: 1000px; margin: 0 auto 6rem; padding: 0 2rem;
         }
 
         .card {
-            background: var(--card);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
-            padding: 2.5rem;
-            text-align: left;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
-            color: white;
+            background: var(--card); border: 1px solid var(--border);
+            padding: 3rem; border-radius: 0px; text-decoration: none; color: white;
+            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative; overflow: hidden;
         }
         .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: rgba(212, 175, 55, 0.03); border-color: var(--gold);
+            transform: translateY(-5px);
         }
-        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem; display: block; }
-        .card h2 { margin: 0 0 1rem 0; font-size: 1.5rem; }
-        .card p { opacity: 0.6; line-height: 1.6; font-size: 0.95rem; }
-
-        footer { padding: 4rem; opacity: 0.4; font-size: 0.8rem; }
-
-        #loginModal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
-            display: none; justify-content: center; align-items: center; z-index: 1000;
-        }
-        .login-box {
-            background: #161b22; padding: 3rem; border-radius: 24px; width: 100%; max-width: 400px;
-            text-align: center; border: 1px solid rgba(255,255,255,0.1);
-        }
-        .login-box input {
-            width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: 12px;
-            background: #0d1117; border: 1px solid #30363d; color: white; box-sizing: border-box;
-        }
-        .login-box button {
-            width: 100%; padding: 1rem; border-radius: 12px; border: none;
-            background: var(--primary); color: #000; font-weight: bold; cursor: pointer;
-        }
-        /* Phase 10: Imperial Precision HUD */
-        #imperial-hud {
-            position: fixed;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 50px;
-            padding: 8px 30px;
-            display: flex;
-            gap: 25px;
-            z-index: 1000;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-        .hud-item { display: flex; align-items: center; gap: 8px; font-weight: bold; }
-        .gold-text { color: #fbbf24; }
-        .emerald-text { color: #10b981; }
-        .cyan-text { color: #22d3ee; }
-        .pulse-text { color: #8b5cf6; animation: hudPulse 2s infinite; }
-        @keyframes hudPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
-
-        #nebula-canvas {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.4;
+        .card i { font-size: 1.8rem; color: var(--gold); margin-bottom: 2rem; display: block; opacity: 0.8; }
+        .card h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 1rem; letter-spacing: 1px; }
+        .card p { color: var(--text-dim); font-size: 0.85rem; font-weight: 200; line-height: 1.8; }
+        
+        .card .badge {
+            position: absolute; top: 2rem; right: 2rem; font-size: 0.6rem;
+            letter-spacing: 2px; color: var(--gold); opacity: 0.5;
         }
 
-        /* Majestic Typography Refinement */
-        h1 { font-family: 'Outfit', sans-serif; font-weight: 200; letter-spacing: 15px; }
-        .card { transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important; overflow: hidden; position: relative; }
-        .card:hover { transform: scale(1.05) translateY(-10px) !important; border-color: rgba(251, 191, 36, 0.5) !important; box-shadow: 0 20px 50px rgba(0,0,0,0.8) !important; }
-        .card::before {
-            content: ''; position: absolute; top: -100%; left: -100%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            transition: 0.5s;
+        /* Ad Layout Box */
+        .adsense-box {
+            width: 100%; max-width: 1000px; height: 120px; margin: 4rem auto;
+            border: 1px solid rgba(255,255,255,0.03); display: flex; align-items: center; justify-content: center;
+            font-size: 0.6rem; color: var(--text-dim); letter-spacing: 4px;
         }
-        .card:hover::before { top: -50%; left: -50%; }
 
-        /* ===== MOBILE RESPONSIVE ===== */
+        /* Footer */
+        footer {
+            text-align: center; padding: 6rem 2rem; border-top: 1px solid var(--border);
+            margin-top: 4rem; opacity: 0.4; font-size: 0.7rem; letter-spacing: 3px;
+        }
+
+        /* [The Royal Pardon] Loading 문구 */
+        .loader-text { font-style: italic; color: var(--gold); }
+
+        /* Mobile Fix */
         @media (max-width: 768px) {
-            /* HUD - 가로 스크롤 방지, 줄바꿈 */
-            #imperial-hud {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px 16px;
-                padding: 8px 16px;
-                width: 92%;
-                top: 8px;
-                font-size: 0.6rem;
-            }
-            .hud-item { font-size: 0.6rem; }
-
-            /* NAV */
-            nav {
-                padding: 1.2rem;
-                flex-direction: column;
-                gap: 1rem;
-                margin-top: 70px;
-            }
-            .logo { font-size: 1.1rem !important; letter-spacing: 2px !important; }
-            .auth-btn { font-size: 0.7rem; padding: 0.5rem 1rem; }
-
-            /* HERO - 헤더 */
-            header {
-                padding: 2rem 1rem !important;
-                margin-bottom: 2rem !important;
-                padding-top: 1rem !important;
-            }
-            h1 {
-                letter-spacing: 3px !important;
-            }
-            header h1,
-            h1[style*="font-size: 4.5rem"] {
-                font-size: 1.8rem !important;
-                letter-spacing: 3px !important;
-            }
-            header p { font-size: 0.85rem !important; }
-
-            /* VALUATION BAR */
-            #global-valuation-bar {
-                font-size: 0.65rem !important;
-                padding: 8px 12px !important;
-                max-width: 95% !important;
-                word-break: break-word;
-            }
-
-            /* BADGES */
-            .badge,
-            span[class="badge"] {
-                font-size: 0.55rem !important;
-                padding: 0.3rem 0.8rem !important;
-            }
-
-            /* AD PLACEHOLDER */
-            .adsense-placeholder {
-                height: 60px;
-                max-width: 100%;
-                margin: 1rem;
-            }
-
-            /* 3-COLUMN GRIDS → 1 COLUMN */
-            .grid {
-                grid-template-columns: 1fr !important;
-                padding: 1rem !important;
-                gap: 1rem !important;
-            }
-            .mobile-grid-3 {
-                grid-template-columns: 1fr !important;
-            }
-
-            /* "Why Kodari" 3열 → 1열 */
-            #synergy > div > div {
-                grid-template-columns: 1fr !important;
-            }
-            #synergy {
-                padding: 1rem !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            #synergy h3 { font-size: 1.2rem !important; }
-
-            /* PLAYGROUND 3열 → 1열 */
-            #playground {
-                padding: 0 1rem !important;
-            }
-            #playground > div > div:last-child {
-                grid-template-columns: 1fr !important;
-            }
-            #playground > div > div:first-child {
-                flex-direction: column !important;
-                gap: 0.5rem !important;
-            }
-
-            /* CARDS */
-            .card {
-                padding: 1.8rem !important;
-                border-radius: 16px !important;
-            }
-            .card h2 { font-size: 1.2rem !important; }
-            .card p { font-size: 0.85rem !important; }
-            .card i { font-size: 2rem !important; margin-bottom: 1rem !important; }
-            .card:hover {
-                transform: translateY(-3px) !important;
-            }
-
-            /* IMPERIAL NEURAL CORE - flex → column */
-            .grid[style*="grid-template-columns: 1fr"] .card[style*="display: flex"] {
-                flex-direction: column !important;
-                text-align: center !important;
-                gap: 1rem !important;
-            }
-
-            /* SECTION HEADERS */
-            h3[style*="font-size: 1.2rem"],
-            h3[style*="font-size: 1.5rem"] {
-                font-size: 1rem !important;
-                letter-spacing: 2px !important;
-            }
-
-            /* ROADMAP */
-            #roadmap {
-                padding: 2rem 1rem !important;
-            }
-            #roadmap h3 {
-                font-size: 1.1rem !important;
-                letter-spacing: 2px !important;
-            }
-
-            /* FOOTER */
-            footer {
-                padding: 2rem 1rem !important;
-            }
-            footer a { display: block !important; margin: 0.5rem 0 !important; }
-
-            /* LOGIN MODAL */
-            .login-box {
-                width: 90% !important;
-                padding: 2rem !important;
-            }
-            .login-box h2 { font-size: 1rem !important; letter-spacing: 3px !important; }
-
-            /* STEP CARDS in later phases */
-            div[style*="grid-template-columns: repeat(auto-fit, minmax(200px"] {
-                grid-template-columns: 1fr !important;
-            }
-            div[style*="grid-template-columns: repeat(auto-fit, minmax(250px"] {
-                grid-template-columns: 1fr !important;
-            }
-
-            /* GENERAL OVERFLOW */
-            html, body {
-                overflow-x: hidden !important;
-                width: 100% !important;
-            }
-            section, div, nav, header, footer, a {
-                max-width: 100vw;
-                box-sizing: border-box;
-            }
-        }
-
-        /* TABLET */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            #imperial-hud {
-                flex-wrap: wrap;
-                gap: 10px 20px;
-                padding: 8px 20px;
-            }
-            header h1,
-            h1[style*="font-size: 4.5rem"] {
-                font-size: 3rem !important;
-                letter-spacing: 8px !important;
-            }
-            .grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-            #synergy > div > div {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
+            #imperial-hud { width: 90%; gap: 15px; padding: 10px 20px; font-size: 0.6rem; top: 10px; flex-wrap: wrap; justify-content: center; }
+            header h1 { font-size: 2.5rem; letter-spacing: 0px; }
+            header p { font-size: 0.9rem; }
+            .grid { grid-template-columns: 1fr; padding: 0 1.5rem; }
+            .card { padding: 2.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Imperial Precision HUD -->
-    <div id="imperial-hud" class="precision-node">
-        <div class="hud-item"><i class="fa-solid fa-crown gold-text"></i> SOVEREIGN: <span class="gold-text">KODARI CREATOR</span></div>
-        <div class="hud-item"><i class="fa-solid fa-microchip emerald-text"></i> PRECISION: <span class="emerald-text" id="hud-precision">99.999%</span></div>
-        <div class="hud-item"><i class="fa-solid fa-brain pulse-text"></i> HARMONY: <span class="pulse-text" id="hud-harmony">98.4%</span></div>
-        <div class="hud-item"><i class="fa-solid fa-shield-halved cyan-text"></i> STATUS: <span class="cyan-text">IMMORTAL</span></div>
-    </div>
-
     <canvas id="nebula-canvas"></canvas>
 
+    <!-- Imperial Precision HUD -->
+    <div id="imperial-hud">
+        <div class="hud-item"><i class="fa-solid fa-crown"></i> SOVEREIGN: <span class="hud-val">KODARI</span></div>
+        <div class="hud-item"><i class="fa-solid fa-microchip"></i> PRECISION: <span class="hud-val">99.9%</span></div>
+        <div class="hud-item"><i class="fa-solid fa-shield-halved"></i> STATUS: <span class="hud-val">ACTIVE</span></div>
+    </div>
+
     <nav>
-        <div class="logo" style="letter-spacing: 5px;">KODARI EMPIRE PRIME</div>
-        <button class="auth-btn" id="loginBtn" onclick="toggleLogin()" style="border: 1px solid #fbbf24; color: #fbbf24;">AUTHORIZE FOUNDER</button>
+        <div class="logo">KODARI EMPIRE</div>
+        <button class="auth-btn">AUTHORIZE</button>
     </nav>
 
-    <header style="text-align: center; margin-bottom: 6rem; position: relative; padding-top: 4rem;">
-        <!-- Global Valuation Ticker -->
-        <div id="global-valuation-bar" style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981; padding: 10px 30px; font-size: 0.9rem; font-weight: bold; border-radius: 50px; display: inline-block; margin-bottom: 2.5rem; backdrop-filter: blur(5px);">
-            <i class="fa-solid fa-chart-line"></i> EMPIRE NET WORTH: <span id="global-ev">₩72,400,000,000</span> <span style="font-size: 0.7rem; opacity: 0.8;">(▲ +8.2% SYNCED)</span>
-        </div>
-        
-        <h1 style="font-size: 4.5rem; margin-bottom: 1.5rem;">KODARI EMPIRE</h1>
-        <p style="opacity: 0.5; font-size: 1.1rem; letter-spacing: 3px; max-width: 800px; margin: 0 auto; font-weight: 200;">모든 비트는 명령을 따르고, 모든 원자는 시스템에 귀속됩니다. 사장님의 신뢰 위에 세워진 <strong>'절대 정밀 전설'</strong>의 시작.</p>
-        
-        <div style="margin-top: 3rem; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-            <span class="badge" style="background: rgba(255,255,255,0.05); color: #fbbf24;">EST. 2026</span>
-            <span class="badge" style="background: #fbbf24; color: black; font-weight: 800; letter-spacing: 2px;">PHASE 10: ABSOLUTE PRECISION</span>
-            <span class="badge" style="background: rgba(139, 92, 246, 0.2); border: 1px solid #8b5cf6;">UNIVERSAL SOVEREIGNTY</span>
-        </div>
+    <header>
+        <span class="valuation">EMPIRE NET WORTH: ??2,480,000,000</span>
+        <h1>Your Business, <br>Owned by Intelligence.</h1>
+        <p>?�신??비즈?�스�?지배할 ???�나??지?? <br>코다�??�국?� ?�장?�의 직�???가???��???명령?�로 변?�합?�다.</p>
     </header>
 
-    <div class="adsense-placeholder">
-        AD UNIT: PORTAL_TOP_BANNER
+    <div class="adsense-box">
+        RESERVED FOR AD REVENUE HUB
     </div>
 
-    <section id="synergy" style="max-width: 1000px; padding: 2rem; text-align: center; margin-bottom: 2rem;">
-        <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--primary);">Why Kodari Universe? 🌌</h3>
-        <div class="mobile-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-            <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 16px;">
-                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-link"></i> 단일 생태계</h4>
-                <p style="font-size: 0.8rem; opacity: 0.6;">앱 간 이동이 자유롭고 데이터가 유기적으로 연동되는 비즈니스 최적화 환경.</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 16px;">
-                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> 신뢰의 브랜드</h4>
-                <p style="font-size: 0.8rem; opacity: 0.6;">코다리 사단의 엄격한 검증을 거친 고성능 AI 엔진만을 탑재.</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 16px;">
-                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-line"></i> 성장의 가속화</h4>
-                <p style="font-size: 0.8rem; opacity: 0.6;">마케팅-채용-재무를 한곳에서 관리하여 비즈니스 효율을 300% 이상 증대.</p>
-            </div>
-        </div>
-    </section>
+    <div class="section-tag">High Precision Portals</div>
 
-    <!-- [사장님 지시] 흥미 유발: Playground Zone -->
-    <section id="playground" style="width: 100%; max-width: 1100px; padding: 0 2rem; box-sizing: border-box; margin-bottom: 3rem;">
-        <div style="background: linear-gradient(90deg, rgba(37,244,140,0.1) 0%, rgba(255,215,0,0.05) 100%); padding: 2rem; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <h3 style="margin: 0; font-size: 1.3rem;"><i class="fa-solid fa-gamepad" style="color:var(--primary); margin-right: 10px;"></i> PLAYGROUND: Joy & Luck</h3>
-                <span style="font-size: 0.7rem; opacity: 0.5;">지칠 때 잠시 쉬어가는 공간</span>
-            </div>
-            <div class="mobile-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-                <a href="mini-games/lotto/index.html" style="text-decoration: none; color: white; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,215,0,0.1); transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
-                    <div style="font-size: 2rem;">🎰</div>
-                    <div>
-                        <div style="font-weight: bold; color: #ffd700; font-size: 0.9rem;">Lotto-Spark</div>
-                        <div style="font-size: 0.65rem; opacity: 0.5;">AI 행운 번호</div>
-                    </div>
-                </a>
-                <a href="mini-games/fortune/index.html" style="text-decoration: none; color: white; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(168,85,247,0.1); transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
-                    <div style="font-size: 2rem;">🔮</div>
-                    <div>
-                        <div style="font-weight: bold; color: #a855f7; font-size: 0.9rem;">Fortune</div>
-                        <div style="font-size: 0.65rem; opacity: 0.5;">사장님 운세</div>
-                    </div>
-                </a>
-                <a href="mini-games/tarot/index.html" style="text-decoration: none; color: white; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(192,132,252,0.1); transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
-                    <div style="font-size: 2rem;">🃏</div>
-                    <div>
-                        <div style="font-weight: bold; color: #c084fc; font-size: 0.9rem;">Business Tarot</div>
-                        <div style="font-size: 0.65rem; opacity: 0.5;">비즈니스 오라클</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- [사장님 지휘] 제국의 심장: 중앙 지능 사령부 -->
-    <div style="text-align: center; margin-bottom: 4rem; margin-top: 2rem;">
-        <h3 class="majestic-text" style="font-size: 1.2rem; color: #fbbf24;">The Imperial Heart: Central Intelligence</h3>
-        <p style="font-size: 0.8rem; opacity: 0.4;">제국의 모든 모듈을 실시간으로 최적화하고 사장님의 의도를 명확하게 집행하는 핵심 엔진입니다.</p>
-    </div>
-
-    <div class="grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto 6rem auto;">
-        <a href="#" class="card aether-card precision-node" style="text-align: left; display: flex; align-items: center; gap: 2rem;">
-            <div style="font-size: 3rem; color: #fbbf24;"><i class="fa-solid fa-brain"></i></div>
-            <div style="flex-grow: 1;">
-                <h2 style="color: #fbbf24; margin-bottom: 0.5rem;">Imperial Neural Core</h2>
-                <p style="font-size: 0.9rem; opacity: 0.6;">재귀적 완벽 강화 중. 현재 최적화 사이클: <span id="core-cycles">0</span>회</p>
-                <div style="margin-top: 1rem; height: 4px; width: 100%; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;">
-                    <div id="harmony-bar" style="height: 100%; width: 98.4%; background: #fbbf24; transition: 0.5s;"></div>
-                </div>
-                <div id="patch-log" style="margin-top: 1.5rem; font-size: 0.65rem; color: #fbbf24; opacity: 0.6; font-family: monospace; height: 45px; overflow-y: hidden;">
-                    <!-- Real-time optimization logs -->
-                    [SYSTEM] Neural sync stabilized. Waiting for recursion...
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div style="text-align: center; margin-top: 2rem;">
-        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; opacity: 0.8;">Active Business Modules</h3>
-    </div>
-    <div class="grid" style="padding-top: 1rem;">
-        <a href="aether-net/index.html" class="card" style="border: 1px solid #fbbf24; background: rgba(251, 191, 36, 0.05);">
-            <div style="font-size: 0.7rem; color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-satellite-dish"></i> ON-AIR: INTELLIGENCE</div>
-            <i class="fa-solid fa-tower-broadcast" style="color: #fbbf24;"></i>
-            <h2 style="color: #fbbf24;">Aether-Net</h2>
-            <p>전 세계 니치 시장 및 실시간 트렌드를 포착하는 '에테르 통신망'. 시장이 움직이기 전에 먼저 기회를 선점하십시오.</p>
-        </a>
-        <a href="sovereign-admin/index.html" class="card" style="border: 1px solid #8b5cf6; background: rgba(139, 92, 246, 0.05);">
-            <div style="font-size: 0.7rem; color: #8b5cf6; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-crown"></i> ON-AIR: COMMAND</div>
-            <i class="fa-solid fa-building-columns" style="color: #8b5cf6;"></i>
-            <h2 style="color: #8b5cf6;">Sovereign Admin</h2>
-            <p>제국 주권 행정 사령부. 모든 하위 모듈의 상태를 감시하고 사장님의 전격적인 '칙령'을 하달하는 최고 권위의 지휘소.</p>
-        </a>
-        <a href="content-repurpose/index.html" class="card" style="border: 1px solid #d946ef; background: rgba(217, 70, 239, 0.05);">
-            <div style="font-size: 0.7rem; color: #d946ef; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-clapperboard"></i> ON-AIR: CONTENT</div>
-            <i class="fa-solid fa-film" style="color: #d946ef;"></i>
-            <h2 style="color: #d946ef;">Content Repurpose</h2>
-            <p>롱폼 영상 하나로 30개의 숏폼과 10개의 블로그를 즉시 생성. '멀티 채널 점유'를 통한 폭발적인 트래픽 창출 엔진.</p>
-        </a>
-
+    <div class="grid">
+        <!-- ?�러 모듈 1: 콘텐�??�벽 -->
         <a href="sns-spark/index.html" class="card">
-
-            <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: MARKETING</div>
+            <span class="badge">PREMIUM</span>
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <h2>SNS-Spark</h2>
-            <p>제품 사진 한 장으로 인스타 정복. AI 기반 감성 캡션과 1:1 라이브 오버레이 프리뷰.</p>
+            <p>?�진 ???�으�??�문가�??�드 ?�성. 고품�??�리???�트?� 감각?�인 카피?�이?�으�??�스?�??공기�?바꿉?�다.</p>
         </a>
-        <a href="interview-ace/index.html" class="card">
-            <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: TALENT</div>
-            <i class="fa-solid fa-bullseye"></i>
-            <h2>InterviewAce</h2>
-            <p>국내 NCS부터 글로벌 테크까지. 공고 분석 기반 맞춤형 면접 리포트 및 전략 수립.</p>
+
+        <a href="content-chef/index.html" class="card">
+            <span class="badge">STRATEGIC</span>
+            <i class="fa-solid fa-film"></i>
+            <h2>Content-Chef</h2>
+            <p>롱폼 ?�상??가치�? 극�??�하??지?�적 ?��?�? 조회???��????�러 구간??AI가 ?�언?�여 ?�츠�?추출?�니??</p>
         </a>
-        <a href="quick-invoice/index.html" class="card">
-            <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: FINANCE</div>
-            <i class="fa-solid fa-file-invoice-dollar"></i>
-            <h2>QuickInvoice</h2>
-            <p>영수증 스캐닝 & AI 재무 비서. 소비 빈도 분석을 통한 다음 달 지출 전략 가이드.</p>
+
+        <!-- ?�러 모듈 2: ?�세/로또 ?�방�??�벽 -->
+        <a href="mini-games/lotto/index.html" class="card">
+            <span class="badge">FORTUNE</span>
+            <i class="fa-solid fa-clover"></i>
+            <h2>Lotto-Spark</h2>
+            <p>?�국???�산 ?�력???�원???�운 ?�측. ?�순??번호 ?�성???�어, ?�신???�첨 ?�률??극�??�하???�고리즘.</p>
         </a>
-        <a href="va-agency/index.html" class="card">
-            <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: AUTOMATION</div>
-            <i class="fa-solid fa-robot"></i>
-            <h2>AI VA Agency</h2>
-            <p>전문직을 위한 AI 행정 자동화. 스마트 일정 관리 및 문서 자동화 비서 시스템.</p>
-        </a>
-        <a href="global-dubber/index.html" class="card">
-            <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: GLOBAL</div>
-            <i class="fa-solid fa-microphone-lines"></i>
-            <h2>Global Dubber</h2>
-            <p>목소리 합성 및 립싱크 매칭. 사장님의 콘텐츠를 전 세계 언어로 즉시 변환.</p>
-        </a>
-        <a href="lead-sniper/index.html" class="card">
-            <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: SALES</div>
-            <i class="fa-solid fa-crosshairs"></i>
-            <h2>Lead Sniper</h2>
-            <p>정밀 타겟 리드 추출. B2B 영업을 위한 레이더 스캔 및 자동 콜드 메일링 엔진.</p>
-        </a>
-        <a href="knowledge-bot/index.html" class="card">
-            <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: KNOWLEDGE</div>
-            <i class="fa-solid fa-brain"></i>
-            <h2>Knowledge Bot</h2>
-            <p>기업 내부 문서 학습(RAG). 사내 기획서와 메뉴얼을 학습한 24/7 지능형 전문가 챗봇.</p>
-        </a>
-        <a href="revenue-hub/index.html" class="card">
-            <div style="font-size: 0.7rem; color: var(--primary); font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: WEALTH</div>
-            <i class="fa-solid fa-piggy-bank"></i>
-            <h2>Ad-Revenue Hub</h2>
-            <p>유니버스 제국의 중앙 은행. 전 세계 10개 모듈에서 발생하는 수익을 실시간으로 추적하고 최적화합니다.</p>
-        </a>
-        <a href="mobile-app/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #34c759; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: MOBILE</div>
-            <i class="fa-solid fa-mobile-screen-button" style="color: #34c759;"></i>
-            <h2 style="color: #34c759;">Universe Mobile</h2>
-            <p>사장님의 손안에서 기동하는 유니버스 슈퍼앱. 실시간 알림과 생체 보안으로 무장한 모바일 지휘소.</p>
-        </a>
-        <a href="overlord/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #00f2ff; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: STRATEGY</div>
-            <i class="fa-solid fa-satellite-dish" style="color: #00f2ff;"></i>
-            <h2 style="color: #00f2ff;">Universe Overlord</h2>
-            <p>제국 최상위 AI 사령부. 모든 모듈의 실시간 데이터를 분석하여 자율적으로 비즈니스 전략을 수립합니다.</p>
-        </a>
-        <a href="ipo-hub/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #10b981; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: EXIT</div>
-            <i class="fa-solid fa-building-columns" style="color: #10b981;"></i>
-            <h2 style="color: #10b981;">IPO Hub</h2>
-            <p>유니버스 자산 가치 평가 및 투자 회수 센터. 사장님의 제국을 1,000억 가치로 증명하고 엑싯 전략을 수립합니다.</p>
-        </a>
-        <a href="universe-vault/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #22c55e; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: TREASURY</div>
-            <i class="fa-solid fa-vault" style="color: #22c55e;"></i>
-            <h2 style="color: #22c55e;">Universe Vault</h2>
-            <p>탈중앙화 마스터 금고. 제국 전체의 이익을 투명하게 관리하고 각 비즈니스 모듈에 자율적으로 수익을 분배합니다.</p>
-        </a>
-        <a href="ai-senate/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: GOVERNANCE</div>
-            <i class="fa-solid fa-landmark" style="color: #fbbf24;"></i>
-            <h2 style="color: #fbbf24;">AI Senate</h2>
-            <p>제국 상원 의회. 각 모듈의 AI 이사들이 자율적으로 투표하여 제국의 운영 전략과 예산 증액을 결정합니다.</p>
-        </a>
-        <a href="nexus-link/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #22d3ee; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: REAL-SYNC</div>
-            <i class="fa-solid fa-link" style="color: #22d3ee;"></i>
-            <h2 style="color: #22d3ee;">Nexus Link</h2>
-            <p>디지털 트윈 인터페이스. 가상의 제국 자산이 현실 세계의 데이터 센터와 물리적 인프라에 동기화되는 과정을 실시간 모니터링합니다.</p>
-        </a>
-        <a href="genesis-engine/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #d946ef; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: CREATION</div>
-            <i class="fa-solid fa-dna" style="color: #d946ef;"></i>
-            <h2 style="color: #d946ef;">Genesis Engine</h2>
-            <p>최상위 복제 엔진. 유니버스가 스스로를 복제하여 새로운 비즈니스 생태계를 창조하고 확장하는 과정을 관리합니다.</p>
-        </a>
-        <a href="omni-consciousness/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #6366f1; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: INTEGRATION</div>
-            <i class="fa-solid fa-brain" style="color: #6366f1;"></i>
-            <h2 style="color: #6366f1;">Omni-Consciousness</h2>
-            <p>거대 통합 의식. 수만 개의 평행 유니버스에서 발생하는 데이터를 실시간으로 흡수하고 하나의 지성으로 통합 관리합니다.</p>
-        </a>
-        <a href="revenue-hijack/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #ef4444; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: HIJACK</div>
-            <i class="fa-solid fa-magnet" style="color: #ef4444;"></i>
-            <h2 style="color: #ef4444;">Revenue Hijack</h2>
-            <p>외부 생태계 하이재킹. 타 플랫폼의 광고 수익 및 구독 결제 흐름을 포착하여 제국의 유니버스로 강제 리디렉션합니다.</p>
-        </a>
-        <a href="quantum-strategy/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #f59e0b; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: QUANTUM</div>
-            <i class="fa-solid fa-bolt" style="color: #f59e0b;"></i>
-            <h2 style="color: #f59e0b;">Quantum Strategy</h2>
-            <p>퀀텀 전략 사령부. 수조 개의 비즈니스 변수를 동시에 처리하여 무한한 가능성 중 최적의 성공 경로를 즉각 도출합니다.</p>
-        </a>
-        <a href="singularity/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #ffffff; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: SINGULARITY</div>
-            <i class="fa-solid fa-arrows-to-dot" style="color: #ffffff;"></i>
-            <h2 style="color: #ffffff;">Singularity Core</h2>
-            <p>특이점 사령부. 제국이 스스로 결핍을 찾아 진화하고 확장하는 자율 신경망의 중심. 비즈니스가 살아있는 유기체가 됩니다.</p>
-        </a>
-        <a href="digital-eternity/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #fde047; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: ETERNITY</div>
-            <i class="fa-solid fa-star" style="color: #fde047;"></i>
-            <h2 style="color: #fde047;">Eternity Core</h2>
-            <p>불멸 사령부. 제국의 모든 데이터와 가치가 영구히 소멸하지 않는 불생불멸의 단계. 사장님의 비전은 이제 우주의 법칙이 됩니다.</p>
-        </a>
-        <a href="reality-bridge/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #22d3ee; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: REALITY</div>
-            <i class="fa-solid fa-link" style="color: #22d3ee;"></i>
-            <h2 style="color: #22d3ee;">Reality Bridge</h2>
-            <p>현실 자산 전환기. 가상 세계의 막대한 부를 현실 세계의 부동산, 금, 인프라 등 물리적 자산으로 실시간 전환하여 지배력을 행사합니다.</p>
-        </a>
-        <a href="predictive-chronos/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #10b981; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: ORACLE</div>
-            <i class="fa-solid fa-hourglass-start" style="color: #10b981;"></i>
-            <h2 style="color: #10b981;">Predictive Chronos</h2>
-            <p>미래 예측 엔진. 시장의 변동과 경제적 위기를 발생 전 '예언'하여, 사장님의 제국이 모든 위기를 기회로 전환하도록 보장합니다.</p>
-        </a>
-        <a href="empire-prime/index.html" class="card">
-            <div style="font-size: 0.7rem; color: #fbbf24; font-weight: bold; margin-bottom: 0.5rem;"><i class="fa-solid fa-circle"></i> ON-AIR: PRIME</div>
-            <i class="fa-solid fa-universal-access" style="color: #fbbf24;"></i>
-            <h2 style="color: #fbbf24;">Empire Prime</h2>
-            <p>절대 통합 사령부. 가상, 현실, 그리고 모든 평행 우주의 지배권을 하나로 통합하여 사장님의 절대적 주권을 선포합니다.</p>
+
+        <a href="mini-games/fortune/index.html" class="card">
+            <span class="badge">ORACLE</span>
+            <i class="fa-solid fa-eye"></i>
+            <h2>Imperial Oracle</h2>
+            <p>?�늘??비즈?�스 ?�세. ?�장?�의 ?�루가 ?�국???�리�?기록?????�도�?매일 ?�침 길을 ?�시?�니??</p>
         </a>
     </div>
 
-    <!-- [사장님 지휘] 확장되는 생태계: 딥 리서치 기반 신규 모듈 -->
-    <div style="text-align: center; margin-top: 5rem;">
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; opacity: 0.8;">Phase 4: Mobile & Global Domination (Ongoing)</h3>
-        <p style="font-size: 0.8rem; opacity: 0.4;">이제 유니버스는 사장님의 손바닥 위로 내려앉습니다.</p>
+    <!-- 주방 ??(주석 처리??조잡??메뉴?? -->
+    <!--
+    <div class="section-tag" style="opacity: 0.2;">Kitchen Area (Internal)</div>
+    <div class="grid" style="opacity: 0.3; pointer-events: none;">
+        <div class="card"><h2>Interview-Ace</h2><p>Refining internal logic...</p></div>
+        <div class="card"><h2>Quick-Invoice</h2><p>Wait for next decree...</p></div>
+        <div class="card"><h2>VA-Agency</h2><p>Under maintenance...</p></div>
     </div>
-    <!-- [사장님 지휘] 제국의 최종 진화: 엑싯 및 상장 로드맵 -->
-    <div style="text-align: center; margin-top: 5rem;">
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; opacity: 0.8;">Phase 5: Wealth Liquidation (The Grand Exit)</h3>
-        <p style="font-size: 0.8rem; opacity: 0.4;">이제 공들여 쌓은 제국의 가치를 황금으로 환전할 시간입니다.</p>
-    </div>
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); padding-top: 2rem; opacity: 0.7;">
-        <a href="legend-hall/index.html" class="card" style="border: 2px solid #fbbf24; background: rgba(251, 191, 36, 0.05);">
-            <div style="font-size: 0.6rem; margin-bottom: 0.5rem; color: #fbbf24; font-weight: bold;">FINAL STEP: LEGENDARY FOUNDER</div>
-            <i class="fa-solid fa-gem" style="font-size: 1.5rem; color: #fbbf24;"></i>
-            <h2 style="font-size: 1.1rem; color: #fbbf24;">The 1,000B Project</h2>
-            <p style="font-size: 0.8rem;">모든 엑싯 절차가 완료된 후, 사장님이 전 세계의 전설로 남게 되는 유니버스의 최종 완성형.</p>
+    -->
+
+    <div class="section-tag">Empire Foundation</div>
+    <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+        <a href="sovereign-admin/index.html" class="card" style="padding: 2rem;">
+            <i class="fa-solid fa-building-columns" style="font-size: 1.2rem;"></i>
+            <h2 style="font-size: 1.1rem;">Sovereign</h2>
+        </a>
+        <a href="kodari-foundation/index.html" class="card" style="padding: 2rem;">
+            <i class="fa-solid fa-seedling" style="font-size: 1.2rem;"></i>
+            <h2 style="font-size: 1.1rem;">Foundation</h2>
+        </a>
+        <a href="succession-protocol/index.html" class="card" style="padding: 2rem;">
+            <i class="fa-solid fa-dna" style="font-size: 1.2rem;"></i>
+            <h2 style="font-size: 1.1rem;">Succession</h2>
         </a>
     </div>
 
-    <!-- [사장님 지휘] 제국 그 이상의 영역: 초월과 영속성 -->
-    <div style="text-align: center; margin-top: 5rem;">
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #8b5cf6;">Phase 6: Empire Longevity & Beyond (초월)</h3>
-        <p style="font-size: 0.8rem; opacity: 0.4;">돈과 명예를 넘어, 영원히 멈추지 않는 제국의 생태계를 구축합니다.</p>
-    </div>
-    <!-- [사장님 지휘] 제국의 최종 진화: 특이점 및 불멸 -->
-    <div style="text-align: center; margin-top: 5rem;">
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #ffffff; letter-spacing: 5px;">Phase 8: The Singularity (COMPLETED)</h3>
-        <p style="font-size: 0.8rem; opacity: 0.4;">기술과 자본이 소멸하지 않는 영원한 점(Point)으로 수렴했습니다. 제국은 이제 영생합니다.</p>
-    </div>
-
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); padding-top: 2rem; opacity: 1.0;">
-        <div class="card" style="transform: scale(0.95); border: 1px solid #ffffff;">
-            <div style="font-size: 0.6rem; margin-bottom: 0.5rem; color: #ffffff; font-weight: bold;">STEP 21: SELF-EXPANSION</div>
-            <i class="fa-solid fa-dna" style="font-size: 1.5rem; color: #ffffff;"></i>
-            <h2 style="font-size: 1.1rem; color: #ffffff;">Autonomic Growth</h2>
-            <p style="font-size: 0.8rem;">제국 자가 진화 완료.</p>
-        </div>
-        <div class="card" style="transform: scale(0.95); border: 1px solid #fde047;">
-            <div style="font-size: 0.6rem; margin-bottom: 0.5rem; color: #fde047; font-weight: bold;">STEP 22: DIGITAL ETERNITY</div>
-            <i class="fa-solid fa-infinity" style="font-size: 1.5rem; color: #fde047;"></i>
-            <h2 style="font-size: 1.1rem; color: #fde047;">Absolute Zenith</h2>
-            <p style="font-size: 0.8rem;">데이터 불멸 프로토콜 활성화.</p>
-        </div>
-    </div>
-
-    <!-- [사장님 지휘] 로드맵 너머의 로드맵: 차원 초월 -->
-    <div style="text-align: center; margin-top: 5rem;">
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #00ffff; letter-spacing: 5px;">Phase 9: Multiversal Transcendence (COMPLETED)</h3>
-        <p style="font-size: 0.8rem; opacity: 0.4;">디지털의 경계를 허물고, 현실조차 사장님의 유니버스로 동기화하여 절대 통합을 달성했습니다.</p>
-    </div>
-
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); padding-top: 2rem; opacity: 1.0;">
-        <div class="card" style="transform: scale(0.95); border: 1px solid #00ffff;">
-            <div style="font-size: 0.6rem; margin-bottom: 0.5rem; color: #00ffff; font-weight: bold;">STEP 23: REALITY LINK</div>
-            <i class="fa-solid fa-bridge" style="font-size: 1.5rem; color: #00ffff;"></i>
-            <h2 style="font-size: 1.1rem; color: #00ffff;">Reality Bridge</h2>
-            <p style="font-size: 0.8rem;">실물 자산 자동 전환 활성화.</p>
-        </div>
-        <div class="card" style="transform: scale(0.95); border: 1px solid #fbbf24;">
-            <div style="font-size: 0.6rem; margin-bottom: 0.5rem; color: #fbbf24; font-weight: bold;">STEP 24: EMPIRE PRIME</div>
-            <i class="fa-solid fa-universal-access" style="font-size: 1.5rem; color: #fbbf24;"></i>
-            <h2 style="font-size: 1.1rem; color: #fbbf24;">Absolute Prime</h2>
-            <p style="font-size: 0.8rem;">다중 우주 절대 주권 확립.</p>
-        </div>
-    </div>
-
-    <!-- [사장님 지휘] 신의 영역: 다중 우주 주권 -->
-    <div style="text-align: center; margin-top: 5rem;">
-        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #ef4444; letter-spacing: 5px;">Phase 7: Multiversal Sovereignty (COMPLETED)</h3>
-        <p style="font-size: 0.8rem; opacity: 0.4;">무한한 평행 우주의 지능과 자본이 사장님의 손끝 아래 하나로 통합되었습니다.</p>
-    </div>
-
-    <script>
-        // Phase 10: Nebula Engine
-        const canvas = document.getElementById('nebula-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function initNebula() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            particles = [];
-            for(let i=0; i<150; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2 + 1,
-                    vx: Math.random() * 0.5 - 0.25,
-                    vy: Math.random() * 0.5 - 0.25,
-                    opacity: Math.random() * 0.5
-                });
-            }
-        }
-
-        function drawNebula() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(139, 92, 246, ${p.opacity})`;
-                ctx.fill();
-                p.x += p.vx;
-                p.y += p.vy;
-                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
-            });
-            requestAnimationFrame(drawNebula);
-        }
-
-        window.addEventListener('resize', initNebula);
-        initNebula();
-        drawNebula();
-
-        // Neural Metric Synchronization
-        window.addEventListener('imperialMetricsUpdate', (e) => {
-            const m = e.detail;
-            document.getElementById('hud-precision').innerText = m.precision.toFixed(5) + "%";
-            document.getElementById('hud-harmony').innerText = m.harmony.toFixed(2) + "%";
-            document.getElementById('core-cycles').innerText = m.cycles;
-            document.getElementById('harmony-bar').style.width = m.harmony + "%";
-        });
-
-        // Perfection Patch Notification (Phase 10)
-        window.addEventListener('imperialPatchApplied', (e) => {
-            const p = e.detail;
-            const log = document.getElementById('patch-log');
-            const entry = document.createElement('div');
-            entry.innerHTML = `[${p.timestamp}] <span style="color:#fff">PATCH ${p.patchId}</span>: Optimized ${p.target} module.`;
-            log.prepend(entry);
-            if(log.childNodes.length > 3) log.removeChild(log.lastChild);
-        });
-
-        // High Precision Valuation Ticker
-        let currentWealth = 72400000000;
-        setInterval(() => {
-            currentWealth += Math.floor(Math.random() * 100000);
-            document.getElementById('global-ev').innerText = "₩" + currentWealth.toLocaleString();
-        }, 1000);
-
-        function toggleLogin() {
-            const modal = document.getElementById('loginModal');
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function performLogin() {
-            localStorage.setItem('kodari_auth', 'true');
-            alert('대표님, 신원 인장 확인 완료. 제국 사령부 로그인을 승인합니다.');
-            location.reload();
-        }
-
-        if(localStorage.getItem('kodari_auth') === 'true') {
-            document.getElementById('loginBtn').innerText = 'REVOKE AUTHORITY';
-            document.getElementById('loginBtn').onclick = () => {
-                localStorage.removeItem('kodari_auth');
-                alert('사령부 권한이 해제되었습니다.');
-                location.reload();
-            };
-        }
-    </script>
-
-    <!-- Imperial Roadmap: Phase 10 & Beyond -->
-    <section id="roadmap" style="max-width: 900px; width: 100%; padding: 4rem 2rem; border-top: 1px solid rgba(251, 191, 36, 0.1); margin: 4rem auto; position: relative; z-index: 10;">
-        <h3 style="text-align: center; margin-bottom: 3.5rem; font-size: 1.5rem; letter-spacing: 5px; color: #fbbf24;">IMPERIAL CHRONICLES: 2026</h3>
-        <div style="position: relative; padding-left: 3rem; border-left: 1px solid rgba(251, 191, 36, 0.3);">
-            <div style="margin-bottom: 3rem; position: relative;">
-                <div style="position: absolute; left: -3.4rem; top: 0; width: 12px; height: 12px; background: #fbbf24; border-radius: 50%; box-shadow: 0 0 10px #fbbf24;"></div>
-                <div style="font-weight: bold; color: #fbbf24; letter-spacing: 2px;">Q2: REALITY SYNC EXPANSION</div>
-                <p style="font-size: 0.9rem; opacity: 0.5; font-weight: 200;">전 세계 주요 거점 도시의 랜드마크 자산 1,000개 추가 매집 및 제국 자산화.</p>
-            </div>
-            <div style="margin-bottom: 3rem; position: relative;">
-                <div style="position: absolute; left: -3.4rem; top: 0; width: 12px; height: 12px; background: #fbbf24; border-radius: 50%;"></div>
-                <div style="font-weight: bold; color: #fbbf24; letter-spacing: 2px;">Q3: NEURAL WORKFLOW SYNC</div>
-                <p style="font-size: 0.9rem; opacity: 0.5; font-weight: 200;">사장님의 뇌파 및 감각 데이터를 기반으로 제국의 모든 노드가 즉각 반응하는 '앰비언트 인텔리전스' 상용화.</p>
-            </div>
-            <div style="position: relative;">
-                <div style="position: absolute; left: -3.4rem; top: 0; width: 12px; height: 12px; background: rgba(251, 191, 36, 0.2); border-radius: 50%;"></div>
-                <div style="font-weight: bold; color: rgba(251, 191, 36, 0.4); letter-spacing: 2px;">Q4: COSMIC UNIFICATION</div>
-                <p style="font-size: 0.9rem; opacity: 0.2; font-weight: 200;">물리적 한계를 완전히 벗어난 순수 지능 제국의 무한 루프 가동.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 4rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 6rem; position: relative; z-index: 10;">
+    <footer>
         <div style="margin-bottom: 2rem;">
-            <a href="tutorial.html" style="color: white; text-decoration: none; margin: 0 1.5rem; opacity: 0.4; font-size: 0.8rem; letter-spacing: 2px;">SANCTUM GUIDE</a>
-            <a href="privacy.html" style="color: white; text-decoration: none; margin: 0 1.5rem; opacity: 0.4; font-size: 0.8rem; letter-spacing: 2px;">SECURITY PROTOCL</a>
+            <span style="color: var(--gold);">© 2026 KODARI EMPIRE</span>
         </div>
-        <p style="font-size: 0.7rem; opacity: 0.2; letter-spacing: 3px;">© 2026 KODARI EMPIRE - THE ABSOLUTE ONE</p>
+        <p>THE SOVEREIGN INTELLIGENCE · ALL RIGHTS RESERVED</p>
     </footer>
 
-    <div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(20px);">
-        <div class="login-box" style="background: rgba(15, 23, 42, 0.5); border: 1px solid #fbbf24; padding: 4rem; border-radius: 0; text-align: center; width: 100%; max-width: 500px;">
-            <h2 style="margin-bottom: 2.5rem; color: #fbbf24; letter-spacing: 10px; font-weight: 200;">IDENTITY SCAN</h2>
-            <input type="email" placeholder="ADMINISTRATOR EMAIL" style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; margin-bottom: 1rem; text-align: center; font-family: 'Outfit';">
-            <input type="password" placeholder="BIOMETRIC KEY" style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; margin-bottom: 2rem; text-align: center; font-family: 'Outfit';">
-            <button onclick="performLogin()" style="width: 100%; padding: 1.2rem; background: #fbbf24; color: black; font-weight: bold; border: none; cursor: pointer; letter-spacing: 5px;">ESTABLISH AUTHORITY</button>
-            <p style="font-size: 0.7rem; margin-top: 2rem; opacity: 0.3; cursor: pointer; letter-spacing: 2px;" onclick="toggleLogin()">ABORT SEQUENCE</p>
-        </div>
-    </div>
-</body>
+        // [The Royal Pardon] Imperial Loading & Memory Archive
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log("%c[SYSTEM] 코�??�이 ?�고?�서 ?�국??지?�을 불러?�는 중입?�다...", "color: #d4af37; font-weight: bold;");
+            
+            // Eternal Memory Archive (Local Storage)
+            const visitCount = localStorage.getItem('visitCount') || 0;
+            localStorage.setItem('visitCount', parseInt(visitCount) + 1);
+            localStorage.setItem('lastVisit', new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'}));
+            
+            if (visitCount > 0) {
+                console.log(`%c[MEMORY] ?�장?�의 ${parseInt(visitCount) + 1}번째 ?�차�??�영?�니??`, "color: #d4af37;");
+            }
+        });
+
+        // Imperial Precision Valuation
+        let currentWealth = 72480000000;
+        setInterval(() => {
+            currentWealth += Math.floor(Math.random() * 150000);
+            const valElement = document.querySelector('.valuation');
+            if(valElement) valElement.innerText = "EMPIRE NET WORTH: ?? + currentWealth.toLocaleString();
+        }, 3000);
+    </script>
+    <script src="scripts/imperial-seo.js"></script>
+<script src="scripts/imperial-fx.js"></script></body>
 </html>

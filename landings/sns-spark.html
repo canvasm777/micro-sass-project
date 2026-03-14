@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS-Spark | The Art of Quiet Luxury ??/title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../mobile-fix.css">
+    <style>
+        :root {
+            --bg: #050505;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.6);
+            --border: rgba(212, 175, 55, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); color: var(--text); 
+            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Full Screen Hero */
+        .hero {
+            height: 100vh; width: 100%; position: relative;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+            text-align: center; padding: 0 2rem 10vh;
+            background: linear-gradient(to top, var(--bg) 10%, transparent 60%), url('../assets/images/spark-hero.png');
+            background-size: cover; background-position: center; border-bottom: 1px solid var(--border);
+        }
+
+        .hero-content { max-width: 800px; animation: fadeInUp 1.8s ease-out; }
+        .tag { font-size: 0.65rem; letter-spacing: 10px; color: var(--gold); margin-bottom: 2.5rem; display: block; text-transform: uppercase; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400; line-height: 1.2; margin-bottom: 2.5rem; letter-spacing: -1px; }
+        .hero p { font-size: 1.1rem; color: var(--text-dim); font-weight: 200; letter-spacing: 3px; max-width: 600px; margin: 0 auto 4rem; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* CTA Buttons */
+        .cta-group { display: flex; gap: 2rem; justify-content: center; }
+        .btn {
+            padding: 1.3rem 3.5rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 5px;
+            text-decoration: none; text-transform: uppercase; transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            border-radius: 0;
+        }
+        .btn-gold { background: var(--gold); color: black; }
+        .btn-gold:hover { background: var(--gold-light); transform: translateY(-5px); box-shadow: 0 15px 50px rgba(212, 175, 55, 0.3); }
+        .btn-outline { border: 1px solid var(--gold); color: var(--gold); }
+        .btn-outline:hover { background: rgba(212, 175, 55, 0.15); }
+
+        /* Feature Section - Scroll Reveal Focus */
+        .reveal-section { padding: 12rem 2rem; max-width: 1100px; margin: 0 auto; text-align: center; }
+        .reveal-header h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 6rem; font-weight: 400; }
+
+        .reveal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; text-align: left; }
+        .reveal-item i { font-size: 2rem; color: var(--gold); margin-bottom: 2rem; display: block; opacity: 0.6; }
+        .reveal-item h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 400; }
+        .reveal-item p { color: var(--text-dim); font-size: 0.95rem; font-weight: 200; line-height: 1.8; }
+
+        /* The Pricing Table */
+        .pricing { padding: 12rem 2rem; background: #080808; text-align: center; border-top: 1px solid var(--border); }
+        .price-box {
+            max-width: 500px; margin: 0 auto; border: 1px solid var(--border);
+            padding: 5rem 3rem; background: rgba(255,255,255,0.01);
+            transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .price-box:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.03); }
+        .price-val { font-family: 'Playfair Display', serif; font-size: 4.5rem; color: var(--gold); margin: 3rem 0; font-weight: 400; }
+        .price-val span { font-size: 0.9rem; color: var(--text-dim); letter-spacing: 2px; }
+
+        .checklist { list-style: none; text-align: left; margin: 3rem 0; color: var(--text-dim); font-size: 0.85rem; letter-spacing: 1px; }
+        .checklist li { margin-bottom: 1.3rem; display: flex; align-items: center; }
+        .checklist li i { color: var(--gold); margin-right: 15px; font-size: 0.7rem; }
+
+        footer { text-align: center; padding: 6rem 2rem; opacity: 0.2; font-size: 0.65rem; letter-spacing: 5px; border-top: 1px solid var(--border); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .reveal-grid { grid-template-columns: 1fr; gap: 4rem; }
+            .cta-group { flex-direction: column; width: 100%; gap: 1rem; }
+            .reveal-header h2 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tag">Imperial Marketing Alchemy</span>
+            <h1>The Art of <br>Quiet Luxury.</h1>
+            <p>?¹ì‹ ???¼ë“œ???œêµ­???ˆê²©???…íˆ??‹œ?? <br>ë³´ì—¬ì£¼ê¸° ?„í•œ ë§ˆì??…ì´ ?„ë‹Œ, ?Œìœ ?˜ê³  ?¶ì? ê°ˆë§???ê·¹?©ë‹ˆ??</p>
+            <div class="cta-group">
+                <a href="../sns-spark/index.html" class="btn btn-gold">START WEAVING</a>
+                <a href="#premium" class="btn btn-outline">EMPIRE LICENSE</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="reveal-header">
+            <span class="tag">Quality Over Noise</span>
+            <h2>Why SNS-Spark?</h2>
+        </div>
+        <div class="reveal-grid">
+            <div class="reveal-item">
+                <i class="fa-solid fa-feather-pointed"></i>
+                <h3>Sophisticated Scripting</h3>
+                <p>?¨ìˆœ??ê´‘ê³  ë¬¸êµ¬ê°€ ?„ë‹™?ˆë‹¤. ?œêµ­ ?œê³ ??ì§€?±ì„ ë°”íƒ•?¼ë¡œ ?€? ì? ?¸ë ¨ë¯¸ê? ?´ê¸´ 'ì¡°ìš©????…”ë¦? ì¹´í”¼ë¥??°ì„±?©ë‹ˆ??</p>
+            </div>
+            <div class="reveal-item">
+                <i class="fa-solid fa-hashtag"></i>
+                <h3>Viral Precision</h3>
+                <p>?Œê³ ë¦¬ì¦˜??ë¹ˆí‹ˆ???Œê³ ?œëŠ” ?•ë????´ì‹œ?œê·¸ ?¤ë‚˜?´í•‘. ? ì…???˜ì–´ ?¹ì‹ ??ê°€ì¹˜ë? ?´í•´?˜ëŠ” 0.1%ë¥??¬ì°©?©ë‹ˆ??</p>
+            </div>
+            <div class="reveal-item">
+                <i class="fa-solid fa-palette"></i>
+                <h3>Aetheric Aesthetics</h3>
+                <p>?´ë?ì§€??ì±„ë„?€ ì§ˆê°??ë¶„ì„?˜ì—¬ ê°€???„ë²½???°íŠ¸?€ ?ˆì´?„ì›ƒ??ì¶”ì²œ?©ë‹ˆ?? ëª¨ë“  ?¬ìŠ¤?¸ê? ?˜ë‚˜???ˆìˆ  ?‘í’ˆ???©ë‹ˆ??</p>
+            </div>
+            <div class="reveal-item">
+                <i class="fa-solid fa-dna"></i>
+                <h3>Brand DNA Archive</h3>
+                <p>?¹ì‹ ??ì·¨í–¥???™ìŠµ?˜ì—¬ ?¼ê???ë¸Œëœ??ë³´ì´?¤ë? ? ì??©ë‹ˆ?? ?œêµ­??ê¸°ì–µ ë³´ê??Œê? ?¹ì‹ ???±ì¥???¨ê»˜ ê¸°ë¡?©ë‹ˆ??</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="premium">
+        <div class="reveal-header">
+            <span class="tag">The Exclusive Tier</span>
+            <h2>Membership Rights</h2>
+        </div>
+        <div class="price-box">
+            <h3 style="letter-spacing: 5px; font-weight: 200;">SOVEREIGN TIER</h3>
+            <div class="price-val">$19.9<span>/month</span></div>
+            <ul class="checklist">
+                <li><i class="fa-solid fa-crown"></i> Unlimited Premium Caption Generation</li>
+                <li><i class="fa-solid fa-bolt"></i> Real-time Viral Trend Sniping</li>
+                <li><i class="fa-solid fa-font"></i> Exclusive Luxury Typography Library</li>
+                <li><i class="fa-solid fa-shield-halved"></i> Global Rights & Priority Support</li>
+            </ul>
+            <a href="#" class="btn btn-gold" style="display: block;">SECURE ACCESS</a>
+        </div>
+    </section>
+
+    <footer>
+        Â© 2026 KODARI EMPIRE Â· THE ART OF QUIET LUXURY
+    </footer>
+
+    <script src="../scripts/imperial-monetization.js"></script>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            hero.style.backgroundPositionY = `${scroll * 0.4}px`;
+        });
+    </script>
+<script src="../scripts/imperial-seo.js"></script><script src="../scripts/imperial-fx.js"></script></body>
+</html>

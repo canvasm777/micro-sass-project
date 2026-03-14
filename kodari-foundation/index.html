@@ -3,49 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodari Foundation | Giving Back to the Future 🌱</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Kodari Foundation | Legacy of Excellence ?��</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../mobile-fix.css">
+    <style>
+        :root {
+            --bg: #0a0a0b; 
+            --gold: #d4af37;
+            --gold-dim: rgba(212, 175, 55, 0.1);
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.4);
+            --border: rgba(212, 175, 55, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); color: var(--text); 
+            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
+            background: radial-gradient(circle at 50% 120%, #1a1a1c 0%, #0a0a0b 70%);
+            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+
+        .container { width: 90%; max-width: 800px; text-align: center; padding: 4rem 0; }
+
+        .tag { font-size: 0.65rem; letter-spacing: 5px; color: var(--gold); margin-bottom: 2rem; display: block; opacity: 0.8; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -2px; }
+        .subtitle { color: var(--text-dim); font-size: 0.9rem; font-weight: 200; letter-spacing: 3px; margin-bottom: 4rem; }
+
+        /* The Mission */
+        .mission-box {
+            background: rgba(255,255,255,0.01); border: 1px solid var(--border);
+            padding: 3rem; margin-bottom: 5rem; position: relative;
+        }
+        .mission-box i { font-size: 2rem; color: var(--gold); opacity: 0.3; margin-bottom: 2rem; }
+        .mission-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; line-height: 1.6; font-style: italic; }
+
+        /* Impact Grid */
+        .impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 5rem; }
+        .impact-card {
+            background: var(--card); border: 1px solid var(--border); padding: 2.5rem;
+            text-align: left; transition: 0.4s;
+        }
+        .impact-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .impact-label { font-size: 0.6rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 1rem; display: block; }
+        .impact-val { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .impact-desc { font-size: 0.75rem; color: var(--text-dim); }
+
+        /* Final Seal */
+        .footer-seal { margin-top: 5rem; opacity: 0.5; }
+        .seal-line { height: 1px; background: var(--border); width: 100%; margin-bottom: 2rem; }
+        .seal-text { font-size: 0.6rem; letter-spacing: 5px; color: var(--gold); }
+
+        .back-link { 
+            margin-top: 4rem; color: var(--text-dim); text-decoration: none; 
+            font-size: 0.7rem; letter-spacing: 3px; border-bottom: 1px solid transparent; transition: 0.3s;
+        }
+        .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.5rem; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .mission-text { font-size: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
-    <canvas id="particleCanvas"></canvas>
-    <div id="foundationUI">
-        <header>
-            <div class="badge">PHASE 18 : THE FINAL CHAPTER</div>
-            <h1>KODARI FOUNDATION</h1>
-            <p>FROM EMPIRE TO LEGACY — GIVING BACK TO THE FUTURE</p>
-        </header>
-        <div class="mission-statement">
-            <div class="quote-mark">"</div>
-            <div class="mission-text">제국을 세운 자는 제국으로 세상을 바꿀 의무가 있다.<br>우리는 다음 세대의 창업자를 위해 존재한다.</div>
-            <div class="mission-author">— 코다리 제국 헌장 제1조</div>
+    <div class="container">
+        <span class="tag">EMPIRE LEGACY · PHASE 21</span>
+        <h1>Kodari Foundation</h1>
+        <p class="subtitle">지?�에???�눔?�로, ?�국??가치는 ?�원???�환?�니??</p>
+
+        <div class="mission-box">
+            <i class="fa-solid fa-quote-left"></i>
+            <p class="mission-text">"?�국???�운 지?��???�??�머�??�견?�야 ?�다.<br>?�리??부???�음 ?��???꿈을 ?�성?�는 불꽃???�다."</p>
+            <p style="font-size: 0.7rem; color: var(--gold); margin-top: 2rem; letter-spacing: 2px;">??KODARI EMPIRE CHARTER</p>
         </div>
+
         <div class="impact-grid">
-            <div class="impact"><div class="impact-icon"><i class="fa-solid fa-graduation-cap"></i></div><div class="impact-label">SCHOLARSHIPS</div><div class="impact-val">500</div><div class="impact-desc">차세대 창업자 장학금 지원</div></div>
-            <div class="impact"><div class="impact-icon"><i class="fa-solid fa-seedling"></i></div><div class="impact-label">STARTUPS FUNDED</div><div class="impact-val green">127</div><div class="impact-desc">초기 스타트업 시드 투자</div></div>
-            <div class="impact"><div class="impact-icon"><i class="fa-solid fa-earth-americas"></i></div><div class="impact-label">COUNTRIES REACHED</div><div class="impact-val cyan">34</div><div class="impact-desc">글로벌 창업 교육 프로그램</div></div>
-            <div class="impact"><div class="impact-icon"><i class="fa-solid fa-heart"></i></div><div class="impact-label">TOTAL IMPACT</div><div class="impact-val gold">$2.4M</div><div class="impact-desc">사회 환원 총액</div></div>
-        </div>
-        <div class="final-seal">
-            <div class="seal-ring">
-                <div class="seal-inner">
-                    <div class="seal-text">PHASE</div>
-                    <div class="seal-number">18</div>
-                    <div class="seal-sub">COMPLETE</div>
-                </div>
+            <div class="impact-card">
+                <span class="impact-label">SCHOLARSHIPS</span>
+                <div class="impact-val">742</div>
+                <p class="impact-desc">미래??지?��??�을 ?�한 ?�학�?지??/p>
             </div>
-            <div class="seal-message">THE EMPIRE IS ETERNAL</div>
+            <div class="impact-card">
+                <span class="impact-label">STARTUP FUND</span>
+                <div class="impact-val">??.2B</div>
+                <p class="impact-desc">?�신?�인 마이?�로 SaaS ?�태�??�자</p>
+            </div>
+            <div class="impact-card">
+                <span class="impact-label">GLOBAL REACH</span>
+                <div class="impact-val">42+</div>
+                <p class="impact-desc">?�국???�한 ?�향?�이 ?��? �?? ??/p>
+            </div>
+            <div class="impact-card">
+                <span class="impact-label">LEGACY SCORE</span>
+                <div class="impact-val">PERFECT</div>
+                <p class="impact-desc">지??가?�한 비즈?�스 ?�판 지??/p>
+            </div>
         </div>
+
+        <div class="footer-seal">
+            <div class="seal-line"></div>
+            <span class="seal-text">THE EMPIRE IS ETERNAL · EST. 2026</span>
+        </div>
+
+        <a href="../index.html" class="back-link">RETURN TO OVERLORD PORTAL</a>
     </div>
-    <script>
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        let w,h; const stars=[];
-        function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
-        function init(){resize();for(let i=0;i<100;i++)stars.push({x:Math.random()*w,y:Math.random()*h,s:Math.random()*2,sp:0.2+Math.random()*0.5});animate();}
-        function animate(){ctx.clearRect(0,0,w,h);ctx.fillStyle='#020208';ctx.fillRect(0,0,w,h);stars.forEach(s=>{ctx.fillStyle=`rgba(212,175,55,${0.2+Math.random()*0.3})`;ctx.beginPath();ctx.arc(s.x,s.y,s.s,0,Math.PI*2);ctx.fill();s.y-=s.sp;if(s.y<0){s.y=h;s.x=Math.random()*w;}});requestAnimationFrame(animate);}
-        window.addEventListener('resize',resize);init();
-    </script>
-</body>
+<script src="../scripts/imperial-fx.js"></script></body>
 </html>

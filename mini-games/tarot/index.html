@@ -3,230 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodari-Tarot 🃏 | 사장님 비즈니스 타로</title>
+    <title>Kodari-Tarot | Business Oracle Registry ?��</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../mobile-fix.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&family=Cinzel:wght@600&display=swap');
         :root {
-            --primary: #c084fc;
-            --bg: #0c0e12;
-            --card-gold: #fbbf24;
+            --bg: #0a0a0b; 
+            --gold: #d4af37;
+            --gold-dim: rgba(212, 175, 55, 0.2);
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.5);
+            --card: rgba(255, 255, 255, 0.02);
+            --border: rgba(212, 175, 55, 0.15);
         }
-        body {
-            background-color: var(--bg);
-            color: white;
-            font-family: 'Spline Sans', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background: radial-gradient(circle at center, #1b1429 0%, #0c0e12 100%);
-            overflow-x: hidden;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); color: var(--text); 
+            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
+            background: radial-gradient(circle at 50% -20%, #1a1a1c 0%, #0a0a0b 70%);
+            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .container {
-            width: 90%;
-            max-width: 600px;
-            text-align: center;
-            padding: 2rem;
-        }
-        h1 { font-family: 'Cinzel', serif; color: var(--primary); font-size: 2.2rem; margin-bottom: 0.5rem; letter-spacing: 2px; }
-        .deck-area {
-            position: relative;
-            height: 350px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 3rem 0;
+
+        .container { width: 95%; max-width: 600px; text-align: center; padding: 3rem 0; }
+
+        .tag { font-size: 0.65rem; letter-spacing: 5px; color: var(--gold); margin-bottom: 1.5rem; display: block; opacity: 0.8; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -1px; }
+        .subtitle { color: var(--text-dim); font-size: 0.9rem; font-weight: 200; letter-spacing: 2px; margin-bottom: 3rem; }
+
+        /* Tarot Display Area */
+        .tarot-stage {
+            height: 380px; display: flex; justify-content: center; align-items: center; margin-bottom: 3rem;
         }
         .tarot-card {
-            width: 200px;
-            height: 320px;
-            perspective: 1000px;
-            cursor: pointer;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 220px; height: 350px; perspective: 1200px; cursor: pointer;
         }
         .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-radius: 12px;
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1); transform-style: preserve-3d;
         }
         .tarot-card.flipped .card-inner { transform: rotateY(180deg); }
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            border: 2px solid rgba(192, 132, 252, 0.3);
-            box-sizing: border-box;
+
+        .card-face {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 0px; border: 1px solid var(--border);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
         .card-back {
-            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-            background-image: radial-gradient(circle at center, rgba(192,132,252,0.2) 0%, transparent 70%);
+            background: #000; border-color: var(--gold);
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(212, 175, 55, 0.05) 10px, rgba(212, 175, 55, 0.05) 20px);
         }
         .card-back::after {
-            content: 'K';
-            font-family: 'Cinzel', serif;
-            font-size: 5rem;
-            color: rgba(192, 132, 252, 0.1);
+            content: 'K'; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold-dim);
         }
         .card-front {
-            background: #111827;
-            transform: rotateY(180deg);
-            padding: 1.5rem;
-            border-color: var(--card-gold);
+            background: #0a0a0b; transform: rotateY(180deg); padding: 2rem;
+            border-color: var(--gold);
         }
-        .card-front i { font-size: 3rem; color: var(--card-gold); margin-bottom: 1.5rem; }
-        .card-name { font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--card-gold); margin-bottom: 1rem; }
-        .card-desc { font-size: 0.85rem; line-height: 1.6; opacity: 0.8; }
+        .card-front i { font-size: 3rem; color: var(--gold); margin-bottom: 2rem; }
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem; }
+        .card-lore { font-size: 0.75rem; color: var(--text-dim); line-height: 1.6; }
 
-        .btn {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* Ad Area */
+        .ad-row {
+            background: var(--card); border: 1px solid var(--border);
+            padding: 1.5rem; margin-bottom: 2rem; font-size: 0.6rem; color: var(--text-dim);
+            letter-spacing: 2px; text-transform: uppercase;
         }
-        .btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px rgba(192, 132, 252, 0.4); }
-        
-        .reading {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.03);
-            border-radius: 16px;
-            text-align: left;
-            display: none;
-            animation: slideUp 0.6s ease-out;
+
+        .action-btn {
+            width: 100%; background: var(--gold); color: black; border: none;
+            padding: 1.3rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 3px;
+            cursor: pointer; transition: 0.4s;
+        }
+        .action-btn:hover { background: #f3e5ab; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,175,55,0.2); }
+
+        .reading-panel {
+            background: var(--card); border: 1px solid var(--border); padding: 2.5rem;
+            text-align: left; margin-top: 3rem; display: none; animation: slideUp 0.8s ease-out;
         }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .back-link { margin-top: 3rem; opacity: 0.4; text-decoration: none; color: white; font-size: 0.8rem; display: block; }
+        .reading-panel h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 1rem; border-left: 3px solid var(--gold); padding-left: 15px; }
+
+        .back-link { 
+            margin-top: 4rem; color: var(--text-dim); text-decoration: none; 
+            font-size: 0.7rem; letter-spacing: 3px; border-bottom: 1px solid transparent; transition: 0.3s;
+        }
+        .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+        .timestamp { font-size: 0.6rem; color: var(--text-dim); margin-top: 2rem; letter-spacing: 2px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div style="opacity: 0.6; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 0.5rem;">BUSINESS ORACLE</div>
+        <span class="tag">WEALTH FOUNDATION · PHASE 21</span>
         <h1>Kodari Tarot</h1>
-        <p style="opacity: 0.5; font-size: 0.9rem;">카드는 사업의 흐름을 알고 있습니다.<br>오늘의 비즈니스 가이드를 선언하십시오.</p>
+        <p class="subtitle">비즈?�스???�개�?걷어?�고 ?�국??미래�??�언?�십?�오.</p>
 
-        <div class="deck-area">
-            <div class="tarot-card" id="tarotCard" onclick="drawCard()">
+        <div class="ad-row">
+             <i class="fa-solid fa-rectangle-ad" style="margin-right: 8px;"></i>
+             Imperial Sponsor: ?�장?�을 ?�한 맞춤 ?�세 ?�언?�기 ?��
+        </div>
+
+        <div class="tarot-stage">
+            <div class="tarot-card" id="tarotCard" onclick="flipCard()">
                 <div class="card-inner">
-                    <div class="card-back"></div>
-                    <div class="card-front">
-                        <i id="cardIcon"></i>
-                        <div class="card-name" id="cardName"></div>
-                        <div class="card-desc" id="cardDesc"></div>
+                    <div class="card-face card-back"></div>
+                    <div class="card-face card-front">
+                        <i id="cIcon"></i>
+                        <h2 class="card-title" id="cTitle"></h2>
+                        <p class="card-lore" id="cLore"></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <button class="btn" id="resetBtn" onclick="resetDeck()" style="display: none;">다시 선언하기</button>
-        
-        <div class="reading" id="readingContainer">
-            <h4 style="color: var(--primary); margin: 0 0 0.5rem 0;">🔮 비즈니스 오라클의 조언</h4>
-            <p id="adviceText" style="font-size: 0.9rem; line-height: 1.6;"></p>
+        <div class="reading-panel" id="readingPanel">
+            <h4>THE ORACLE'S DECREE</h4>
+            <p id="cAdvice" style="font-size: 0.9rem; line-height: 1.8; font-weight: 200;"></p>
+            <button class="action-btn" style="margin-top: 2rem; background: transparent; color: var(--gold); border: 1px solid var(--gold);" onclick="location.reload()">NEW DECLARATION</button>
         </div>
 
-        <a href="../../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> 유니버스 포털로 돌아가기</a>
+        <div class="ad-row" style="margin-top: 1rem;">
+             [ 광고 ] ?�스?� ?�상??AI �??�성�?가?�하�???        </div>
+
+        <div class="timestamp" id="timestamp">KST SYNC: LOADING...</div>
+
+        <a href="../../index.html" class="back-link">RETURN TO OVERLORD PORTAL</a>
     </div>
 
     <script>
-        const businessCards = [
-            { 
-                name: "THE FOUNDER", 
-                icon: "fa-solid fa-seedling", 
-                desc: "새로운 시작, 무한한 가능성. 스타트업의 설렘.",
-                advice: "대표님, 오늘은 계산기보다 가슴이 뛰는 일을 따르십시오. 작은 아이디어가 거대한 비즈니스의 씨앗이 될 것입니다. 리스크를 두려워 마세요." 
-            },
-            { 
-                name: "THE CEO", 
-                icon: "fa-solid fa-crown", 
-                desc: "안정성, 권위, 리더십. 탄탄한 구조.",
-                advice: "체계와 규칙이 필요한 시점입니다. 감정에 휘둘리기보다 데이터와 시스템으로 팀을 이끄십시오. 사장님의 결단력이 곧 법입니다." 
-            },
-            { 
-                name: "THE PIVOT", 
-                icon: "fa-solid fa-arrows-spin", 
-                desc: "변화의 파도, 기회 포착. 시장의 흐름.",
-                advice: "고집을 버려야 살 길이 보입니다. 시장의 목소리에 귀를 기울이고 빠르게 궤도를 수정하십시오. 위기는 곧 위대한 기회입니다." 
-            },
-            { 
-                name: "THE DISRUPTOR", 
-                icon: "fa-solid fa-bolt-lightning", 
-                desc: "기존 질서의 파괴, 혁신적 돌파구.",
-                advice: "평범한 방식으로는 1등을 할 수 없습니다. 판을 흔드십시오. 오늘은 당연하게 여겼던 모든 프로세스에 의문을 던지는 날입니다." 
-            },
-            { 
-                name: "THE UNICORN", 
-                icon: "fa-solid fa-horse-head", 
-                desc: "비전의 실현, 막대한 성장, 희망.",
-                advice: "상상했던 미래가 곧 현실로 다가옵니다. 큰 투자가 들어오거나 유의미한 트래픽 폭발이 일어날 징조입니다. 스케일업을 준비하세요." 
-            },
-            { 
-                name: "THE ARCHITECT", 
-                icon: "fa-solid fa-compass-drafting", 
-                desc: "정교한 설계, 실행력, 디테일.",
-                advice: "화려한 겉모습보다 내실을 다질 때입니다. 핵심 로직과 UI/UX의 디테일을 점검하십시오. 완벽한 설계가 큰 결실을 맺습니다." 
-            }
+        function updateTime() {
+            const now = new Date();
+            const kst = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (9 * 3600000));
+            document.getElementById('timestamp').innerText = "KST SYNC: " + kst.toLocaleString('ko-KR');
+        }
+        updateTime(); setInterval(updateTime, 1000);
+
+        const arkana = [
+            { title: "THE FOUNDER", icon: "fa-solid fa-seedling", lore: "무에???��? 창조?�는 ?�초??불꽃.", advice: "?�장?? ?�늘?� 계산기보??직�????��? ?�입?�다. ?��? ?�앗???�국??거목?�로 ?�라???�조가 보입?�다. 과감??공세�??�치??��??" },
+            { title: "THE SOVEREIGN", icon: "fa-solid fa-crown", lore: "?�정??질서?� ?�도?�인 지배력.", advice: "체계가 ?�리�?보장?�니?? 감정???�둘리기보다 ?�국??매뉴?�과 ?�이?�로 ?�장???�도?�십?�오. ?�장?�의 결단??�??�장??법입?�다." },
+            { title: "THE DISRUPTOR", icon: "fa-solid fa-bolt-lightning", lore: "기존???�식??깨�??�는 ?�신??번개.", advice: "?�범?��? ?�입?�다. ?�을 ?�드??��?? ?�이벌들???�각지 못한 변칙적???�술???�국??막�????�익??가?�다�?것입?�다." },
+            { title: "THE UNICORN", icon: "fa-solid fa-horse-head", lore: "?�상???�실???�는 기적???�취.", advice: "비전???�현?�는 마법 같�? ?�간???��??�니?? ??규모???�본 ?�름?�나 ?�의미한 ?�래?�의 ?�??��??준비하??��?? 비상???�간?�니??" },
+            { title: "THE ARCHITECT", icon: "fa-solid fa-compass-drafting", lore: "1px???�차???�용�??�는 ?��? ?�계.", advice: "?�려??겉치?�보???�실???��??�이 ?�요???�입?�다. ?�스?�의 ?�심 로직�?UX ?�테?�을 ?��??�십?�오. ?�벽???�계가 ?�공불락???�벽??만듭?�다." }
         ];
 
-        let canDraw = true;
-
-        function drawCard() {
-            if(!canDraw) return;
-            canDraw = false;
-
+        function flipCard() {
             const card = document.getElementById('tarotCard');
-            const reading = document.getElementById('readingContainer');
-            const resetBtn = document.getElementById('resetBtn');
-            const data = businessCards[Math.floor(Math.random() * businessCards.length)];
+            const panel = document.getElementById('readingPanel');
+            if(card.classList.contains('flipped')) return;
 
-            // Inject data
-            document.getElementById('cardIcon').className = data.icon;
-            document.getElementById('cardName').innerText = data.name;
-            document.getElementById('cardDesc').innerText = data.desc;
-            document.getElementById('adviceText').innerText = data.advice;
+            const p = arkana[Math.floor(Math.random() * arkana.length)];
+            document.getElementById('cIcon').className = p.icon;
+            document.getElementById('cTitle').innerText = p.title;
+            document.getElementById('cLore').innerText = p.lore;
+            document.getElementById('cAdvice').innerText = p.advice;
 
             card.classList.add('flipped');
-
             setTimeout(() => {
-                reading.style.display = 'block';
-                resetBtn.style.display = 'inline-block';
-            }, 800);
+                panel.style.display = 'block';
+                console.log("%c[TAROT] ?�국??미래가 ?�계?�었?�니??", "color: #d4af37;");
+            }, 1000);
         }
 
-        function resetDeck() {
-            const card = document.getElementById('tarotCard');
-            const reading = document.getElementById('readingContainer');
-            const resetBtn = document.getElementById('resetBtn');
-
-            card.classList.remove('flipped');
-            reading.style.display = 'none';
-            resetBtn.style.display = 'none';
-            
-            setTimeout(() => {
-                canDraw = true;
-            }, 600);
-        }
+        window.addEventListener('DOMContentLoaded', () => {
+             console.log("%c[SYSTEM] Tarot-Oracle ?�진 ?��?�?", "color: #d4af37; font-weight: bold;");
+        });
     </script>
-</body>
+<script src="../../scripts/imperial-seo.js"></script><script src="../../scripts/imperial-fx.js"></script></body>
 </html>

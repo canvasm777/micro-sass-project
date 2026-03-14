@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content-Chef | The Future of Video Production ?¬</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../mobile-fix.css">
+    <style>
+        :root {
+            --bg: #050505;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.6);
+            --border: rgba(212, 175, 55, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); color: var(--text); 
+            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh; width: 100%; position: relative;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 0 2rem;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.4), var(--bg)), url('../assets/images/chef-hero.png');
+            background-size: cover; background-position: center;
+        }
+
+        .hero-content { max-width: 900px; animation: fadeInUp 1.5s ease-out; }
+        .tag { font-size: 0.7rem; letter-spacing: 8px; color: var(--gold); margin-bottom: 2rem; display: block; text-transform: uppercase; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 400; line-height: 1.1; margin-bottom: 2rem; }
+        .hero p { font-size: 1.25rem; color: var(--text-dim); font-weight: 200; letter-spacing: 2px; margin-bottom: 3rem; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* CTA Buttons */
+        .cta-group { display: flex; gap: 1.5rem; justify-content: center; }
+        .btn {
+            padding: 1.2rem 3rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 4px;
+            text-decoration: none; text-transform: uppercase; transition: 0.4s;
+            border-radius: 0; position: relative; overflow: hidden;
+        }
+        .btn-gold { background: var(--gold); color: black; }
+        .btn-gold:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3); }
+        .btn-outline { border: 1px solid var(--gold); color: var(--gold); }
+        .btn-outline:hover { background: rgba(212, 175, 55, 0.1); }
+
+        /* Logic/Feature Grid */
+        .features { padding: 10rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 6rem; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1.5rem; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem; }
+        .feature-card { text-align: left; }
+        .feature-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 2rem; display: block; }
+        .feature-card h3 { font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 1px; }
+        .feature-card p { color: var(--text-dim); font-size: 0.9rem; font-weight: 200; }
+
+        /* Pricing Section */
+        .pricing { padding: 10rem 2rem; background: #080808; text-align: center; }
+        .price-card {
+            max-width: 450px; margin: 0 auto; border: 1px solid var(--border);
+            padding: 4rem; background: rgba(255,255,255,0.02);
+            transition: 0.5s;
+        }
+        .price-card:hover { border-color: var(--gold); transform: scale(1.02); }
+        .price-val { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold); margin: 2rem 0; }
+        .price-val span { font-size: 1rem; color: var(--text-dim); }
+
+        footer { text-align: center; padding: 6rem 2rem; opacity: 0.3; font-size: 0.7rem; letter-spacing: 4px; border-top: 1px solid var(--border); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1rem; }
+            .cta-group { flex-direction: column; width: 100%; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tag">The Sovereign Video Engine</span>
+            <h1>Ideas In, <br>Gold Out.</h1>
+            <p>?€ë³¸ë§Œ ì£¼ë©´ ?ìƒ???ë‚©?ˆë‹¤. <br>?œêµ­???Œê³ ë¦¬ì¦˜???°ì„±?˜ëŠ” ?í¼???°ê¸ˆ? ì„ ê²½í—˜?˜ì‹­?œì˜¤.</p>
+            <div class="cta-group">
+                <a href="../content-chef/index.html" class="btn btn-gold">ALCHEMY START</a>
+                <a href="#pricing" class="btn btn-outline">IMPERIAL LICENSE</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="section-header">
+            <span class="tag">Technology</span>
+            <h2>The Chef's Secret</h2>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-wand-sparkles"></i>
+                <h3>Script to Viral</h3>
+                <p>?¨ìˆœ???„ì´?”ì–´ë¥?LLM??ë¶„ì„?˜ì—¬ ?œì²­ ì§€???œê°„??ê·¹ë??”í•˜??60ì´??í¼ ?€ë³¸ìœ¼ë¡??¤ì‹œê°??œë‹?©ë‹ˆ??</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-microphone-lines"></i>
+                <h3>Royal Voice Synthesis</h3>
+                <p>ElevenLabs??ìµœê³ ê¸?AI ë³´ì´?¤ê? ?¹ì‹ ??ë©”ì‹œì§€??ê¶Œìœ„?€ ? ë¢°ë¥?ë¶€?¬í•©?ˆë‹¤. ?¬ëŒ??ë§í•˜??ê²??´ìƒ??ê¹Šì´ë¥??œê³µ?©ë‹ˆ??</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-eye"></i>
+                <h3>Predictive Highlights</h3>
+                <p>? íŠœë¸?ë¡±í¼???˜ì¡° ê°??„ë ˆ?„ì„ ?¤ìº”?˜ì—¬ ê°€??'?¡ìƒ'???•ë¥ ???’ì? ?˜ì´?¼ì´?¸ë? ?˜í•™?ìœ¼ë¡??ˆì–¸?©ë‹ˆ??</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <span class="tag">Investment</span>
+            <h2>The Sovereign Membership</h2>
+        </div>
+        <div class="price-card">
+            <h3>IMPERIAL FULL PASS</h3>
+            <div class="price-val">$29.9<span>/month</span></div>
+            <ul style="list-style: none; text-align: left; margin-bottom: 3rem; color: var(--text-dim); font-size: 0.9rem;">
+                <li style="margin-bottom: 1rem;"><i class="fa-solid fa-check" style="color: var(--gold); margin-right: 15px;"></i> Infinite Script-to-Video Access</li>
+                <li style="margin-bottom: 1rem;"><i class="fa-solid fa-check" style="color: var(--gold); margin-right: 15px;"></i> Oracle Highlight Prediction</li>
+                <li style="margin-bottom: 1rem;"><i class="fa-solid fa-check" style="color: var(--gold); margin-right: 15px;"></i> High-Bitrate Export (4K)</li>
+                <li><i class="fa-solid fa-check" style="color: var(--gold); margin-right: 15px;"></i> Exclusive Imperial Fonts</li>
+            </ul>
+            <a href="#" class="btn btn-gold" style="display: block;">AUTHORIZE ACCESS</a>
+        </div>
+    </section>
+
+    <footer>
+        Â© 2026 KODARI EMPIRE Â· THE VIRAL ALCHEMIST
+    </footer>
+
+    <script src="../scripts/imperial-monetization.js"></script>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            document.querySelector('.hero').style.backgroundPositionY = `${scroll * 0.5}px`;
+        });
+    </script>
+<script src="../scripts/imperial-seo.js"></script><script src="../scripts/imperial-fx.js"></script></body>
+</html>
