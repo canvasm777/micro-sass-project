@@ -1,8 +1,8 @@
 :root {
-    --primary: #8a2be2;
-    --accent: #d4af37;
+    --primary: #d4af37;
+    --accent: #f3e5ab;
     --terminal: #00ff41;
-    --bg: #02020a;
+    --bg: #0a0a0b;
 }
 
 * {
@@ -59,7 +59,7 @@ header {
 }
 
 h1 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 3.5rem;
     letter-spacing: 15px;
     margin-bottom: 0.5rem;
@@ -150,7 +150,7 @@ header p {
 
 .terminal-body {
     padding: 1.5rem;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Montserrat', Courier, monospace;
     font-size: 0.8rem;
     color: var(--terminal);
     overflow-y: auto;
@@ -170,7 +170,7 @@ header p {
     color: black;
     border: none;
     padding: 1.5rem 5rem;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.2rem;
     border-radius: 50px;
@@ -202,7 +202,7 @@ header p {
 #strikeOverlay.active { display: flex; }
 
 .strike-text {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
     letter-spacing: 10px;
     margin-bottom: 2rem;

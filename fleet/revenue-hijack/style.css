@@ -2,14 +2,14 @@
     --red: #ef4444;
     --red-glow: rgba(239, 68, 68, 0.4);
     --green: #22c55e;
-    --bg: #050101;
+    --bg: #0a0a0b;
     --iron: #1f2937;
 }
 
 body {
     background-color: var(--bg);
     color: #fff;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     overflow-x: hidden;
 }

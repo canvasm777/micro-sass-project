@@ -1,9 +1,9 @@
 :root {
-    --primary: #8b5cf6; /* Cosmic Purple */
-    --accent: #ec4899; /* Ego Pink */
-    --bg: #030014;
-    --card: rgba(139, 92, 246, 0.05);
-    --border: rgba(139, 92, 246, 0.2);
+    --primary: #d4af37; /* Cosmic Purple */
+    --accent: #f3e5ab; /* Ego Pink */
+    --bg: #0a0a0b;
+    --card: rgba(255, 255, 255, 0.02);
+    --border: rgba(212, 175, 55, 0.15);
     --text: #f5f3ff;
 }
 
@@ -26,7 +26,7 @@ body {
     background: 
         radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
         radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.05) 0%, transparent 60%);
+        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
     filter: blur(60px);
     z-index: -1;
 }

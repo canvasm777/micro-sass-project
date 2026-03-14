@@ -2,13 +2,13 @@
     --zenith-white: #ffffff;
     --zenith-silver: #e5e7eb;
     --zenith-glow: rgba(255, 255, 255, 0.2);
-    --bg: #000000;
+    --bg: #0a0a0b;
 }
 
 body {
     background-color: var(--bg);
     color: var(--zenith-white);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     overflow-x: hidden;
 }

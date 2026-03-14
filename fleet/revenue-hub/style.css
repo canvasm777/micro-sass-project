@@ -2,15 +2,15 @@
     --gold: #fbbf24;
     --emerald: #10b981;
     --navy: #020617;
-    --card: rgba(15, 23, 42, 0.6);
-    --border: rgba(251, 191, 36, 0.1);
+    --card: rgba(255, 255, 255, 0.02);
+    --border: rgba(212, 175, 55, 0.15);
     --text: #ffffff;
 }
 
 body {
     background-color: var(--navy);
     color: var(--text);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
     margin: 0;
     line-height: 1.6;
     background: radial-gradient(circle at top right, #0f172a 0%, #020617 100%);

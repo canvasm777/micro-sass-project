@@ -2,15 +2,15 @@
     --royal-purple: #6d28d9;
     --royal-purple-glow: #8b5cf6;
     --gold: #fbbf24;
-    --bg: #030014;
-    --card: rgba(17, 10, 44, 0.8);
+    --bg: #0a0a0b;
+    --card: rgba(255, 255, 255, 0.02);
     --text: #f1f5f9;
 }
 
 body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     overflow-x: hidden;
     background: radial-gradient(circle at top, #1e1b4b 0%, #030014 100%);

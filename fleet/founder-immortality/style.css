@@ -1,9 +1,9 @@
 :root {
     --primary: #d4af37; /* Gold */
     --secondary: #8a2be2; /* Purple */
-    --bg: #010105;
+    --bg: #0a0a0b;
     --text: #ffffff;
-    --accent: #00f3ff; /* Cyan glow */
+    --accent: #f3e5ab; /* Cyan glow */
 }
 
 * {

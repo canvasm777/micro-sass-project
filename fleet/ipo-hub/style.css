@@ -1,7 +1,7 @@
 :root {
     --emerald: #10b981;
     --charcoal: #0f172a;
-    --border: rgba(16, 185, 129, 0.2);
+    --border: rgba(212, 175, 55, 0.15);
     --bg: #0a0a0b;
     --text: #ffffff;
 }
@@ -9,7 +9,7 @@
 body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'JetBrains Mono', 'Inter', monospace;
+    font-family: 'Montserrat', 'Inter', monospace;
     margin: 0;
     line-height: 1.6;
 }

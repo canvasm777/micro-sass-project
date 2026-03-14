@@ -1,7 +1,7 @@
 :root {
     --indigo-glow: #6366f1;
     --cyan-glow: #22d3ee;
-    --bg: #000212;
+    --bg: #0a0a0b;
     --card-bg: rgba(99, 102, 241, 0.05);
 }
 
@@ -39,7 +39,7 @@ header {
 }
 
 h1 { font-size: 1.4rem; letter-spacing: 6px; font-weight: 300; }
-.eye { color: var(--cyan-glow); font-weight: bold; font-size: 0.7rem; background: rgba(34, 211, 238, 0.1); padding: 2px 6px; border-radius: 4px; }
+.eye { color: var(--cyan-glow); font-weight: bold; font-size: 0.7rem; background: rgba(212, 175, 55, 0.1); padding: 2px 6px; border-radius: 4px; }
 header p { font-size: 0.8rem; opacity: 0.4; margin-top: 4px; }
 
 .hive-intel { display: flex; align-items: center; gap: 10px; color: var(--indigo-glow); }

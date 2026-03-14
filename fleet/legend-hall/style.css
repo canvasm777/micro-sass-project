@@ -2,14 +2,14 @@
     --gold: #fbbf24;
     --gold-bright: #fef3c7;
     --navy: #020617;
-    --accent: #8b5cf6;
+    --accent: #f3e5ab;
 }
 
 body {
     background-color: var(--navy);
     color: white;
-    font-family: 'Cinzel', serif; /* Use a regal font if possible, fallback to serif */
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', serif; /* Use a regal font if possible, fallback to serif */
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     overflow-x: hidden;
 }

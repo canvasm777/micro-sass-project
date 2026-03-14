@@ -1,7 +1,7 @@
 :root {
     --primary: #d4af37;
     --secondary: #8a2be2;
-    --bg: #020208;
+    --bg: #0a0a0b;
     --glass: rgba(255,255,255,0.03);
     --green: #00ff41;
 }
@@ -33,7 +33,7 @@ header { margin-bottom: 2rem; }
 }
 
 h1 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 3rem; letter-spacing: 12px; margin-top: 1rem;
     background: linear-gradient(to right, #fff, var(--secondary));
     -webkit-background-clip: text; background-clip: text;
@@ -53,7 +53,7 @@ header p { font-size: 0.75rem; opacity: 0.4; letter-spacing: 4px; margin-top: 0.
 }
 
 .stage-label { font-size: 0.6rem; letter-spacing: 2px; opacity: 0.5; text-align: right; }
-.count { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; opacity: 0.6; }
+.count { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; opacity: 0.6; }
 .gold-text { color: var(--primary); opacity: 1; font-size: 1.2rem; font-weight: 700; }
 
 .stage-bar { height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
@@ -92,7 +92,7 @@ header p { font-size: 0.75rem; opacity: 0.4; letter-spacing: 4px; margin-top: 0.
 }
 
 .result-item.new { color: var(--primary); font-weight: 700; }
-.rank { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; color: var(--primary); }
+.rank { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; color: var(--primary); }
 .roi { text-align: right; color: var(--green); font-weight: 700; }
 
 .filter-btn {
@@ -100,7 +100,7 @@ header p { font-size: 0.75rem; opacity: 0.4; letter-spacing: 4px; margin-top: 0.
     background: linear-gradient(135deg, var(--secondary), #4a0e8f);
     color: white; border: none;
     padding: 1.3rem 4rem; border-radius: 50px;
-    font-family: 'Orbitron', sans-serif; font-weight: 700;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
     font-size: 1rem; letter-spacing: 3px;
     cursor: pointer; transition: all 0.3s;
     box-shadow: 0 0 30px rgba(138,43,226,0.3);

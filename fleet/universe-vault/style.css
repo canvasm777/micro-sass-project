@@ -2,14 +2,14 @@
     --metal: #334155;
     --titanium: #475569;
     --security-green: #22c55e;
-    --bg: #0b0f19;
+    --bg: #0a0a0b;
     --text: #f1f5f9;
 }
 
 body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'JetBrains Mono', 'Orbitron', monospace;
+    font-family: 'Montserrat', 'Orbitron', monospace;
     margin: 0;
     overflow-x: hidden;
 }
@@ -88,7 +88,7 @@ header p { font-size: 0.7rem; opacity: 0.4; }
     border-radius: 16px;
     padding: 1.5rem;
     overflow-y: auto;
-    font-family: 'Courier New', monospace;
+    font-family: 'Montserrat', monospace;
     font-size: 0.8rem;
     color: #4ade80;
 }

@@ -2,15 +2,15 @@
     --neon-blue: #00f2ff;
     --neon-purple: #bc13fe;
     --bg: #0a0a0b;
-    --card: rgba(15, 23, 42, 0.8);
-    --border: rgba(0, 242, 255, 0.2);
+    --card: rgba(255, 255, 255, 0.02);
+    --border: rgba(212, 175, 55, 0.15);
     --text: #ffffff;
 }
 
 body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     overflow-x: hidden;
     background: 
@@ -81,7 +81,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     border-radius: 20px;
     padding: 1.5rem;
     overflow-y: auto;
-    font-family: 'Courier New', monospace;
+    font-family: 'Montserrat', monospace;
     font-size: 0.8rem;
     color: #10b981;
 }

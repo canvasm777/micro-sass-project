@@ -1,10 +1,10 @@
-:root { --primary:#e17055; --accent:#d4af37; --bg:#060610; --green:#00ff41; }
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Outfit',sans-serif; }
+:root { --primary: #d4af37; --accent: #f3e5ab; --bg: #0a0a0b; --green:#00ff41; }
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Montserrat',sans-serif; }
 body { background:var(--bg); color:white; min-height:100vh; }
 #funnelUI { padding:3rem; max-width:1200px; margin:0 auto; }
 header { margin-bottom:3rem; }
 .badge { display:inline-block; padding:0.4rem 1.2rem; border:1px solid var(--primary); color:var(--primary); border-radius:50px; font-size:0.65rem; letter-spacing:2px; margin-bottom:1rem; }
-h1 { font-family:'Orbitron',sans-serif; font-size:3rem; letter-spacing:10px; background:linear-gradient(to right,var(--primary),#fff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+h1 { font-family: 'Montserrat',sans-serif; font-size:3rem; letter-spacing:10px; background:linear-gradient(to right,var(--primary),#fff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
 header p { font-size:0.75rem; opacity:0.4; letter-spacing:4px; margin-top:0.5rem; }
 .funnel-flow { display:flex; align-items:center; gap:1.5rem; margin-bottom:3rem; justify-content:center; }
 .stage { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:2rem; text-align:center; min-width:200px; }
@@ -12,7 +12,7 @@ header p { font-size:0.75rem; opacity:0.4; letter-spacing:4px; margin-top:0.5rem
 .icon { font-size:2rem; color:var(--primary); margin-bottom:1rem; }
 .stage.highlight .icon { color:var(--green); }
 .name { font-size:0.7rem; letter-spacing:2px; margin-bottom:0.8rem; opacity:0.8; }
-.metric { font-family:'Orbitron',sans-serif; font-size:0.8rem; font-weight:700; }
+.metric { font-family: 'Montserrat',sans-serif; font-size:0.8rem; font-weight:700; }
 .metric.green { color:var(--green); }
 .arrow { font-size:1.5rem; opacity:0.2; }
 .content-log { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:2rem; }
