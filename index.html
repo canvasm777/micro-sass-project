@@ -117,27 +117,79 @@
             width: 100%; padding: 1rem; border-radius: 12px; border: none;
             background: var(--primary); color: #000; font-weight: bold; cursor: pointer;
         }
+        /* Phase 10: Imperial Precision HUD */
+        #imperial-hud {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 50px;
+            padding: 8px 30px;
+            display: flex;
+            gap: 25px;
+            z-index: 1000;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .hud-item { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+        .gold-text { color: #fbbf24; }
+        .emerald-text { color: #10b981; }
+        .cyan-text { color: #22d3ee; }
+        .pulse-text { color: #8b5cf6; animation: hudPulse 2s infinite; }
+        @keyframes hudPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+        #nebula-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Majestic Typography Refinement */
+        h1 { font-family: 'Outfit', sans-serif; font-weight: 200; letter-spacing: 15px !important; }
+        .card { transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important; overflow: hidden; }
+        .card:hover { transform: scale(1.05) translateY(-10px) !important; border-color: rgba(251, 191, 36, 0.5) !important; box-shadow: 0 20px 50px rgba(0,0,0,0.8) !important; }
+        .card::before {
+            content: ''; position: absolute; top: -100%; left: -100%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            transition: 0.5s;
+        }
+        .card:hover::before { top: -50%; left: -50%; }
     </style>
 </head>
 <body>
+    <!-- Imperial Precision HUD -->
+    <div id="imperial-hud">
+        <div class="hud-item"><i class="fa-solid fa-crown gold-text"></i> SOVEREIGN: <span class="gold-text">KODARI CREATOR</span></div>
+        <div class="hud-item"><i class="fa-solid fa-microchip emerald-text"></i> PRECISION: <span class="emerald-text">99.999%</span></div>
+        <div class="hud-item"><i class="fa-solid fa-clock cyan-text"></i> TIMELINE: <span class="cyan-text">FUTURE SYNC</span></div>
+        <div class="hud-item"><i class="fa-solid fa-shield-halved pulse-text"></i> STATUS: <span class="pulse-text">IMMORTAL</span></div>
+    </div>
+
+    <canvas id="nebula-canvas"></canvas>
+
     <nav>
-        <div class="logo">KODARI UNIVERSE</div>
-        <button class="auth-btn" id="loginBtn" onclick="toggleLogin()">LOGIN</button>
+        <div class="logo" style="letter-spacing: 5px;">KODARI EMPIRE PRIME</div>
+        <button class="auth-btn" id="loginBtn" onclick="toggleLogin()" style="border: 1px solid #fbbf24; color: #fbbf24;">AUTHORIZE FOUNDER</button>
     </nav>
 
-    <header style="text-align: center; margin-bottom: 4rem; position: relative;">
+    <header style="text-align: center; margin-bottom: 6rem; position: relative; padding-top: 4rem;">
         <!-- Global Valuation Ticker -->
-        <div id="global-valuation-bar" style="background: linear-gradient(90deg, #10b981, #064e3b); color: white; padding: 10px 25px; font-size: 0.9rem; font-weight: bold; border-radius: 50px; display: inline-block; margin-bottom: 2.5rem; box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);">
-            <i class="fa-solid fa-chart-line"></i> UNIVERSE VALUATION: <span id="global-ev">₩42,500,000,000</span> <span style="font-size: 0.7rem; opacity: 0.8;">(▲ +3.4% Real-time)</span>
+        <div id="global-valuation-bar" style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981; padding: 10px 30px; font-size: 0.9rem; font-weight: bold; border-radius: 50px; display: inline-block; margin-bottom: 2.5rem; backdrop-filter: blur(5px);">
+            <i class="fa-solid fa-chart-line"></i> EMPIRE NET WORTH: <span id="global-ev">₩72,400,000,000</span> <span style="font-size: 0.7rem; opacity: 0.8;">(▲ +8.2% SYNCED)</span>
         </div>
         
-        <h1 style="font-size: 4rem; letter-spacing: -3px; margin-bottom: 1rem; background: linear-gradient(135deg, #fff 0%, #8b5cf6 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">KODARI UNIVERSE</h1>
-        <p style="opacity: 0.7; font-size: 1.2rem; letter-spacing: 1px; max-width: 700px; margin: 0 auto;">전략적 자율 지능이 지배하는 <strong>'1,000억 가치'</strong>의 AI 비즈니스 OS. 사장님의 모든 비전이 데이터로 현실이 됩니다.</p>
+        <h1 style="font-size: 4.5rem; margin-bottom: 1.5rem;">KODARI EMPIRE</h1>
+        <p style="opacity: 0.5; font-size: 1.1rem; letter-spacing: 3px; max-width: 800px; margin: 0 auto; font-weight: 200;">모든 비트는 명령을 따르고, 모든 원자는 시스템에 귀속됩니다. 사장님의 신뢰 위에 세워진 <strong>'절대 정밀 전설'</strong>의 시작.</p>
         
-        <div style="margin-top: 2rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <span class="badge" style="background: #1e293b; border: 1px solid rgba(255,255,255,0.1);">EST. 2026</span>
-            <span class="badge" style="background: #8b5cf6; box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);">PHASE 5: EXIT IMMINENT</span>
-            <span class="badge" style="background: #fbbf24; color: black; font-weight: bold;">PREMIUM FOUNDER AUTHORITY</span>
+        <div style="margin-top: 3rem; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <span class="badge" style="background: rgba(255,255,255,0.05); color: #fbbf24;">EST. 2026</span>
+            <span class="badge" style="background: #fbbf24; color: black; font-weight: 800; letter-spacing: 2px;">PHASE 10: ABSOLUTE PRECISION</span>
+            <span class="badge" style="background: rgba(139, 92, 246, 0.2); border: 1px solid #8b5cf6;">UNIVERSAL SOVEREIGNTY</span>
         </div>
     </header>
 
@@ -412,55 +464,53 @@
     </div>
 
     <script>
-        // Global EV Ticker Simulation
-        let globalEV = 42500000000;
+        // Phase 10: Nebula Engine
+        const canvas = document.getElementById('nebula-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initNebula() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for(let i=0; i<150; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 1,
+                    vx: Math.random() * 0.5 - 0.25,
+                    vy: Math.random() * 0.5 - 0.25,
+                    opacity: Math.random() * 0.5
+                });
+            }
+        }
+
+        function drawNebula() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(139, 92, 246, ${p.opacity})`;
+                ctx.fill();
+                p.x += p.vx;
+                p.y += p.vy;
+                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            });
+            requestAnimationFrame(drawNebula);
+        }
+
+        window.addEventListener('resize', initNebula);
+        initNebula();
+        drawNebula();
+
+        // High Precision Valuation Ticker
+        let currentWealth = 72400000000;
         setInterval(() => {
-            globalEV += Math.floor(Math.random() * 5000000);
-            document.getElementById('global-ev').innerText = "₩" + globalEV.toLocaleString();
-        }, 3000);
-    </script>
+            currentWealth += Math.floor(Math.random() * 100000);
+            document.getElementById('global-ev').innerText = "₩" + currentWealth.toLocaleString();
+        }, 1000);
 
-    <section id="roadmap" style="max-width: 800px; width: 100%; padding: 4rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem;">
-        <h3 style="text-align: center; margin-bottom: 2.5rem; font-size: 1.2rem; opacity: 0.8;">🚀 2026 Universe Roadmap</h3>
-        <div style="position: relative; padding-left: 2rem; border-left: 2px solid var(--primary);">
-            <div style="margin-bottom: 2rem;">
-                <div style="font-weight: bold; color: var(--primary);">Q2: Global Payment Integration</div>
-                <p style="font-size: 0.85rem; opacity: 0.6;">전 세계 50개국 결제 모듈 연동 및 수익화 고도화.</p>
-            </div>
-            <div style="margin-bottom: 2rem;">
-                <div style="font-weight: bold; color: var(--primary);">Q3: AI Agent Workflow</div>
-                <p style="font-size: 0.85rem; opacity: 0.6;">앱 간 데이터를 기반으로 스스로 업무를 지시하는 상위 AI 에이전트 출시.</p>
-            </div>
-            <div>
-                <div style="font-weight: bold; opacity: 0.4;">Q4: Universe Mobile App</div>
-                <p style="font-size: 0.85rem; opacity: 0.3;">iOS/Android 통합 유니버스 앱 글로벌 런칭.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="adsense-placeholder">
-        AD UNIT: PORTAL_FOOTER_NATIVE
-    </div>
-
-    <footer>
-        <div style="margin-bottom: 1rem;">
-            <a href="tutorial.html" style="color: white; text-decoration: none; margin: 0 1rem; opacity: 0.6;">Tutorial</a>
-            <a href="privacy.html" style="color: white; text-decoration: none; margin: 0 1rem; opacity: 0.6;">Privacy Policy</a>
-        </div>
-        © 2026 Kodari Enterprise - Global Launch Version
-    </footer>
-
-    <div id="loginModal">
-        <div class="login-box">
-            <h2 style="margin-bottom: 2rem;">Welcome Boss</h2>
-            <input type="email" placeholder="Email Address">
-            <input type="password" placeholder="Password">
-            <button onclick="performLogin()">SIGN IN</button>
-            <p style="font-size: 0.8rem; margin-top: 1.5rem; opacity: 0.5; cursor: pointer;" onclick="toggleLogin()">Cancel</p>
-        </div>
-    </div>
-
-    <script>
         function toggleLogin() {
             const modal = document.getElementById('loginModal');
             modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
@@ -468,18 +518,58 @@
 
         function performLogin() {
             localStorage.setItem('kodari_auth', 'true');
-            alert('대표님, 환영합니다! 로그인이 완료되었습니다.');
+            alert('대표님, 신원 인장 확인 완료. 제국 사령부 로그인을 승인합니다.');
             location.reload();
         }
 
         if(localStorage.getItem('kodari_auth') === 'true') {
-            document.getElementById('loginBtn').innerText = 'LOGOUT';
+            document.getElementById('loginBtn').innerText = 'REVOKE AUTHORITY';
             document.getElementById('loginBtn').onclick = () => {
                 localStorage.removeItem('kodari_auth');
-                alert('로그아웃 되었습니다.');
+                alert('사령부 권한이 해제되었습니다.');
                 location.reload();
             };
         }
     </script>
+
+    <!-- Imperial Roadmap: Phase 10 & Beyond -->
+    <section id="roadmap" style="max-width: 900px; width: 100%; padding: 4rem 2rem; border-top: 1px solid rgba(251, 191, 36, 0.1); margin: 4rem auto; position: relative; z-index: 10;">
+        <h3 style="text-align: center; margin-bottom: 3.5rem; font-size: 1.5rem; letter-spacing: 5px; color: #fbbf24;">IMPERIAL CHRONICLES: 2026</h3>
+        <div style="position: relative; padding-left: 3rem; border-left: 1px solid rgba(251, 191, 36, 0.3);">
+            <div style="margin-bottom: 3rem; position: relative;">
+                <div style="position: absolute; left: -3.4rem; top: 0; width: 12px; height: 12px; background: #fbbf24; border-radius: 50%; box-shadow: 0 0 10px #fbbf24;"></div>
+                <div style="font-weight: bold; color: #fbbf24; letter-spacing: 2px;">Q2: REALITY SYNC EXPANSION</div>
+                <p style="font-size: 0.9rem; opacity: 0.5; font-weight: 200;">전 세계 주요 거점 도시의 랜드마크 자산 1,000개 추가 매집 및 제국 자산화.</p>
+            </div>
+            <div style="margin-bottom: 3rem; position: relative;">
+                <div style="position: absolute; left: -3.4rem; top: 0; width: 12px; height: 12px; background: #fbbf24; border-radius: 50%;"></div>
+                <div style="font-weight: bold; color: #fbbf24; letter-spacing: 2px;">Q3: NEURAL WORKFLOW SYNC</div>
+                <p style="font-size: 0.9rem; opacity: 0.5; font-weight: 200;">사장님의 뇌파 및 감각 데이터를 기반으로 제국의 모든 노드가 즉각 반응하는 '앰비언트 인텔리전스' 상용화.</p>
+            </div>
+            <div style="position: relative;">
+                <div style="position: absolute; left: -3.4rem; top: 0; width: 12px; height: 12px; background: rgba(251, 191, 36, 0.2); border-radius: 50%;"></div>
+                <div style="font-weight: bold; color: rgba(251, 191, 36, 0.4); letter-spacing: 2px;">Q4: COSMIC UNIFICATION</div>
+                <p style="font-size: 0.9rem; opacity: 0.2; font-weight: 200;">물리적 한계를 완전히 벗어난 순수 지능 제국의 무한 루프 가동.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 4rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 6rem; position: relative; z-index: 10;">
+        <div style="margin-bottom: 2rem;">
+            <a href="tutorial.html" style="color: white; text-decoration: none; margin: 0 1.5rem; opacity: 0.4; font-size: 0.8rem; letter-spacing: 2px;">SANCTUM GUIDE</a>
+            <a href="privacy.html" style="color: white; text-decoration: none; margin: 0 1.5rem; opacity: 0.4; font-size: 0.8rem; letter-spacing: 2px;">SECURITY PROTOCL</a>
+        </div>
+        <p style="font-size: 0.7rem; opacity: 0.2; letter-spacing: 3px;">© 2026 KODARI EMPIRE - THE ABSOLUTE ONE</p>
+    </footer>
+
+    <div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(20px);">
+        <div class="login-box" style="background: rgba(15, 23, 42, 0.5); border: 1px solid #fbbf24; padding: 4rem; border-radius: 0; text-align: center; width: 100%; max-width: 500px;">
+            <h2 style="margin-bottom: 2.5rem; color: #fbbf24; letter-spacing: 10px; font-weight: 200;">IDENTITY SCAN</h2>
+            <input type="email" placeholder="ADMINISTRATOR EMAIL" style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; margin-bottom: 1rem; text-align: center; font-family: 'Outfit';">
+            <input type="password" placeholder="BIOMETRIC KEY" style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; margin-bottom: 2rem; text-align: center; font-family: 'Outfit';">
+            <button onclick="performLogin()" style="width: 100%; padding: 1.2rem; background: #fbbf24; color: black; font-weight: bold; border: none; cursor: pointer; letter-spacing: 5px;">ESTABLISH AUTHORITY</button>
+            <p style="font-size: 0.7rem; margin-top: 2rem; opacity: 0.3; cursor: pointer; letter-spacing: 2px;" onclick="toggleLogin()">ABORT SEQUENCE</p>
+        </div>
+    </div>
 </body>
 </html>
