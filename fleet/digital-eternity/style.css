@@ -1,0 +1,124 @@
+:root {
+    --gold: #fde047;
+    --gold-glow: rgba(253, 224, 71, 0.4);
+    --platinum: #f3f4f6;
+    --bg: #020205;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--platinum);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#starfield {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+}
+
+#app {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+h1 { font-size: 1.3rem; letter-spacing: 8px; font-weight: 200; text-transform: uppercase; }
+.immortal-tag { font-size: 0.6rem; color: var(--gold); border: 1px solid var(--gold); padding: 2px 8px; margin-left: 15px; border-radius: 2px; }
+header p { font-size: 0.8rem; opacity: 0.4; margin-top: 10px; font-weight: 300; }
+
+.seal-status { display: flex; align-items: center; gap: 15px; color: var(--gold); font-size: 0.8rem; letter-spacing: 3px; }
+
+/* Monument Zone */
+.monument-zone {
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+.eternal-monument {
+    position: relative;
+    width: 120px; height: 120px;
+}
+
+.monument-core {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle, var(--gold) 0%, transparent 80%);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 5;
+    animation: corePulse 5s infinite alternate ease-in-out;
+}
+.monument-core i { font-size: 3.5rem; color: #fff; text-shadow: 0 0 30px var(--gold); }
+
+.orbit {
+    position: absolute;
+    border: 1px solid rgba(253, 224, 71, 0.1);
+    border-radius: 50%;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+}
+.o1 { width: 250%; height: 250%; animation: orbitRot 30s infinite linear; }
+.o2 { width: 350%; height: 350%; animation: orbitRot 45s infinite linear reverse; }
+.o3 { width: 450%; height: 450%; animation: orbitRot 60s infinite linear; }
+
+@keyframes corePulse {
+    from { transform: scale(0.9); opacity: 0.8; }
+    to { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes orbitRot {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Immortality Stats */
+.immortality-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 6rem;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(253, 224, 71, 0.05);
+    padding: 2.5rem;
+    text-align: center;
+}
+.stat-card .label { font-size: 0.6rem; opacity: 0.3; letter-spacing: 4px; text-transform: uppercase; }
+.stat-card .value { font-size: 1.6rem; font-weight: 200; margin-top: 15px; color: var(--gold); }
+
+/* Vision Stream */
+.vision-stream {
+    text-align: center;
+    padding: 3rem;
+    background: radial-gradient(circle at center, rgba(253, 224, 71, 0.03) 0%, transparent 80%);
+}
+.vision-stream h3 { font-size: 0.8rem; margin-bottom: 2rem; opacity: 0.3; letter-spacing: 6px; }
+#visionOutput { font-size: 1.4rem; font-weight: 200; font-style: italic; opacity: 0.8; }
+
+.app-switcher { display: flex; justify-content: center; gap: 2rem; margin-top: auto; padding-top: 4rem; }
+.app-switcher a { text-decoration: none; color: white; font-size: 0.7rem; opacity: 0.3; letter-spacing: 3px; }
+.app-switcher a.active { opacity: 1; color: var(--gold); font-weight: bold; }
+footer p { text-align: center; font-size: 0.6rem; opacity: 0.2; margin-top: 3rem; }
+
+.pulse-gold { animation: pg 2s infinite; }
+@keyframes pg { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }

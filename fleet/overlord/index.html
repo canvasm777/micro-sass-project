@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universe Overlord 👑 | 사상 초유의 AI 사령부</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../../assets/scripts/ads-engine.js"></script>
+    <script src="../../auth.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="command-info">
+                <h1>Universe Overlord <span class="badge neon">V1.0</span></h1>
+                <p>전계 제국 모듈 통합 지휘 및 자율 최적화 센터</p>
+            </div>
+            <div class="autopilot-toggle">
+                <span>AI Autopilot</span>
+                <label class="switch">
+                    <input type="checkbox" id="pilotSwitch" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </header>
+
+        <main>
+            <!-- Global Domance Score -->
+            <section class="war-room-header">
+                <div class="score-box">
+                    <span class="label">Global Domination Score</span>
+                    <h2 id="domScore">84.2%</h2>
+                    <div class="bar-container">
+                        <div class="bar-fill" id="scoreFill" style="width: 84.2%"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Director Boardroom -->
+            <section class="boardroom-grid">
+                <div class="director-card" data-app="Spark">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <h4>Marketing AI</h4>
+                    <p class="status">Optimizing Viral Reach</p>
+                    <div class="report">"신규 캠페인 CTR이 4.2% 상승했습니다."</div>
+                </div>
+                <div class="director-card" data-app="Sniper">
+                    <i class="fa-solid fa-crosshairs"></i>
+                    <h4>Sales AI</h4>
+                    <p class="status">Hunting New Leads</p>
+                    <div class="report">"B2B 타겟 128곳을 추가 포착했습니다."</div>
+                </div>
+                <div class="director-card" data-app="Revenue">
+                    <i class="fa-solid fa-money-bill-trend-up"></i>
+                    <h4>Finance AI</h4>
+                    <p class="status">Maximizing Margins</p>
+                    <div class="report">"광고 단가 최적화로 수익이 15% 개선되었습니다."</div>
+                </div>
+                <div class="director-card" data-app="VA">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <h4>Ops AI</h4>
+                    <p class="status">Automating Workflow</p>
+                    <div class="report">"전체 모듈간 데이터 동기화 완료."</div>
+                </div>
+            </section>
+
+            <!-- Strategic Event Log -->
+            <section class="strategic-log">
+                <h3>Empire Strategic Log <i class="fa-solid fa-satellite"></i></h3>
+                <div id="logWindow">
+                    <!-- Events injected here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="app-switcher">
+                <a href="../../core/sns-spark/index.html">Spark</a>
+                <a href="../revenue-hub/index.html">Revenue</a>
+                <a href="../mobile-app/index.html">Mobile</a>
+                <a href="../overlord/index.html" class="active">Overlord</a>
+            </div>
+            <p>© 2026 Kodari Autonomous Empire - Absolute Command Authority</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

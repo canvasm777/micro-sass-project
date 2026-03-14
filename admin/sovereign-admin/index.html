@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Admin | Empire Control Center 🏛️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../mobile-fix.css">
+    <style>
+        :root {
+            --bg: #0a0a0b; 
+            --gold: #d4af37;
+            --gold-dim: rgba(212, 175, 55, 0.4);
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.5);
+            --border: rgba(212, 175, 55, 0.1);
+            --sidebar: #0f0f12;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg); color: var(--text); font-family: "Montserrat", sans-serif; 
+            overflow-x: hidden; min-height: 100vh;
+            background: radial-gradient(circle at 100% 0%, #1a1a1c 0%, #0a0a0b 60%);
+        }
+        
+        .sidebar { 
+            position: fixed; width: 280px; height: 100vh; 
+            background: var(--sidebar); border-right: 1px solid var(--border); 
+            padding: 3rem 2rem; z-index: 100;
+        }
+        .sidebar h2 { font-family: "Playfair Display", serif; color: var(--gold); letter-spacing: 4px; font-style: italic; margin-bottom: 4rem; }
+        
+        .nav-group { margin-bottom: 2.5rem; }
+        .nav-label { font-size: 0.65rem; color: var(--gold-dim); letter-spacing: 3px; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .nav-item { 
+            display: flex; align-items: center; gap: 15px; padding: 12px 0;
+            color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: 0.3s;
+            cursor: pointer;
+        }
+        .nav-item:hover, .nav-item.active { color: var(--gold); }
+        .nav-item i { width: 20px; text-align: center; font-size: 1rem; }
+
+        .main { margin-left: 280px; padding: 4rem 5rem; max-width: 1400px; }
+        
+        header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; }
+        header h1 { font-family: "Playfair Display", serif; font-size: 3rem; font-weight: 400; }
+        .date { font-size: 0.75rem; letter-spacing: 2px; color: var(--gold); opacity: 0.6; }
+
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; }
+        .stat-card { 
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 2.5rem;
+            position: relative; overflow: hidden; transition: 0.4s;
+        }
+        .stat-card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transform: translateX(-100%); transition: 0.6s;
+        }
+        .stat-card:hover { border-color: var(--gold-dim); transform: translateY(-5px); }
+        .stat-card:hover::before { transform: translateX(100%); }
+        
+        .stat-card h3 { font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .stat-card .val { font-size: 2.5rem; font-family: "Playfair Display", serif; font-weight: 700; margin-bottom: 10px; }
+        .stat-card .trend { font-size: 0.7rem; color: #10b981; display: flex; align-items: center; gap: 5px; }
+
+        .terminal-panel {
+            background: rgba(0,0,0,0.5); border: 1px solid var(--border); border-radius: 8px;
+            padding: 2rem; font-family: "monospace"; font-size: 0.8rem; line-height: 1.8; color: #10b981;
+            position: relative; min-height: 300px;
+        }
+        .terminal-header { display: flex; gap: 8px; margin-bottom: 1.5rem; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #333; }
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        .return-link {
+            position: absolute; bottom: 3rem; left: 2rem; font-size: 0.7rem; letter-spacing: 2px;
+            color: var(--text-dim); text-decoration: none; transition: 0.3s;
+        }
+        .return-link:hover { color: var(--gold); }
+
+        @media (max-width: 1024px) {
+            .sidebar { width: 80px; padding: 3rem 1rem; }
+            .sidebar h2, .nav-label, .nav-item span { display: none; }
+            .main { margin-left: 80px; padding: 2rem; }
+            .stat-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>SOVEREIGN</h2>
+        <nav>
+            <div class="nav-group">
+                <p class="nav-label">Empire Operations</p>
+                <a href="../sovereign-admin/index.html" class="nav-item active"><i class="fa-solid fa-gauge-high"></i> <span>DASHBOARD</span></a>
+                <a class="nav-item"><i class="fa-solid fa-chart-line"></i> <span>REVENUE HUB</span></a>
+                <a class="nav-item"><i class="fa-solid fa-users-gear"></i> <span>FLEET CONTROL</span></a>
+            </div>
+            <div class="nav-group">
+                <p class="nav-label">Protocol</p>
+                <a class="nav-item"><i class="fa-solid fa-shield-halved"></i> <span>SECURITY</span></a>
+                <a href="../succession-protocol/index.html" class="nav-item"><i class="fa-solid fa-code-branch"></i> <span>SUCCESSION</span></a>
+                <a href="../kodari-foundation/index.html" class="nav-item"><i class="fa-solid fa-heart-pulse"></i> <span>FOUNDATION</span></a>
+            </div>
+        </nav>
+        <a href="../../index.html" class="return-link"><i class="fa-solid fa-arrow-left"></i> RETURN PORTAL</a>
+    </div>
+
+    <div class="main">
+        <header>
+            <div>
+                <p class="date">SYSTEM CYCLE: 2026.03.14</p>
+                <h1>Empire Overview</h1>
+            </div>
+            <div style="text-align: right;">
+                <p class="date">PRECISION STATUS</p>
+                <p style="font-size: 1.5rem; color: var(--gold);">99.999%</p>
+            </div>
+        </header>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <h3>Total Revenue (KST)</h3>
+                <div class="val" id="totalWealth">72,480,000,000</div>
+                <div class="trend"><i class="fa-solid fa-arrow-up"></i> +4.2% THIS CYCLE</div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Nodes</h3>
+                <div class="val">1,204</div>
+                <div class="trend" style="color:var(--gold);"><i class="fa-solid fa-server"></i> OPERATIONAL</div>
+            </div>
+            <div class="stat-card">
+                <h3>Intelligence Load</h3>
+                <div class="val">14.8%</div>
+                <div class="trend" style="color:var(--text-dim);"><i class="fa-solid fa-bolt"></i> OPTIMAL</div>
+            </div>
+        </div>
+
+        <div class="terminal-panel">
+            <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div id="terminalBody">
+                > Initializing Imperial Core... DONE<br>
+                > Synchronizing Cross-Chain Liquidity... DONE<br>
+                > Deploying Sovereign Watchtower... ACTIVE<br>
+                > All systems are within optimal parameters.
+            </div>
+        </div>
+    </div>
+
+    <script src="../../scripts/imperial-seo.js"></script>
+    <script src="../../scripts/imperial-fx.js"></script>
+    <script>
+        // Real-time Wealth Increment
+        let wealth = 72480000000;
+        const wealthEl = document.getElementById('totalWealth');
+        setInterval(() => {
+            wealth += Math.floor(Math.random() * 200000);
+            wealthEl.innerText = wealth.toLocaleString();
+        }, 3000);
+
+        // Terminal Log Simulation
+        const logs = [
+            "Analyzing market volatility in Region-7...",
+            "Expanding Fleet Module: Lead-Sniper v4.0...",
+            "Foundation grant approved for 12 nodes...",
+            "Succession Protocol heartbeat: REACHED.",
+            "Ads optimization cycle complete. Revenue +0.02%",
+            "Detecting new niche signals in Aether-Net..."
+        ];
+        const terminal = document.getElementById('terminalBody');
+        setInterval(() => {
+            const newLog = logs[Math.floor(Math.random() * logs.length)];
+            const time = new Date().toLocaleTimeString('en-US', { hour12: false });
+            terminal.innerHTML += `<br>> [${time}] ${newLog}`;
+            if(terminal.innerHTML.split('<br>').length > 10) {
+                terminal.innerHTML = terminal.innerHTML.split('<br>').slice(1).join('<br>');
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

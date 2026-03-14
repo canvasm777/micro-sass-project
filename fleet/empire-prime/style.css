@@ -1,0 +1,132 @@
+:root {
+    --royal-purple: #4c1d95;
+    --monarch-gold: #fbbf24;
+    --obsidian: #020617;
+}
+
+body {
+    background-color: var(--obsidian);
+    color: #f8fafc;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#singularity-canvas {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba(76, 29, 149, 0.1) 0%, transparent 80%);
+    z-index: 0;
+}
+
+#app {
+    position: relative;
+    z-index: 10;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+h1 { font-size: 1.5rem; letter-spacing: 6px; font-weight: 300; text-transform: uppercase; }
+.monarch-tag { font-size: 0.6rem; color: var(--monarch-gold); border: 1px solid var(--monarch-gold); padding: 3px 10px; border-radius: 2px; margin-left: 15px; }
+header p { font-size: 0.8rem; opacity: 0.4; margin-top: 5px; }
+
+.unity-status { display: flex; align-items: center; gap: 12px; color: var(--monarch-gold); font-size: 0.9rem; letter-spacing: 3px; font-weight: bold; }
+
+/* Throne Room */
+.throne-room {
+    text-align: center;
+    margin-bottom: 7rem;
+}
+
+.throne-core {
+    position: relative;
+    width: 180px; height: 180px;
+    margin: 0 auto 3rem auto;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.throne-core i { font-size: 5rem; color: var(--monarch-gold); filter: drop-shadow(0 0 30px var(--monarch-gold)); z-index: 5; }
+
+.dimension-rings {
+    position: absolute;
+    width: 100%; height: 100%;
+    border: 1px solid rgba(251, 191, 36, 0.1);
+    border-radius: 50%;
+    animation: ringSpin 10s infinite linear;
+}
+
+.dimension-rings::before, .dimension-rings::after {
+    content: '';
+    position: absolute;
+    top: -20px; left: -20px; right: -20px; bottom: -20px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 50%;
+    animation: ringSpin 15s infinite linear reverse;
+}
+
+@keyframes ringSpin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+
+.sovereignty-text h2 { font-size: 2.5rem; letter-spacing: 15px; font-weight: 200; margin-bottom: 1rem; color: var(--monarch-gold); }
+.sovereignty-text p { opacity: 0.5; font-size: 1rem; font-weight: 300; letter-spacing: 2px; }
+
+/* Ledger */
+.prime-ledger {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 24px;
+    padding: 3rem;
+    margin-bottom: 6rem;
+}
+
+.ledger-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 1.5rem;
+}
+.ledger-header h3 { font-size: 0.8rem; letter-spacing: 5px; opacity: 0.4; }
+.total-power { color: var(--monarch-gold); font-weight: bold; letter-spacing: 2px; font-size: 1.1rem; }
+
+#universeList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.univ-item {
+    background: rgba(0,0,0,0.3);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.02);
+    display: flex; justify-content: space-between; align-items: center;
+}
+.univ-name { font-size: 0.9rem; font-weight: 500; color: var(--monarch-gold); }
+.univ-tag { font-size: 0.6rem; opacity: 0.3; letter-spacing: 2px; }
+
+/* Control */
+.final-controls { text-align: center; }
+.prime-btn {
+    background: var(--monarch-gold);
+    color: #000;
+    border: none; padding: 1.8rem 5rem; border-radius: 4px;
+    font-weight: bold; letter-spacing: 5px; cursor: pointer; transition: 0.4s;
+}
+.prime-btn:hover { background: #fff; transform: translateY(-5px); box-shadow: 0 10px 40px rgba(251, 191, 36, 0.4); }
+
+.app-switcher { display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; }
+.app-switcher a { text-decoration: none; color: white; opacity: 0.3; border-bottom: 1px solid transparent; padding-bottom: 5px; }
+.app-switcher a.active { opacity: 1; color: var(--monarch-gold); border-color: var(--monarch-gold); }
+footer p { text-align: center; font-size: 0.7rem; opacity: 0.2; margin-top: 4rem; }
+
+.pulse-gold { animation: pgold 2s infinite; }
+@keyframes pgold { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.5) drop-shadow(0 0 10px var(--monarch-gold)); } }

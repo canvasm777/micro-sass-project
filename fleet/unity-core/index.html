@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Core | Neural Command Interface 🧠</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="neural-network-bg">
+        <canvas id="neuralCanvas"></canvas>
+    </div>
+
+    <div id="commandInterface">
+        <header>
+            <div class="pulse-indicator">ORIGIN POINT ACTIVE</div>
+            <h1>UNITY CORE</h1>
+            <p>OMNIPRESENT SOVEREIGNTY : PHASE 13</p>
+        </header>
+
+        <div class="module-grid">
+            <!-- 10+ Modules integration visualization -->
+            <div class="module-node sns" onclick="selectModule('SNS-Spark')">
+                <i class="fa-solid fa-bolt"></i>
+                <div class="label">SNS-SPARK</div>
+                <div class="status">SYNCED</div>
+            </div>
+            <div class="module-node ace" onclick="selectModule('InterviewAce')">
+                <i class="fa-solid fa-id-card"></i>
+                <div class="label">INTERVIEW-ACE</div>
+                <div class="status">SYNCED</div>
+            </div>
+            <div class="module-node invoice" onclick="selectModule('QuickInvoice')">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <div class="label">QUICK-INVOICE</div>
+                <div class="status">SYNCED</div>
+            </div>
+            <div class="module-node sniper" onclick="selectModule('LeadSniper')">
+                <i class="fa-solid fa-crosshairs"></i>
+                <div class="label">LEAD-SNIPER</div>
+                <div class="status">SYNCED</div>
+            </div>
+            <div class="module-node dubber" onclick="selectModule('GlobalDubber')">
+                <i class="fa-solid fa-language"></i>
+                <div class="label">GLOBAL-DUBBER</div>
+                <div class="status">SYNCED</div>
+            </div>
+            <div class="module-node bot" onclick="selectModule('KnowledgeBot')">
+                <i class="fa-solid fa-robot"></i>
+                <div class="label">KNOWLEDGE-BOT</div>
+                <div class="status">SYNCED</div>
+            </div>
+            <div class="module-node vault" onclick="selectModule('UniverseVault')">
+                <i class="fa-solid fa-vault"></i>
+                <div class="label">UNIVERSE-VAULT</div>
+                <div class="status">SYNCED</div>
+            </div>
+            <div class="module-node senate" onclick="selectModule('AI-Senate')">
+                <i class="fa-solid fa-landmark"></i>
+                <div class="label">AI-SENATE</div>
+                <div class="status">SYNCED</div>
+            </div>
+        </div>
+
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="title">NEURAL CONNECTIVITY LOG</span>
+            </div>
+            <div class="terminal-body" id="logOutput">
+                <div class="line">> [SYSTEM] INITIALIZING UNITY CORE...</div>
+                <div class="line">> [SYNC] ALL 12 PHASES CONSOLIDATED.</div>
+                <div class="line">> [AUTH] PRESIDENT KODARI IDENTIFIED.</div>
+            </div>
+        </div>
+
+        <div class="global-action">
+            <button class="strike-btn" onclick="executeOmniStrike()">
+                 DIRECT STRIKE (직격) ⚡
+            </button>
+        </div>
+    </div>
+
+    <div id="strikeOverlay">
+        <div class="strike-text">EXECUTING DIRECT STRIKE...</div>
+        <div class="strike-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('neuralCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let points = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        function init() {
+            resize();
+            for (let i = 0; i < 50; i++) {
+                points.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 1,
+                    vy: (Math.random() - 0.5) * 1
+                });
+            }
+            animate();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = '#02020a';
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.strokeStyle = '#32147a';
+            ctx.lineWidth = 0.5;
+
+            points.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.fillStyle = '#8a2be2';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = i + 1; j < points.length; j++) {
+                    const p2 = points[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 200) {
+                        ctx.globalAlpha = 1 - (dist / 200);
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            ctx.globalAlpha = 1;
+            requestAnimationFrame(animate);
+        }
+
+        function selectModule(name) {
+            const log = document.getElementById('logOutput');
+            const line = document.createElement('div');
+            line.className = 'line';
+            line.innerText = `> [COMMAND] Routing through ${name} node... OK.`;
+            log.appendChild(line);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function executeOmniStrike() {
+            const overlay = document.getElementById('strikeOverlay');
+            overlay.classList.add('active');
+            
+            setTimeout(() => {
+                const log = document.getElementById('logOutput');
+                const line = document.createElement('div');
+                line.className = 'line highlight';
+                line.innerText = `> [STRIKE] DIRECT HIT! Global markets responding. Revenue spike detected.`;
+                log.appendChild(line);
+                log.scrollTop = log.scrollHeight;
+                overlay.classList.remove('active');
+            }, 2000);
+        }
+
+        window.addEventListener('resize', resize);
+        init();
+    </script>
+</body>
+</html>

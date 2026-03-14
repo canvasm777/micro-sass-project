@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Senate 🏛️ | 유니버스 상원 의회</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../../assets/scripts/ads-engine.js"></script>
+    <script src="../../auth.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="senate-brand">
+                <h1>AI Senate <span class="badge">GOVERNANCE</span></h1>
+                <p>제국의 미래를 설계하는 AI 이사들의 자율 입법 사령부</p>
+            </div>
+            <div class="consensus-meter">
+                <span>Empire Stability</span>
+                <div class="meter-bar">
+                    <div class="meter-fill" style="width: 98%"></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Strategic Proposal Area -->
+            <section class="proposal-zone">
+                <div class="proposal-card" id="currentProposal">
+                    <div class="proposal-meta">CURRENT STRATEGIC VOTE</div>
+                    <h2 id="proposalTitle">"글로벌 광고 집행 예산 200% 증액안"</h2>
+                    <p id="proposalDesc">SNS-Spark 및 Lead Sniper 연동을 통한 북미 시장 공격적 점유율 확대 전략입니다.</p>
+                </div>
+            </section>
+
+            <!-- Senate Voting Chamber -->
+            <section class="voting-chamber">
+                <div class="senators-grid" id="senatorsGrid">
+                    <!-- AI Senators injected here -->
+                </div>
+            </section>
+
+            <!-- Consensus Results -->
+            <section class="vote-stats">
+                <div class="stat-box approve">
+                    <span class="label">APPROVE</span>
+                    <span class="count" id="approveCount">0</span>
+                </div>
+                <div class="stat-box reject">
+                    <span class="label">REJECT</span>
+                    <span class="count" id="rejectCount">0</span>
+                </div>
+            </section>
+
+            <!-- Imperial Law Ledger -->
+            <section class="law-ledger">
+                <h3>Imperial Decree Ledger <i class="fa-solid fa-feather-pointed"></i></h3>
+                <div id="lawBox">
+                    <!-- Passed laws injected here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="app-switcher">
+                <a href="../overlord/index.html">Overlord</a>
+                <a href="../universe-vault/index.html">Vault</a>
+                <a href="../ai-senate/index.html" class="active">Senate</a>
+            </div>
+            <p>© 2026 Kodari Autonomous Senate - Sovereign Collective Intelligence</p>
+        </footer>
+    </div>
+
+    <!-- Celebration Overlay -->
+    <div id="decreeModal" class="modal hidden">
+        <div class="modal-content">
+            <i class="fa-solid fa-stamp"></i>
+            <h2>DECREE PASSED!</h2>
+            <p id="finalDecreeText"></p>
+            <button onclick="closeModal()">Acknowledge</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

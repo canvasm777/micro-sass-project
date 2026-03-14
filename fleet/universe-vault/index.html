@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universe Vault 🛡️ | 제국 통합 자산 관리 센터</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../../assets/scripts/ads-engine.js"></script>
+    <script src="../../auth.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="vault-brand">
+                <h1>Universe Vault <span class="badge">SECURED</span></h1>
+                <p>탈중앙화 기반 제국 마스터 금고 및 이익 분배 시스템</p>
+            </div>
+            <div id="security-status" class="secure">
+                <i class="fa-solid fa-shield-halved"></i> 256-BIT CRYPTO ACTIVE
+            </div>
+        </header>
+
+        <main>
+            <!-- Vault Core Visual -->
+            <section class="vault-core">
+                <div class="lock-mechanism">
+                    <div class="ring outer"></div>
+                    <div class="ring middle"></div>
+                    <div class="ring inner">
+                        <i class="fa-solid fa-vault"></i>
+                    </div>
+                </div>
+                <div class="total-assets">
+                    <span class="label">Total Locked Value (TLV)</span>
+                    <h2 id="tlvCounter">₩84,200,500,000</h2>
+                </div>
+            </section>
+
+            <!-- Dividend Distribution -->
+            <section class="distribution-grid">
+                <h3>Autonomous Profit Split <i class="fa-solid fa-arrows-split-up-and-left"></i></h3>
+                <div class="dist-list" id="distList">
+                    <!-- Distribution items injected by JS -->
+                </div>
+            </section>
+
+            <!-- Security Log (Immutable) -->
+            <section class="ledger-section">
+                <h3>Immutable Asset Ledger <i class="fa-solid fa-scroll"></i></h3>
+                <div id="ledgerBox">
+                    <!-- Tx logs injected here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="app-switcher">
+                <a href="../overlord/index.html">Overlord</a>
+                <a href="../ipo-hub/index.html">IPO Hub</a>
+                <a href="../universe-vault/index.html" class="active">Vault</a>
+            </div>
+            <p>© 2026 Kodari Wealth Sanctuary - Eternal Preservation Engine</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

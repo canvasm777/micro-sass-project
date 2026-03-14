@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             background-color: var(--bg); color: var(--text); 
-            font-family: \"Montserrat\", sans-serif; overflow-x: hidden;
+            font-family: "Montserrat", sans-serif; overflow-x: hidden;
             line-height: 1.6;
             background: radial-gradient(circle at 50% -20%, #1a1a1c 0%, #0a0a0b 80%);
         }
@@ -34,9 +34,9 @@
         .hud-item { display: flex; align-items: center; gap: 8px; color: var(--gold); }
         .hud-val { color: var(--text); font-weight: 700; }
         nav { width: 100%; max-width: 1200px; margin: 0 auto; padding: 100px 2rem 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: \"Playfair Display\", serif; font-size: 1.2rem; font-style: italic; letter-spacing: 4px; color: var(--gold); }
+        .logo { font-family: "Playfair Display", serif; font-size: 1.2rem; font-style: italic; letter-spacing: 4px; color: var(--gold); }
         header { text-align: center; padding: 6rem 1rem 4rem; max-width: 900px; margin: 0 auto; }
-        header h1 { font-family: \"Playfair Display\", serif; font-size: 4rem; font-weight: 400; letter-spacing: -1px; margin-bottom: 2rem; }
+        header h1 { font-family: "Playfair Display", serif; font-size: 4rem; font-weight: 400; letter-spacing: -1px; margin-bottom: 2rem; }
         .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; width: 100%; max-width: 1000px; margin: 0 auto 6rem; padding: 0 2rem; }
         .card { background: var(--card); border: 1px solid var(--border); padding: 3rem; text-decoration: none; color: white; transition: 0.6s; position: relative; }
         .card:hover { border-color: var(--gold); transform: translateY(-5px); }
@@ -49,54 +49,54 @@
     </style>
 </head>
 <body>
-    <div id=\"imperial-hud\">
-        <div class=\"hud-item\"><i class=\"fa-solid fa-crown\"></i> SOVEREIGN: <span class=\"hud-val\">KODARI</span></div>
-        <div class=\"hud-item\"><i class=\"fa-solid fa-microchip\"></i> PRECISION: <span class=\"hud-val\">99.9%</span></div>
-        <div class=\"hud-item\"><i class=\"fa-solid fa-shield-halved\"></i> STATUS: <span class=\"hud-val\">ACTIVE</span></div>
+    <div id="imperial-hud">
+        <div class="hud-item"><i class="fa-solid fa-crown"></i> SOVEREIGN: <span class="hud-val">KODARI</span></div>
+        <div class="hud-item"><i class="fa-solid fa-microchip"></i> PRECISION: <span class="hud-val">99.9%</span></div>
+        <div class="hud-item"><i class="fa-solid fa-shield-halved"></i> STATUS: <span class="hud-val">ACTIVE</span></div>
     </div>
-    <nav><div class=\"logo\">KODARI EMPIRE</div></nav>
+    <nav><div class="logo">KODARI EMPIRE</div></nav>
     <header>
-        <span style=\"color:var(--gold); letter-spacing:3px; font-size:0.8rem;\" class=\"valuation\">EMPIRE NET WORTH: 72,480,000,000</span>
+        <span style="color:var(--gold); letter-spacing:3px; font-size:0.8rem;" class="valuation">EMPIRE NET WORTH: 72,480,000,000</span>
         <h1>Your Business, <br>Owned by Intelligence.</h1>
-        <p style=\"color:var(--text-dim);\">당신의 비즈니스를 지배할 단 하나의 지성. 코다리 제국입니다.</p>
+        <p style="color:var(--text-dim);">당신의 비즈니스를 지배할 단 하나의 지성. 코다리 제국입니다.</p>
     </header>
-    <div class=\"grid\">
-        <a href=\"sns-spark/index.html\" class=\"card\">
-            <i class=\"fa-solid fa-wand-magic-sparkles\"></i>
+    <div class="grid">
+        <a href="core/sns-spark/index.html" class="card">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
             <h2>SNS-Spark</h2>
             <p>프리미엄 캡션 연성 엔진.</p>
         </a>
-        <a href=\"content-chef/index.html\" class=\"card\">
-            <i class=\"fa-solid fa-film\"></i>
+        <a href="core/content-chef/index.html" class="card">
+            <i class="fa-solid fa-film"></i>
             <h2>Content-Chef</h2>
             <p>AI 영상 재가공 센터.</p>
         </a>
-        <a href=\"mini-games/lotto/index.html\" class=\"card\">
-            <i class=\"fa-solid fa-clover\"></i>
+        <a href="core/mini-games/lotto/index.html" class="card">
+            <i class="fa-solid fa-clover"></i>
             <h2>Lotto-Spark</h2>
             <p>당첨 확률 극대화 알고리즘.</p>
         </a>
-        <a href=\"mini-games/fortune/index.html\" class=\"card\">
-            <i class=\"fa-solid fa-eye\"></i>
+        <a href="core/mini-games/fortune/index.html" class="card">
+            <i class="fa-solid fa-eye"></i>
             <h2>Imperial Oracle</h2>
             <p>오늘의 비즈니스 운세.</p>
         </a>
     </div>
-    <div class=\"grid\" style=\"grid-template-columns: repeat(3, 1fr);\">
-        <a href=\"sovereign-admin/index.html\" class=\"card\" style=\"padding: 2rem;\"><h2>Sovereign</h2></a>
-        <a href=\"kodari-foundation/index.html\" class=\"card\" style=\"padding: 2rem;\"><h2>Foundation</h2></a>
-        <a href=\"succession-protocol/index.html\" class=\"card\" style=\"padding: 2rem;\"><h2>Succession</h2></a>
+    <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+        <a href="admin/sovereign-admin/index.html" class="card" style="padding: 2rem;"><h2>Sovereign</h2></a>
+        <a href="admin/kodari-foundation/index.html" class="card" style="padding: 2rem;"><h2>Foundation</h2></a>
+        <a href="admin/succession-protocol/index.html" class="card" style="padding: 2rem;"><h2>Succession</h2></a>
     </div>
     <footer> 2026 KODARI EMPIRE</footer>
     <script>
         let currentWealth = 72480000000;
         setInterval(() => {
             currentWealth += Math.floor(Math.random() * 150000);
-            const valElement = document.querySelector(\".valuation\");
-            if(valElement) valElement.innerText = \"EMPIRE NET WORTH: \" + currentWealth.toLocaleString();
+            const valElement = document.querySelector(".valuation");
+            if(valElement) valElement.innerText = "EMPIRE NET WORTH: " + currentWealth.toLocaleString();
         }, 3000);
     </script>
-    <script src=\"scripts/imperial-seo.js\"></script>
-    <script src=\"scripts/imperial-fx.js\"></script>
+    <script src="scripts/imperial-seo.js"></script>
+    <script src="scripts/imperial-fx.js"></script>
 </body>
 </html>

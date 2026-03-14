@@ -1,0 +1,129 @@
+:root {
+    --cyan: #22d3ee;
+    --cyan-dim: rgba(34, 211, 238, 0.2);
+    --bg: #0a0a0b;
+    --grid: rgba(34, 211, 238, 0.05);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--cyan);
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    overflow-x: hidden;
+    background-image: 
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+#nexus-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+#app {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+h1 { font-size: 1.6rem; letter-spacing: 4px; margin: 0; }
+.pulse { animation: pulseAnim 2s infinite; font-size: 0.6rem; background: var(--cyan); color: #000; padding: 2px 6px; border-radius: 2px; vertical-align: top; margin-left: 5px; }
+
+@keyframes pulseAnim {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.sync-status { font-size: 0.8rem; border: 1px solid var(--cyan); padding: 5px 15px; border-radius: 4px; }
+
+/* Map View */
+.map-view {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background: rgba(34, 211, 238, 0.03);
+    border: 1px solid var(--cyan-dim);
+    margin-bottom: 4rem;
+    overflow: hidden;
+}
+
+.map-container { position: relative; width: 100%; height: 100%; }
+#worldMap { width: 100%; height: 100%; opacity: 0.3; }
+
+.node-marker {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--cyan);
+}
+.node-marker:after {
+    content: attr(data-city);
+    position: absolute;
+    top: -20px; left: 50%; transform: translateX(-50%);
+    font-size: 0.6rem; white-space: nowrap;
+}
+
+.n-asia { top: 35%; left: 78%; }
+.n-usa { top: 40%; left: 20%; }
+.n-eu { top: 30%; left: 48%; }
+
+/* Monitors */
+.monitor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.monitor-card {
+    background: rgba(34, 211, 238, 0.05);
+    border: 1px solid var(--cyan-dim);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.monitor-card i { font-size: 2rem; margin-bottom: 1rem; opacity: 0.8; }
+.monitor-card .label { font-size: 0.6rem; display: block; opacity: 0.5; letter-spacing: 2px; }
+.monitor-card .value { font-size: 1.2rem; margin: 10px 0; font-weight: bold; }
+
+.mini-graph { width: 100%; height: 2px; background: rgba(255,255,255,0.1); }
+.mini-graph .line { height: 100%; width: 70%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); animation: graphMove 2s infinite ease-in-out; }
+
+@keyframes graphMove {
+    0% { width: 30%; }
+    50% { width: 90%; }
+    100% { width: 30%; }
+}
+
+/* Sync Logger */
+.sync-logger h3 { font-size: 0.9rem; margin-bottom: 1.5rem; opacity: 0.7; }
+#logContent {
+    background: rgba(0,0,0,0.5);
+    height: 150px;
+    border-radius: 4px;
+    padding: 1rem;
+    font-size: 0.75rem;
+    overflow-y: hidden;
+}
+.log-row { margin-bottom: 6px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(34, 211, 238, 0.1); padding-bottom: 4px; }
+.log-tag { color: #fff; background: var(--cyan); color: #000; padding: 0 4px; font-weight: bold; margin-right: 10px; }
+
+.app-switcher { display: flex; justify-content: center; gap: 1rem; margin-top: auto; padding-top: 2rem; }
+.app-switcher a { text-decoration: none; color: var(--cyan); font-size: 0.75rem; opacity: 0.4; }
+.app-switcher a.active { opacity: 1; font-weight: bold; border-bottom: 1px solid var(--cyan); }
+footer p { text-align: center; font-size: 0.7rem; opacity: 0.3; margin-top: 2rem; }

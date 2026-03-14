@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kodari Universe Mobile 📱</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../../assets/scripts/ads-engine.js"></script>
+    <script src="../../auth.js"></script>
+</head>
+<body>
+    <!-- Mobile Container (Mock Device Frame) -->
+    <div id="status-bar">
+        <span class="time" id="mobile-time">09:41</span>
+        <div class="icons">
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- Biometric Login Screen -->
+    <div id="auth-screen" class="screen">
+        <div class="face-id-box">
+            <div class="scanner-circle">
+                <i class="fa-solid fa-face-smile"></i>
+                <div class="scanner-line"></div>
+            </div>
+            <h2>Scanning Face ID...</h2>
+            <p>보스, 유니버스 보안망이 가동 중입니다.</p>
+        </div>
+    </div>
+
+    <!-- Main Mobile Dashboard -->
+    <div id="main-screen" class="screen hidden">
+        <header>
+            <div class="user-info">
+                <span>Welcome back,</span>
+                <h3>Boss Kodari 👑</h3>
+            </div>
+            <div class="notif-bell">
+                <i class="fa-solid fa-bell"></i>
+                <span class="badge" id="notif-count">3</span>
+            </div>
+        </header>
+
+        <section class="quick-stats">
+            <div class="stat-card">
+                <span class="label">Today's Rev</span>
+                <span class="value" id="mobile-profit">$1,240.20</span>
+            </div>
+            <div class="stat-card">
+                <span class="label">Active Users</span>
+                <span class="value">42.8k</span>
+            </div>
+        </section>
+
+        <section class="app-grid-mobile">
+            <a href="../../core/sns-spark/index.html" class="app-icon">
+                <div class="icon-box spark"><i class="fa-solid fa-bolt"></i></div>
+                <span>Spark</span>
+            </a>
+            <a href="../../core/interview-ace/index.html" class="app-icon">
+                <div class="icon-box ace"><i class="fa-solid fa-id-card"></i></div>
+                <span>Ace</span>
+            </a>
+            <a href="../va-agency/index.html" class="app-icon">
+                <div class="icon-box va"><i class="fa-solid fa-user-tie"></i></div>
+                <span>VA</span>
+            </a>
+            <a href="../lead-sniper/index.html" class="app-icon">
+                <div class="icon-box sniper"><i class="fa-solid fa-crosshairs"></i></div>
+                <span>Sniper</span>
+            </a>
+            <a href="../global-dubber/index.html" class="app-icon">
+                <div class="icon-box dubber"><i class="fa-solid fa-microphone-lines"></i></div>
+                <span>Dubber</span>
+            </a>
+            <a href="../knowledge-bot/index.html" class="app-icon">
+                <div class="icon-box bot"><i class="fa-solid fa-brain"></i></div>
+                <span>K-Bot</span>
+            </a>
+            <a href="../revenue-hub/index.html" class="app-icon">
+                <div class="icon-box revenue"><i class="fa-solid fa-piggy-bank"></i></div>
+                <span>Revenue</span>
+            </a>
+            <div class="app-icon more">
+                <div class="icon-box plus"><i class="fa-solid fa-plus"></i></div>
+                <span>More</span>
+            </div>
+        </section>
+
+        <!-- Push Notifications Simulation Area -->
+        <div id="notif-toast" class="toast hidden">
+            <i class="fa-solid fa-comment-dots"></i>
+            <div class="toast-content">
+                <h4 id="toast-title">New Order!</h4>
+                <p id="toast-body">Global Dubber generated $45.00</p>
+            </div>
+        </div>
+
+        <nav class="bottom-tabs">
+            <div class="tab active"><i class="fa-solid fa-house"></i><span>Home</span></div>
+            <div class="tab"><i class="fa-solid fa-chart-line"></i><span>Stats</span></div>
+            <div class="tab center-action"><i class="fa-solid fa-rocket"></i></div>
+            <div class="tab"><i class="fa-solid fa-wallet"></i><span>Wealth</span></div>
+            <div class="tab"><i class="fa-solid fa-gear"></i><span>Settings</span></div>
+        </nav>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

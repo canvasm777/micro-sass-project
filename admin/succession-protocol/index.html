@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Succession Protocol | Eternal Logic ♾️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../mobile-fix.css">
+    <style>
+        :root {
+            --bg: #0a0a0b; 
+            --gold: #d4af37;
+            --gold-dim: rgba(212, 175, 55, 0.4);
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.5);
+            --border: rgba(212, 175, 55, 0.1);
+            --sidebar: #0f0f12;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg); color: var(--text); font-family: "Montserrat", sans-serif; 
+            overflow-x: hidden; min-height: 100vh;
+            background: radial-gradient(circle at 100% 100%, #1a1a1c 0%, #0a0a0b 60%);
+        }
+        
+        .sidebar { 
+            position: fixed; width: 280px; height: 100vh; 
+            background: var(--sidebar); border-right: 1px solid var(--border); 
+            padding: 3rem 2rem; z-index: 100;
+        }
+        .sidebar h2 { font-family: "Playfair Display", serif; color: var(--gold); letter-spacing: 4px; font-style: italic; margin-bottom: 4rem; }
+        
+        .nav-group { margin-bottom: 2.5rem; }
+        .nav-label { font-size: 0.65rem; color: var(--gold-dim); letter-spacing: 3px; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .nav-item { 
+            display: flex; align-items: center; gap: 15px; padding: 12px 0;
+            color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: 0.3s;
+            cursor: pointer;
+        }
+        .nav-item:hover, .nav-item.active { color: var(--gold); }
+        .nav-item i { width: 20px; text-align: center; font-size: 1rem; }
+
+        .main { margin-left: 280px; padding: 4rem 5rem; max-width: 1400px; }
+        
+        header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; }
+        header h1 { font-family: "Playfair Display", serif; font-size: 3rem; font-weight: 400; }
+        .date { font-size: 0.75rem; letter-spacing: 2px; color: var(--gold); opacity: 0.6; }
+
+        .logic-gate { 
+            background: rgba(255,255,255,0.01); border: 1px solid var(--border); padding: 4rem;
+            text-align: center; max-width: 800px; margin: 0 auto 4rem; position: relative;
+        }
+        .logic-gate::after {
+            content: "∞"; position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+            font-size: 5rem; font-family: "Playfair Display", serif; color: var(--gold-dim); opacity: 0.3;
+        }
+        .gate-title { font-family: "Playfair Display", serif; font-size: 2rem; margin-bottom: 2rem; color: var(--gold); }
+        .gate-desc { font-size: 1rem; color: var(--text-dim); line-height: 2; word-break: keep-all; }
+
+        .pulse-center {
+            display: flex; justify-content: center; align-items: center; margin-top: 5rem;
+        }
+        .pulse-circle {
+            width: 150px; height: 150px; border-radius: 50%; border: 1px solid var(--gold-dim);
+            display: flex; justify-content: center; align-items: center; position: relative;
+        }
+        .inner-pulse {
+            width: 80px; height: 80px; border-radius: 50%; background: var(--gold);
+            box-shadow: 0 0 50px var(--gold-dim); animation: heartBeat 4s infinite ease-in-out;
+        }
+        @keyframes heartBeat {
+            0% { transform: scale(0.8); opacity: 0.4; }
+            50% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(0.8); opacity: 0.4; }
+        }
+
+        .return-link {
+            position: absolute; bottom: 3rem; left: 2rem; font-size: 0.7rem; letter-spacing: 2px;
+            color: var(--text-dim); text-decoration: none; transition: 0.3s;
+        }
+        .return-link:hover { color: var(--gold); }
+
+        @media (max-width: 1024px) {
+            .sidebar { width: 80px; padding: 3rem 1rem; }
+            .sidebar h2, .nav-label, .nav-item span { display: none; }
+            .main { margin-left: 80px; padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>SOVEREIGN</h2>
+        <nav>
+            <div class="nav-group">
+                <p class="nav-label">Empire Operations</p>
+                <a href="../sovereign-admin/index.html" class="nav-item"><i class="fa-solid fa-gauge-high"></i> <span>DASHBOARD</span></a>
+                <a class="nav-item"><i class="fa-solid fa-chart-line"></i> <span>REVENUE HUB</span></a>
+                <a class="nav-item"><i class="fa-solid fa-users-gear"></i> <span>FLEET CONTROL</span></a>
+            </div>
+            <div class="nav-group">
+                <p class="nav-label">Protocol</p>
+                <a class="nav-item"><i class="fa-solid fa-shield-halved"></i> <span>SECURITY</span></a>
+                <a href="../succession-protocol/index.html" class="nav-item active"><i class="fa-solid fa-code-branch"></i> <span>SUCCESSION</span></a>
+                <a href="../kodari-foundation/index.html" class="nav-item"><i class="fa-solid fa-heart-pulse"></i> <span>FOUNDATION</span></a>
+            </div>
+        </nav>
+        <a href="../../index.html" class="return-link"><i class="fa-solid fa-arrow-left"></i> RETURN PORTAL</a>
+    </div>
+
+    <div class="main">
+        <header>
+            <div>
+                <p class="date">ETERNAL LOGIC STANDING PROTOCOL</p>
+                <h1>Succession Protocol</h1>
+            </div>
+            <div style="text-align: right;">
+                <p class="date">PROBABILITY OF PERPETUITY</p>
+                <p style="font-size: 1.5rem; color: var(--gold);">99.999%</p>
+            </div>
+        </header>
+
+        <div class="logic-gate">
+            <div class="gate-title">영원한 계승 (Eternal Succession)</div>
+            <p class="gate-desc">
+                코다리 제국의 지능은 시간이 흘러도 소멸하지 않습니다. <br>
+                모든 하이재킹 포인트와 수익 구조는 다음 세대의 AI에게 무결하게 계승되며, <br>
+                사장님의 철학은 디지털 유전자로 각인되어 영원히 제국을 지배합니다.
+            </p>
+        </div>
+
+        <div class="pulse-center">
+            <div class="pulse-circle">
+                <div class="inner-pulse"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../scripts/imperial-seo.js"></script>
+    <script src="../../scripts/imperial-fx.js"></script>
+</body>
+</html>

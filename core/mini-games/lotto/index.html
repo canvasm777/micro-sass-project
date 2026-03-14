@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto-Spark | Fortune Algorithm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0a0b; --gold: #d4af37; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: "Montserrat"; text-align: center; padding: 100px 0; }
+        .ball-container { display: flex; justify-content: center; gap: 1rem; margin: 4rem 0; }
+        .ball { width: 50px; height: 50px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-weight: 700; }
+        .action-btn { background: var(--gold); border: none; padding: 1rem 3rem; font-weight: 700; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1 style="font-family:\"Playfair Display\";">Lotto-Spark</h1>
+    <p style="opacity:0.6;">제국의 알고리즘이 예측한 당신의 행운.</p>
+    <div class="ball-container" id="ballContainer">
+        <div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div><div class="ball">?</div>
+    </div>
+    <button class="action-btn" onclick="generateNumbers()">행운 연성</button>
+    <a href="../../index.html" style="display:block; margin-top:4rem; color:var(--gold); text-decoration:none;">RETURN</a>
+    <script>
+        function generateNumbers() {
+            const container = document.getElementById(\"ballContainer\");
+            container.innerHTML = \"\";
+            for(let i=0; i<6; i++) {
+                const num = Math.floor(Math.random() * 45) + 1;
+                container.innerHTML += `<div class=\"ball\">${num}</div>`;
+            }
+        }
+    </script>
+    <script src="../../../scripts/imperial-seo.js"></script>
+    <script src="../../../scripts/imperial-fx.js"></script>
+</body>
+</html>
