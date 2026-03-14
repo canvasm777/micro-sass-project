@@ -3,37 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODARI EMPIRE | The Sovereign Intelligence ?���?/title>
+    <title>KODARI EMPIRE | The Sovereign Intelligence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0a0a0b; 
-            --gold: #d4af37; /* Champagne Gold */
+            --gold: #d4af37;
             --gold-light: #f3e5ab;
             --text: #ffffff;
             --text-dim: rgba(255, 255, 255, 0.7);
             --card: rgba(255, 255, 255, 0.02);
             --border: rgba(212, 175, 55, 0.15);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background-color: var(--bg); 
-            color: var(--text); 
-            font-family: 'Montserrat', sans-serif; 
-            overflow-x: hidden;
+            background-color: var(--bg); color: var(--text); 
+            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
             line-height: 1.6;
-        }
-
-        /* Imperial Minimal Canvas */
-        #nebula-canvas {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; opacity: 0.15;
             background: radial-gradient(circle at 50% -20%, #1a1a1c 0%, #0a0a0b 80%);
         }
-
-        /* Top HUD */
         #imperial-hud {
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
             background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(20px);
@@ -41,205 +30,71 @@
             padding: 10px 30px; display: flex; gap: 30px; z-index: 1000;
             font-size: 0.7rem; letter-spacing: 2px;
         }
-        .hud-item { display: flex; align-items: center; gap: 8px; font-weight: 400; color: var(--gold); }
+        .hud-item { display: flex; align-items: center; gap: 8px; color: var(--gold); }
         .hud-val { color: var(--text); font-weight: 700; }
-
-        nav {
-            width: 100%; max-width: 1200px; margin: 0 auto;
-            padding: 100px 2rem 20px; display: flex; justify-content: space-between; align-items: center;
-        }
+        nav { width: 100%; max-width: 1200px; margin: 0 auto; padding: 100px 2rem 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; letter-spacing: 4px; color: var(--gold); }
-        .auth-btn { 
-            background: transparent; border: 1px solid var(--gold); color: var(--gold);
-            padding: 0.6rem 1.5rem; border-radius: 4px; cursor: pointer;
-            font-size: 0.7rem; letter-spacing: 2px; transition: 0.4s;
-        }
-        .auth-btn:hover { background: var(--gold); color: #000; }
-
         header { text-align: center; padding: 6rem 1rem 4rem; max-width: 900px; margin: 0 auto; }
-        header .valuation {
-            font-size: 0.8rem; letter-spacing: 3px; color: var(--gold);
-            margin-bottom: 2rem; display: block; opacity: 0.8;
-        }
-        header h1 { 
-            font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400;
-            letter-spacing: -1px; margin-bottom: 2rem; color: #fff;
-        }
-        header p { 
-            font-weight: 200; font-size: 1.1rem; color: var(--text-dim); 
-            max-width: 600px; margin: 0 auto; letter-spacing: 1px;
-        }
-
-        .section-tag {
-            text-align: center; font-size: 0.65rem; letter-spacing: 5px; color: var(--gold);
-            margin-bottom: 3rem; text-transform: uppercase; opacity: 0.6;
-        }
-
-        /* Card Grid - The Fortress Walls */
-        .grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
-            width: 100%; max-width: 1000px; margin: 0 auto 6rem; padding: 0 2rem;
-        }
-
-        .card {
-            background: var(--card); border: 1px solid var(--border);
-            padding: 3rem; border-radius: 0px; text-decoration: none; color: white;
-            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative; overflow: hidden;
-        }
-        .card:hover {
-            background: rgba(212, 175, 55, 0.03); border-color: var(--gold);
-            transform: translateY(-5px);
-        }
-        .card i { font-size: 1.8rem; color: var(--gold); margin-bottom: 2rem; display: block; opacity: 0.8; }
-        .card h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 1rem; letter-spacing: 1px; }
-        .card p { color: var(--text-dim); font-size: 0.85rem; font-weight: 200; line-height: 1.8; }
-        
-        .card .badge {
-            position: absolute; top: 2rem; right: 2rem; font-size: 0.6rem;
-            letter-spacing: 2px; color: var(--gold); opacity: 0.5;
-        }
-
-        /* Ad Layout Box */
-        .adsense-box {
-            width: 100%; max-width: 1000px; height: 120px; margin: 4rem auto;
-            border: 1px solid rgba(255,255,255,0.03); display: flex; align-items: center; justify-content: center;
-            font-size: 0.6rem; color: var(--text-dim); letter-spacing: 4px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center; padding: 6rem 2rem; border-top: 1px solid var(--border);
-            margin-top: 4rem; opacity: 0.4; font-size: 0.7rem; letter-spacing: 3px;
-        }
-
-        /* [The Royal Pardon] Loading 문구 */
-        .loader-text { font-style: italic; color: var(--gold); }
-
-        /* Mobile Fix */
+        header h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 400; letter-spacing: -1px; margin-bottom: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; width: 100%; max-width: 1000px; margin: 0 auto 6rem; padding: 0 2rem; }
+        .card { background: var(--card); border: 1px solid var(--border); padding: 3rem; text-decoration: none; color: white; transition: 0.6s; position: relative; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card i { font-size: 1.8rem; color: var(--gold); margin-bottom: 2rem; display: block; }
+        footer { text-align: center; padding: 6rem 2rem; border-top: 1px solid var(--border); margin-top: 4rem; opacity: 0.4; font-size: 0.7rem; letter-spacing: 3px; }
         @media (max-width: 768px) {
-            #imperial-hud { width: 90%; gap: 15px; padding: 10px 20px; font-size: 0.6rem; top: 10px; flex-wrap: wrap; justify-content: center; }
-            header h1 { font-size: 2.5rem; letter-spacing: 0px; }
-            header p { font-size: 0.9rem; }
-            .grid { grid-template-columns: 1fr; padding: 0 1.5rem; }
-            .card { padding: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
-    <canvas id="nebula-canvas"></canvas>
-
-    <!-- Imperial Precision HUD -->
     <div id="imperial-hud">
         <div class="hud-item"><i class="fa-solid fa-crown"></i> SOVEREIGN: <span class="hud-val">KODARI</span></div>
         <div class="hud-item"><i class="fa-solid fa-microchip"></i> PRECISION: <span class="hud-val">99.9%</span></div>
         <div class="hud-item"><i class="fa-solid fa-shield-halved"></i> STATUS: <span class="hud-val">ACTIVE</span></div>
     </div>
-
-    <nav>
-        <div class="logo">KODARI EMPIRE</div>
-        <button class="auth-btn">AUTHORIZE</button>
-    </nav>
-
+    <nav><div class="logo">KODARI EMPIRE</div></nav>
     <header>
-        <span class="valuation">EMPIRE NET WORTH: ??2,480,000,000</span>
+        <span style="color:var(--gold); letter-spacing:3px; font-size:0.8rem;" class="valuation">EMPIRE NET WORTH: ₩72,480,000,000</span>
         <h1>Your Business, <br>Owned by Intelligence.</h1>
-        <p>?�신??비즈?�스�?지배할 ???�나??지?? <br>코다�??�국?� ?�장?�의 직�???가???��???명령?�로 변?�합?�다.</p>
+        <p style="color:var(--text-dim);">당신의 비즈니스를 지배할 단 하나의 지성. 코다리 제국입니다.</p>
     </header>
-
-    <div class="adsense-box">
-        RESERVED FOR AD REVENUE HUB
-    </div>
-
-    <div class="section-tag">High Precision Portals</div>
-
     <div class="grid">
-        <!-- ?�러 모듈 1: 콘텐�??�벽 -->
         <a href="sns-spark/index.html" class="card">
-            <span class="badge">PREMIUM</span>
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <h2>SNS-Spark</h2>
-            <p>?�진 ???�으�??�문가�??�드 ?�성. 고품�??�리???�트?� 감각?�인 카피?�이?�으�??�스?�??공기�?바꿉?�다.</p>
+            <p>프리미엄 캡션 연성 엔진.</p>
         </a>
-
         <a href="content-chef/index.html" class="card">
-            <span class="badge">STRATEGIC</span>
             <i class="fa-solid fa-film"></i>
             <h2>Content-Chef</h2>
-            <p>롱폼 ?�상??가치�? 극�??�하??지?�적 ?��?�? 조회???��????�러 구간??AI가 ?�언?�여 ?�츠�?추출?�니??</p>
+            <p>AI 영상 재가공 센터.</p>
         </a>
-
-        <!-- ?�러 모듈 2: ?�세/로또 ?�방�??�벽 -->
         <a href="mini-games/lotto/index.html" class="card">
-            <span class="badge">FORTUNE</span>
             <i class="fa-solid fa-clover"></i>
             <h2>Lotto-Spark</h2>
-            <p>?�국???�산 ?�력???�원???�운 ?�측. ?�순??번호 ?�성???�어, ?�신???�첨 ?�률??극�??�하???�고리즘.</p>
+            <p>당첨 확률 극대화 알고리즘.</p>
         </a>
-
         <a href="mini-games/fortune/index.html" class="card">
-            <span class="badge">ORACLE</span>
             <i class="fa-solid fa-eye"></i>
             <h2>Imperial Oracle</h2>
-            <p>?�늘??비즈?�스 ?�세. ?�장?�의 ?�루가 ?�국???�리�?기록?????�도�?매일 ?�침 길을 ?�시?�니??</p>
+            <p>오늘의 비즈니스 운세.</p>
         </a>
     </div>
-
-    <!-- 주방 ??(주석 처리??조잡??메뉴?? -->
-    <!--
-    <div class="section-tag" style="opacity: 0.2;">Kitchen Area (Internal)</div>
-    <div class="grid" style="opacity: 0.3; pointer-events: none;">
-        <div class="card"><h2>Interview-Ace</h2><p>Refining internal logic...</p></div>
-        <div class="card"><h2>Quick-Invoice</h2><p>Wait for next decree...</p></div>
-        <div class="card"><h2>VA-Agency</h2><p>Under maintenance...</p></div>
-    </div>
-    -->
-
-    <div class="section-tag">Empire Foundation</div>
     <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
-        <a href="sovereign-admin/index.html" class="card" style="padding: 2rem;">
-            <i class="fa-solid fa-building-columns" style="font-size: 1.2rem;"></i>
-            <h2 style="font-size: 1.1rem;">Sovereign</h2>
-        </a>
-        <a href="kodari-foundation/index.html" class="card" style="padding: 2rem;">
-            <i class="fa-solid fa-seedling" style="font-size: 1.2rem;"></i>
-            <h2 style="font-size: 1.1rem;">Foundation</h2>
-        </a>
-        <a href="succession-protocol/index.html" class="card" style="padding: 2rem;">
-            <i class="fa-solid fa-dna" style="font-size: 1.2rem;"></i>
-            <h2 style="font-size: 1.1rem;">Succession</h2>
-        </a>
+        <a href="sovereign-admin/index.html" class="card" style="padding: 2rem;"><h2>Sovereign</h2></a>
+        <a href="kodari-foundation/index.html" class="card" style="padding: 2rem;"><h2>Foundation</h2></a>
+        <a href="succession-protocol/index.html" class="card" style="padding: 2rem;"><h2>Succession</h2></a>
     </div>
-
-    <footer>
-        <div style="margin-bottom: 2rem;">
-            <span style="color: var(--gold);">© 2026 KODARI EMPIRE</span>
-        </div>
-        <p>THE SOVEREIGN INTELLIGENCE · ALL RIGHTS RESERVED</p>
-    </footer>
-
-        // [The Royal Pardon] Imperial Loading & Memory Archive
-        window.addEventListener('DOMContentLoaded', () => {
-            console.log("%c[SYSTEM] 코�??�이 ?�고?�서 ?�국??지?�을 불러?�는 중입?�다...", "color: #d4af37; font-weight: bold;");
-            
-            // Eternal Memory Archive (Local Storage)
-            const visitCount = localStorage.getItem('visitCount') || 0;
-            localStorage.setItem('visitCount', parseInt(visitCount) + 1);
-            localStorage.setItem('lastVisit', new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'}));
-            
-            if (visitCount > 0) {
-                console.log(`%c[MEMORY] ?�장?�의 ${parseInt(visitCount) + 1}번째 ?�차�??�영?�니??`, "color: #d4af37;");
-            }
-        });
-
-        // Imperial Precision Valuation
+    <footer>© 2026 KODARI EMPIRE</footer>
+    <script>
         let currentWealth = 72480000000;
         setInterval(() => {
             currentWealth += Math.floor(Math.random() * 150000);
-            const valElement = document.querySelector('.valuation');
-            if(valElement) valElement.innerText = "EMPIRE NET WORTH: ?? + currentWealth.toLocaleString();
+            document.querySelector('.valuation').innerText = "EMPIRE NET WORTH: ₩" + currentWealth.toLocaleString();
         }, 3000);
     </script>
     <script src="scripts/imperial-seo.js"></script>
-<script src="scripts/imperial-fx.js"></script></body>
+    <script src="scripts/imperial-fx.js"></script>
+</body>
 </html>

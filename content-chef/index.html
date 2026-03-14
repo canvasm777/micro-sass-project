@@ -3,142 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content-Chef | Imperial AI Alchemist ?é¨</title>
+    <title>Content-Chef | Imperial AI Alchemist üé¨</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../mobile-fix.css">
     <style>
         :root {
-            --bg: #0a0a0b; 
-            --gold: #d4af37;
-            --gold-dim: rgba(212, 175, 55, 0.15);
-            --text: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.5);
-            --card: rgba(255, 255, 255, 0.02);
-            --border: rgba(212, 175, 55, 0.2);
+            --bg: #0a0a0b; --gold: #d4af37; --text: #ffffff; --text-dim: rgba(255, 255, 255, 0.5); --border: rgba(212, 175, 55, 0.2);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--bg); color: var(--text); 
-            font-family: 'Montserrat', sans-serif; overflow-x: hidden;
-            background: radial-gradient(circle at 50% 0%, #1a1a1c 0%, #0a0a0b 70%);
-            min-height: 100vh;
-        }
-
+        body { background-color: var(--bg); color: var(--text); font-family: 'Montserrat'; min-height: 100vh; }
         .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 4rem 0; }
-
         header { text-align: center; margin-bottom: 5rem; }
-        .tag { font-size: 0.65rem; letter-spacing: 5px; color: var(--gold); margin-bottom: 1.5rem; display: block; opacity: 0.8; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -1px; }
-
-        .tab-nav { display: flex; justify-content: center; gap: 3rem; margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-        .tab-btn { 
-            background: none; border: none; color: var(--text-dim); font-size: 0.75rem; font-weight: 700; 
-            letter-spacing: 3px; cursor: pointer; transition: 0.3s; padding: 0.5rem 0;
-        }
+        .tab-nav { display: flex; justify-content: center; gap: 3rem; margin-bottom: 4rem; border-bottom: 1px solid var(--border); }
+        .tab-btn { background: none; border: none; color: var(--text-dim); padding: 1rem; cursor: pointer; font-weight: 700; }
         .tab-btn.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
-
-        .module-panel { 
-            background: var(--card); border: 1px solid var(--border); padding: 3rem; 
-            display: none; animation: fadeIn 0.8s ease-out;
-        }
+        .module-panel { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 3rem; display: none; }
         .module-panel.active { display: block; }
-
-        label { font-size: 0.65rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem; display: block; text-transform: uppercase; }
-        textarea, select {
-            width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
-            color: white; padding: 1.5rem; font-family: 'Montserrat'; font-size: 0.9rem;
-            margin-bottom: 2rem; border-radius: 0;
-        }
-
-        .action-btn {
-            width: 100%; background: var(--gold); color: black; border: none;
-            padding: 1.3rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 4px;
-            cursor: pointer; transition: 0.4s;
-        }
-        .action-btn:hover { background: #f3e5ab; transform: translateY(-3px); box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2); }
-
-        .result-area { margin-top: 4rem; display: none; }
-        .p-bar { height: 1px; background: var(--border); width: 100%; margin: 2rem 0; position: relative; }
-        .p-bar-fill { height: 1px; background: var(--gold); position: absolute; left: 0; top: 0; width: 0; transition: 1s; box-shadow: 0 0 10px var(--gold); }
-
-        .preview-box { height: 400px; background: #000; border: 1px solid var(--border); margin-top: 2rem; }
-
-        .back-link { 
-            display: block; margin-top: 5rem; text-align: center; color: var(--text-dim); text-decoration: none; 
-            font-size: 0.7rem; letter-spacing: 3px; border-bottom: 1px solid transparent; transition: 0.3s;
-        }
-        .back-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        textarea, select { width: 100%; background: #000; border: 1px solid var(--border); color: #fff; padding: 1rem; margin-bottom: 1.5rem; }
+        .action-btn { width: 100%; background: var(--gold); color: #000; padding: 1.5rem; border: none; font-weight: 700; cursor: pointer; }
+        .result-area { margin-top: 2rem; display: none; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <span class="tag">THE KILLER ALGORITHM ¬∑ PHASE 20</span>
-            <h1>Content-Chef</h1>
-            <p style="color: var(--text-dim); font-size: 0.9rem; font-weight: 200; letter-spacing: 2px; margin-top: 1rem;">?úÍµ≠???åÍ≥†Î¶¨Ï¶ò???πÏã†???ÑÏù¥?îÏñ¥Î•?'Í∏??ºÎ°ú ?∞ÏÑ±?©Îãà??</p>
+            <h1 style="font-family:'Playfair Display'; font-size: 3rem;">Content-Chef</h1>
         </header>
-
         <nav class="tab-nav">
             <button class="tab-btn active" onclick="switchTab('script')">SCRIPT-TO-VIDEO</button>
             <button class="tab-btn" onclick="switchTab('oracle')">SHORTS-ORACLE</button>
             <button class="tab-btn" onclick="switchTab('meme')">INFINITE-MEME</button>
         </nav>
-
         <div id="scriptPanel" class="module-panel active">
-            <label>?ÑÏù¥?îÏñ¥ ?∞ÏÑ± (Idea Input)</label>
-            <textarea id="scriptInput" placeholder="?? '1000??Í∞ÄÏπ?ÎπÑÏ¶à?àÏä§Î•?ÎßåÎìú??3Í∞ÄÏßÄ ?µÍ?'"></textarea>
-            
-            <label>?åÏÑ± ?òÎ•¥?åÎÇò (Voice Persona)</label>
-            <select id="voiceSelect">
-                <option>The Sovereign (Deep)</option>
-                <option>The Oracle (Elegant)</option>
-                <option>The Strategist (Neutral)</option>
-            </select>
-
+            <textarea id="scriptInput" placeholder="Ideation..."></textarea>
+            <select id="voiceSelect"><option>The Sovereign (Deep)</option></select>
             <button class="action-btn" onclick="startScriptAlchemy()">FORGE VIDEO DRAFT</button>
-
             <div id="alchemyProgress" class="result-area">
-                <label>Alchemy in Progress...</label>
-                <div class="p-bar"><div class="p-bar-fill"></div></div>
-                
-                <div id="scriptResult" style="transition: 1s;">
-                    <label>Generated Script</label>
-                    <div id="scriptOutput" style="background: rgba(255,255,255,0.02); padding: 1.5rem; font-size: 0.85rem; line-height: 1.8; margin-bottom: 2rem; white-space: pre-wrap;"></div>
-                    
-                    <label>Video Visualization (Preview)</label>
-                    <div class="preview-box" id="videoPreview"></div>
-                </div>
+                <div id="scriptOutput" style="background:rgba(0,0,0,0.5); padding:1rem;"></div>
+                <div id="videoPreview" style="height:300px; background:#000; margin-top:1rem;"></div>
             </div>
         </div>
-
         <div id="oraclePanel" class="module-panel">
-            <label>?†ÌäúÎ∏??ÅÏÉÅ Ï¢åÌëú (YouTube URL)</label>
-            <textarea id="youtubeUrl" placeholder="https://youtube.com/watch?v=..."></textarea>
+            <textarea id="youtubeUrl" placeholder="YouTube URL..."></textarea>
             <button class="action-btn" onclick="predictViralMoments()">PREDICT VIRAL MOMENTS</button>
             <div id="oracleResult" class="result-area"></div>
         </div>
-
         <div id="memePanel" class="module-panel">
-            <label>?§ÏãúÍ∞??∏Î†å???ÄÍ≤?(Meme Target)</label>
-            <p style="font-size: 0.7rem; color: var(--text-dim); margin-bottom: 2rem;">?úÍµ≠ ?∏ÌÖîÎ¶¨Ï†Ñ?§Í? ?òÏßë??Í∏ÄÎ°úÎ≤å ?∏Î†å?úÎ? Í∏∞Î∞ò?ºÎ°ú Ï¶âÏÑù Î∞àÏùÑ ?∞ÏÑ±?©Îãà??</p>
             <button class="action-btn" onclick="generateImperialMeme()">FORGE TRENDING MEME</button>
             <div id="memeResult" class="result-area"></div>
         </div>
-
-        <a href="../index.html" class="back-link">RETURN TO OVERLORD PORTAL</a>
+        <a href="../index.html" style="display:block; text-align:center; color:var(--text-dim); margin-top:4rem;">RETURN</a>
     </div>
-
     <script src="../scripts/content-alchemist.js"></script>
     <script src="../scripts/imperial-seo.js"></script>
+    <script src="../scripts/imperial-fx.js"></script>
     <script>
         function switchTab(type) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.module-panel').forEach(p => p.classList.remove('active'));
-            
             if(type === 'script') {
                 document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
                 document.getElementById('scriptPanel').classList.add('active');
@@ -150,10 +72,6 @@
                 document.getElementById('memePanel').classList.add('active');
             }
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-             console.log("%c[SYSTEM] Content-Chef ?îÏßÑ Í∞Ä???ÑÎ£å.", "color: #d4af37; font-weight: bold;");
-        });
     </script>
-<script src="../scripts/imperial-fx.js"></script></body>
+</body>
 </html>
