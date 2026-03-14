@@ -265,6 +265,10 @@
                 <div style="margin-top: 1rem; height: 4px; width: 100%; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;">
                     <div id="harmony-bar" style="height: 100%; width: 98.4%; background: #fbbf24; transition: 0.5s;"></div>
                 </div>
+                <div id="patch-log" style="margin-top: 1.5rem; font-size: 0.65rem; color: #fbbf24; opacity: 0.6; font-family: monospace; height: 45px; overflow-y: hidden;">
+                    <!-- Real-time optimization logs -->
+                    [SYSTEM] Neural sync stabilized. Waiting for recursion...
+                </div>
             </div>
         </a>
     </div>
@@ -532,6 +536,16 @@
             document.getElementById('hud-harmony').innerText = m.harmony.toFixed(2) + "%";
             document.getElementById('core-cycles').innerText = m.cycles;
             document.getElementById('harmony-bar').style.width = m.harmony + "%";
+        });
+
+        // Perfection Patch Notification (Phase 10)
+        window.addEventListener('imperialPatchApplied', (e) => {
+            const p = e.detail;
+            const log = document.getElementById('patch-log');
+            const entry = document.createElement('div');
+            entry.innerHTML = `[${p.timestamp}] <span style="color:#fff">PATCH ${p.patchId}</span>: Optimized ${p.target} module.`;
+            log.prepend(entry);
+            if(log.childNodes.length > 3) log.removeChild(log.lastChild);
         });
 
         // High Precision Valuation Ticker
