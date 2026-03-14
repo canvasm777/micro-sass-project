@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Link 🌐 | 가상-현실 동기화 인터페이스</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/scripts/ads-engine.js"></script>
+    <script src="../auth.js"></script>
+</head>
+<body>
+    <div id="nexus-overlay"></div>
+    <div id="app">
+        <header>
+            <div class="nexus-brand">
+                <h1>Nexus Link <span class="pulse">LIVE SYNC</span></h1>
+                <p>제국 가상 자산과 리얼 월드 인프라의 양방향 통합 사령부</p>
+            </div>
+            <div class="sync-status">
+                <i class="fa-solid fa-link"></i> REAL-WORLD CONNECTED
+            </div>
+        </header>
+
+        <main>
+            <!-- Global Infrastructure Map Simulation -->
+            <section class="map-view">
+                <div class="map-container">
+                    <canvas id="worldMap"></canvas>
+                    <div class="node-marker n-asia" data-city="Seoul"></div>
+                    <div class="node-marker n-usa" data-city="San Francisco"></div>
+                    <div class="node-marker n-eu" data-city="London"></div>
+                    <div class="data-stream-v"></div>
+                </div>
+            </section>
+
+            <!-- Physical Node Status -->
+            <section class="node-monitor">
+                <div class="monitor-grid">
+                    <div class="monitor-card" id="node-servers">
+                        <i class="fa-solid fa-server"></i>
+                        <span class="label">Data Centers</span>
+                        <div class="value">99.9% Online</div>
+                        <div class="mini-graph"><div class="line"></div></div>
+                    </div>
+                    <div class="monitor-card" id="node-logistics">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span class="label">Logistics Nodes</span>
+                        <div class="value">4,281 Active</div>
+                        <div class="mini-graph"><div class="line"></div></div>
+                    </div>
+                    <div class="monitor-card" id="node-smartcity">
+                        <i class="fa-solid fa-city"></i>
+                        <span class="label">City Hubs</span>
+                        <div class="value">CONNECTED</div>
+                        <div class="mini-graph"><div class="line"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Real-time Sync Log -->
+            <section class="sync-logger">
+                <h3>Global Synchronization Ledger <i class="fa-solid fa-microchip"></i></h3>
+                <div id="logContent">
+                    <!-- Logs injected by JS -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="app-switcher">
+                <a href="../universe-vault/index.html">Vault</a>
+                <a href="../ai-senate/index.html">Senate</a>
+                <a href="../nexus-link/index.html" class="active">Nexus</a>
+            </div>
+            <p>© 2026 Kodari Digital Twin - Real-World Infrastructure Protocol</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
