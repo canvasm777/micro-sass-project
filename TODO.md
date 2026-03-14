@@ -128,10 +128,22 @@
 - [x] **Empire-Sitemap**: 검색 엔진 최적화를 위한 지능형 사이트맵(sitemap.xml) 및 로봇 프로토콜(robots.txt) 정갈 완료
 - [x] **Imperial-Polish**: 샴페인 골드 클릭 효과(scripts/imperial-fx.js) 전 영토 이식 완료
 
-## 🚀 [PHASE 23] 제국의 강림: Deployment & Sovereign Launch (IN PROGRESS)
+## 🟢 [PHASE 23] 제국의 강림: Deployment & Sovereign Launch (COMPLETED)
 - [x] **Cloudflare-Monolith**: Cloudflare Pages / GitHub 기반 전 세계 소버린 배포 집행 완료 (Revision: 3379e97)
-- [ ] **Domain-Annexation**: 제국의 영토를 상징할 정규 도메인 바인딩 준비
+- [x] **Domain-Annexation**: 제국의 영토를 상징할 정규 도메인 바인딩 및 배포 안정화 완료
 - [x] **Final-Auditing**: 전 페이지 링크 무결성 및 모바일 최적화 최종 0.001% 검수 완료 (Sitemap 정화 포함)
+
+## 🟢 [PHASE 24] 아키텍처 재편: Imperial Restructuring (COMPLETED)
+- [x] **Core/Admin/Fleet 분리**: 루트 디렉토리의 60개 이상 폴더를 전략적 3대 구역으로 완벽 재구성 완료
+- [x] **Recursive Path Fix**: 파이썬 스크립트를 통한 전 모듈 상대 경로 및 리소스 연결성 보정 완료
+
+## 🟢 [PHASE 25] 브랜드 절대 동기화: Force Imperial Sync (COMPLETED)
+- [x] **Regex-Brand-Engine**: 정규표현식 기반의 강제 브랜드 동기화 엔진 가동으로 48개 전 함대 모듈 도색 완료
+- [x] **Typography-Unity**: Montserrat & Playfair Display 기반의 제국 전용 타이포그래피 전 영토 이식 완료
+
+## 🟢 [PHASE 26] 포털 복원 및 디자인 규범: Doc & Fleet Restore (COMPLETED)
+- [x] **Fleet-Portal-Restore**: 누락되었던 함대 섹션을 포털에 복원하고 소버린 디자인으로 고도화 완료
+- [x] **Design-Doctrine-Archive**: 삭제되었던 `IMPERIAL_DESIGN_SYSTEM.md` 복구 및 영구 보존 조치 완료
 
 ---
 
