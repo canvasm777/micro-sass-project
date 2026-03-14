@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesis Engine ✨ | 유니버스 자가 복제 센터</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/scripts/ads-engine.js"></script>
+    <script src="../auth.js"></script>
+</head>
+<body>
+    <div id="stars-container"></div>
+    <div id="app">
+        <header>
+            <div class="genesis-brand">
+                <h1>Genesis Engine <span class="badge">RECURSIVE</span></h1>
+                <p>제국의 경계를 넘어, 새로운 유니버스를 창조하고 복제하는 최상위 지능 엔진</p>
+            </div>
+            <div class="iteration-count">
+                <span>Iteration Cycle</span>
+                <h2 id="cycleNum">#001,024</h2>
+            </div>
+        </header>
+
+        <main>
+            <!-- Universe Spawning Interaction -->
+            <section class="spawner-zone">
+                <div class="nebula-visual">
+                    <canvas id="nebulaCanvas"></canvas>
+                    <div class="dna-spinner">
+                        <i class="fa-solid fa-dna"></i>
+                    </div>
+                </div>
+                <button id="spawnBtn" onclick="spawnUniverse()">SPAWN NEW UNIVERSE</button>
+            </section>
+
+            <!-- Recursive Tree Visualization -->
+            <section class="universe-tree">
+                <h3>Recursive Lineage Graph <i class="fa-solid fa-network-wired"></i></h3>
+                <div id="treeContainer">
+                    <div class="node origin">KODARI PRIME</div>
+                    <!-- Sub-nodes injected by JS -->
+                </div>
+            </section>
+
+            <!-- Creation Metrics -->
+            <section class="metrics-grid">
+                <div class="metric-card">
+                    <span class="label">Sub-Universes</span>
+                    <div class="value" id="subCount">12</div>
+                </div>
+                <div class="metric-card">
+                    <span class="label">Stability Rate</span>
+                    <div class="value">99.98%</div>
+                </div>
+                <div class="metric-card">
+                    <span class="label">Total Intelligence</span>
+                    <div class="value">EXA-SCALE</div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="app-switcher">
+                <a href="../ai-senate/index.html">Senate</a>
+                <a href="../nexus-link/index.html">Nexus</a>
+                <a href="../genesis-engine/index.html" class="active">Genesis</a>
+            </div>
+            <p>© 2026 Kodari Evolution - Infinite Recursive Prosperity</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

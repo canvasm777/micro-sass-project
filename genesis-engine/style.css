@@ -1,0 +1,142 @@
+:root {
+    --magenta: #d946ef;
+    --indigo: #4338ca;
+    --gold: #fbbf24;
+    --bg: #03001c;
+    --card: rgba(30, 27, 75, 0.4);
+}
+
+body {
+    background-color: var(--bg);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    background: radial-gradient(circle at center, #1e1b4b 0%, #03001c 100%);
+}
+
+#stars-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#app {
+    position: relative;
+    z-index: 10;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+h1 { font-size: 1.5rem; letter-spacing: 5px; color: var(--gold); }
+.badge { background: var(--magenta); color: white; font-size: 0.6rem; padding: 2px 8px; border-radius: 4px; vertical-align: middle; }
+header p { font-size: 0.8rem; opacity: 0.5; margin-top: 5px; }
+
+.iteration-count { text-align: right; }
+.iteration-count span { font-size: 0.6rem; opacity: 0.5; text-transform: uppercase; }
+.iteration-count h2 { color: var(--magenta); font-size: 1.5rem; margin: 0; text-shadow: 0 0 10px var(--magenta); }
+
+/* Spawner Zone */
+.spawner-zone { text-align: center; margin-bottom: 6rem; position: relative; }
+.nebula-visual {
+    width: 300px; height: 300px;
+    margin: 0 auto 3rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nebulaCanvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    filter: blur(20px);
+    opacity: 0.6;
+}
+
+.dna-spinner {
+    font-size: 6rem;
+    color: var(--gold);
+    animation: rotateDNA 5s infinite linear;
+    text-shadow: 0 0 30px var(--gold);
+}
+
+@keyframes rotateDNA {
+    from { transform: rotateY(0); }
+    to { transform: rotateY(360deg); }
+}
+
+#spawnBtn {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+#spawnBtn:hover {
+    background: var(--gold);
+    color: #000;
+    box-shadow: 0 0 40px var(--gold);
+}
+
+/* Universe Tree */
+.universe-tree { margin-bottom: 5rem; }
+.universe-tree h3 { font-size: 1rem; margin-bottom: 2rem; opacity: 0.6; letter-spacing: 3px; }
+
+#treeContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.node {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: var(--magenta);
+    position: relative;
+    animation: fadeInScale 0.5s ease-out;
+}
+.node.origin { border-color: var(--gold); color: var(--gold); font-weight: bold; }
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Metrics */
+.metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.metric-card {
+    background: rgba(255,255,255,0.03);
+    padding: 1.5rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.metric-card .label { font-size: 0.6rem; display: block; opacity: 0.5; letter-spacing: 2px; }
+.metric-card .value { font-size: 1.2rem; font-weight: bold; margin-top: 5px; color: var(--magenta); }
+
+.app-switcher { display: flex; justify-content: center; gap: 1rem; margin-top: auto; padding-top: 3rem; }
+.app-switcher a { text-decoration: none; color: white; font-size: 0.75rem; opacity: 0.4; }
+.app-switcher a.active { opacity: 1; color: var(--magenta); font-weight: bold; }
+footer p { text-align: center; font-size: 0.7rem; opacity: 0.3; margin-top: 2rem; }
