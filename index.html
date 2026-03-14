@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kodari Universe ✨ | All-in-One AI Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="imperial-core/styles/aetheric-resonance.css">
     <script src="assets/scripts/ads-engine.js"></script>
+    <script src="imperial-core/scripts/neural-sync.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&display=swap');
         :root {
@@ -163,11 +165,11 @@
 </head>
 <body>
     <!-- Imperial Precision HUD -->
-    <div id="imperial-hud">
+    <div id="imperial-hud" class="precision-node">
         <div class="hud-item"><i class="fa-solid fa-crown gold-text"></i> SOVEREIGN: <span class="gold-text">KODARI CREATOR</span></div>
-        <div class="hud-item"><i class="fa-solid fa-microchip emerald-text"></i> PRECISION: <span class="emerald-text">99.999%</span></div>
-        <div class="hud-item"><i class="fa-solid fa-clock cyan-text"></i> TIMELINE: <span class="cyan-text">FUTURE SYNC</span></div>
-        <div class="hud-item"><i class="fa-solid fa-shield-halved pulse-text"></i> STATUS: <span class="pulse-text">IMMORTAL</span></div>
+        <div class="hud-item"><i class="fa-solid fa-microchip emerald-text"></i> PRECISION: <span class="emerald-text" id="hud-precision">99.999%</span></div>
+        <div class="hud-item"><i class="fa-solid fa-brain pulse-text"></i> HARMONY: <span class="pulse-text" id="hud-harmony">98.4%</span></div>
+        <div class="hud-item"><i class="fa-solid fa-shield-halved cyan-text"></i> STATUS: <span class="cyan-text">IMMORTAL</span></div>
     </div>
 
     <canvas id="nebula-canvas"></canvas>
@@ -247,6 +249,25 @@
             </div>
         </div>
     </section>
+
+    <!-- [사장님 지휘] 제국의 심장: 중앙 지능 사령부 -->
+    <div style="text-align: center; margin-bottom: 4rem; margin-top: 2rem;">
+        <h3 class="majestic-text" style="font-size: 1.2rem; color: #fbbf24;">The Imperial Heart: Central Intelligence</h3>
+        <p style="font-size: 0.8rem; opacity: 0.4;">제국의 모든 모듈을 실시간으로 최적화하고 사장님의 의도를 명확하게 집행하는 핵심 엔진입니다.</p>
+    </div>
+
+    <div class="grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto 6rem auto;">
+        <a href="#" class="card aether-card precision-node" style="text-align: left; display: flex; align-items: center; gap: 2rem;">
+            <div style="font-size: 3rem; color: #fbbf24;"><i class="fa-solid fa-brain"></i></div>
+            <div style="flex-grow: 1;">
+                <h2 style="color: #fbbf24; margin-bottom: 0.5rem;">Imperial Neural Core</h2>
+                <p style="font-size: 0.9rem; opacity: 0.6;">재귀적 완벽 강화 중. 현재 최적화 사이클: <span id="core-cycles">0</span>회</p>
+                <div style="margin-top: 1rem; height: 4px; width: 100%; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;">
+                    <div id="harmony-bar" style="height: 100%; width: 98.4%; background: #fbbf24; transition: 0.5s;"></div>
+                </div>
+            </div>
+        </a>
+    </div>
 
     <div style="text-align: center; margin-top: 2rem;">
         <h3 style="font-size: 1.2rem; margin-bottom: 1rem; opacity: 0.8;">Active Business Modules</h3>
@@ -503,6 +524,15 @@
         window.addEventListener('resize', initNebula);
         initNebula();
         drawNebula();
+
+        // Neural Metric Synchronization
+        window.addEventListener('imperialMetricsUpdate', (e) => {
+            const m = e.detail;
+            document.getElementById('hud-precision').innerText = m.precision.toFixed(5) + "%";
+            document.getElementById('hud-harmony').innerText = m.harmony.toFixed(2) + "%";
+            document.getElementById('core-cycles').innerText = m.cycles;
+            document.getElementById('harmony-bar').style.width = m.harmony + "%";
+        });
 
         // High Precision Valuation Ticker
         let currentWealth = 72400000000;

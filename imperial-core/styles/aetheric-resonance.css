@@ -1,0 +1,58 @@
+:root {
+    /* Imperial Color Palette */
+    --imperial-gold: #fbbf24;
+    --imperial-gold-glow: rgba(251, 191, 36, 0.4);
+    --nebula-purple: #4c1d95;
+    --aether-cyan: #22d3ee;
+    --void-obsidian: #010409;
+    
+    /* Design Tokens */
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --aether-blur: blur(12px);
+}
+
+/* Sophisticated Competence: Geometric Harmony */
+.aether-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--aether-blur);
+    border: var(--glass-border);
+    border-radius: 4px; /* Precision corner */
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.aether-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transition: 0.8s;
+}
+
+.aether-card:hover::after {
+    left: 100%;
+}
+
+/* Precision Neural Pulse Animation */
+@keyframes neuralPulse {
+    0% { box-shadow: 0 0 10px var(--imperial-gold-glow), inset 0 0 5px var(--imperial-gold-glow); }
+    50% { box-shadow: 0 0 30px var(--imperial-gold-glow), inset 0 0 15px var(--imperial-gold-glow); }
+    100% { box-shadow: 0 0 10px var(--imperial-gold-glow), inset 0 0 5px var(--imperial-gold-glow); }
+}
+
+.precision-node {
+    border: 1px solid var(--imperial-gold);
+    animation: neuralPulse 3s infinite ease-in-out;
+}
+
+/* Sophisticated Typography */
+.majestic-text {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 200;
+}
