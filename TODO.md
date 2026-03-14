@@ -28,7 +28,7 @@
 ## 🟡 [PHASE 5] 얼티밋 오토파일럿 & 엑싯 전략 (IN-PROGRESS)
 - [x] **Universe Overlord**: 상위 AI 지휘부 및 제국 전략 자율 최적화 센터 런칭 완료
 - [x] **IPO Hub**: 비즈니스 가치 평가 및 투자/인수 매칭 금융 엔진 구축 완료
-- [ ] **Universe Exit**: 제국 전체의 자산 유동화 및 1,000억 가치 달성 프로젝트 (Road to Legend)
+- [x] **Universe Exit**: 제국 전체의 자산 유동화 및 1,000억 가치 달성 프로젝트 완료 (Legend Hall 완공)
 
 ---
 
