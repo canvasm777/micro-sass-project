@@ -1,5 +1,6 @@
 // InterviewAce AI Sniper - [사장님 지휘 하에 각성 완료]
 // "앉아만 있지 말고 결과를 내라!" - Agent Sigma & Beta
+
 const generateBtn = document.getElementById('generateBtn');
 const questionsContainer = document.getElementById('questions');
 const statusBanner = document.getElementById('statusBanner');
@@ -14,7 +15,8 @@ const sampleBtn = document.getElementById('sampleBtn');
 const urlInputArea = document.getElementById('urlInputArea');
 const textInputArea = document.getElementById('textInputArea');
 
-let inputMode = 'url'; // 'url' or 'text'
+let inputMode = 'url'; 
+let currentQuestions = [];
 
 // 사장님 지시: 데이터 영속성 확보
 let aceHistory = JSON.parse(localStorage.getItem('ace_history')) || [];
@@ -26,26 +28,24 @@ function initApp() {
     }
     startTicker();
     renderTestBench();
-    syncFinanceData(); // [사장님 지시] 재무 데이터 연동
+    syncFinanceData();
 }
-initApp();
 
-// [사장님 지시] 데이터 연동: Invoice 앱의 지출 데이터를 가져와 채용 예산 산출
+/**
+ * [코부장 지시] VA Agency와의 데이터 연동 시뮬레이션
+ */
 function syncFinanceData() {
     const vault = JSON.parse(localStorage.getItem('KODARI_SHARED_VAULT')) || {};
     const financeWidget = document.getElementById('financeSynergy');
     const budgetValue = document.getElementById('recruitmentBudget');
 
     if (vault.bizSpending) {
-        // 비즈니스 지출의 약 15%를 채용/R&D 예산으로 자동 책정한다는 코다리의 논리
         const krwSpending = vault.bizSpending['KRW'] || 0;
-        const usdSpending = vault.bizSpending['USD'] || 0;
+        const totalInKRW = krwSpending + ( (vault.bizSpending['USD'] || 0) * 1300 );
         
-        if (krwSpending > 0 || usdSpending > 0) {
+        if (totalInKRW > 0) {
             financeWidget.classList.remove('hidden');
-            const totalInKRW = krwSpending + (usdSpending * 1300); // 간이 환율 적용
             const recruitmentBudget = Math.floor(totalInKRW * 0.15);
-            
             budgetValue.innerText = recruitmentBudget.toLocaleString() + '원 (추정)';
         }
     }
@@ -55,7 +55,6 @@ const trends = [
     "🔥 현재 IT 대기업: 'LLM 최적화 엔지니어' 채용 열기!",
     "🏛️ 공공기관: NCS 기반 '직무수행능력' 평가 비중 강화 중",
     "🌍 Global Tech: 'Remote-First' 문화 적응력 검증 필수화",
-    "🚀 스타벅스: '비즈니스 민첩성(Agility)' 중점 채용 중",
     "💡 채용 트렌드: 'AI 협업 능력'이 연봉 20% 결정"
 ];
 
@@ -74,10 +73,8 @@ function startTicker() {
 
 function renderTestBench() {
     const samples = [
-        { name: "사람인 (국내 대기업 예시)", url: "https://www.saramin.co.kr/zf_user/jobs/public/view?rec_idx=12345" },
-        { name: "잡코리아 (중견기업 예시)", url: "https://www.jobkorea.co.kr/Recruit/GI_Read/99999" },
-        { name: "Wanted (스타트업/신산업)", url: "https://www.wanted.co.kr/wd/88888" },
-        { name: "LinkedIn (글로벌 테크)", url: "https://www.linkedin.com/jobs/view/77777" }
+        { name: "Wanted (스타트업)", url: "https://www.wanted.co.kr/wd/88888" },
+        { name: "LinkedIn (글로벌)", url: "https://www.linkedin.com/jobs/view/77777" }
     ];
     testLinksContainer.innerHTML = samples.map(s => `
         <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; padding: 4px 8px; background: rgba(255,255,255,0.03); border-radius: 6px;">
@@ -104,59 +101,57 @@ sampleBtn.onclick = () => {
 
 generateBtn.onclick = async () => {
     const inputContent = inputMode === 'url' ? jobUrlInput.value : jobTextInput.value;
-    if (!inputContent) return alert(inputMode === 'url' ? '구인 공고 URL을 입력해 주세요!' : '공고 내용을 입력해 주세요!');
+    if (!inputContent) return alert('입력 소스를 확인해 주십시오!');
 
     statusBanner.style.display = 'block';
-    statusBanner.innerText = '🛰️ [실시간 연산] 사장님을 위해 데이터를 추출 중...';
+    statusBanner.innerText = '🛰️ [데이터 해킹] 타겟 분석 중...';
     
     const isEnglish = langSelect.value === 'en';
-    generateBtn.innerText = isEnglish ? '🎯 Extracting Questions...' : '🎯 질문 추출 중...';
+    generateBtn.innerText = isEnglish ? 'ANALYZING...' : '분석 중...';
     generateBtn.disabled = true;
 
-    // 사장님 지시: 의미 없는 연산 제거, 실전 데이터 정제 가동
     const cleanData = sanitizeText(inputContent);
-    console.log("Sanitized Input for analysis:", cleanData);
 
     setTimeout(() => {
         const mode = modeSelect.value;
-        const score = calculateMatchScore(cleanData, "Resume: Senior React Developer with Gemini experience, NCS expert, Scalable systems", mode);
+        const score = calculateMatchScore(cleanData, "Experience: Senior React Developer, AI Expert, Infrastructure Optimization", mode);
         
-        generateBtn.innerText = isEnglish ? 'Done!' : '질문 생성 완료!';
+        generateBtn.innerText = isEnglish ? 'DONE!' : '분석 완료!';
         generateBtn.disabled = false;
-        statusBanner.innerHTML = isEnglish ? `🛰️ [Analysis Complete] Match: <strong style="color:var(--primary);">${score}%</strong>` : `🛰️ [분석 완료] 적합도: <strong style="color:var(--primary);">${score}%</strong>`;
+        statusBanner.innerHTML = isEnglish ? `🛰️ [Success] Match Score: <strong style="color:var(--primary);">${score}%</strong>` : `🛰️ [해킹 성공] 적합도 점수: <strong style="color:var(--primary);">${score}%</strong>`;
         questionsContainer.classList.remove('hidden');
         
         const mockQuestions = {
             general: isEnglish ? [
-                `1. [Match ${score}%] How do you handle rapid changes in a startup environment?`,
-                "2. Experience with React & Node.js scalable architecture?",
-                "3. How would you solve a critical bug within a 24-hour sprint?"
+                `1. [Match ${score}%] How do you lead a team during a critical system failure?`,
+                "2. Your strategy for AI-driven frontend optimization?",
+                "3. Describe a time you hacked a process to improve efficiency."
             ] : [
-                `1. [적합도 ${score}%] 스타트업의 빠른 속도에 적응하기 위한 자신만의 노하우는?`,
-                "2. React/Node.js 기반 대규모 트래픽 처리 경험이 있나요?",
-                "3. 24시간 스프린트 내에 치명적인 버그를 해결했던 사례를 알려주세요."
+                `1. [적합도 ${score}%] 시스템 장애 발생 시 팀을 이끄는 본인만의 원칙은?`,
+                "2. AI를 활용한 프론트엔드 최적화 전략이 있습니까?",
+                "3. 비효율적인 프로세스를 스스로 개선(해킹)했던 사례를 알려주세요."
             ],
             public: [
-                `1. [원칙 준수] 공공기관 종사자로서 가장 최우선시해야 할 직업윤리는 무엇인가요?`,
-                `2. [직무 역량] NCS 기반 해당 직무에서 본인이 가진 전문성 수치는 ${score}점입니다. 이를 증명할 사례는?`,
-                `3. [갈등 관리] 조직 내 규정과 개인의 의견이 상충할 때 어떻게 대처하시겠습니까?`
+                `1. [원칙] 공공기관 인재로서 청렴과 효율 중 무엇이 더 중요하다고 생각하십니까?`,
+                `2. [직무] NCS 기반 본인의 전문성 수치는 ${score}입니다. 이를 증명할 실적은?`,
+                `3. [갈등] 조직 내 불합리한 관행을 발견했을 때의 대처 방안은?`
             ],
             global: [
-                `1. [Global Mindset] How do you collaborate effectively in a cross-border, multi-cultural remote team?`,
-                `2. [Technical Depth] Explain how you would architect a ${score}% available globally distributed system.`,
-                `3. [Communication] Describe a time you simplified a complex technical concept for non-technical stakeholders.`
+                `1. [Global] How do you bridge cultural gaps in a high-performance remote team?`,
+                `2. [Scale] Architect a system that maintains ${score}% uptime globally.`,
+                `3. [Impact] What is the most significant technical debt you've ever resolved?`
             ]
         };
 
-        const finalQuestions = mockQuestions[mode] || mockQuestions.general;
+        currentQuestions = mockQuestions[mode] || mockQuestions.general;
 
         questionsContainer.innerHTML = `
             <div style="margin-bottom: 1rem; font-size: 0.75rem; opacity: 0.5;">
-                분석 모드: <span style="color:var(--primary); text-transform:uppercase;">${mode}</span>
+                ANALYSIS MODE: <span style="color:var(--primary); text-transform:uppercase;">${mode}</span>
             </div>
-            ${finalQuestions.map(q => `<div class="question-card"><p>${q}</p></div>`).join('')}
-            <button onclick="exportQuestions()" style="width:100%; margin-top:2rem; background:rgba(37,244,140,0.1); border:1px solid var(--primary); color:var(--primary); padding:12px; border-radius:12px; cursor:pointer;">
-                <i class="fa-solid fa-file-export"></i> 분석 리포트 PDF 저장
+            ${currentQuestions.map(q => `<div class="question-card"><p>${q}</p></div>`).join('')}
+            <button onclick="exportQuestions()" style="width:100%; margin-top:2rem; background:rgba(37,244,140,0.1); border:1px solid var(--primary); color:var(--primary); padding:12px; border-radius:12px; cursor:pointer; font-weight:bold;">
+                <i class="fa-solid fa-file-export"></i> 분석 리포트 (.TXT) 저장
             </button>
         `;
 
@@ -190,5 +185,22 @@ function renderHistoryItem(entry) {
 }
 
 function exportQuestions() {
-    alert('PDF 리포트 생성 중... (사장님, 실제 PDF 라이브러리 연동 대기 중입니다!)');
+    if (currentQuestions.length === 0) return alert('분석된 질문이 없습니다!');
+    
+    let content = "--- INTERVIEW ACE ANALYSIS REPORT ---\r\n";
+    content += `Date: ${new Date().toLocaleString()}\r\n`;
+    content += `Target Mode: ${modeSelect.value.toUpperCase()}\r\n`;
+    content += "--------------------------------------\r\n\r\n";
+    
+    currentQuestions.forEach((q, i) => {
+        content += `${q}\r\n\r\n`;
+    });
+    
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `Interview_Ace_CheatSheet_${new Date().toISOString().split('T')[0]}.txt`;
+    link.click();
 }
+
+document.addEventListener('DOMContentLoaded', initApp);

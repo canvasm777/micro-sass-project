@@ -3,126 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InterviewAce | Imperial Talent Acquisition 🎯</title>
+    <title>InterviewAce | The Ultimate Job Cheat Key 🎯</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script src="../../assets/scripts/ads-engine.js"></script>
     <script src="../../auth.js"></script>
+    <script defer src="engine.js"></script>
+    <script defer src="main.js"></script>
 </head>
 <body>
     <div id="app">
         <header>
-            <h1>INTERVIEW ACE</h1>
-            <p>구인 공고를 해부하여 제국의 인재를 선별하는 정밀 타격 질문 추출기</p>
+            <h1 id="mainTitle">취업은 <span class="glitch" data-text="힘들다">힘들다</span></h1>
+            <div id="reverseHook">BUT... 내 <span class="highlight">치트키</span>는 확실하다. 🃏</div>
+            <p>면접관의 뻔한 질문을 '박살'내는 지능형 공략 시뮬레이터</p>
             
             <div id="marketIntelligence">
-                <h4 style="font-size: 0.65rem; color: var(--primary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">Market Intelligence 🛰️</h4>
+                <h4 style="font-size: 0.65rem; color: var(--secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">Market Intelligence Status 🌐</h4>
                 <div id="trendTicker">
-                    [ANALYZING] High demand for Rust Engineers in AI Infrastructure (Global Trend)...
-                </div>
-            </div>
-
-            <div id="financeSynergy">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h4 style="font-size: 0.6rem; color: var(--primary); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 1px;">Finance Synergy 💸</h4>
-                        <p style="font-size: 0.85rem; margin: 0; opacity: 0.9;">채용 지원 예산: <strong style="color: var(--primary);">$124,500.00</strong></p>
-                    </div>
-                    <div style="font-size: 0.6rem; opacity: 0.3;">[CORE-SYNC ACTIVE]</div>
+                    [ANALYZING] 취업 시장의 취약점을 탐색 중...
                 </div>
             </div>
         </header>
 
         <main>
+            <!-- UI Synergy Container (from main.js logic) -->
+            <div id="financeSynergy" class="hidden" style="margin-bottom: 2rem; border: 1px dashed var(--primary); padding: 1rem; border-radius: 12px; font-size: 0.75rem; opacity: 0.8;">
+                <i class="fa-solid fa-link"></i> [VA-AGENCY SYNERGY] 채용 가용 예산: <strong id="recruitmentBudget">0원</strong>
+            </div>
+
             <div class="input-group">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                    <label style="font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px;">INPUT SOURCE</label>
+                    <label style="font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px;">HACKING SOURCE</label>
                     <div style="display: flex; gap: 0.5rem;">
-                        <button onclick="toggleInput()" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: white; font-size: 0.6rem; border-radius: 6px; padding: 4px 10px; cursor: pointer;">SWITCH MODE</button>
+                        <button id="toggleInputBtn" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: white; font-size: 0.6rem; border-radius: 6px; padding: 4px 10px; cursor: pointer;">[URL ↔ 텍스트 전환]</button>
                     </div>
                 </div>
                 
                 <div id="urlInputArea">
-                    <input type="text" id="jobUrl" placeholder="구인 공고 URL (LinkedIn, Indeed, Saramin...)">
+                    <input type="text" id="jobUrl" placeholder="구인 공고 URL (LinkedIn, Wanted, Saramin...)">
                 </div>
                 <div id="textInputArea" class="hidden">
-                    <textarea id="jobText" placeholder="공고 텍스트를 직접 입력하세요..." style="width: 100%; height: 120px; background: rgba(0,0,0,0.4); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 12px; color: white; padding: 1rem; font-family: inherit; resize: none; outline: none;"></textarea>
+                    <textarea id="jobText" placeholder="공고 텍스트를 직접 입력해서 시스템을 해킹하세요..." style="width: 100%; height: 120px; background: rgba(0,0,0,0.4); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 12px; color: white; padding: 1rem; font-family: inherit; resize: none; outline: none;"></textarea>
                 </div>
 
                 <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                    <button id="generateBtn" style="flex: 2;" onclick="generateQuestions()">INITIATE AI ANALYSIS 🚀</button>
-                    <select id="modeSelect" style="flex: 1;">
-                        <option value="general">Standard</option>
-                        <option value="public">Government/NCS</option>
-                        <option value="global">FAANG / Global</option>
+                    <button id="generateBtn" style="flex: 2;">CHEAT START 🗡️</button>
+                    <select id="modeSelect" style="flex: 1; border-radius: 0; background: #000; border: 3px solid #fff; color: #fff; padding: 0.5rem; font-weight: 900;">
+                        <option value="general">시스템 해킹 (General)</option>
+                        <option value="public">공공기관 침투 (NCS)</option>
+                        <option value="global">글로벌 서버 점령 (Global)</option>
+                    </select>
+                </div>
+                
+                <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                    <button id="sampleBtn" style="background: transparent; border: none; color: var(--primary); font-size: 0.7rem; cursor: pointer; text-decoration: underline;">샘플 공고 투하</button>
+                    <select id="langSelect" style="background: transparent; color: white; border: none; font-size: 0.7rem; outline: none;">
+                        <option value="ko">한국어 (KOR)</option>
+                        <option value="en">ENGLISH (ENG)</option>
                     </select>
                 </div>
             </div>
 
+            <div id="statusBanner" style="display:none; padding: 1rem; text-align: center; font-size: 0.8rem; color: var(--primary); font-weight: 900; letter-spacing: 2px;"></div>
+
             <div id="questions" class="hidden" style="margin-top: 3rem;">
-                <h3 style="font-size: 0.8rem; opacity: 0.3; letter-spacing: 5px; margin-bottom: 1.5rem;">GENERATED QUESTIONS</h3>
-                <div id="qList"></div>
+                <!-- Generated content from main.js goes here -->
             </div>
+
+            <div id="aceHistory" class="hidden" style="margin-top: 5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+                <h3 style="font-size: 0.8rem; opacity: 0.3; letter-spacing: 5px; margin-bottom: 1.5rem;">RECENT TARGETS</h3>
+                <div id="historyList"></div>
+            </div>
+            
+            <div id="testLinks" style="margin-top: 2rem; display: grid; gap: 0.5rem; opacity: 0.5;"></div>
         </main>
 
         <footer>
             <div class="app-switcher">
-                <a href="../content-repurpose/index.html">Repurpose</a>
-                <a href="../../admin/sovereign-admin/index.html">Admin</a>
-                <a href="../../index.html">Portal</a>
+                <a href="../../core/sns-spark/index.html">Spark</a>
                 <a href="../../core/interview-ace/index.html" class="active">Ace</a>
+                <a href="../../core/quick-invoice/index.html">Invoice</a>
                 <a href="../va-agency/index.html">VA Agency</a>
+                <a href="../../admin/sovereign-admin/index.html">Admin</a>
             </div>
-            <p>© 2026 KODARI TALENT ACQUISITION PROTOCOL</p>
+            <p>© 2026 KODARI TALENT CHEAT KEY | SYSTEM HACKED</p>
         </footer>
     </div>
-
-    <script>
-        function toggleInput() {
-            const url = document.getElementById('urlInputArea');
-            const text = document.getElementById('textInputArea');
-            url.classList.toggle('hidden');
-            text.classList.toggle('hidden');
-        }
-
-        function generateQuestions() {
-            const btn = document.getElementById('generateBtn');
-            const qDiv = document.getElementById('questions');
-            const qList = document.getElementById('qList');
-            
-            btn.innerText = "ANALYZING NODES...";
-            btn.disabled = true;
-
-            setTimeout(() => {
-                qDiv.classList.remove('hidden');
-                qList.innerHTML = `
-                    <div class="question-card">
-                        <div style="font-size: 0.6rem; color: var(--primary); margin-bottom: 0.5rem;">[CULTURAL FIT]</div>
-                        <p style="margin: 0;">"본인이 생각하는 '제국적precision'의 정의와, 과거 프로젝트에서 어떻게 이를 실현했는지 구체적인 사례를 들어 설명해주십시오."</p>
-                    </div>
-                    <div class="question-card">
-                        <div style="font-size: 0.6rem; color: var(--primary); margin-bottom: 0.5rem;">[TECHNICAL ACUMEN]</div>
-                        <p style="margin: 0;">"분산 시스템에서의 싱귤래리티 발생 시, 데이터 정합성을 유지하기 위한 본인만의 '퀀텀 브릿지' 전략이 있습니까?"</p>
-                    </div>
-                `;
-                btn.innerText = "ANALYSIS COMPLETE";
-                btn.style.background = "#10b981";
-            }, 2000);
-        }
-
-        // Fake trend ticker
-        const trends = [
-            "High demand for Rust Engineers in AI Infrastructure...",
-            "Surge in Python-based automation for Finance...",
-            "Security compliance becoming top priority in Web3...",
-            "Remote-first culture shifting to Hybrid in Global Tech..."
-        ];
-        let trendIdx = 0;
-        setInterval(() => {
-            document.getElementById('trendTicker').innerText = `[ANALYZING] ${trends[trendIdx]} (Global Trend)...`;
-            trendIdx = (trendIdx + 1) % trends.length;
-        }, 5000);
-    </script>
 </body>
 </html>

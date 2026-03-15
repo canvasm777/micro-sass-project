@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="../../mobile-fix.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Design System Adjustments */
-        h1 { font-family: 'Montserrat', serif; font-style: italic; }
+        /* Z-Genius Quick Fixes */
         .imperial-hud {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(20px);
-            border: 1px solid var(--border); border-radius: 50px;
-            padding: 10px 30px; display: flex; gap: 30px; z-index: 1000;
-            font-size: 0.7rem; letter-spacing: 2px; color: var(--primary);
+            position: fixed; top: 0; left: 0; 
+            background: var(--primary); 
+            border: none; border-radius: 0;
+            padding: 10px 20px; display: flex; gap: 20px; z-index: 1000;
+            font-size: 0.75rem; font-weight: 900; color: var(--bg);
+            box-shadow: 4px 4px 0 var(--bg);
         }
-        .hud-val { color: #fff; font-weight: 700; }
+        .hud-val { color: var(--bg); font-weight: 900; }
         #nebula-canvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: radial-gradient(circle at 50% -20%, #1a1a1c 0%, #0a0a0b 80%);
+            background: var(--bg);
         }
     </style>
 </head>
@@ -39,8 +39,9 @@
                 <span class="trending-badge"><i class="fa-solid fa-chart-line"></i> VIRAL TRENDING</span>
                 <span class="credit-badge"><i class="fa-solid fa-crown"></i> PREMIUM ACTIVE</span>
             </div>
-            <h1>SNS-Spark</h1>
-            <p>당신의 비주얼을 완성할 절대적 인공지능 캡션 연금술.</p>
+            <h1>피드는 <span class="glitch" data-text="지루하다">지루하다</span></h1>
+            <div id="reverseHook" style="font-size: 1.5rem; font-weight: 900; background: #fff; color: #000; display: inline-block; padding: 5px 20px; margin-top: 1rem; transform: rotate(1deg);">BUT 내 <span class="highlight" style="color: var(--primary); background: #000; padding: 0 5px;">도파민</span>은 다르다.</div>
+            <p>지금 이 감성, AI가 1초 만에 툭. ⚡️</p>
         </header>
 
         <!-- Image Upload & Preview -->
@@ -63,9 +64,9 @@
         <div class="action-panel">
             <div class="control-panel" style="display:flex; gap:10px; margin-bottom:2rem;">
                 <select id="toneSelect" style="flex:1;">
-                    <option value="Professional">👑 Professional (신뢰/품격)</option>
-                    <option value="Witty">⚡ Witty (트렌디/힙함)</option>
-                    <option value="Emotional">✨ Emotional (감성/새벽)</option>
+                    <option value="Professional">👑 빡세게 (Professional)</option>
+                    <option value="Witty">⚡️ 힙하게 (Witty/Trend)</option>
+                    <option value="Emotional">✨ 감성있게 (Emotional)</option>
                 </select>
                 <button onclick="resetUpload()" style="padding:0 1.5rem; border-radius:12px; border:1px solid var(--border); background:none; color:white; cursor:pointer;"><i class="fa-solid fa-rotate-right"></i></button>
             </div>

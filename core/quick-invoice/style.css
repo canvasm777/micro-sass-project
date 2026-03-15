@@ -1,10 +1,16 @@
 :root {
-    --primary: #d4af37;
-    --accent: #f3e5ab;
-    --bg: #0a0a0b;
-    --card: rgba(255, 255, 255, 0.02);
-    --border: rgba(212, 175, 55, 0.15);
-    --text: #ffffff;
+    --primary: #00A86B; /* Jade Green - Focus on Growth/Money */
+    --accent: #D4AF37;  /* Gold - Luxury/Wealth */
+    --bg: #030806;     /* Deep Emerald Black */
+    --card: rgba(10, 20, 15, 0.8);
+    --border: rgba(0, 168, 107, 0.3);
+    --text: #e0f2f1;
+    --soft-glow: 0 0 20px rgba(0, 168, 107, 0.2);
+}
+
+@keyframes matrix-fly {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
 }
 
 body {
@@ -14,9 +20,10 @@ body {
     margin: 0;
     line-height: 1.6;
     background-image: 
-        radial-gradient(circle at top right, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at bottom left, rgba(251, 191, 36, 0.05) 0%, transparent 40%);
-    background-attachment: fixed;
+        linear-gradient(rgba(0, 168, 107, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 168, 107, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: matrix-fly 20s linear infinite;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,14 +32,28 @@ body {
 
 #app {
     width: 100%;
-    max-width: 900px;
+    max-width: 850px;
     margin: 2rem;
-    padding: 3.5rem;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(20px);
-    border-radius: 32px;
+    padding: 3rem;
+    background: var(--card);
     border: 1px solid var(--border);
-    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 40px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8), var(--soft-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+#app::before {
+    content: "ARCHIVE_MODE: ON";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-family: monospace;
+    font-size: 0.6rem;
+    color: var(--primary);
+    opacity: 0.5;
 }
 
 header {
@@ -41,18 +62,43 @@ header {
 }
 
 h1 { 
-    font-size: 3rem; 
+    font-size: 3.5rem; 
     margin: 0; 
-    color: var(--primary); 
-    letter-spacing: 10px;
-    font-weight: 200;
+    color: var(--text); 
+    letter-spacing: -1px;
+    font-weight: 900;
+    line-height: 1.1;
+    text-shadow: 0 0 30px rgba(0, 168, 107, 0.5);
 }
 
-header p { 
-    font-size: 0.9rem; 
-    opacity: 0.5; 
-    margin: 1rem 0 0; 
-    letter-spacing: 3px;
+header p {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-top: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Glitch */
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    text-shadow: -1px 0 red;
+    top: 0;
+    color: white;
+    background: black;
+    overflow: hidden;
+    clip: rect(0,900px,0,0); 
+    animation: noise-anim 2s infinite linear alternate-reverse;
+}
+@keyframes noise-anim {
+    0% { clip: rect(48px, 9999px, 86px, 0); }
+    100% { clip: rect(12px, 9999px, 5px, 0); }
 }
 
 .active-badge {
@@ -68,18 +114,28 @@ header p {
 
 /* Upload Area */
 .upload-area {
-    border: 1px dashed var(--border);
-    padding: 4rem 2rem;
-    border-radius: 24px;
+    border: 2px dashed var(--primary);
+    padding: 6rem 2rem;
+    border-radius: 30px;
     cursor: pointer;
-    transition: 0.3s;
-    background: rgba(255, 255, 255, 0.02);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(0, 168, 107, 0.03);
     text-align: center;
+    position: relative;
 }
 
 .upload-area:hover {
-    border-color: var(--primary);
-    background: rgba(251, 191, 36, 0.05);
+    transform: scale(1.02);
+    border-color: var(--accent);
+    background: rgba(0, 168, 107, 0.08);
+    box-shadow: 0 0 30px rgba(0, 168, 107, 0.2);
+}
+
+.upload-area i {
+    font-size: 4rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
 }
 
 #scannerLine {
@@ -90,20 +146,22 @@ header p {
     height: 3px;
     background: var(--primary);
     box-shadow: 0 0 20px var(--primary);
-    animation: scanMove 2s infinite linear;
+    animation: scanMove 3s infinite linear;
+    z-index: 2;
 }
 
 @keyframes scanMove {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(250px); }
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(300px); opacity: 0; }
 }
 
-/* Control Panel */
 .stats-chart {
-    background: var(--card);
+    background: rgba(255,255,255,0.02);
     border: 1px solid var(--border);
     padding: 2rem;
-    border-radius: 20px;
+    border-radius: 30px;
     margin-bottom: 2rem;
 }
 
@@ -138,17 +196,18 @@ input[type="date"], select {
 
 /* Results */
 .data-card {
-    background: rgba(255,255,255,0.03);
-    padding: 2rem;
-    border-radius: 24px;
-    border: 1px solid rgba(255,255,255,0.05);
-    margin-bottom: 1.5rem;
-    transition: 0.3s;
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 0;
+    border: 3px solid #fff;
+    margin-bottom: 2rem;
+    transition: 0.1s;
+    box-shadow: 6px 6px 0 var(--primary);
 }
 
 .data-card:hover {
-    border-color: var(--primary);
-    transform: translateY(-5px);
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--primary);
 }
 
 .amount-text { 

@@ -1,12 +1,57 @@
 :root {
-    --primary: #d4af37;
-    --accent: #f3e5ab;
-    --bg: #0a0a0b;
-    --card: rgba(255, 255, 255, 0.02);
-    --border: rgba(212, 175, 55, 0.15);
+    --primary: #ADFF2F; /* Neon Green */
+    --primary-dim: rgba(173, 255, 47, 0.3);
+    --bg: #050505; /* Deep Onyx */
+    --card: #0a0a0b;
+    --border: #ADFF2F;
     --text: #ffffff;
+    --brutalist-shadow: 12px 12px 0px #ADFF2F;
+    --glitch-gap: 5px;
 }
 
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes flicker {
+    0% { opacity: 0.97; }
+    5% { opacity: 0.95; }
+    10% { opacity: 0.9; }
+    15% { opacity: 0.95; }
+    20% { opacity: 0.98; }
+    25% { opacity: 0.95; }
+    30% { opacity: 0.99; }
+    70% { opacity: 0.98; }
+    100% { opacity: 1; }
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        transparent 0%,
+        rgba(173, 255, 47, 0.05) 50%,
+        transparent 100%
+    );
+    background-size: 100% 4px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: rgba(173, 255, 47, 0.1);
+    animation: scanline 8s linear infinite;
+    z-index: 10000;
+    pointer-events: none;
+}
 body {
     background-color: var(--bg);
     color: var(--text);
@@ -14,8 +59,8 @@ body {
     margin: 0;
     line-height: 1.6;
     background-image: 
-        radial-gradient(circle at top right, rgba(244, 114, 182, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at bottom left, rgba(251, 191, 36, 0.05) 0%, transparent 40%);
+        radial-gradient(circle at 10% 10%, rgba(173, 255, 47, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(173, 255, 47, 0.03) 0%, transparent 40%);
     background-attachment: fixed;
     display: flex;
     justify-content: center;
@@ -25,34 +70,79 @@ body {
 
 #app {
     width: 100%;
-    max-width: 900px;
+    max-width: 800px;
     margin: 2rem;
-    padding: 3.5rem;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(20px);
-    border-radius: 32px;
-    border: 1px solid var(--border);
-    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
+    padding: 4rem;
+    background: var(--card);
+    border: 3px solid var(--primary);
+    box-shadow: var(--brutalist-shadow);
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 header {
     margin-bottom: 3.5rem;
+    animation: flicker 0.15s infinite;
 }
 
 h1 { 
-    font-size: 3rem; 
+    font-size: 6rem; 
     margin: 0; 
     color: var(--primary); 
-    letter-spacing: 10px;
-    font-weight: 200;
+    letter-spacing: -4px;
+    font-weight: 950;
+    text-transform: uppercase;
+    line-height: 0.85;
+    transform: rotate(-3deg);
+    display: inline-block;
+    background: var(--bg);
+    padding: 10px 30px;
+    border: 4px solid var(--primary);
+    box-shadow: 10px 10px 0 #000;
+    position: relative;
+}
+
+h1::before, h1::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg);
+    padding: inherit;
+    border: inherit;
+}
+
+h1::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+h1::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    20% { clip: rect(62px, 9999px, 42px, 0); }
+    40% { clip: rect(16px, 9999px, 78px, 0); }
+    60% { clip: rect(87px, 9999px, 11px, 0); }
+    80% { clip: rect(54px, 9999px, 33px, 0); }
+    100% { clip: rect(2px, 9999px, 98px, 0); }
 }
 
 header p { 
-    font-size: 0.9rem; 
-    opacity: 0.5; 
-    margin: 1rem 0 0; 
-    letter-spacing: 3px;
+    font-size: 1rem; 
+    opacity: 0.8; 
+    margin: 2rem 0 0; 
+    letter-spacing: 5px;
+    color: var(--primary);
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 /* Badges */
@@ -64,17 +154,19 @@ header p {
 }
 
 .trending-badge, .credit-badge {
-    background: rgba(251, 191, 36, 0.05);
-    color: var(--primary);
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.65rem;
-    border: 1px solid var(--border);
-    font-weight: bold;
-    letter-spacing: 1px;
+    background: var(--primary);
+    color: var(--bg);
+    padding: 8px 12px;
+    border-radius: 0;
+    font-size: 0.8rem;
+    border: none;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-transform: uppercase;
 }
 
-.trending-badge { color: var(--accent); border-color: rgba(244, 114, 182, 0.2); }
+.trending-badge { transform: rotate(3deg); }
+.credit-badge { transform: rotate(-2deg); }
 
 /* Progress Bar */
 .progress-bar-bg {
@@ -110,18 +202,34 @@ header p {
 
 /* Upload Area */
 .upload-area {
-    border: 1px dashed var(--border);
-    padding: 4rem 2rem;
-    border-radius: 24px;
+    border: 4px solid var(--primary);
+    padding: 6rem 2rem;
+    border-radius: 0;
     cursor: pointer;
-    transition: 0.3s;
-    background: rgba(255, 255, 255, 0.02);
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(173, 255, 47, 0.02);
+    box-shadow: 0 0 0 transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-area::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(173, 255, 47, 0.03) 0,
+        rgba(173, 255, 47, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
 }
 
 .upload-area:hover {
-    border-color: var(--primary);
-    background: rgba(251, 191, 36, 0.05);
-    transform: translateY(-5px);
+    transform: scale(1.02);
+    background: rgba(173, 255, 47, 0.05);
+    box-shadow: 15px 15px 0px #000, 15px 15px 0px 3px var(--primary);
 }
 
 .upload-area i {
@@ -151,20 +259,20 @@ header p {
 
 #textOverlay {
     position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    right: 2rem;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(15px);
-    padding: 1.5rem;
-    border-radius: 16px;
-    color: white;
-    font-size: 1rem;
-    line-height: 1.6;
-    border: 1px solid rgba(255,255,255,0.1);
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    padding: 2rem;
+    border-radius: 0;
+    color: var(--bg);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    border-top: 3px solid var(--bg);
+    transform: translateY(100%);
+    opacity: 1;
+    transition: transform 0.4s cubic-bezier(0.8, 0, 0.2, 1);
     text-align: left;
 }
 
